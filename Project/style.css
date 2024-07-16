@@ -10,14 +10,12 @@
 
 a{
   font-weight: 600;
-  transition: all 0.3s ease; 
 }
 a:visited{
   color: #377a77;
 }
 a:hover{
   color: #9eb5f7;
-  transition: all 0.3s ease;
 }
 
 /* Custom Scroll Bar CSS */
@@ -97,33 +95,23 @@ nav .navbar .menu li{
 }
 .navbar .menu a:hover{
   color: #377a77;
-  transition: all 0.3s ease;
-
 }
 nav.sticky .menu a{
   color: #FFF;
 }
 nav.sticky .menu a:hover{
-  transition: all 0.3s ease;
   color: #0E2431;
 }
 .navbar .media-icons a{
   color: #377a77;
   font-size: 21px;
   margin: 0 6px; 
-  transition: all 0.3s ease;
 }
 .media-icons a:hover{
   color: grey;
-  transition: all 0.3s ease;
 }
 nav.sticky .media-icons a{
   color: #FFF;
-  transition: all 0.3s ease;
-}
-nav.sticky .media-icons a:hover{
-  color: grey;
-  transition: all 0.3s ease;
 }
 
 /* Side Navigation Menu Button CSS */
@@ -168,7 +156,6 @@ nav.sticky .menu-btn{
   border-color: #377a77;
   background-color: #fff;
   color: #377a77;
-  transition: all 0.3s ease;
 }
  
 .text .select select option.selected {
@@ -250,7 +237,6 @@ nav.sticky .menu-btn{
   border-color: #377a77;
   background-color: #fff;
   color: #377a77;
-  transition: all 0.3s ease;
 }
 
 /* About Section Styling */
@@ -270,7 +256,6 @@ section .content{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 10px;
 }
 section .title{
   display: flex;
@@ -351,7 +336,6 @@ section .button button:hover{
   border-color: #377a77;
   background-color: #fff;
   color: #377a77;
-  transition: all 0.3s ease;
 }
 
  /* My Skills CSS */
@@ -427,7 +411,6 @@ section .button button:hover{
 .services .boxes .box:hover{
   background: #377a77;
   color: #fff;
-  transition: all 0.3s ease;
 }
 .services .boxes .box .icon{
   height: 50px;
@@ -444,7 +427,6 @@ section .button button:hover{
 .boxes .box:hover .icon{
   background-color: #fff;
   color: #377a77;
-  transition: all 0.3s ease;
 }
 .services .boxes .box:hover .topic,
 .services .boxes .box:hover p{
@@ -454,7 +436,6 @@ section .button button:hover{
 .services .boxes .box:hover .topic,
 .services .boxes .box:hover p{
   color: #fff;
-  transition: all 0.3s ease;
 }
 /* Contact Me CSS */
 .contact{
@@ -486,12 +467,10 @@ footer .text span a{
   text-decoration: underline;
   font-weight: 500;
   color: #FFF;
-  transition: all 0.3s ease;
 }
 footer .text span a:hover{
   text-decoration: none;
   color: #c4c6ce;
-  transition: all 0.3s ease;
 }
 /* Scroll TO Top Button CSS */
 .scroll-button a{
@@ -567,12 +546,10 @@ footer .text span a:hover{
     font-size: 23px;
     display: block;
     color: #fff;
-    margin: 10px 0; 
-    transition: all 0.3s ease;
+    margin: 10px 0;
   }
   nav.sticky .menu a:hover{
-    color: #377a77;  
-    transition: all 0.3s ease;
+    color: #377a77;
   }
   nav .navbar .media-icons{
     display: none;
@@ -669,11 +646,9 @@ form button {
   border-radius:6px;
   padding:10px 20px;
   cursor:pointer;
-  transition: all 0.3s ease;
 }
 form button:hover {
   opacity:0.8;
-  transition: all 0.3s ease;
 }
 
 /*Star rating*/
@@ -978,46 +953,4 @@ form button:hover {
 
 .select-dropdown option:hover {
   background-color: #f1f1f1;
-}
-
-
-
-
-
- 
-
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-}
-
-.grid-item {
-  background-color: #fff;
-  border: 20px solid #377a77;
-  border-radius: 8px;
-  padding: 20px;
-  text-align: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-}
-
-.grid-item:hover {
-  transform: scale(1.05);
-}
-
-.grid-item img {
-  max-width: 100%;
-  border-radius: 8px;
-}
-
-.grid-item h2 {
-  font-size: 24px;
-  margin: 10px 0;
-  color: #0E2431;
-}
-
-.grid-item p {
-  font-size: 16px;
-  color: #377a77;
 }

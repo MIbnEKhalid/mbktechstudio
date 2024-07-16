@@ -1,0 +1,178 @@
+<!DOCTYPE html> 
+
+<html lang="en" dir="ltr">
+
+  <head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/css/intlTelInput.css">
+    <title>Project</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Fontawesome CDN Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+    <link rel="icon" type="image/x-icon" href="../Assets/Images/dgicon.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+ 
+  <!-- Ask For Cookie Consent-->
+  <div id="cookie"></div>
+
+  <!-- navgaition menu -->
+  <header>   
+    
+    <nav>
+
+      <div class="navbar">
+
+        <div class="logo">
+
+          <div class="image">
+            <img src="../Assets/Images/dg.svg" alt=""/>
+          </div>
+
+          <div class="text">
+            <a href="#">MBK Tech Studio</a>
+          </div>
+
+        </div>
+
+        <ul class="menu">
+
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#services">Projects</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+
+          <div class="cancel-btn">
+            <i class="fas fa-times"></i>
+          </div>
+
+        </ul>
+
+        <div class="media-icons">
+
+          <a href="https://www.facebook.com/people/MBK-Tech-Studio/61559079077988/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"                                                                              ><i class="fab fa-twitter"></i></a>
+          <a href="https://instagram.com/mbktech.studios"                           target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://github.com/MIbnEKhalid"                                  target="_blank"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/muhammad-bin-khalid-89711b25b"       target="_blank"><i class="fab fa-linkedin"></i></a>
+          <a href="https://youtube.com/@MBKTechStudios"                             target="_blank"><i class="fab fa-youtube"></i></a>
+          <a href="https://discord.gg/MUAyAeckrM"                                   target="_blank"><i class="fab fa-discord"></i></a>
+
+        </div>
+
+      </div>
+
+      <div class="menu-btn">
+        <i class="fas fa-bars"></i>
+      </div>
+
+    </nav>
+
+  </header>
+
+  <body>
+
+    <!-- Move to up button -->
+    <div class="scroll-button">
+      <a href="#about"><i class="fas fa-arrow-up"></i></a>
+    </div>
+
+    <!-- About Section Start -->
+    <section class="about" id="about">
+
+      <div class="content">
+ 
+        <br>
+
+        <div class="title"><span>My Projects</span></div>
+ 
+        <div class="select-dropdown">
+            <label for="topic-select">Select Project Category:</label>
+            <select id="topic-select" name="topics">
+              <option value="All">All</option>
+              <option value="Cpp">Cpp Projects</option>
+              <option value="Game">Game Development</option>
+              <option value="Unity">Unity Assets</option>
+              <option value="Web">Web Development</option>
+            </select>
+          </div>
+          
+        <div class="search-bar">
+            <input type="text" id="search" placeholder="Search Project By Name...">
+             <button type="submit"><i class="fas fa-search"></i></button>                     
+        </div>
+
+        <h1 style="text-align: center; color: burlywood;">Page Is Currently Under Development</h1>
+
+ 
+
+        <div class="product-grid">
+            <div class="grid-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPnpNdU7z0aLi1BaIOzwt7brRBWi1ij-GwMg&s" alt="Product Image">
+                <h2>Product Title 1</h2>
+                <p>Short detail about product 1.</p>
+            </div>
+            <div class="grid-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPnpNdU7z0aLi1BaIOzwt7brRBWi1ij-GwMg&s" alt="Product Image">
+                <h2>Product Title 2</h2>
+                <p>Short detail about product 2.</p>
+            </div>
+            <div class="grid-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPnpNdU7z0aLi1BaIOzwt7brRBWi1ij-GwMg&s" alt="Product Image">
+                <h2>Product Title 3</h2>
+                <p>Short detail about product 3.</p>
+            </div>
+            <!-- Add more grid items as needed -->
+        </div>
+        
+          </div>
+
+      </div>
+
+    </section>
+
+  </body>
+
+  <!-- Footer Section Start -->
+  <footer>
+
+    <div class="text">
+
+      <span>Developed By <a href="#">Muhammad Bin Khalid</a> | &#169; 2024 All Rights Reserved | <a href="UserAgreement/" target="_blank" >Terms & Conditions</a></span>
+   
+    </div>
+  
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/js/intlTelInput-jquery.min.js"></script>
+  
+  <script>
+
+  //phone
+      
+  $("#mobile_code").intlTelInput({
+          initialCountry: "pk",
+          separateDialCode: true
+          // utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.4/js/utils.js"
+  });
+
+  
+
+  function remove() {
+    let i = 0;
+    while (i < 5) {
+        stars[i].className = "star";
+        i++;
+    }
+} 
+
+    document.addEventListener("DOMContentLoaded", function() {
+       AskForCookieConsent();
+    });
+  
+  </script>
+
+
+
+</html>
