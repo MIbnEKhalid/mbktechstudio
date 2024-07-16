@@ -235,7 +235,7 @@ function handleCVFile() {
 
 
 function openProjectPage(id) {
-    window.open('Project/#' + id, '_blank'); // Replace with your target URL
+    window.open('https://mbktechstudio.com/Project/#' + id, '_blank'); // Replace with your target URL
   }
   
 
