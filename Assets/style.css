@@ -183,12 +183,16 @@ nav.sticky .menu-btn{
 
 .ssmedis a{
   color: #377a77;
-  font-size: 35px;
+  font-size: 40px;
   margin: 0 6px; 
+  transition: all 0.3s ease;
 }
-.ssmedis a:hover{
+.ssmedis a:hover{  
+  font-size: 48px;
   color: #8c8e96; 
+  transition: all 0.4s ease;
 }
+
 
 
  
@@ -340,7 +344,7 @@ section .button button{
   padding: 8px 16px;
   border-radius: 4px;
   font-size: 25px;
-  font-weight: 400;
+  font-weight: 600;
   background: #377a77;
   color: #fff;
   border: 2px solid transparent;
@@ -350,7 +354,8 @@ section .button button{
 section .button button:hover{
   border-color: #377a77;
   background-color: #fff;
-  color: #377a77;
+  color: #377a77;  
+  font-weight: 600;
   transition: all 0.3s ease;
 }
 
