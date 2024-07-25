@@ -33,7 +33,7 @@
 
         <ul class="menu">
 
-          <li><a href="https://mbktechstudio.com" target="_blank">Home</a></li>
+          <li><a href="../">Home</a></li>
           <li><a href="#about">About Me</a></li>
           <li><a href="#services">Projects</a></li>
           <li><a href="#contact">Contact Me</a></li>
@@ -429,24 +429,27 @@
     });
 
     document.addEventListener('DOMContentLoaded', function () {
-        const headerHeight = document.querySelector('header').offsetHeight;
+    const headerHeight = document.querySelector('header').offsetHeight;
 
-        document.querySelectorAll('nav .menu li a').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href').substring(1);
-                const targetElement = document.getElementById(targetId);
-                
-                if (targetElement) {
-                    const targetPosition = targetElement.offsetTop - headerHeight - 28; // Adjust 10px as needed
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                }
+    document.querySelectorAll('nav .menu li a').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        // Check if the href attribute is a hash
+        if (this.getAttribute('href').startsWith('#')) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href').substring(1);
+          const targetElement = document.getElementById(targetId);
+          
+          if (targetElement) {
+            const targetPosition = targetElement.offsetTop - headerHeight - 28; // Adjust as needed
+            window.scrollTo({
+              top: targetPosition,
+              behavior: 'smooth'
             });
-        });
+          }
+        }
+      });
     });
+  });
 
   </script>
 
