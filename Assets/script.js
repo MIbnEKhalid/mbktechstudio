@@ -226,24 +226,16 @@ function handleCVFile() {
 
 
 
-
-
-
-
-
+function HireMeLink() {
+    window.open('https://www.linkedin.com/in/muhammad-bin-khalid-89711b25b', '_blank'); // Replace with your target URL
+  }
 
 
 
 function openProjectPage(id) {
     window.open('https://mbktechstudio.com/Project/#' + id, '_blank'); // Replace with your target URL
   }
-  
-
-
-
-
-
-
+ 
 
 
 function AskForCookieConsent() {
