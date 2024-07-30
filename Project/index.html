@@ -67,7 +67,6 @@
 
   <body>
 
-
     <div class="scroll-button">
         <a href="#about"><i class="fas fa-arrow-up"></i></a>
     </div>
@@ -76,15 +75,16 @@
         <div class="content">
 
           <br>
+          <h3 style="text-align: center; color: tomato;" >This Page is Under Development...</h3>
             <div class="title"><span>My Projects</span></div>
            
             <div class="select-dropdown">
                 <select id="categoryFilter" name="topics">
                     <option value="all">All</option>
-                    <option value="T-Shirt">T-Shirt</option>
-                    <option value="Short">Short</option>
-                    <option value="Pants">Pants</option>
-                    <option value="Shoes">Shoes</option>
+                    <option value="cpp">Cpp Projects</option>
+                    <option value="game">Game Development</option>
+                    <option value="unity">Unity Assets</option>
+                    <option value="web">Web Development</option>
                 </select>
             </div>
             <div class="search-bar">
@@ -101,7 +101,7 @@
 
     <footer>
         <div class="text">
-            <span>Developed By <a href="#">Muhammad Bin Khalid</a> | &#169; 2024 All Rights Reserved | <a href="UserAgreement/" target="_blank">Terms & Conditions</a> | support@mbktechstudio.com</span>
+            <span>Developed By <a href="#">Muhammad Bin Khalid</a> | &#169; 2024 All Rights Reserved | <a href="UserAgreement/" target="_blank">Terms & Conditions</a> | <a href="mailto:support@mbktechstudio.com">support@mbktechstudio.com</a></span>
         </div>
     </footer>
 
@@ -127,16 +127,25 @@
             AskForCookieConsent();
         });
 
+        document.addEventListener("DOMContentLoaded", function() {
+            AskForCookieConsent();
+            // Get the hash from the URL
+            const hash = window.location.hash.substring(1);
+            const categoryFilter = document.getElementById('categoryFilter');
+            if (hash) {
+                // Set the dropdown to the hash value
+                categoryFilter.value = hash;
+                filterProducts();
+            }
+        });
+
         const products = [
-    { imageURL: "Img/download.svg", name: "Polo",      category: "T-Shirt", price: 20, description: "", link: "https://example.com/polo" },
-    { imageURL: "Img/download.svg", name: "Men Short", category: "Short",   price: 30, description: "", link: "https://example.com/men-short" },
-    { imageURL: "Img/download.svg", name: "Jeans",     category: "Pants",   price: 50, description: "", link: "https://example.com/jeans" },
-    { imageURL: "Img/download.svg", name: "Sneakers",  category: "Shoes",   price: 70, description: "", link: "https://example.com/sneakers" },
-    { imageURL: "Img/download.svg", name: "Shirt",     category: "T-Shirt", price: 40, description: "", link: "https://example.com/shirt" },
-    { imageURL: "Img/download.svg", name: "Skirt",     category: "Short",   price: 25, description: "", link: "https://example.com/skirt" },
-    { imageURL: "Img/download.svg", name: "Chinos",    category: "Pants",   price: 45, description: "", link: "https://example.com/chinos" },
-    { imageURL: "Img/download.svg", name: "Boots",     category: "Shoes",   price: 80, description: "", link: "https://example.com/boots" },  
-    
+    { imageURL: "Img/download.svg", name: "Project1", category: "cpp",   description: "", link: "https://mbktechstudio.com/ProjectLink" },
+    { imageURL: "Img/download.svg", name: "Project2", category: "game",  description: "", link: "https://mbktechstudio.com/ProjectLink" },
+    { imageURL: "Img/download.svg", name: "Project3", category: "unity", description: "", link: "https://mbktechstudio.com/ProjectLink" },
+    { imageURL: "Img/download.svg", name: "Project4", category: "cpp",   description: "", link: "https://mbktechstudio.com/ProjectLink" },
+    { imageURL: "Img/download.svg", name: "Project5", category: "web",   description: "", link: "https://mbktechstudio.com/ProjectLink" },
+    { imageURL: "Img/download.svg", name: "Project6", category: "unity", description: "", link: "https://mbktechstudio.com/ProjectLink" },
 ];
 
 const productsContainer = document.querySelector('.products');
@@ -184,6 +193,6 @@ displayProducts(products);
 
 
         
-</script>
+    </script>
 </body>
 </html>
