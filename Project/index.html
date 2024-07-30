@@ -7,16 +7,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/css/intlTelInput.css">
     <title>Project</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Fontawesome CDN Link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
-    <link rel="icon" type="image/x-icon" href="../Assets/Images/dgicon.svg">
+    <link rel="icon" type="image/x-icon" href="https://mbktechstudio.com/Assets/Images/dgicon.svg">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
  
-  <!-- Ask For Cookie Consent-->
   <div id="cookie"></div>
 
-  <!-- navgaition menu -->
   <header>   
     
     <nav>
@@ -26,7 +23,7 @@
         <div class="logo">
 
           <div class="image">
-            <img src="../Assets/Images/dg.svg" alt=""/>
+            <img src="https://mbktechstudio.com/Assets/Images/dg.svg" alt=""/>
           </div>
 
           <div class="text">
@@ -36,10 +33,9 @@
         </div>
 
         <ul class="menu">
-
-          <li><a href="#about">About Us</a></li>
-          <li><a href="#services">Projects</a></li>
-          <li><a href="#contact">Contact Us</a></li>
+          <li><a href="../">Home</a></li>
+          <li><a href="../#about">About Us</a></li>
+          <li><a href="../#contact">Contact Us</a></li>
 
           <div class="cancel-btn">
             <i class="fas fa-times"></i>
@@ -71,108 +67,123 @@
 
   <body>
 
-    <!-- Move to up button -->
+
     <div class="scroll-button">
-      <a href="#about"><i class="fas fa-arrow-up"></i></a>
+        <a href="#about"><i class="fas fa-arrow-up"></i></a>
     </div>
 
-    <!-- About Section Start -->
     <section class="about" id="about">
+        <div class="content">
 
-      <div class="content">
- 
-        <br>
+          <br>
+            <div class="title"><span>My Projects</span></div>
+           
+            <div class="select-dropdown">
+                <select id="categoryFilter" name="topics">
+                    <option value="all">All</option>
+                    <option value="T-Shirt">T-Shirt</option>
+                    <option value="Short">Short</option>
+                    <option value="Pants">Pants</option>
+                    <option value="Shoes">Shoes</option>
+                </select>
+            </div>
+            <div class="search-bar">
+                <input type="text" id="searchProduct" placeholder="Search Project By Name...">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </div>
+            <br>
 
-        <div class="title"><span>My Projects</span></div>
- 
-        <div class="select-dropdown">
-            <label for="topic-select">Select Project Category:</label>
-            <select id="topic-select" name="topics">
-              <option value="All">All</option>
-              <option value="Cpp">Cpp Projects</option>
-              <option value="Game">Game Development</option>
-              <option value="Unity">Unity Assets</option>
-              <option value="Web">Web Development</option>
-            </select>
-          </div>
-          
-        <div class="search-bar">
-            <input type="text" id="search" placeholder="Search Project By Name...">
-             <button type="submit"><i class="fas fa-search"></i></button>                     
+            <div class="products">
+                <!-- Products will be dynamically inserted here -->
+            </div>
         </div>
-
-        <h1 style="text-align: center; color: burlywood;">Page Is Currently Under Development</h1>
-
- 
-
-        <div class="product-grid">
-            <div class="grid-item">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPnpNdU7z0aLi1BaIOzwt7brRBWi1ij-GwMg&s" alt="Product Image">
-                <h2>Product Title 1</h2>
-                <p>Short detail about product 1.</p>
-            </div>
-            <div class="grid-item">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPnpNdU7z0aLi1BaIOzwt7brRBWi1ij-GwMg&s" alt="Product Image">
-                <h2>Product Title 2</h2>
-                <p>Short detail about product 2.</p>
-            </div>
-            <div class="grid-item">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPnpNdU7z0aLi1BaIOzwt7brRBWi1ij-GwMg&s" alt="Product Image">
-                <h2>Product Title 3</h2>
-                <p>Short detail about product 3.</p>
-            </div>
-            <!-- Add more grid items as needed -->
-        </div>
-        
-          </div>
-
-      </div>
-
     </section>
 
-  </body>
+    <footer>
+        <div class="text">
+            <span>Developed By <a href="#">Muhammad Bin Khalid</a> | &#169; 2024 All Rights Reserved | <a href="UserAgreement/" target="_blank">Terms & Conditions</a> | support@mbktechstudio.com</span>
+        </div>
+    </footer>
 
-  <!-- Footer Section Start -->
-  <footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/js/intlTelInput-jquery.min.js"></script>
+    <script src="https://mbktechstudio.com/Assets/script.js"></script>
+    <script>
+        // phone
+        $("#mobile_code").intlTelInput({
+            initialCountry: "pk",
+            separateDialCode: true
+        });
 
-    <div class="text">
+        function remove() {
+            let i = 0;
+            while (i < 5) {
+                stars[i].className = "star";
+                i++;
+            }
+        }
 
-      <span>Developed By <a href="#">Muhammad Bin Khalid</a> | &#169; 2024 All Rights Reserved | <a href="UserAgreement/" target="_blank" >Terms & Conditions</a> | support@mbktechstudio.com</span>
+        document.addEventListener("DOMContentLoaded", function() {
+            AskForCookieConsent();
+        });
+
+        const products = [
+    { imageURL: "Img/download.svg", name: "Polo",      category: "T-Shirt", price: 20, description: "", link: "https://example.com/polo" },
+    { imageURL: "Img/download.svg", name: "Men Short", category: "Short",   price: 30, description: "", link: "https://example.com/men-short" },
+    { imageURL: "Img/download.svg", name: "Jeans",     category: "Pants",   price: 50, description: "", link: "https://example.com/jeans" },
+    { imageURL: "Img/download.svg", name: "Sneakers",  category: "Shoes",   price: 70, description: "", link: "https://example.com/sneakers" },
+    { imageURL: "Img/download.svg", name: "Shirt",     category: "T-Shirt", price: 40, description: "", link: "https://example.com/shirt" },
+    { imageURL: "Img/download.svg", name: "Skirt",     category: "Short",   price: 25, description: "", link: "https://example.com/skirt" },
+    { imageURL: "Img/download.svg", name: "Chinos",    category: "Pants",   price: 45, description: "", link: "https://example.com/chinos" },
+    { imageURL: "Img/download.svg", name: "Boots",     category: "Shoes",   price: 80, description: "", link: "https://example.com/boots" },  
     
-    </div>
-  
-  </footer>
+];
 
-  <script src="script.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/js/intlTelInput-jquery.min.js"></script>
-  
-  <script>
+const productsContainer = document.querySelector('.products');
+const searchInput = document.getElementById('searchProduct');
+const categoryFilter = document.getElementById('categoryFilter');
 
-  //phone
-      
-  $("#mobile_code").intlTelInput({
-          initialCountry: "pk",
-          separateDialCode: true
-          // utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.4/js/utils.js"
-  });
-
-  
-
-  function remove() {
-    let i = 0;
-    while (i < 5) {
-        stars[i].className = "star";
-        i++;
-    }
-} 
-
-    document.addEventListener("DOMContentLoaded", function() {
-       AskForCookieConsent();
+function displayProducts(productsArray) {
+    productsContainer.innerHTML = "";
+    productsArray.forEach(product => {
+        const productElement = document.createElement('div');
+        productElement.classList.add('product');
+        productElement.innerHTML = `
+            <img src="${product.imageURL}" alt="${product.name}">
+            <h3>${product.name}</h3>
+            <p>${product.description}</p>
+        `;
+        //<p>Price: $${product.price}</p>
+        productElement.addEventListener('click', () => {
+            window.location.href = product.link;
+        });
+        productsContainer.appendChild(productElement)
     });
-  
-  </script>
+}
+
+function filterProducts() {
+    const selectedCategory = categoryFilter.value;
+    let filteredProducts = products;
+    if (selectedCategory !== 'all') {
+        filteredProducts = products.filter(product => product.category === selectedCategory);
+    }
+    filteredProducts = searchProducts(filteredProducts);
+    displayProducts(filteredProducts);
+}
+
+function searchProducts(productsArray) {
+    const searchText = searchInput.value.toLowerCase();
+    return productsArray.filter(product => product.name.toLowerCase().includes(searchText));
+}
+
+categoryFilter.addEventListener('change', filterProducts);
+searchInput.addEventListener('input', filterProducts);
+
+// Initial display of all products
+displayProducts(products);
 
 
-
+        
+</script>
+</body>
 </html>
