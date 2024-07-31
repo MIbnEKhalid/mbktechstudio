@@ -281,20 +281,96 @@ footer {
 }
 
 
+.search-bar {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  border-radius: 9px;
+  background-color: #fff;
+  width: auto;
+  max-width: 400px;
+  height: 40px;
+  border: 2px solid #377a77;
+  overflow: hidden;
+}
+.search-bar input[type="text"] {
+  border: none;
+  outline: none;
+  padding: 10px;
+  flex: 1;
+}    
+
+.search-bar button  {
+  background-color: #377a77;
+  border: none;
+  color: white;
+  padding: 19px;
+  cursor: pointer;   
+  transition: all 0.5s ease;
+}
+  
+.search-bar button:hover {
+  background-color: rgb(217, 217, 217);
+  color: #377a77;
+  transition: all 0.4s ease;
+} 
 
 
 
+/* Dropdown Container */
+.select-dropdown {
+  margin-bottom: 20px; /* Adjust spacing */
+}
 
+/* Label Styling */
+.select-dropdown label {
+  font-size: 18px;
+  font-weight: bold;
+  color: #377a77;
+  display: block;
+  margin-bottom: 8px;
+  text-align: center;
+}
 
+/* Select Styling */
+.select-dropdown select {
+  appearance: none; /* Remove default appearance */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 100%;    
+  font-weight: 700;
+  max-width: 400px;
+  padding: 10px;
+  font-size: 16px; display: flex;
+  align-items: center;
+  margin: 0 auto;
+  border-radius: 9px;
+  border: 2px solid #377a77;
+  background-color: #fff;
+  color: #377a77;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
 
+.select-dropdown select:hover,
+.select-dropdown select:focus {
+  background-color: #377a77;
+  color: #fff;
+  border-color: #377a77;
+}
 
+/* Option Styling */
+.select-dropdown option {
+  background-color: #fff;
+  color: #377a77;  
+  text-align: center;
+  text-align-last: center;
+}
 
+.select-dropdown option:hover {
+  background-color: #f1f1f1;
+}
 
-
-
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
- 
  
 .container {
     display: flex;
