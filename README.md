@@ -52,6 +52,7 @@ root
 ├───README.md
 
 
+
 *Note: To ensure clean and user-friendly URLs, HTML files are organized within directories named after their respective content, with each directory containing an `index.html` file. This approach facilitates clean URLs, enhancing readability and SEO performance.*
 
 #### Example:
