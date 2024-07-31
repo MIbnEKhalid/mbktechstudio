@@ -60,6 +60,28 @@ nav .navbar {
   align-items: center;
   margin: auto;
 }
+/* Side Navigation Menu Button CSS */
+nav .menu-btn,
+.navbar .menu .cancel-btn{
+  position: absolute;
+  color: #fff;
+  right: 20px;
+  top: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: none;
+}
+nav .menu-btn{
+  color: #377a77;
+}
+nav.sticky .menu-btn{
+  color: #FFF;
+}
+.navbar .menu .menu-btn{
+  color: #fff;
+}
+
 .logo {
   display: flex;
   align-items: center;
@@ -123,7 +145,7 @@ section {
   padding-top: 40px;
 }
 section .content {
-  width: 80%;
+  width: 90%;
   margin: 0px auto;
   font-family: "Poppins", sans-serif;
 }
@@ -195,20 +217,7 @@ footer {
     margin-top: auto;
   }
 }
-footer .text span {
-  font-size: 17px;
-  font-weight: 400;
-  color: #fff;
-}
-footer .text span a {
-  text-decoration: underline;
-  font-weight: 500;
-  color: #fff;
-}
-footer .text span a:hover {
-  text-decoration: none;
-  color: #c4c6ce;
-}
+
 @media (max-width: 750px) {
   nav .navbar {
     width: 90%;
@@ -248,6 +257,28 @@ footer .text span a:hover {
   .contact .text {
     width: 100%;
   }
+}
+/* Footer CSS */
+footer{
+  background: #377a77;
+  padding: 15px 0;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+}
+footer .text span{
+  font-size: 17px;
+  font-weight: 400;
+  color: #fff;
+}
+footer .text span a{
+  font-weight: 500;
+  color: #72abff;
+  transition: all 0.3s ease;
+}
+footer .text span a:hover{
+  text-decoration: underline;
+  color: #d9dbe2;
+  transition: all 0.3s ease;
 }
 html, body {
   height: 100%;
@@ -418,6 +449,8 @@ footer {
     flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 .product {
