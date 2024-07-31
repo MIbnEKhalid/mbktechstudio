@@ -254,7 +254,7 @@ html, body {
   margin: 0;
   display: flex;
   flex-direction: column;  
-  background: url("https://mbktech.xyz/Images/background.png");
+  background: url("../Assets/Images/background.png");
 }
 
 body {
