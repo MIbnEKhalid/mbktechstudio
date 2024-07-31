@@ -1,0 +1,919 @@
+/* Google Font CDN Link */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  scroll-behavior: smooth;
+}
+
+a{
+  font-weight: 600;
+  transition: all 0.3s ease; 
+}
+a:visited{
+  color: #377a77;
+}
+a:hover{
+  color: #9eb5f7;
+  transition: all 0.3s ease;
+}
+
+/* Custom Scroll Bar CSS */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+    background: #89f1ee;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #4ea19d;
+}
+/* navbar styling */
+nav{
+  position: fixed;
+  width: 100%;
+  padding: 20px 0;
+  z-index: 998;
+  transition: all 0.3s ease;
+  font-family: 'Ubuntu', sans-serif;
+}
+nav.sticky{
+  background: #377a77;
+  padding: 13px 0;
+}
+nav .navbar{
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+}
+.logo{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} 
+.logo img {
+  width: 100%;
+  height:100%;
+  float: left;
+}
+
+.logo .text {
+  margin-left: -260px;
+  float: left;
+}
+nav .navbar .logo a{
+  font-weight: 500;
+  font-size: 35px;
+  color: #377a77;
+}
+nav.sticky .navbar .logo a{
+  color: #fff;
+}
+
+nav .navbar .menu{
+  display: flex;
+  position: relative;
+}
+nav .navbar .menu li{
+  list-style: none;
+  margin: 0 8px;
+}
+.navbar .menu a{
+  font-size: 18px;
+  font-weight: 800;
+  color: #0E2431;
+  padding: 6px 0;
+  transition: all 0.4s ease;
+}
+.navbar .menu a:hover{
+  color: #377a77;
+  transition: all 0.3s ease;
+
+}
+nav.sticky .menu a{
+  color: #FFF;
+}
+nav.sticky .menu a:hover{
+  transition: all 0.3s ease;
+  color: #0E2431;
+}
+.navbar .media-icons a{
+  color: #377a77;
+  font-size: 21px;
+  margin: 0 6px; 
+  transition: all 0.3s ease;
+}
+.media-icons a:hover{
+  color: grey;
+  transition: all 0.3s ease;
+}
+nav.sticky .media-icons a{
+  color: #FFF;
+  transition: all 0.3s ease;
+}
+nav.sticky .media-icons a:hover{
+  color: grey;
+  transition: all 0.3s ease;
+}
+
+/* Side Navigation Menu Button CSS */
+nav .menu-btn,
+.navbar .menu .cancel-btn{
+  position: absolute;
+  color: #fff;
+  right: 20px;
+  top: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: none;
+}
+nav .menu-btn{
+  color: #377a77;
+}
+nav.sticky .menu-btn{
+  color: #FFF;
+}
+.navbar .menu .menu-btn{
+  color: #fff;
+}
+
+/* Style for select element */
+.text .select select {
+  outline: none;
+  padding: 5px 5px;
+  border-radius: 6px;
+  font-size: 25px;
+  font-weight: 400;
+  background: #377a77;
+  width: 180px;
+  color: #fff;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.4s ease;
+  text-align: center;
+}
+
+.text .select select:hover {
+  border-color: #377a77;
+  background-color: #fff;
+  color: #377a77;
+  transition: all 0.3s ease;
+}
+ 
+.text .select select option.selected {
+  background-color: #fff;
+  color: #5f6061;
+}
+
+.text .select select option {
+  background-color: #fff;
+  color: #377a77;
+}
+
+.ssmedis a{
+  color: #377a77;
+  font-size: 40px;
+  margin: 0 6px; 
+  transition: all 0.3s ease;
+}
+.ssmedis a:hover{  
+  color: #8c8e96; 
+  transition: all 0.4s ease;
+}
+
+
+/* home section styling */
+.home{
+  height: 100vh;
+  width: 100%;
+  background: url("Images/background.png") no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  font-family: 'Ubuntu', sans-serif;
+}
+.home .home-content{
+  width: 90%;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.home .text-one{
+  font-size: 25px;
+  color: #0E2431;
+}
+.home .text-two{
+  color: #0E2431;
+  font-size: 75px;
+  font-weight: 600;
+  margin-left: -3px;
+}
+.home .text-three{
+  font-size: 40px;
+  margin: 5px 0;
+  color: #377a77;
+}
+.home .text-four{
+  font-size: 23px;
+  margin: 5px 0;
+  color: #0E2431;
+}
+.home .button{
+  margin: 14px 0;
+}
+.home .button button{
+  outline: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 25px;
+  font-weight: 400;
+  background: #377a77;
+  color: #fff;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.4s ease;
+}
+.home .button button:hover{
+  border-color: #377a77;
+  background-color: #fff;
+  color: #377a77;
+  transition: all 0.3s ease;
+}
+
+/* About Section Styling */
+/* Those Elements Where We Have Apply Same CSS,
+ I'm Selecting Directly 'Section Tag' and 'Class'  */
+section{
+  padding-top: 40px;
+}
+section .content{
+  width: 80%;
+  margin: 40px auto;
+  font-family: 'Poppins', sans-serif;
+}
+.about{  background: url("Images/background.png") ;
+}
+.about .about-details{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+}
+section .title{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+section .title span{
+  color: #0E2431;
+  font-size: 30px;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 8px;
+}
+section .title span::before,
+section .title span::after{
+  content: '';
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  background: #377a77;
+  left: 0;
+  bottom: 0;
+}
+section .title span::after{
+  bottom: -7px;
+  width: 70%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.about .about-details .left{
+  width: 45%;
+}
+.about .left img{
+  height: 430px;
+  width: 400px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+ 
+
+
+.about-details .right{
+  width: 55%;
+}
+.about-details .centre{
+  width: 95%;
+}
+section  .topic{
+  color: #0E2431;
+  font-size: 25px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+.about-details .right p{
+  text-align: justify;
+  color: #0E2431;
+}
+.about-details .centre p{
+  text-align: justify;
+  color: #0E2431;
+}
+section .button{
+  margin: 16px 0;
+}
+section .button button{
+  outline: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 25px;
+  font-weight: 600;
+  background: #377a77;
+  color: #fff;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+section .button button:hover{
+  border-color: #377a77;
+  background-color: #f0f8ff;
+  color: #377a77;  
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+ /* My Skills CSS */
+ .skills{
+   background: #F0F8FF;
+ }
+ .skills .content{
+   padding: 40px 0;
+ }
+ .skills .skills-details{
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+ }
+ .skills-details .text{
+   width: 70%;
+ }
+ .skills-details p{
+   color: #0E2431;
+   text-align: justify;
+ }
+.skills .skills-details .experience{
+  display: flex;
+  align-items: center;
+  margin: 0 10px;
+}
+.skills-details .experience .num{
+  color: #0E2431;
+  font-size: 80px;
+}
+.skills-details .experience .exp{
+  color: #0E2431;
+  margin-left: 20px;
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0 6px;
+}
+.skills-details .boxes{
+  width: 45%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.skills-details .box{
+  width: calc(100% / 2 - 20px);
+  margin: 20px 0;
+}
+.skills-details .boxes .topic{
+  font-size: 20px;
+  color: #377a77;
+}
+.skills-details .boxes .per{
+  font-size: 60px;
+  color: #377a77;
+}
+
+/* My Services CSS */
+.services .boxes{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.services .boxes .box{
+  margin: 20px 0;
+  width: calc(100% / 3 - 20px);
+  text-align: center;
+  border-radius: 12px;
+  padding: 30px 10px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.12);
+  cursor: default;
+  transition: all 0.4s ease;
+}
+.services .boxes .box:hover{
+  background: #377a77;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+.services .boxes .box .icon{
+  height: 50px;
+  width: 50px;
+  background: #377a77;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 50px;
+  font-size: 18px;
+  color: #fff;
+  margin: 0 auto 10px auto;
+  transition: all 0.4s ease;
+}
+.boxes .box:hover .icon{
+  background-color: #fff;
+  color: #377a77;
+  transition: all 0.3s ease;
+}
+.services .boxes .box:hover .topic,
+.services .boxes .box:hover p{
+  color: #0E2431;
+  transition: all 0.4s ease;
+}
+.services .boxes .box:hover .topic,
+.services .boxes .box:hover p{
+  color: #fff;
+  transition: all 0.3s ease;
+}
+/* Contact Me CSS */
+.contact{
+  background: #F0F8FF;
+}
+.contact .content{
+  margin: 0 auto;
+  padding: 30px 0;
+}
+.contact .text{
+  width: 90%;
+  text-align: center;
+  margin: auto;
+}
+
+/* Footer CSS */
+footer{
+  background: #377a77;
+  padding: 15px 0;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+}
+footer .text span{
+  font-size: 17px;
+  font-weight: 400;
+  color: #fff;
+}
+footer .text span a{
+  font-weight: 500;
+  color: #FFF;
+  transition: all 0.3s ease;
+}
+footer .text span a:hover{
+  text-decoration: underline;
+  color: #c4c6ce;
+  transition: all 0.3s ease;
+}
+/* Scroll TO Top Button CSS */
+.scroll-button a{
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  color: #fff;
+  background: #49949e;
+  padding: 7px 12px;;
+  font-size: 18px;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.15);
+  display: none;
+}
+
+/* Responsive Media Query */
+@media (max-width: 1190px) {
+  section .content{
+    width: 85%;
+  }
+}
+@media (max-width: 1000px) {
+  .about .about-details{
+    justify-content: center;
+    flex-direction: column;
+  }
+  .about .about-details .left{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  .about-details .right{
+    width: 90%;
+    margin: 40px 0;
+  }
+  .about-details .centre{
+    width: 90%;
+    margin: 0px 0;
+  }
+  .services .boxes .box{
+    margin: 20px 0;
+    width: calc(100% / 2 - 20px);
+  }
+}
+@media (max-width: 900px) {
+  .about .left img{
+    height: 380px;
+    width: 350px;
+  }
+}
+
+@media (max-width: 750px) {
+  nav .navbar{
+    width: 90%;
+  }
+  nav .navbar .menu{
+    position: fixed;
+    left: -100%;
+    top: 0;
+    background: #0E2431;
+    height: 100vh;
+    max-width: 400px;
+    width: 100%;
+    padding-top: 60px;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.5s ease;
+  }
+  .navbar.active .menu{
+    left: 0;
+  }
+  nav .navbar .menu a{
+    font-size: 23px;
+    display: block;
+    color: #fff;
+    margin: 10px 0; 
+    transition: all 0.3s ease;
+  }
+  nav.sticky .menu a:hover{
+    color: #377a77;  
+    transition: all 0.3s ease;
+  }
+  nav .navbar .media-icons{
+    display: none;
+  }
+  nav .menu-btn,
+  .navbar .menu .cancel-btn{
+    display: block;
+  }
+  .home .text-two{
+    font-size: 65px;
+  }
+  .home .text-three{
+    font-size: 35px;
+  }
+  .skills .skills-details{
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .skills-details .text{
+    width: 100%;
+    margin-bottom: 50px;
+  }
+  .skills-details .boxes{
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  .services .boxes .box{
+    margin: 20px 0;
+    width: 100%;
+  }
+  .contact .text{
+    width: 100%;
+}
+}
+
+@media (max-width: 500px){
+  .home .text-two{
+    font-size: 55px;
+  }
+  .home .text-three{
+    font-size: 33px;
+  }
+  .skills-details .boxes .per{
+    font-size: 50px;
+    color: #377a77;
+  }
+}
+
+
+
+
+
+/* Form */
+
+form select {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #fff;
+}
+form{
+  border-radius: 6px;
+  padding: 0px; 
+}
+form .control {
+  margin-top: 10px;
+}
+form .field {
+  margin-bottom: 15px;
+}
+form .label {
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+form input, form textarea, form select {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #fff;
+}
+form button {
+  background-color:#2ecc71;
+  color:#fff;
+  border:none;
+  font-weight: bold;
+  font-size: medium;
+  border-radius:6px;
+  padding:10px 20px;
+  cursor:pointer;
+  transition: all 0.3s ease;
+}
+form button:hover {
+  opacity:0.8;
+  transition: all 0.3s ease;
+}
+
+/*Star rating*/
+
+.rating {
+  display: inline-block;
+  position: relative;
+  height: 50px;
+  line-height: 50px;
+  font-size: 35px;
+}
+.rating label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  cursor: pointer;
+}
+.rating label:last-child {
+  position: static;
+}
+.rating label:nth-child(1) {
+  z-index: 5;
+}
+.rating label:nth-child(2) {
+  z-index: 4;
+}
+.rating label:nth-child(3) {
+  z-index: 3;
+}
+.rating label:nth-child(4) {
+  z-index: 2;
+}
+.rating label:nth-child(5) {
+  z-index: 1;
+}
+.rating label input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+.rating label .icon {
+  float: left;
+  color: transparent;
+}
+.rating label:last-child .icon {
+  color: #000;
+}
+.rating:not(:hover) label input:checked ~ .icon,
+.rating:hover label:hover input ~ .icon {
+  color: #d4e3c9;
+}
+.rating label input:focus:not(:checked) ~ .icon:last-child {
+  color: #000;
+  text-shadow: 0 0 5px #d4e3c9;
+}
+
+
+
+
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  border-radius: 9px;
+  background-color: #fff;
+  width: auto;
+  max-width: 400px;
+  height: 40px;
+  border: 2px solid #377a77;
+  overflow: hidden;
+}
+.search-bar input[type="text"] {
+  border: none;
+  outline: none;
+  padding: 10px;
+  flex: 1;
+}    
+
+.search-bar button  {
+  background-color: #377a77;
+  border: none;
+  color: white;
+  padding: 19px;
+  cursor: pointer;   
+  transition: all 0.5s ease;
+}
+  
+.search-bar button:hover {
+  background-color: rgb(217, 217, 217);
+  color: #377a77;
+  transition: all 0.4s ease;
+} 
+
+
+
+
+
+
+/* Dropdown Container */
+.select-dropdown {
+  margin-bottom: 20px; /* Adjust spacing */
+}
+
+/* Label Styling */
+.select-dropdown label {
+  font-size: 18px;
+  font-weight: bold;
+  color: #377a77;
+  display: block;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+/* Select Styling */
+.select-dropdown select {
+  appearance: none; /* Remove default appearance */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 100%;    
+  font-weight: 700;
+  max-width: 400px;
+  padding: 10px;
+  font-size: 16px; display: flex;
+  align-items: center;
+  margin: 0 auto;
+  border-radius: 9px;
+  border: 2px solid #377a77;
+  background-color: #fff;
+  color: #377a77;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.select-dropdown select:hover,
+.select-dropdown select:focus {
+  background-color: #377a77;
+  color: #fff;
+  border-color: #377a77;
+}
+
+/* Option Styling */
+.select-dropdown option {
+  background-color: #fff;
+  color: #377a77;  
+  text-align: center;
+  text-align-last: center;
+}
+
+.select-dropdown option:hover {
+  background-color: #f1f1f1;
+}
+
+
+
+
+
+ 
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.grid-item {
+  background-color: #fff;
+  border: 20px solid #377a77;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.grid-item:hover {
+  transform: scale(1.05);
+}
+
+.grid-item img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+.grid-item h2 {
+  font-size: 24px;
+  margin: 10px 0;
+  color: #0E2431;
+}
+
+.grid-item p {
+  font-size: 16px;
+  color: #377a77;
+}
+
+
+
+
+
+/* Skills Section */
+.skills {
+   background: #f9f9f9;
+}
+
+.skills .title {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.skills-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.skill-box {
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.skill-box:hover {
+  transform: translateY(-10px);
+}
+
+.skill-box .icon {
+  font-size: 40px;
+  color: #377a77;
+  margin-bottom: 10px;
+}
+
+.skill-box .skill-name {
+  font-size: 18px;
+  font-weight: 500;
+}

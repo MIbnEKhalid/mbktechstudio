@@ -1,0 +1,170 @@
+<!DOCTYPE html> 
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="UTF-8"/>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/css/intlTelInput.css">
+      <title>Project</title>
+      <link rel="stylesheet" href="style.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+      <link rel="icon" type="image/x-icon" href="https://mbktechstudio.com/Assets/Images/dgicon.svg">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   </head>
+   <div id="cookie"></div>
+   <header>
+      <nav>
+         <div class="navbar">
+            <div class="logo">
+               <div class="image">
+                  <img src="https://mbktechstudio.com/Assets/Images/dg.svg" alt=""/>
+               </div>
+               <div class="text">
+                  <a href="#">MBK Tech Studio</a>
+               </div>
+            </div>
+            <ul class="menu">
+               <li><a href="../">Home</a></li>
+               <li><a href="../#about">About Us</a></li>
+               <li><a href="../#contact">Contact Us</a></li>
+               <div class="cancel-btn">
+                  <i class="fas fa-times"></i>
+               </div>
+            </ul>
+            <div class="media-icons">
+               <a href="https://www.facebook.com/people/MBK-Tech-Studio/61559079077988/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+               <a href="#"                                                                              ><i class="fab fa-twitter"></i></a>
+               <a href="https://instagram.com/mbktech.studios"                           target="_blank"><i class="fab fa-instagram"></i></a>
+               <a href="https://github.com/MIbnEKhalid"                                  target="_blank"><i class="fab fa-github"></i></a>
+               <a href="https://www.linkedin.com/in/muhammad-bin-khalid-89711b25b"       target="_blank"><i class="fab fa-linkedin"></i></a>
+               <a href="https://youtube.com/@MBKTechStudios"                             target="_blank"><i class="fab fa-youtube"></i></a>
+               <a href="https://discord.gg/MUAyAeckrM"                                   target="_blank"><i class="fab fa-discord"></i></a>
+            </div>
+         </div>
+         <div class="menu-btn">
+            <i class="fas fa-bars"></i>
+         </div>
+      </nav>
+   </header>
+   <body>
+      <div class="scroll-button">
+         <a href="#about"><i class="fas fa-arrow-up"></i></a>
+      </div>
+      <section class="about" id="about">
+         <div class="content">
+            <br>
+            <br>
+            <h3 style="text-align: center; color: tomato;" >This Page is Under Development...</h3>
+            <div class="title"><span>My Projects</span></div>
+            <div class="select-dropdown">
+               <select id="categoryFilter" name="topics">
+                  <option value="all">All</option>
+                  <option value="cpp">Cpp Projects</option>
+                  <option value="game">Game Development</option>
+                  <option value="unity">Unity Assets</option>
+                  <option value="web">Web Development</option>
+               </select>
+            </div>
+            <div class="search-bar">
+               <input type="text" id="searchProduct" placeholder="Search Project By Name...">
+               <button type="submit"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="products">
+               <!-- Products will be dynamically inserted here -->
+            </div>
+         </div>
+      </section>
+      <footer>
+         <div class="text">
+            <span>Developed By <a href="https://github.com/MIbnEKhalid">Muhammad Bin Khalid</a> | &#169; 2024 All Rights Reserved | <a href="https://mbktechstudio.com/UserAgreement/" target="_blank">Terms & Conditions</a> | <a href="mailto:support@mbktechstudio.com">support@mbktechstudio.com</a></span>
+         </div>
+      </footer>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/js/intlTelInput-jquery.min.js"></script>
+      <script src="https://mbktechstudio.com/Assets/script.js"></script>
+      <script>
+         // phone
+         $("#mobile_code").intlTelInput({
+             initialCountry: "pk",
+             separateDialCode: true
+         });
+         
+         function remove() {
+             let i = 0;
+             while (i < 5) {
+                 stars[i].className = "star";
+                 i++;
+             }
+         }
+         
+         document.addEventListener("DOMContentLoaded", function() {
+             AskForCookieConsent();
+         });
+         
+         document.addEventListener("DOMContentLoaded", function() {
+             AskForCookieConsent();
+             // Get the hash from the URL
+             const hash = window.location.hash.substring(1);
+             const categoryFilter = document.getElementById('categoryFilter');
+             if (hash) {
+                 // Set the dropdown to the hash value
+                 categoryFilter.value = hash;
+                 filterProducts();
+             }
+         });
+         
+         const products = [
+         
+         { imageURL: "Img/CTMCpp.png",    name: "Centre The Message Cpp",              category: "cpp",   description: "", link: "https://mbktechstudio.com/ProjectLink" },
+         { imageURL: "Img/download.svg",  name: "Project2",                            category: "game",  description: "", link: "https://mbktechstudio.com/ProjectLink" },
+         { imageURL: "Img/download.svg",  name: "Unity Feedback Report System",        category: "unity", description: "", link: "https://mbktechstudio.com/ProjectLink" },
+         { imageURL: "Img/cpp.png",       name: "Cpp Quiz Game",                       category: "cpp",   description: "", link: "https://mbktechstudio.com/ProjectLink" },
+         { imageURL: "Img/download.svg",  name: "MBK Tech Studio Website Source Code", category: "web",   description: "", link: "https://mbktechstudio.com/ProjectLink" },
+         { imageURL: "Img/download.svg",  name: "Project6",                            category: "unity", description: "", link: "https://mbktechstudio.com/ProjectLink" },
+         
+         ];
+         
+         const productsContainer = document.querySelector('.products');
+         const searchInput = document.getElementById('searchProduct');
+         const categoryFilter = document.getElementById('categoryFilter');
+         
+         function displayProducts(productsArray) {
+         productsContainer.innerHTML = "";
+         productsArray.forEach(product => {
+         const productElement = document.createElement('div');
+         productElement.classList.add('product');
+         productElement.innerHTML = `
+             <img src="${product.imageURL}" alt="${product.name}">
+             <h3>${product.name}</h3>
+             <p>${product.description}</p>
+         `;
+         //<p>Price: $${product.price}</p>
+         productElement.addEventListener('click', () => {
+             window.location.href = product.link;
+         });
+         productsContainer.appendChild(productElement)
+         });
+         }
+         
+         function filterProducts() {
+         const selectedCategory = categoryFilter.value;
+         let filteredProducts = products;
+         if (selectedCategory !== 'all') {
+         filteredProducts = products.filter(product => product.category === selectedCategory);
+         }
+         filteredProducts = searchProducts(filteredProducts);
+         displayProducts(filteredProducts);
+         }
+         
+         function searchProducts(productsArray) {
+         const searchText = searchInput.value.toLowerCase();
+         return productsArray.filter(product => product.name.toLowerCase().includes(searchText));
+         }
+         
+         categoryFilter.addEventListener('change', filterProducts);
+         searchInput.addEventListener('input', filterProducts);
+         
+         // Initial display of all products
+         displayProducts(products);
+         
+      </script>
+   </body>
+</html>
