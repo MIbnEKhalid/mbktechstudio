@@ -1,7 +1,5 @@
 # MBK Tech Studio Website
 
-https://MIbnEKhalid.github.io/
-
 https://mbktechstudio.com/ or https://MIbnEKhalid.github.io/
 
 ## Deployed Branch: [main](https://github.com/MIbnEKhalid/MIbnEKhalid.github.io/tree/main) 
