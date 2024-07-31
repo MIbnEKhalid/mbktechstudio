@@ -22,8 +22,8 @@ https://MIbnEKhalid.github.io.github.io/mbktech.studios/ or https://mbktechstudi
 
 ```
 root
-├───Assets
-│   ├───Images
+├───Assets/
+│   ├───Images/
 │   │   ├───about9.jpg
 │   │   ├───background.png
 │   │   ├───cat.png
@@ -36,14 +36,14 @@ root
 │   ├───cookie.html
 │   ├───script.js
 │   ├───style.css
-├───Project
-│   ├───Img
+├───Project/
+│   ├───Img/
 │   │   ├───download.svg
 │   │   ├───CTMCpp.png
 │   │   ├───cpp.png
 │   ├───index.html
 │   ├───style.css
-├───UserAgreement
+├───UserAgreement/
 │   ├───index.html
 ├───404.html
 ├───CNAME
