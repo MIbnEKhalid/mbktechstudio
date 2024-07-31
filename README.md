@@ -22,58 +22,34 @@ https://MIbnEKhalid.github.io.github.io/mbktech.studios/ or https://mbktechstudi
 
 ## Files Tree:
 
-### root/:
-- Assets/
-- Project/
-- UserAgreement/
-- 404.html
-- CNAME
-- index.html
-- README.md
-
-### Assets/: 
-- Images/
-- cookie.css
-- cookie.html 
-- script.html 
-- style.css
-
-### Project/:
-- Img/
-- index.html 
-- style.css 
-
-### UserAgreement/:
-- index.html
-
-    - root/
-        - Assets/
-            - Images/
-            - about9.jpg
-            - background.png
-            - cat.png            
-            - close-icon.svg
-            - cookie-icon.svg
-            - dg.svg
-            - dgicon.svg
-            - logo.png
-            - cookie.css
-            - cookie.html 
-            - script.html 
-            - style.css
-        - Project/
-            - Img/
-                - download.svg
-                - CTMCpp.png
-                - cpp.png
-            - index.html 
-            - style.css 
-        - UserAgreement/
-            - index.html
-    - 404.html
-    - CNAME
-    - index.html
-    - README.md
+root
+├───Assets
+│   ├───Images
+│   │   ├───about9.jpg
+│   │   ├───background.png
+│   │   ├───cat.png
+│   │   ├───close-icon.svg
+│   │   ├───cookie-icon.svg
+│   │   ├───dg.svg
+│   │   ├───dgicon.svg
+│   │   ├───logo.png
+│   ├───cookie.css
+│   ├───cookie.html
+│   ├───script.html
+│   ├───style.css
+├───Project
+│   ├───Img
+│   │   ├───download.svg
+│   │   ├───CTMCpp.png
+│   │   ├───cpp.png
+│   ├───index.html
+│   ├───style.css
+├───UserAgreement
+│   ├───index.html
+├───404.html
+├───CNAME
+├───index.html
+├───README.md
 
 
 *Note: To ensure clean and user-friendly URLs, HTML files are organized within directories named after their respective content, with each directory containing an `index.html` file. This approach facilitates clean URLs, enhancing readability and SEO performance.*
