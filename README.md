@@ -11,12 +11,10 @@ https://github.com/MIbnEKhalid/mbktech.studios/
 
 https://MIbnEKhalid.github.io.github.io/mbktech.studios/ or https://mbktechstudio.com/mbktech.studios/
 
-# Completely New Web Design About to Release (https://mbktechstudio.com/home/)
-
 ## Hosting:
-- The website is hosted on GitHub, with a custom domain purchased from Namecheap for $13 for a 12-month period. This custom domain is pointed to the GitHub repository.
-  *Note: If you are using a custom domain, ensure it is properly configured to point to your GitHub repository.*
-- Buying domain is not necessary you can use github gomain for free *user.github.io*.
+- The Website Is Hosted On GitHub, With A Custom Domain Purchased From [NameCheap](https://namecheap.com).
+  *Note: If you are using a custom domain, ensure it is properly configured to point to your GitHub repository.* [How To Add A Custom Domain On Github Pages](#customDomain)
+- Buying domain is not necessary you can use github domain for free *user.github.io*.
 
 ## Directory Tree:
 
@@ -92,3 +90,11 @@ When Click On Disagree
 
 
 In the root folder, we have the home page `root/index.html` which is main page of our website.
+
+
+
+#### How To Add A Custom Domain On Github Pages &nbsp;[<sup>[TOC]</sup>](#customDomain)
+
+- If you create a repository named <username>.github.io, it will serve as the root of https://<username>.github.io. All other repository pages will be nested under this link. For example, a repository named project1 would be accessible at https://<username>.github.io/project1.
+
+- Additionally, if you add a custom domain to <username>.github.io, all other repository pages will also be accessible under the new custom domain. For example, if your custom domain is www.example.com, the project1 repository would be accessible at https://www.example.com/project1.
