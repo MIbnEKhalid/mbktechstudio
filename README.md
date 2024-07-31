@@ -1,7 +1,5 @@
 # MBK Tech Studio Website
 
-https://MIbnEKhalid.github.io/
-
 https://mbktechstudio.com/ or https://MIbnEKhalid.github.io/
 
 ## Deployed Branch: [main](https://github.com/MIbnEKhalid/MIbnEKhalid.github.io/tree/main) 
@@ -24,8 +22,8 @@ https://MIbnEKhalid.github.io.github.io/mbktech.studios/ or https://mbktechstudi
 
 ```
 root
-├───Assets
-│   ├───Images
+├───Assets/
+│   ├───Images/
 │   │   ├───about9.jpg
 │   │   ├───background.png
 │   │   ├───cat.png
@@ -36,16 +34,16 @@ root
 │   │   ├───logo.png
 │   ├───cookie.css
 │   ├───cookie.html
-│   ├───script.html
+│   ├───script.js
 │   ├───style.css
-├───Project
-│   ├───Img
+├───Project/
+│   ├───Img/
 │   │   ├───download.svg
 │   │   ├───CTMCpp.png
 │   │   ├───cpp.png
 │   ├───index.html
 │   ├───style.css
-├───UserAgreement
+├───UserAgreement/
 │   ├───index.html
 ├───404.html
 ├───CNAME
