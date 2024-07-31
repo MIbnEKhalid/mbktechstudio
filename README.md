@@ -4,7 +4,8 @@ https://MIbnEKhalid.github.io/
 
 https://mbktechstudio.com/ or https://MIbnEKhalid.github.io/
 
-## Deployed Branch: [test1](https://github.com/MIbnEKhalid/MIbnEKhalid.github.io/tree/test1)
+## Deployed Branch: [main](https://github.com/MIbnEKhalid/MIbnEKhalid.github.io/tree/main) 
+## Active Test Branch: [test1](https://github.com/MIbnEKhalid/MIbnEKhalid.github.io/tree/test1)
 
 Website Source Code / Copy of Website
 
@@ -19,44 +20,39 @@ https://MIbnEKhalid.github.io.github.io/mbktech.studios/ or https://mbktechstudi
   *Note: If you are using a custom domain, ensure it is properly configured to point to your GitHub repository.*
 - Buying domain is not necessary you can use github gomain for free *user.github.io*.
 
-## Files Tree:
+## Directory Tree:
 
-### root/:
-- Assets/
-- Project/
-- Project_Category/
-- UserAgreement/
-- 404.html
-- CNAME
-- index.html
-- README.md
+```
+root
+├───Assets
+│   ├───Images
+│   │   ├───about9.jpg
+│   │   ├───background.png
+│   │   ├───cat.png
+│   │   ├───close-icon.svg
+│   │   ├───cookie-icon.svg
+│   │   ├───dg.svg
+│   │   ├───dgicon.svg
+│   │   ├───logo.png
+│   ├───cookie.css
+│   ├───cookie.html
+│   ├───script.html
+│   ├───style.css
+├───Project
+│   ├───Img
+│   │   ├───download.svg
+│   │   ├───CTMCpp.png
+│   │   ├───cpp.png
+│   ├───index.html
+│   ├───style.css
+├───UserAgreement
+│   ├───index.html
+├───404.html
+├───CNAME
+├───index.html
+├───README.md
+```
 
-### Assets/: 
-- Images/
-- disagree.html
-- footer.html 
-- header.html 
-- terms.html
-- style.css
-- Ostyle.css
-- script.js
-
-### Project/:
-- Feedback_Report_System_For_Unity/: 
-  - index.html
-- CentreTheMessageCpp/
-  - index.html
-- MBKTechStudio_SourceCode/
-  - index.html
-- Quiz_Game_Cpp/: 
-  - index.html
-- project.css
-
-### Project_Category/:
-- index.html
-
-### UserAgreement/:
-- index.html
 
 *Note: To ensure clean and user-friendly URLs, HTML files are organized within directories named after their respective content, with each directory containing an `index.html` file. This approach facilitates clean URLs, enhancing readability and SEO performance.*
 
