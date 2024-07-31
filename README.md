@@ -34,7 +34,7 @@ root
 │   │   ├───logo.png
 │   ├───cookie.css
 │   ├───cookie.html
-│   ├───script.html
+│   ├───script.js
 │   ├───style.css
 ├───Project
 │   ├───Img
