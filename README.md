@@ -89,7 +89,7 @@ When Click On Disagree:
 In the root folder, we have the home page `root/index.html`, which is the main page of our website.
 
 
-### How To Configure Custom Domain For Github Pages
+### How To Add A Custom Domain On Github Pages
 
 ## 1. Buy a Domain
 - Purchase a domain from a domain registrar (e.g., Namecheap). Only the domain purchase is necessary; additional tools are not required.
