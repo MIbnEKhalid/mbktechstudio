@@ -97,6 +97,13 @@ In the root folder, we have the home page `root/index.html`, which is the main p
 
 ## 2. Configure DNS Settings
 - After purchasing your domain, go to the DNS settings or Advanced DNS settings of your domain registrar.
+
+- Add the following CNAME Record:
+
+    - **Type:** CNAME
+    - **Host:** www
+    - **Value:** `username.github.io.` (Replace `username` with your actual GitHub username)
+
 - Add the following A Records:
 
     **Record 1:**
@@ -119,11 +126,6 @@ In the root folder, we have the home page `root/index.html`, which is the main p
     - **Host:** @
     - **Value:** 185.199.111.153
 
-- Add the following CNAME Record:
-
-    **Type:** CNAME
-    - **Host:** www
-    - **Value:** `username.github.io.` (Replace `username` with your actual GitHub username)
 
 ## 3. GitHub Repository Settings
 - Navigate to your `username.github.io` repository on GitHub.
