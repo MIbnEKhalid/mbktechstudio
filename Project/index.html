@@ -31,12 +31,12 @@
             </ul>
             <div class="media-icons">
                <a href="https://www.facebook.com/people/MBK-Tech-Studio/61559079077988/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-               <a href="#"                                                                              ><i class="fab fa-twitter"></i></a>
+               <a href="https://x.com/ibnekhalid28"                                      target="_blank"><i class="fab fa-twitter"></i></a>
                <a href="https://instagram.com/mbktech.studios"                           target="_blank"><i class="fab fa-instagram"></i></a>
                <a href="https://github.com/MIbnEKhalid"                                  target="_blank"><i class="fab fa-github"></i></a>
                <a href="https://www.linkedin.com/in/muhammad-bin-khalid-89711b25b"       target="_blank"><i class="fab fa-linkedin"></i></a>
                <a href="https://youtube.com/@MBKTechStudios"                             target="_blank"><i class="fab fa-youtube"></i></a>
-               <a href="https://discord.gg/MUAyAeckrM"                                   target="_blank"><i class="fab fa-discord"></i></a>
+               <a href="https://discord.gg/MUAyAeckrM"                                   target="_blank"><i class="fab fa-discord"></i></a>                                      target="_blank"><i class="fab fa-discord"></i></a>
             </div>
          </div>
          <div class="menu-btn">
@@ -82,9 +82,24 @@
       <script src="../Assets/script.js"></script>
       <script src="script.js"></script>  
       <script>
+         // phone
+         $("#mobile_code").intlTelInput({
+             initialCountry: "pk",
+             separateDialCode: true
+         });
+         
+         function remove() {
+             let i = 0;
+             while (i < 5) {
+                 stars[i].className = "star";
+                 i++;
+             }
+         }
+         
          document.addEventListener("DOMContentLoaded", function() {
              AskForCookieConsent();
-         });   
+         });
+               
       </script>
    </body>
 </html>
