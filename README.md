@@ -6,11 +6,10 @@ https://mbktechstudio.com/ or https://MIbnEKhalid.github.io/
 
 **Active Test Branch: [test1](https://github.com/MIbnEKhalid/MIbnEKhalid.github.io/tree/test1)**
 
-Website Source Code / Copy of Website
+Website Source Code 
+https://github.com/MIbnEKhalid/MIbnEKhalid.github.io/ or https://github.com/MIbnEKhalid/mbktech.studios/
 
-https://github.com/MIbnEKhalid/mbktech.studios/
-
-https://MIbnEKhalid.github.io.github.io/mbktech.studios/ or https://mbktechstudio.com/mbktech.studios/
+https://mbktechstudio.com/ or https://mbktechstudio.com/mbktech.studios/
 
 ## Hosting:
 - The Website Is Hosted On GitHub, With A Custom Domain Purchased From [NameCheap](https://namecheap.com).
