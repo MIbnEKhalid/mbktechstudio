@@ -60,36 +60,6 @@ Instead of using `UserAgreement.html`:
 Use `UserAgreement/index.html`:
   - Good URL: [https://mbktech.xyz/UserAgreement/](https://mbktech.xyz/UserAgreement/)
 
-## Functionality of Our Website:
-
-- **On First Load, Agreement Prompt:**
-  - Upon the initial loading of the website, users are prompted to agree with the terms of use.
-  - Users cannot proceed to use the website until they accept the terms of use.
-
-- **On Term Updates:**
-  - When you change the terms and want to notify users about it, simply change the term version in `term.html`. When the version changes, all users will be prompted with the agreement box again until they save the cookie or accept the terms.
-  - Users cannot proceed to use the website until they accept the terms of use.
-
-- **Accepting Terms of Use:**
-  - When a user agrees to the terms of use, the website saves a cookie with an expiry of 1 year.
-  - This cookie serves as a marker that the user has agreed to the terms and can continue to access the website without being prompted again during this period.
-
-- **Rejecting Terms of Use:**
-  - If a user rejects the terms of use, the website loads a disagreement page.
-  - After a few seconds, the website redirects the user to google.com.
-  - This behavior implies that users who do not agree to the terms are redirected away from the website.
-
-**Image References:**
-When Website first time loads on device:
-![Image 1 Description](Project/MBKTechStudio_SourceCode/termbox.png)
-When Click on 'Terms Of Use & Privacy Policy' link:
-![Image 2 Description](Project/MBKTechStudio_SourceCode/terms.png)
-When Click On Disagree:
-![Image 3 Description](Project/MBKTechStudio_SourceCode/disaagree.png)
-
-In the root folder, we have the home page `root/index.html`, which is the main page of our website.
-
-
 ### How To Add A Custom Domain On Github Pages
 
 ## 1. Buy a Domain
