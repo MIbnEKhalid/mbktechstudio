@@ -203,7 +203,7 @@ document.getElementById("subjectSelect").addEventListener("change", function() {
   }
 });
 
-function handleCVFile() {
+function DownloadCVFile() {
   // Define the file URL
   var fileUrl = 'Assets/MBK_CV.pdf'; // Replace this with the actual file URL
 
