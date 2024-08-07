@@ -2,9 +2,9 @@
 
 https://mbktechstudio.com/ or https://MIbnEKhalid.github.io/
 
-**Deployed Branch: [main](https://github.com/MIbnEKhalid/MIbnEKhalid.github.io/tree/main)**
-
-**Active Test Branch: [test1](https://github.com/MIbnEKhalid/MIbnEKhalid.github.io/tree/test1)**
+# **Deployed Branches:**
+**[Main Branch](https://github.com/MIbnEKhalid/MIbnEKhalid.github.io/tree/main): mbktechstudio.com** deployed using github pages
+**[Privacy Branch](https://github.com/MIbnEKhalid/MIbnEKhalid.github.io/tree/Privacy): privacy.mbktechstudio.com** deployed using Netlify and linking to a GitHub branch/repository
 
 Website Source Code 
 https://github.com/MIbnEKhalid/MIbnEKhalid.github.io/ or https://github.com/MIbnEKhalid/mbktech.studios/
