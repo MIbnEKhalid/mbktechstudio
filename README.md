@@ -2,9 +2,20 @@
 
 https://mbktechstudio.com/ or https://MIbnEKhalid.github.io/
 
-# **Deployed Branches:**
-**[Main Branch](https://github.com/MIbnEKhalid/MIbnEKhalid.github.io/tree/main): mbktechstudio.com** deployed using github pages
-**[Privacy Branch](https://github.com/MIbnEKhalid/MIbnEKhalid.github.io/tree/Privacy): privacy.mbktechstudio.com** deployed using Netlify and linking to a GitHub branch/repository
+# **Deployed Branches**
+
+## **[Main Branch](https://github.com/MIbnEKhalid/MIbnEKhalid.github.io/tree/main)**
+- **Domain**: `mbktechstudio.com`
+- **Deployment**: Hosted using GitHub Pages. The main branch of the repository is used to deploy the primary site.
+
+## **[Privacy Branch](https://github.com/MIbnEKhalid/MIbnEKhalid.github.io/tree/Privacy)**
+- **Domain**: `privacy.mbktechstudio.com`
+- **Deployment**: Hosted using Netlify. The Privacy branch is linked to Netlify and is used for the privacy-related subdomain of the site.
+
+## **[Maintenance Branch](https://github.com/MIbnEKhalid/MIbnEKhalid.github.io/tree/Maintenance)**
+- **Domain**: `mbktechstudio.com`
+- **Deployment**: This branch is used for deploying a maintenance page on `mbktechstudio.com` when the main site is under maintenance. The Maintenance branch serves as a temporary replacement for the main site during maintenance periods.
+
 
 Website Source Code 
 https://github.com/MIbnEKhalid/MIbnEKhalid.github.io/ or https://github.com/MIbnEKhalid/mbktech.studios/
