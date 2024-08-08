@@ -49,27 +49,27 @@
 
       </div>
 
-
     </nav>
 
   </header>
-<style> 
 
+  <style> 
 
-        footer {
-            width: 100%;
-            text-align: center;
-            padding: 10px 0;
-            position: absolute;
-            bottom: 0;
-        }
-        html, body {
+  footer {
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    position: absolute;
+    bottom: 0;
+  }
+  
+  html, body {
     height: 100%;
     margin: 0;
     display: flex;
     flex-direction: column;
   }
-
+ 
   .about {
     flex: 1;
     display: flex;
@@ -77,12 +77,9 @@
     align-items: center;
     text-align: center;
   }
-        
-    </style>
-</style>
+  </style>
+
   <body>
-
-
 
     <!-- About Section Start -->
     <section class="about" id="about">
@@ -95,14 +92,16 @@
         <p style="text-align: center;">
           The Page You Are Looking For Might Have Been Removed Or Temporarily UnAvailable.
         </p>
+        <p>Requested Page: <span id="display-path">Not Found</span></p>
+
         <div class="button">
           <button onclick="loadPage('https://mbktechstudio.com/')">Go Home</button>
           <button onclick="reloadPage()">Reload</button>
         </div>
+        
       </div>
 
     </section>
-
 
   </body>
 
@@ -119,15 +118,21 @@
 
   <script src="https://mbktechstudio.com/Assets/script.js"></script>
   <script>
-    // Function to reload the current page
-function reloadPage() {
+    
+  function reloadPage() {
     location.reload();
-}
+  }
 
-// Function to load a specific URL
-function loadPage(url) {
+  function loadPage(url) {
     location.href = url;
-}
+  }
+
+  var path = window.location.pathname;
+  var segments = path.split('/').filter(segment => segment); // Remove empty segments
+  var filename = segments.pop() || 'index.html'; // Default to 'index.html' if no filename is present
+  var parentFolder = segments.pop() || ''; // Get the parent folder
+  var displayPath = parentFolder ? `${parentFolder}/${filename}` : filename;
+  document.getElementById('display-path').textContent = displayPath;
 
   </script>
 
