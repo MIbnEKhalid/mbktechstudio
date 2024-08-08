@@ -20,7 +20,7 @@ https://mbktechstudio.com/ or https://MIbnEKhalid.github.io/
 - **Domain**: `mbktechstudio.com` / `mibnekhalid.github.io`
 - **Deployment**: This branch is used for deploying a maintenance page on `mbktechstudio.com` when the main site is under maintenance. The Maintenance branch serves as a temporary replacement for the main site during maintenance periods.
 
-**Note:** `mibnekhalid.github.io`, `privacy-mbktechstudio.netlify.app`, and `docs-mbktechstudio.netlify.app` are original domains. The *.mbktechstudio.com domains are custom domains with CNAME records redirecting to the original domains.
+**Note:** `mibnekhalid.github.io`, `privacy-mbktechstudio.netlify.app`, and `docs-mbktechstudio.netlify.app` are original domains. The `mbktechstudio.com` domain is a custom domains with CNAME records redirecting to the original domains.
 
 
 
