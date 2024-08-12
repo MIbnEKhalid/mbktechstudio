@@ -66,8 +66,6 @@ root
 │ │ ├───cpp.png
 │ ├───index.html
 │ ├───style.css
-├───UserAgreement/
-│ ├───index.html
 ├───404.html
 ├───CNAME
 ├───index.html
