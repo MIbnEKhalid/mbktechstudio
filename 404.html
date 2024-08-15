@@ -222,7 +222,11 @@
 
   // Set the value of the input field with the page URL
   document.getElementById('pageUrlInput').value = getPageUrl();
-  
+      function resetMessageBoxColor() {
+  var messageBox = document.getElementById("message");
+  messageBox.style.backgroundColor = "beige";
+  messageBox.style.color = "green";
+}
 document.getElementById("form").addEventListener("submit", function(e) {
   e.preventDefault();
   resetMessageBoxColor();
