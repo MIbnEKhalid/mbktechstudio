@@ -247,16 +247,6 @@ document.getElementById("form").addEventListener("submit", function(e) {
   document.querySelector('input[name="Timestamp"]').value = timestamp;
   document.querySelector('input[name="PageUrl"]').value = getPageUrl();
 
-  $.getJSON("https://api.ipify.org?format=json", function(data) {
-      if (data && data.ip) {
-          $('input[name="IXPX"]').val(data.ip);
-      } else {
-          console.error("Failed to retrieve IP address.");
-      }
-  }).fail(function() {
-      console.error("Failed to retrieve IP address.");
-  });
-
   var formData = new FormData(this);
 
   fetch("https://api.web3forms.com/submit", {
