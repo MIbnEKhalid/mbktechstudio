@@ -13,12 +13,12 @@ document.addEventListener("DOMContentLoaded", function() {
         
         const products = [
          
-            { imageURL: "https://mbktechstudio.com/Project/Img/CTMCpp.png",                  name: "Centre The Message Cpp",              category: "cpp",   description: "", link: "https://mbktechstudio.com/ProjectLink" },
-            { imageURL: "https://mbktechstudio.com/Project/Img/CTMCpp.pngImg/download.svg",  name: "Project2",                            category: "game",  description: "", link: "https://mbktechstudio.com/ProjectLink" },
-            { imageURL: "https://mbktechstudio.com/Project/Img/CTMCpp.pngImg/download.svg",  name: "Unity Feedback Report System",        category: "unity", description: "", link: "https://mbktechstudio.com/ProjectLink" },
-            { imageURL: "https://mbktechstudio.com/Project/Img/CTMCpp.pngImg/cpp.png",       name: "Cpp Quiz Game",                       category: "cpp",   description: "", link: "https://docs.mbktechstudio.com/quiz-game-cpp-cli/" },
-            { imageURL: "https://mbktechstudio.com/Project/Img/CTMCpp.pngImg/download.svg",  name: "MBK Tech Studio Website Source Code", category: "web",   description: "", link: "https://docs.mbktechstudio.com/mbktechstudio.com/" },
-            { imageURL: "https://mbktechstudio.com/Project/Img/CTMCpp.pngImg/download.svg",  name: "Project6",                            category: "unity", description: "", link: "https://mbktechstudio.com/ProjectLink" },
+            { imageURL: "https://mbktechstudio.com/Project/Img/CTMCpp.png",    name: "Centre The Message Cpp",              category: "cpp",   description: "", link: "https://mbktechstudio.com/ProjectLink" },
+            { imageURL: "https://mbktechstudio.com/Project/Img/download.svg",  name: "Project2",                            category: "game",  description: "", link: "https://mbktechstudio.com/ProjectLink" },
+            { imageURL: "https://mbktechstudio.com/Project/Img/download.svg",  name: "Unity Feedback Report System",        category: "unity", description: "", link: "https://mbktechstudio.com/ProjectLink" },
+            { imageURL: "https://mbktechstudio.com/Project/Img/cpp.png",       name: "Cpp Quiz Game",                       category: "cpp",   description: "", link: "https://docs.mbktechstudio.com/quiz-game-cpp-cli/" },
+            { imageURL: "https://mbktechstudio.com/Project/Img/download.svg",  name: "MBK Tech Studio Website Source Code", category: "web",   description: "", link: "https://docs.mbktechstudio.com/mbktechstudio.com/" },
+            { imageURL: "https://mbktechstudio.com/Project/Img/download.svg",  name: "Project6",                            category: "unity", description: "", link: "https://mbktechstudio.com/ProjectLink" },
             
             ];
             
