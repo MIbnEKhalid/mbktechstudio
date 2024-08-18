@@ -233,7 +233,7 @@ function HireMeLink() {
 
 
 function openProjectPage(id) {
-    window.open('https://mbktechstudio.com/Project/#' + id, '_blank'); // Replace with your target URL
+    window.open('https://project.mbktechstudio.com/#' + id, '_blank'); // Replace with your target URL
   }
  
 
