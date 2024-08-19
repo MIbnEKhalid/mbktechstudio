@@ -44,7 +44,9 @@ for (var i = 0; i < navLinks.length; i++) {
   });
 }
 
-
+function getPageUrl() {
+  return window.location.href;
+}
 
 function resetMessageBoxColor() {
   document.getElementById("message").style.backgroundColor = "beige";
