@@ -83,6 +83,7 @@ document.getElementById("form").addEventListener("submit", function(e) {
   var combinedNumber = "+" + countryCode + inputNumber; // Add the '+' sign here
   document.querySelector('input[name="Timestamp"]').value = timestamp;
   document.querySelector('input[name="Number"]').value = combinedNumber;
+  document.querySelector('input[name="pageUrl"]').value = getPageUrl();
 
 var formData = new FormData(this);
 
