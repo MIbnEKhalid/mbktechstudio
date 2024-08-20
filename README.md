@@ -53,15 +53,6 @@ root
 │ ├───cookie.html
 │ ├───script.js
 │ ├───style.css
-├───Project/
-│ ├───Img/
-│ │ ├───download.svg
-│ │ ├───CTMCpp.png
-│ │ ├───cpp.png
-│ ├───index.html
-│ ├───style.css
-├───Protfolio/
-│ ├───index.html
 ├───404.html
 ├───CNAME
 ├───index.html
