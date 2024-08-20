@@ -222,7 +222,22 @@ function HireMeLink() {
 function openProjectPage(id) {
     window.open('https://project.mbktechstudio.com/#' + id, '_blank'); // Replace with your target URL
   }
- 
+
+
+
+    async function initializeCookieNotice() {
+        try {
+            const termsVersion = await getTermsVersionFromPrivacyPolicy();
+            const agreedVersion = getCookie('agreed');
+            if (agreedVersion !== termsVersion) {
+                document.getElementById('cookieNotice').style.display = 'block';
+                document.getElementById('termsVersiontxt').innerText = `Terms Version: ${termsVersion}`;
+            }
+        } catch (err) {
+            console.error('Error initializing cookie notice:', err);
+        }
+    }
+
     async function getTermsVersionFromPrivacyPolicy() {
         try {
             const response = await fetch('https://privacy.mbktechstudio.com/');
@@ -246,10 +261,6 @@ function openProjectPage(id) {
             const response = await fetch('https://mbktechstudio.com/Assets/cookie.html');
             const html = await response.text();
             document.getElementById('cookie').innerHTML = html;
-            
-            // Wait for the terms version to be fetched
-            const termsVersion = await getTermsVersionFromPrivacyPolicy();
-            checkCookie(termsVersion);
         } catch (err) {
             console.error('Error in AskForCookieConsent:', err);
         }
