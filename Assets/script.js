@@ -229,6 +229,8 @@ function openProjectPage(id) {
         try {
             const termsVersion = await getTermsVersionFromPrivacyPolicy();
             const agreedVersion = getCookie('agreed');
+
+            // Show the notice if the cookie is not set or versions don't match
             if (agreedVersion !== termsVersion) {
                 document.getElementById('cookieNotice').style.display = 'block';
                 document.getElementById('termsVersiontxt').innerText = `Terms Version: ${termsVersion}`;
@@ -296,8 +298,7 @@ function openProjectPage(id) {
             date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
             expires = "; expires=" + date.toUTCString();
         }
-        // Correctly format the domain
-        const domain = "; domain=.mbktechstudio.com";  // This makes the cookie available to both the subdomain and primary domain
+        const domain = ".mbktechstudio.com";
         document.cookie = name + "=" + (value || "") + expires + "; path=/" + domain;
     }
 
