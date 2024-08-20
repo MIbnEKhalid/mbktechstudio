@@ -224,17 +224,34 @@ function openProjectPage(id) {
   }
  
 
+async function getTermsVersionFromPrivacyPolicy() {
+    try {
+        const response = await fetch('https://privacy.mbktechstudio.com/');
+        const html = await response.text();
+        let parser = new DOMParser();
+        let doc = parser.parseFromString(html, 'text/html');
+        let termsVersionElement = doc.getElementById('termVersionPrivacy');
+        if (termsVersionElement) {
+            return termsVersionElement.innerText.split(': ')[1];
+        } else {
+            throw new Error('Element with id "termVersionPrivacy" not found.');
+        }
+    } catch (err) {
+        console.error('Failed to fetch or parse the privacy policy page:', err);
+        return null;
+    }
+}
 
 function AskForCookieConsent() {
     fetch('https://mbktechstudio.com/Assets/cookie.html').then(response => response.text()).then(html => {
         document.getElementById('cookie').innerHTML = html;
-        const termsVersion = document.getElementById('termsVersion').innerText.split(': ')[1];
+        const termsVersion = getTermsVersionFromPrivacyPolicy();
         checkCookie(termsVersion);
     });
 }
 
 function SaveCookie(){
-    const termsVersion = document.getElementById('termsVersion').innerText.split(': ')[1];
+    const termsVersion = getTermsVersionFromPrivacyPolicy();
     setCookie('agreed', termsVersion, 365);
     hideOverlay();
 }
