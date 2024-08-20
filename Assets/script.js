@@ -258,19 +258,8 @@ function setCookie(name, value, days) {
         expires = "; expires=" + date.toUTCString();
     }
 
-    // Get the current domain
-    var domain = window.location.hostname;
-    
-    // Check if the current domain is a subdomain
-    if (domain.split('.').length > 2) {
-        // It's a subdomain, set the cookie for the primary domain
-        domain = "; domain=." + domain.split('.').slice(-2).join('.');
-    } else {
-        // It's the primary domain, no need to set domain attribute
-        domain = "";
-    }
 
-    // Set the cookie with the appropriate domain
+    var domain = "; domain=.mbktechstudio.com";  // This makes the cookie available to both the subdomain and primary domain
     document.cookie = name + "=" + (value || "") + expires + "; path=/" + domain;
 }
 
