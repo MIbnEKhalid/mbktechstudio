@@ -7,10 +7,18 @@
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
+
+    <!-- FAQs Page -->
+    <url>
+        <loc>https://mbktechstudio.com/FAQs/</loc>
+        <lastmod>2024-08-13</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
     
     <!-- Project Page -->
     <url>
-        <loc>https://mbktechstudio.com/Project/index.html</loc>
+        <loc>https://project.mbktechstudio.com/</loc>
         <lastmod>2024-08-13</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -18,7 +26,7 @@
     
     <!-- Protfolio Page -->
     <url>
-        <loc>https://mbktechstudio.com/Protfolio /index.html</loc>
+        <loc>https://protfolio.mbktechstudio.com/</loc>
         <lastmod>2024-08-13</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
