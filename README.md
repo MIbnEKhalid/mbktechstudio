@@ -18,13 +18,6 @@ Detailed Documentation of this website will be available soon on: [docs.mbktechs
 
 **Note:** `mibnekhalid.github.io`, `privacy-mbktechstudio.netlify.app`, and `docs-mbktechstudio.netlify.app` are original domains. The `mbktechstudio.com` domain is a custom domains with CNAME records redirecting to the original domains.
 
-
-
-
-
-
-
-
 Website Source Code 
 https://github.com/MIbnEKhalid/MIbnEKhalid.github.io/ or https://github.com/MIbnEKhalid/mbktech.studios/
 
@@ -126,3 +119,34 @@ Use `FAQs/index.html`:
 ## 5. Additional Notes
 - If you create a repository named `<username>.github.io`, it will serve as the root of `https://<username>.github.io`. All other repository pages will be nested under this link. For example, a repository named `project1` would be accessible at `https://<username>.github.io/project1`.
 - If you add a custom domain to `<username>.github.io`, all other repository pages will also be accessible under the new custom domain. For example, if your custom domain is `www.example.com`, the `project1` repository would be accessible at `https://www.example.com/project1`.
+
+
+
+<h2 align="center">
+  Stats ⚡️
+</h2>
+<table style="border:none;margin:0 auto" align="center">
+  <tr style="border:none;">
+    <td style="border:none;">
+      <img src="https://github-readme-streak-stats.herokuapp.com?user=MIbnEKhalid&theme=transparent&hide_border=true&date_format=j%20M%5B%20Y%5D"
+      alt="GitHub Streak" />
+    </td>
+    <td style="border:none;">
+      <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=MIbnEKhalid&layout=compact&theme=transparent&hide_border=true"
+      alt="MIbnEKhalid Stats" />
+    </td>
+  </tr>
+</table>
+
+<table style="border:none;margin:0 auto" align="center">
+  <tr style="border:none;margin:0 auto" align="center">
+    <td style="border:none;">
+      <img src="https://github-readme-activity-graph.vercel.app/graph?username=MIbnEKhalid&theme=github-dark&hide_border=true"
+      alt="Muhammad Bin Khalid Activity Graph" />
+    </td>
+  </tr>
+</table>
+
+
+<p  align="center"> <img src="https://github-profile-trophy.vercel.app/?username=MIbnEKhalid&theme=onestar" alt="rgr" /></a> </p>
+
