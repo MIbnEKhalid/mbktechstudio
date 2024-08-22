@@ -54,6 +54,8 @@ root
 │ │ ├───user.png
 │ ├───cookie.css
 │ ├───cookie.html
+│ ├───MBK_CV.pdf
+│ ├───mbk_cv1.pdf
 │ ├───script.js
 │ ├───style.css
 ├───404.html
