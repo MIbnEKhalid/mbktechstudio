@@ -41,6 +41,7 @@ https://mbktechstudio.com/ or https://mbktechstudio.com/mbktech.studios/
 root
 ├───Assets/
 │ ├───Images/
+│ │ ├───5.png
 │ │ ├───about9.jpg
 │ │ ├───background.png
 │ │ ├───cat.png
@@ -49,6 +50,8 @@ root
 │ │ ├───dg.svg
 │ │ ├───dgicon.svg
 │ │ ├───logo.png
+│ │ ├───server.png
+│ │ ├───user.png
 │ ├───cookie.css
 │ ├───cookie.html
 │ ├───script.js
