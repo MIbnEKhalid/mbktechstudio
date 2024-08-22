@@ -69,10 +69,10 @@ root
 #### Example:
 
 Instead of using `UserAgreement.html`:
-- Bad URL: [https://mbktech.xyz/UserAgreement.html](https://mbktech.xyz/UserAgreement.html)
+  - Bad URL: [https://mbktechstudio.com/FAQs.html](https://mbktechstudio.com/FAQs.html)
 
 Use `UserAgreement/index.html`:
-  - Good URL: [https://mbktech.xyz/UserAgreement/](https://mbktech.xyz/UserAgreement/)
+  - Good URL: [https://mbktechstudio.com/FAQs/](https://mbktechstudio.com/FAQs/)
 
 ### How To Add A Custom Domain On Github Pages
 
