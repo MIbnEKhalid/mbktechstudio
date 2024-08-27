@@ -1,0 +1,5 @@
+[[redirects]]
+  from = "https://maintenance-mbktechstudio.netlify.app/*"
+  to = "https://maintenance.mbktechstudio.com/:splat"
+  status = 301
+  force = true
