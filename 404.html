@@ -6,9 +6,9 @@
     <meta charset="UTF-8"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/css/intlTelInput.css">
     <title>404 - Page Not Found</title>
-    <link rel="stylesheet" href="https://maintenance.mbktechstudio.com//Assets/style.css">   
+    <link rel="stylesheet" href="https://maintenance.mbktechstudio.com/Assets/style.css">   
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
-    <link rel="icon" type="image/x-icon" href="https://maintenance.mbktechstudio.com//Assets/Images/dgicon.svg">
+    <link rel="icon" type="image/x-icon" href="https://maintenance.mbktechstudio.com/Assets/Images/dgicon.svg">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
 
@@ -79,13 +79,20 @@
       position: absolute;
       top: 7px;
       right: 3px;
-      background: url(https://maintenance.mbktechstudio.com//Assets/Images/close-icon.svg) 0 0 / 23px 23px no-repeat;
+      background: url(https://maintenance.mbktechstudio.com/Assets/Images/close-icon.svg) 0 0 / 23px 23px no-repeat;
       transition: all 0.4s ease;
     }
 
     .close-btn:hover {
       opacity: 0.2;
       transition: all 0.4s ease;
+    }
+
+    input[readonly] {
+        background-color: #f0f0f0; 
+        color: #333;
+        border: 1px solid #ccc;
+        cursor: not-allowed; 
     }
   
   </style>
@@ -99,7 +106,7 @@
         <div class="logo">
 
           <div class="image">
-            <img src="https://maintenance.mbktechstudio.com//Assets/Images/dg.svg" alt=""/>
+            <img src="https://maintenance.mbktechstudio.com/Assets/Images/dg.svg" alt=""/>
           </div>
 
           <div class="text">
@@ -149,10 +156,10 @@
       <div class="content">
 
         <div class="emojji">
-          <img class="catfix"  height="130px" width="140px" src="https://maintenance.mbktechstudio.com//Assets/Images/catfixing.png">
-          <img class="server1" height="120px" width="140px" src="https://maintenance.mbktechstudio.com//Assets/Images/server.png">        
-          <img class="server2" height="120px" width="140px" src="https://maintenance.mbktechstudio.com//Assets/Images/server.png">
-          <img class="server3" height="120px" width="140px" src="https://maintenance.mbktechstudio.com//Assets/Images/server.png">
+          <img class="catfix"  height="130px" width="140px" src="https://maintenance.mbktechstudio.com/Assets/Images/catfixing.png">
+          <img class="server1" height="120px" width="140px" src="https://maintenance.mbktechstudio.com/Assets/Images/server.png">        
+          <img class="server2" height="120px" width="140px" src="https://maintenance.mbktechstudio.com/Assets/Images/server.png">
+          <img class="server3" height="120px" width="140px" src="https://maintenance.mbktechstudio.com/Assets/Images/server.png">
         </div>
 
         <br>
@@ -173,24 +180,26 @@
           <div onclick="hidebox()" class="close-btn"></div>
           <div class="title"><span>Contact Us Form</span></div>
           <form action="https://api.web3forms.com/submit" method="POST" class="m-4 pl-4" id="form">
-              <div class="field"><div class="control"><input class="input" type="hidden" name="Timestamp" /></div></div>
-              <div class="field"><div class="control"><input class="input" type="hidden" name="IXPX" /></div></div>
-              <div class="field"><div class="control"><input class="input" type="hidden" name="Subject" value="UnderMaintaince"/></div></div>
-              <input type="hidden" name="access_key" value="d2837145-a5b5-49af-b269-cb79e9b57456">
+            <input type="hidden" name="Timestamp"/>
+            <input type="hidden" name="Subject" value="UnderMaintaince"/>
+            <input type="hidden" name="access_key" value="d2837145-a5b5-49af-b269-cb79e9b57456">
+            <div class="field">
+              <label class="label">Name</label><div class="control"><div class="input" ><input type="text" placeholder="Enter Your Name" name="UserName" required /></div></div>
+            </div>
+            <div class="field">
+              <label class="label">Email</label><div class="control"><div class="input" ><input type="email" placeholder="Enter Your Email" name="Email" required /></div></div>
+            </div>
               <div class="field">
-                <label class="label">Name</label><div class="control"><div class="input" ><input  type="text" placeholder="Enter Your Name" name="UserName" required /></div></div>
+                <label class="label">Page URL:</label><div class="control"><div class="input" ><input type="text" placeholder="Reload the page if the URL is not displayed." id="pageUrlInput" name="PageUrl" readonly/></div></div>
               </div>
-              <div class="field">
-                <label class="label">Email</label><div class="control"><div class="input" ><input  type="email" placeholder="Enter Your Email" name="Email" required /></div></div>
-              </div>
-              <div class="field">
-                <label class="label">Message</label><div class="control"><textarea class="input" placeholder="Enter Your Message" name="Message" rows="4" required></textarea></div>
-              </div>
-              <p>For quicker assistance, contact us on Social Media. Email responses may take 1-2 business days.</p>
-              <div class="button field is-grouped" style="display: flex; justify-content: center;">
-                <div class="control"><button class="button is-primary" type="submit" id="submit-button">Submit</button></div>
-              </div>
-              <div id="message" style="display: none; font-weight: bold; color: green; padding: 8px; background-color: beige; border-radius: 4px; margin-top: 10px; border-color: aquamarine;"></div>
+            <div class="field">
+              <label class="label">Message</label><div class="control"><textarea class="input" placeholder="Enter Your Message..." name="Message" rows="4" required></textarea></div>
+            </div>
+            <p>For quicker assistance, contact us on Social Media. Email responses may take 1-2 business days.</p>
+            <div class="button field is-grouped" style="display: flex; justify-content: center;">
+              <div class="control"><button class="button is-primary" type="submit" id="submit-button">Submit</button></div>
+            </div>
+            <div id="message" style="display: none; font-weight: bold; color: green; padding: 8px; background-color: beige; border-radius: 4px; margin-top: 10px; border-color: aquamarine;"></div>
           </form>
         </div>
 
@@ -209,9 +218,7 @@
     </div>
   
   </footer> 
-
-  <script src="https://maintenance.mbktechstudio.com//Assets/script.js"></script>  
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> <!--for ip-->
+  <script src="https://maintenance.mbktechstudio.com/Assets/script.js"></script>   
 
   <script>
  
@@ -222,6 +229,67 @@
     function hidebox() {
       document.getElementById('c-form').classList.remove('show');
     }
+
+
+  function getPageUrl() {
+    return window.location.href;
+  }
+
+  // Set the value of the input field with the page URL
+  document.getElementById('pageUrlInput').value = getPageUrl();
+
+  function resetMessageBoxColor() {
+  var messageBox = document.getElementById("message");
+  messageBox.style.backgroundColor = "beige";
+  messageBox.style.color = "green";
+}
+document.getElementById("form").addEventListener("submit", function(e) {
+  e.preventDefault();
+  resetMessageBoxColor();
+  var messageBox = document.getElementById("message");
+  messageBox.textContent = "Submitting..";
+  messageBox.style.display = "block";
+  document.getElementById("submit-button").disabled = true;
+
+  var currentDate = new Date();
+  var day = String(currentDate.getDate()).padStart(2, "0");
+  var month = String(currentDate.getMonth() + 1).padStart(2, "0");
+  var year = currentDate.getFullYear();
+  var hours = String(currentDate.getHours()).padStart(2, "0");
+  var minutes = String(currentDate.getMinutes()).padStart(2, "0");
+  var seconds = String(currentDate.getSeconds()).padStart(2, "0");
+  var timestamp = `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
+
+  document.querySelector('input[name="Timestamp"]').value = timestamp;
+  document.querySelector('input[name="PageUrl"]').value = getPageUrl();
+
+  var formData = new FormData(this);
+
+  fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData
+  }).then(function(response) {
+      if (response.ok) {
+          return response.json();
+      } else {
+          throw new Error("Failed to submit the form.");
+      }
+  }).then(function(data) {
+      messageBox.textContent = "Message Submitted Successfully!";
+      messageBox.style.backgroundColor = "green";
+      messageBox.style.color = "beige";
+      document.getElementById("submit-button").disabled = false;
+      document.getElementById("form").reset();
+
+      setTimeout(function() {
+          messageBox.textContent = "";
+          messageBox.style.display = "none";
+      }, 2000);
+  }).catch(function(error) {
+      console.error(error);
+      messageBox.textContent = "An error occurred while submitting the form.";
+  });
+});
 
   </script>
 
