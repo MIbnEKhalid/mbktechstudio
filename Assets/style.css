@@ -1,221 +1,167 @@
-    body {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      line-height: 1.5;
-      min-height: 100vh;
-      flex-direction: column;
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: rgb(8, 8, 8);
-   }
 
-  .user-box {
-      position: relative;
-      margin-bottom: 7px;
-      margin-top: 7px;
-  }
-
-  .user-box input {
-      width: 100%;
-      padding: 10px 0;
-      font-size: 16px;
-      font-weight: 500;
-      color: #e4e4e4;
-      margin-bottom: 30px;
-      border: none;
-      border: 2px solid #333;
-      outline: none;
-      background: transparent;
-  }
-
-  .user-box label {
-      position: absolute;
-      top: -12%;
-      left: 1%;
-      padding: 10px 0;
-      font-size: 16px;
-      color: aliceblue;
-      pointer-events: none;
-      transition: 0.5s;
-  }
-
-  .user-box input:focus~label,
-  .user-box input:valid~label {
-      transform: translateY(-20px);
-      font-size: 15px;
-      color: aliceblue;
-  }
-
-  .password-toggle-icon {
-      position: absolute;
-      top: 65%;
-      right: 10px;
-      transform: translateY(-50%);
-      cursor: pointer;
-  }
-
-  .password-toggle-icon i {
-      font-size: 18px;
-      line-height: 1;
-      color: #444444;
-      transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
-      margin-bottom: 20px;
-  }
-
-  .password-toggle-icon i.fa-eye-slash {
-      color: #606060;
-      transform: rotateY(180deg);
-  }
-
-  .password-toggle-icon i:hover {
-      color: #565555;
-  }
-
-  .main {
-      background-color: rgb(26, 26, 26);
-      border-radius: 15px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-      padding: 10px 20px;
-      transition: transform 0.2s;
-      width: 30%;
-      text-align: center;
-  }
-  @media (max-width: 700px) {
-    
-  .main {
-      width: 90%;
-  }
-  .user-box label {  
-      left: 2%; 
-  }
-  }
-
-  h1 {
-      color: #377a77;
-  }
-
-  h2 {
-      color: #fff;
-  }
-
-  label {
-      font-weight: bold;
-      color: aliceblue;
-      display: block;
-      margin: 10px 0 5px 0;
-  }
-
-  input[type="text"],
-  input[type="password"],
-  input[type="email"] {
-      width: 100%;
-      padding: 10px;
-      margin: 5px 0 5px 0;
-      border-radius: 6px;
-      box-sizing: border-box;
-  }
-
-  .button {
-    width: 100%; /* Ensures the container for the button takes full width */
-  }
-
-   .button button{
-   outline: none;
-   border-radius: 10px;
-   padding: 8px;
-   font-size: 21px;
-   font-weight: 600;
-   background: #377a77;
-   color: #fff;
-   border: 2px solid transparent;
-   cursor: pointer;
-   transition: all 0.4s ease;
-   margin-top: 10px;
-   cursor: pointer;
-   width: 100%;
-  }
-   .button button:hover{
-   border-color: #fff;
-   background-color: transparent;
-   color: #fff;  
-   font-weight: 600;
-   transition: all 0.3s ease;
- }
-
-  .wrap {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-  }
-
-  .Link {
-      color: turquoise;
-      font-weight: 600;
-      text-decoration: none;
-  }
-
-  .Link:hover {
-      color: rgba(64, 224, 208, 0.692);
-      font-weight: 600;
-  }
-
-  .NotRegistered {
-      color: #fff;
-  }
-
-  .logo{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 15px;
-  } 
-  .logo img {
-    width: 100%;
-    height:100%;
-    float: left;
-  }
-  
-  .logo .text {
-    margin-left: -255px;
-    float: left;
-  }
-  
-  .logo a{
-    font-weight: 600;
-    font-size: 35px;
-    color: #377a77;
-    text-decoration: none;
-  }
-
-   .title {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 40px;
-  }
-
-   .title span {
-    color: #fff;
-    font-size: 30px;
-    font-weight: 600;
-    position: relative;
-    padding-bottom: 8px;
-  }
-
-   .title span::before,
-   .title span::after {
-    content: "";
-    position: absolute;
-    height: 3px;
-    width: 100%;
-    background: #377a77;
-    left: 0;
-    bottom: 0;
-  }
-
-   .title span::after {
-    bottom: -7px;
-    width: 70%;
+.contact-box {
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
-  }
+    transform: translate(-50%, -50%);
+    opacity: 1;
+    visibility: visible;
+    border: 3px solid #377a77;
+    background-color: rgb(26, 26, 26);
+    position: fixed;
+    width: 30%;
+    max-width: 1000px;
+    padding: 10px 20px;
+    border-radius: 15px;
+    box-shadow: 0 6px 6px rgb(0 0 0 / 25%);
+    font-family: 'Poppins', sans-serif;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+@media (max-width: 700px) {
+    .contact-box {
+        width: 90%;
+    }
+
+    .user-box label {
+        left: 2%;
+    }
+}
+
+.user-box {
+    position: relative;
+    margin-bottom: 7px;
+    margin-top: 7px;
+}
+
+.user-box input {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    font-weight: 500;
+    color: #e4e4e4;
+    margin-bottom: 30px;
+    border: none;
+    border: 2px solid #333;
+    outline: none;
+    background: transparent;
+}
+
+.user-box label {
+    position: absolute;
+    top: -12%;
+    left: 1%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: aliceblue;
+    pointer-events: none;
+    transition: 0.5s;
+}
+
+.user-box input:focus~label,
+.user-box input:valid~label {
+    transform: translateY(-20px);
+    font-size: 15px;
+    color: aliceblue;
+}
+
+.password-toggle-icon {
+    position: absolute;
+    top: 65%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.password-toggle-icon i {
+    font-size: 18px;
+    line-height: 1;
+    color: #444444;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    margin-bottom: 20px;
+}
+
+.password-toggle-icon i.fa-eye-slash {
+    color: #606060;
+    transform: rotateY(180deg);
+}
+
+.password-toggle-icon i:hover {
+    color: #565555;
+}
+
+.main {
+    background-color: rgb(26, 26, 26);
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    padding: 10px 20px;
+    transition: transform 0.2s;
+    width: 30%;
+    text-align: center;
+}
+
+label {
+    font-weight: bold;
+    color: aliceblue;
+    display: block;
+    margin: 10px 0 5px 0;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 5px 0;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+.button {
+    width: 100%;
+}
+
+.button button {
+    outline: none;
+    border-radius: 10px;
+    padding: 8px;
+    font-size: 21px;
+    font-weight: 600;
+    background: #377a77;
+    color: #fff;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    margin-top: 10px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.button button:hover {
+    border-color: #fff;
+    background-color: transparent;
+    color: #fff;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Link {
+    color: turquoise;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.Link:hover {
+    color: rgba(64, 224, 208, 0.692);
+    font-weight: 600;
+}
+
+.NotRegistered {
+    color: #fff;
+}

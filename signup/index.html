@@ -1,85 +1,149 @@
 <!DOCTYPE html>
-<html>
+
+<html lang="en" dir="ltr">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BC</title>
-    <link rel="icon" type="image/x-icon" href="../Assets/dgicon.svg">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="../Assets/style.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pako/2.0.3/pako.min.js"></script>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/css/intlTelInput.css">
+  <title>404 - Page Not Found</title>
+  <link rel="stylesheet" href="../Assets/main.css" />
+  <link rel="stylesheet" href="../Assets/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+  <link rel="icon" type="image/x-icon" href="https://maintenance.mbktechstudio.com/Assets/Images/dgicon.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
+
+<header>
+
+  <nav>
+
+    <div class="navbar">
+
+      <div class="logo">
+
+        <div class="image">
+          <img src="../Assets/dg.svg" alt="" />
+        </div>
+
+        <div class="text">
+          <a href="#">MBK Tech Studio</a>
+        </div>
+
+      </div>
+
+      <ul class="menu">
+
+        <div class="cancel-btn">
+          <i class="fas fa-times"></i>
+        </div>
+
+      </ul>
+
+      <div class="media-icons">
+
+        <a href="https://www.facebook.com/people/MBK-Tech-Studio/61559079077988/" target="_blank"><i
+            class="fab fa-facebook-f"></i></a>
+        <a href="https://x.com/ibnekhalid28" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://instagram.com/mbktech.studios" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://github.com/MIbnEKhalid" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/muhammad-bin-khalid-89711b25b" target="_blank"><i
+            class="fab fa-linkedin"></i></a>
+        <a href="https://youtube.com/@mibnekhalid" target="_blank"><i class="fab fa-youtube"></i></a>
+        <a href="https://discord.gg/MUAyAeckrM" target="_blank"><i class="fab fa-discord"></i></a>
+
+      </div>
+
+    </div>
+
+    <div class="menu-btn">
+      <i class="fas fa-bars"></i>
+    </div>
+
+  </nav>
+
+</header>
 
 <body>
 
-    <div id="SignUpContainer" class="main">
-        <div class="logo">
+  <section class="about" id="about">
 
-            <div class="image">
-                <img src="../Assets/dg.svg" alt="">
-            </div>
+    <div class="content">
 
-            <div class="text">
-                <a href="https://mbktechstudio.com">MBK Tech Studio</a>
-            </div>
-
-        </div>
+      <div class="contact-box">
 
         <div class="title"><span>Sign Up</span></div>
 
         <div class="user-box">
-            <input id="username" type="text" name="" required="" />
-            <label>User Name</label>
-            <span class="password-toggle-icon"><i class="fas fa-eye"></i></span>
+          <input id="username" type="text" name="" required="" />
+          <label>User Name</label>
         </div>
 
         <div class="user-box">
-            <input id="userEmail" type="email" name="" required="" />
-            <label>Email</label>
-            <span class="password-toggle-icon"><i class="fas fa-eye"></i></span>
+          <input id="userEmail" type="email" name="" required="" />
+          <label>Email</label>
         </div>
 
         <div class="user-box">
-            <input id="npassword" type="password" name="" required="" />
-            <label>Password</label>
-            <span class="password-toggle-icon"><i class="fas fa-eye"></i></span>
+          <input id="npassword" type="password" name="" required="" />
+          <label>Password</label>
+          <span class="password-toggle-icon" data-target="npassword"><i class="fas fa-eye"></i></span>
         </div>
 
         <div class="user-box">
-            <input id="confirmPassword" type="password" name="" required="" />
-            <label>Confirm Password</label>
-            <span class="password-toggle-icon"><i class="fas fa-eye"></i></span>
+          <input id="confirmPassword" type="password" name="" required="" />
+          <label>Confirm Password</label>
+          <span class="password-toggle-icon" data-target="confirmPassword"><i class="fas fa-eye"></i></span>
         </div>
 
         <div class="wrap">
-            <div class="button">
-                <button type="submit">Submit</button>
-            </div>
+          <div class="button">
+            <button type="submit">Submit</button>
+          </div>
         </div>
 
         <p class="NotRegistered">Already Registered? <a class="Link" href="../login/">Login</a></p>
+
+        <script>
+
+          document.querySelectorAll('.password-toggle-icon').forEach(item => {
+            item.addEventListener('click', function () {
+              const targetField = document.getElementById(this.dataset.target);
+              const icon = this.querySelector('i');
+
+              if (targetField.type === "password") {
+                targetField.type = "text";
+                icon.classList.remove("fa-eye");
+                icon.classList.add("fa-eye-slash");
+              } else {
+                targetField.type = "password";
+                icon.classList.remove("fa-eye-slash");
+                icon.classList.add("fa-eye");
+              }
+            });
+          });
+
+        </script>
+
+      </div>
+
     </div>
 
-    <script>
-        const passwordField = document.getElementById("password");
-        const togglePassword = document.querySelector(".password-toggle-icon i");
+  </section>
 
-        togglePassword.addEventListener("click", function () {
-            if (passwordField.type === "password") {
-                passwordField.type = "text";
-                togglePassword.classList.remove("fa-eye");
-                togglePassword.classList.add("fa-eye-slash");
-            } else {
-                passwordField.type = "password";
-                togglePassword.classList.remove("fa-eye-slash");
-                togglePassword.classList.add("fa-eye");
-            }
-        });
-    </script>
 </body>
+
+<footer>
+
+  <div class="text">
+
+    <span>Developed By <a href="https://github.com/MIbnEKhalid">Muhammad Bin Khalid</a> | &#169; 2024 All Rights
+      Reserved | <a href="https://privacy.mbktechstudio.com/" target="_blank">Terms & Conditions</a> | <a
+        href="mailto:support@mbktechstudio.com" title="support@mbktechstudio.com">support@mbktechstudio.com</a> </span>
+
+  </div>
+
+</footer>
+
+<script src="../Assets/script.js"></script>
 
 </html>
