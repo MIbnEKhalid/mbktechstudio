@@ -340,7 +340,7 @@ section .button button{
 }
 section .button button:hover{
   border-color: #377a77;
-  background-color: #f0f8ff;
+  background-color: transparent;
   color: #377a77;  
   font-weight: 600;
   transition: all 0.3s ease;
@@ -604,7 +604,7 @@ section .button button {
 section .button button:hover {
   transition: all 0.4s ease;
   border-color: #377a77;
-  background-color: #f0f8ff;
+  background-color: transparent;
   color: #377a77;
 }
 
