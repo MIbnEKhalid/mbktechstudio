@@ -1,5 +1,53 @@
-
 .contact-box {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);          
+    opacity: 0;
+    visibility: hidden;
+    border: 3px solid #377a77;
+    background-color: rgb(26, 26, 26);
+    position: fixed;
+    width: 85%;
+    max-width: 1000px;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 6px 6px rgb(0 0 0 / 25%);
+    font-family: 'Poppins', sans-serif;
+    z-index: 999997;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+  }
+
+  .contact-box.show {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .close-btn{
+    width: 23px;
+    height: 23px;
+    border-radius: 8px;
+    z-index: 999999;
+    position: absolute;
+    top: 7px;
+    right: 3px;
+    color: #fff;
+    background: url(https://mbktechstudio.com/Assets/Images/close-icon.svg) 0 0 / 23px 23px no-repeat;
+    transition: all 0.4s ease;
+  }
+
+  .close-btn:hover {
+    opacity: 0.2;
+    transition: all 0.4s ease;
+  }
+
+  input[readonly] {
+      background-color: #c0c0c0; /* Change this to the desired background color */
+      color: #333; /* Optionally, change the text color */
+      border: 1px solid #ccc; /* Optionally, change the border color */
+      cursor: not-allowed; /* Optionally, change the cursor to indicate it's readonly */
+  }
+  
+.portalbox {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -17,13 +65,32 @@
     transition: opacity 0.4s ease, visibility 0.4s ease;
 }
 
+h3{
+    top: 76%;
+    left: 50%;
+    transform: translate(-50%, -50%);  
+    position: fixed;    
+    font-family: 'Poppins', sans-serif; 
+    color: aqua;
+    z-index: 0;
+}
+
+.admin{
+    color: aqua;
+    color: goldenrod;
+}
+
 @media (max-width: 700px) {
-    .contact-box {
+    .portalbox {
         width: 90%;
     }
 
     .user-box label {
         left: 2%;
+    }
+
+    h3{
+        top: 79%;
     }
 }
 

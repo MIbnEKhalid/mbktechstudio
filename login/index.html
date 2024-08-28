@@ -15,125 +15,251 @@
     <link rel="stylesheet" href="../Assets/main.css" />
     <link rel="stylesheet" href="../Assets/style.css" />
 </head>
-
-
 <header>
-
     <nav>
-
         <div class="navbar">
-
             <div class="logo">
-
                 <div class="image">
                     <img src="../Assets/dg.svg" alt="" />
                 </div>
-
                 <div class="text">
                     <a href="#">MBK Tech Studio</a>
                 </div>
 
             </div>
+            <ul style="display: none;" class="menu">
 
-            <ul class="menu">
-
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#services">Projects</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+      
                 <div class="cancel-btn">
-                    <i class="fas fa-times"></i>
+                  <i class="fas fa-times"></i>
                 </div>
-
-            </ul>
-
+      
+              </ul>
             <div class="media-icons">
-
-                <a href="https://www.facebook.com/people/MBK-Tech-Studio/61559079077988/" target="_blank"><i
-                        class="fab fa-facebook-f"></i></a>
+                <a href="https://www.facebook.com/people/MBK-Tech-Studio/61559079077988/" target="_blank"><i class="fab fa-facebook-f"></i></a>
                 <a href="https://x.com/ibnekhalid28" target="_blank"><i class="fab fa-twitter"></i></a>
                 <a href="https://instagram.com/mbktech.studios" target="_blank"><i class="fab fa-instagram"></i></a>
                 <a href="https://github.com/MIbnEKhalid" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/muhammad-bin-khalid-89711b25b" target="_blank"><i
-                        class="fab fa-linkedin"></i></a>
+                <a href="https://www.linkedin.com/in/muhammad-bin-khalid-89711b25b" target="_blank"><i class="fab fa-linkedin"></i></a>
                 <a href="https://youtube.com/@mibnekhalid" target="_blank"><i class="fab fa-youtube"></i></a>
                 <a href="https://discord.gg/MUAyAeckrM" target="_blank"><i class="fab fa-discord"></i></a>
-
             </div>
-
         </div>
-
         <div class="menu-btn">
             <i class="fas fa-bars"></i>
         </div>
-
     </nav>
-
 </header>
-
+<style>
+    h3 {
+        top: 70%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        position: fixed;
+        font-family: 'Poppins', sans-serif;
+        color: aqua;
+    }
+    @media (max-width: 700px) {
+        .portalbox {
+            width: 90%;
+        }
+        .user-box label {
+            left: 2%;
+        }
+        h3 {
+            top: 72%;
+        }
+    }
+</style>
 <body>
-
     <section class="about" id="about">
-
         <div class="content">
-
-            <div class="contact-box">
-
-
+            <div class="portalbox">
                 <div class="title"><span>Login Portal</span></div>
-
                 <div class="user-box">
                     <input id="username" type="text" name="" required="" />
                     <label>User Name</label>
                 </div>
-
                 <div class="user-box">
                     <input id="password" type="password" name="" required="" />
                     <label>Password</label>
                     <span class="password-toggle-icon"><i class="fas fa-eye"></i></span>
                 </div>
-
                 <div class="wrap">
                     <div class="button">
                         <button type="submit">Submit</button>
                     </div>
                 </div>
-
+                <div class="wrap">
+                    <div class="button">
+                        <button type="submit" onclick="showbox('c-form')">Contact Us</button>
+                    </div>
+                </div>
                 <p class="NotRegistered">Not registered? <a class="Link" href="../signup/">Sign Up</a></p>
+                <p class="admin"><span class=""><i class="fas fa-info-circle"></i> </span>This Portal Is For Admins Only</p>
+                <script>
+                    const passwordField = document.getElementById("password");
+                    const togglePassword = document.querySelector(".password-toggle-icon i");
+
+                    togglePassword.addEventListener("click", function () {
+                        if (passwordField.type === "password") {
+                            passwordField.type = "text";
+                            togglePassword.classList.remove("fa-eye");
+                            togglePassword.classList.add("fa-eye-slash");
+                        } else {
+                            passwordField.type = "password";
+                            togglePassword.classList.remove("fa-eye-slash");
+                            togglePassword.classList.add("fa-eye");
+                        }
+                    });
+                </script>
             </div>
+            <div id="c-form" class="contact-box">
+                <div onclick="hidebox('c-form')" class="close-btn"></div>
+                <div class="title"><span>Contact Us Form</span></div>
+                <form action="https://api.web3forms.com/submit" method="POST" class="m-4 pl-4" id="form">
+                    <input class="input" type="hidden" name="Timestamp" />
+                    <input class="input" type="hidden" name="Subject" value="404-Error" />
+                    <input class="input" type="hidden" name="PageUrl" />
+                    <input type="hidden" name="access_key" value="d2837145-a5b5-49af-b269-cb79e9b57456">
+                    <div class="field">
+                        <label class="label">Name</label>
+                        <div class="control">
+                            <div class="input"><input type="text" placeholder="Enter Your Name" name="UserName" required /></div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Email</label>
+                        <div class="control">
+                            <div class="input"><input type="email" placeholder="Enter Your Email" name="Email" required /></div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Page URL:</label>
+                        <div class="control">
+                            <div class="input"><input type="text" placeholder="Reload the page if the URL is not displayed." id="pageUrlInput" name="PageUrl" readonly /></div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Message</label>
+                        <div class="control"><textarea class="input" placeholder="Enter Your Message..." name="Message" rows="4" required></textarea></div>
+                    </div>
+                    <p>For quicker assistance, contact us on Social Media. Email responses may take 1-2 business days.</p>
+                    <div class="button field is-grouped" style="display: flex; justify-content: center;">
+                        <div class="control"><button class="button is-primary" type="submit" id="submit-button">Submit</button></div>
+                    </div>
+                    <div id="message"
+                        style="display: none; font-weight: bold; color: green; padding: 8px; background-color: beige; border-radius: 4px; margin-top: 10px; border-color: aquamarine;">
+                    </div>
+                </form>
+                <script>
+                    function reloadPage() {
+                    location.reload();
+                  }
+                
+                  function loadPage(url) {
+                    location.href = url;
+                  }
+                  document.addEventListener("DOMContentLoaded", function() {
+    function getPageUrl() {
+        return window.location.href;
+    }
+    
+    // Set the value of the input field with the page URL
+    document.getElementById('pageUrlInput').value = getPageUrl();
+});
+                  var path = window.location.pathname;
+                  var segments = path.split('/').filter(segment => segment); // Remove empty segments
+                  var filename = segments.pop() || 'index.html'; // Default to 'index.html' if no filename is present
+                  var parentFolder = segments.pop() || ''; // Get the parent folder
+                  var displayPath = parentFolder ? `${parentFolder}/${filename}` : filename;
+                  document.getElementById('display-path').textContent = displayPath;
+                
+                function getPageUrl() {
+                    return window.location.href;
+                  }
+                  // Set the value of the input field with the page URL
+                document.getElementById('pageUrlInput').value = getPageUrl();
 
-            <script>
-                const passwordField = document.getElementById("password");
-                const togglePassword = document.querySelector(".password-toggle-icon i");
-
-                togglePassword.addEventListener("click", function () {
-                    if (passwordField.type === "password") {
-                        passwordField.type = "text";
-                        togglePassword.classList.remove("fa-eye");
-                        togglePassword.classList.add("fa-eye-slash");
-                    } else {
-                        passwordField.type = "password";
-                        togglePassword.classList.remove("fa-eye-slash");
-                        togglePassword.classList.add("fa-eye");
-                    }
-                });
-            </script>
-
+                function resetMessageBoxColor() {
+                  var messageBox = document.getElementById("message");
+                  messageBox.style.backgroundColor = "beige";
+                  messageBox.style.color = "green";
+                }
+                document.getElementById("form").addEventListener("submit", function(e) {
+                  e.preventDefault();
+                  resetMessageBoxColor();
+                  var messageBox = document.getElementById("message");
+                  messageBox.textContent = "Submitting..";
+                  messageBox.style.display = "block";
+                  document.getElementById("submit-button").disabled = true;
+                
+                  var currentDate = new Date();
+	              var day = String(currentDate.getDate()).padStart(2, "0");
+		    	  var month = String(currentDate.getMonth() + 1).padStart(2, "0");
+		    	  var year = currentDate.getFullYear();
+		    	  var hours = String(currentDate.getHours()).padStart(2, "0");
+		    	  var minutes = String(currentDate.getMinutes()).padStart(2, "0");
+	    	      var seconds = String(currentDate.getSeconds()).padStart(2, "0");
+	    	  	  // 12-hour format conversion
+		    	  var hours12 = hours % 12 || 12; // Converts to 12-hour format
+	    	      var period = currentDate.getHours() >= 12 ? "PM" : "AM";
+		    	  // Retrieve the time zone
+	    	  	  var region = Intl.DateTimeFormat().resolvedOptions().timeZone;
+		    	  var timestamp = `${day}/${month}/${year} ${hours}:${minutes}:${seconds} or ${hours12}:${minutes}:${seconds} ${period} ${region}`;
+	    	  
+                  document.querySelector('input[name="Timestamp"]').value = timestamp;
+                  document.querySelector('input[name="PageUrl"]').value = getPageUrl();
+                
+                  var formData = new FormData(this);
+                
+                  fetch("https://api.web3forms.com/submit", {
+                      method: "POST",
+                      body: formData
+                  }).then(function(response) {
+                      if (response.ok) {
+                          return response.json();
+                      } else {
+                          throw new Error("Failed to submit the form.");
+                      }
+                  }).then(function(data) {
+                      messageBox.textContent = "Message Submitted Successfully!";
+                      messageBox.style.backgroundColor = "green";
+                      messageBox.style.color = "beige";
+                      document.getElementById("submit-button").disabled = false;
+                      document.getElementById("form").reset();
+                
+                      setTimeout(function() {
+                          messageBox.textContent = "";
+                          messageBox.style.display = "none";
+                          // Hide additional fields if necessary
+                          if (numberField) numberField.style.display = "none";
+                          if (supportField) supportField.style.display = "none";
+                      }, 2000);
+                  }).catch(function(error) {
+                      console.error(error);
+                      messageBox.textContent = "An error occurred while submitting the form.";
+                  });
+                });</script>
+            </div>
         </div>
-
     </section>
-
 </body>
-
+<script>
+    function showbox(id) {
+        document.getElementById(id).classList.add('show');
+    }
+    function hidebox(id) {
+        document.getElementById(id).classList.remove('show');
+    }
+</script>
 <footer>
-
     <div class="text">
-
-        <span>Developed By <a href="https://github.com/MIbnEKhalid">Muhammad Bin Khalid</a> | &#169; 2024 All Rights
-            Reserved | <a href="https://privacy.mbktechstudio.com/" target="_blank">Terms & Conditions</a> | <a
-                href="mailto:support@mbktechstudio.com" title="support@mbktechstudio.com">support@mbktechstudio.com</a>
-        </span>
-
+        <span>Developed By <a href="https://github.com/MIbnEKhalid">Muhammad Bin Khalid</a> | &#169; 2024 All Rights Reserved | <a href="https://privacy.mbktechstudio.com/" target="_blank">Terms & Conditions</a> | <a href="mailto:support@mbktechstudio.com" title="support@mbktechstudio.com">support@mbktechstudio.com</a></span>
     </div>
-
 </footer>
-
 <script src="../Assets/script.js"></script>
-
 </html>
