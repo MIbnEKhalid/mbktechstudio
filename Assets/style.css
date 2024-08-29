@@ -8,15 +8,18 @@
   scroll-behavior: smooth;
 }
 
-a {
+.links {
   font-weight: 600;
+  color: #59a09c;
   transition: all 0.3s ease;
 }
-a:visited {
-  color: #377a77;
+
+.links:visited {
+  color: none;
 }
-a:hover {
-  color: #9eb5f7;
+
+.links:hover {
+  color: #377a77;
   transition: all 0.3s ease;
 }
 
