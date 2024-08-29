@@ -1,69 +1,108 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
-  <meta charset="UTF-8" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/css/intlTelInput.css">
-  <title>Home</title>
-  <link rel="stylesheet" href="Assets/main.css">
-  <link rel="stylesheet" href="Assets/style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
-  <link rel="icon" type="image/x-icon" href="Assets/dgicon.svg">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/css/intlTelInput.css">
+    <title>Home</title>
+    <link rel="stylesheet" href="Assets/main.css">
+    <link rel="stylesheet" href="Assets/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+    <link rel="icon" type="image/x-icon" href="Assets/dgicon.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 <header>
-  <nav>
-    <div class="navbar">
-      <div class="logo">
-        <div class="image">
-          <img src="Assets/dg.svg" alt="" />
+    <nav>
+        <div class="navbar">
+            <div class="logo">
+                <div class="image">
+                    <img src="Assets/dg.svg" alt="" />
+                </div>
+                <div class="text">
+                    <a href="https://mbktechstudio.com">MBK Tech Studio</a>
+                </div>
+            </div>
+            <ul style="display: none;" class="menu">
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#services">Projects</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+                <div class="cancel-btn">
+                    <i class="fas fa-times"></i>
+                </div>
+            </ul>
+            <div class="media-icons">
+                <a href="https://www.facebook.com/people/MBK-Tech-Studio/61559079077988/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://x.com/ibnekhalid28" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://instagram.com/mbktech.studios" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://github.com/MIbnEKhalid" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/muhammad-bin-khalid-89711b25b" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://youtube.com/@mibnekhalid" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://discord.gg/MUAyAeckrM" target="_blank"><i class="fab fa-discord"></i></a>
+            </div>
         </div>
-        <div class="text">
-          <a href="https://mbktechstudio.com">MBK Tech Studio</a>
+        <div style="display: none;" class="menu-btn">
+            <i class="fas fa-bars"></i>
         </div>
-      </div>
-      <ul style="display: none;" class="menu">
-        <li><a href="#about">About Us</a></li>
-        <li><a href="#services">Projects</a></li>
-        <li><a href="#contact">Contact Us</a></li>
-        <div class="cancel-btn">
-          <i class="fas fa-times"></i>
-        </div>
-      </ul>
-      <div class="media-icons">
-        <a href="https://www.facebook.com/people/MBK-Tech-Studio/61559079077988/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://x.com/ibnekhalid28" target="_blank"><i class="fab fa-twitter"></i></a>
-        <a href="https://instagram.com/mbktech.studios" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://github.com/MIbnEKhalid" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/muhammad-bin-khalid-89711b25b" target="_blank"><i class="fab fa-linkedin"></i></a>
-        <a href="https://youtube.com/@mibnekhalid" target="_blank"><i class="fab fa-youtube"></i></a>
-        <a href="https://discord.gg/MUAyAeckrM" target="_blank"><i class="fab fa-discord"></i></a>
-      </div>
-    </div>
-    <div style="display: none;" class="menu-btn">
-      <i class="fas fa-bars"></i>
-    </div>
-  </nav>
+    </nav>
 </header>
+<style>
+    section .button button {
+        font-size: 25px;
+    }
+    
+    @media (max-width: 750px) {
+        section .button button {
+            font-size: 20px;
+        }
+    }
+</style>
+
 <body>
-  <section class="about" id="about">
-    <div class="content">
-      <div class="title"><span>Portal</span></div>
-      <div class="button">
-        <button style="font-size: 25px;" onclick="loadPage('login/')">Login</button>
-        <button style="font-size: 25px;" onclick="loadPage('signup/')">SignUp</button>
-      </div>
-      <p class="admin"><span class=""><i class="fas fa-info-circle"></i> </span>This Portal Is For Admins Only</p>
-    </div>
-  </section>
+    <section class="about" id="about">
+        <div class="content">
+            <div class="title"><span>All Domains</span></div>
+            <div class="button">
+                <button onclick="loadPage('https://mbktechstudio.com')">mbktechstudio.com</button>
+            </div>
+            <div class="button">
+                <button onclick="loadPage('https://mbktech.xyz')">mbktech.xyz</button>
+            </div>
+            <div class="button">
+                <button onclick="loadPage('https://protfolio.mbktechstudio.com')">protfolio.mbktechstudio.com</button>
+            </div>
+            <div class="button">
+                <button onclick="loadPage('https://docs.mbktechstudio.com')">docs.mbktechstudio.com</button>
+                <button onclick="loadPage('https://project.mbktechstudio.com')">project.mbktechstudio.com</button>
+            </div>
+            <div class="button">
+                <button onclick="loadPage('https://privacy.mbktechstudio.com')">privacy.mbktechstudio.com</button>
+            </div>
+            <div class="button">
+                <button onclick="loadPage('https://portal.mbktechstudio.com')">portal.mbktechstudio.com</button>
+            </div>
+            <div class="button">
+                <button onclick="loadPage('https://maintenance.mbktechstudio.com')">maintenance.mbktechstudio.com</button>
+            </div>
+            <div class="button">
+                <button onclick="loadPage('https://test.mbktechstudio.com')">test.mbktechstudio.com</button>
+            </div>
+            <div class="button">
+                <button onclick="loadPage('https://domain.mbktechstudio.com')">domain.mbktechstudio.com</button>
+                <button onclick="loadPage('https://domains.mbktechstudio.com')">domains.mbktechstudio.com</button>
+            </div>
+        </div>
+    </section>
 </body>
+<script src="https://mbktechstudio.com/Assets/script.js"></script>
 <footer>
-  <div class="text">
-    <span>Developed By <a href="https://github.com/MIbnEKhalid">Muhammad Bin Khalid</a> | &#169; 2024 All Rights Reserved | <a href="https://privacy.mbktechstudio.com/" target="_blank">Terms & Conditions</a> | <a href="mailto:support@mbktechstudio.com" title="support@mbktechstudio.com">support@mbktechstudio.com</a> </span>
-  </div>
+    <div class="text">
+        <span>Developed By <a href="https://github.com/MIbnEKhalid">Muhammad Bin Khalid</a> | &#169; 2024 All Rights Reserved | <a href="https://privacy.mbktechstudio.com/" target="_blank">Terms & Conditions</a> | <a href="mailto:support@mbktechstudio.com" title="support@mbktechstudio.com">support@mbktechstudio.com</a> </span>
+    </div>
 </footer>
 <script>
-  function loadPage(url) {
-    location.href = url;
-  }
+    function loadPage(url) {
+        window.open(url, '_blank');
+    }
 </script>
+
 </html>
