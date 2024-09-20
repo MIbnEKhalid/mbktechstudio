@@ -451,8 +451,7 @@ section .button button:hover {
   margin: 0 auto 10px auto;
   transition: all 0.4s ease;
 }
-
-.boxes .box:hover .icon {
+.services .boxes .box:hover .icon {
   background-color: #fff;
   color: #377a77;
   transition: all 0.3s ease;
@@ -466,6 +465,9 @@ section .button button:hover {
 .services .boxes .box:hover p {
   color: #fff;
   transition: all 0.3s ease;
+}
+.services .boxes:hover > :not(:hover){
+  opacity: 0.6;
 }
 /* Contact Me CSS */
 .contact {
