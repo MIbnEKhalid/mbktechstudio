@@ -360,63 +360,10 @@ section .button button:hover {
   font-weight: 600;
   transition: all 0.3s ease;
 }
-
-/* My Skills CSS */
-.skills {
-  background: #f0f8ff;
-}
-.skills .content {
-  padding: 40px 0;
-}
-.skills .skills-details {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.skills-details .text {
-  width: 70%;
-}
-.skills-details p {
-  color: #0e2431;
-  text-align: justify;
-}
-.skills .skills-details .experience {
-  display: flex;
-  align-items: center;
-  margin: 0 10px;
-}
-.skills-details .experience .num {
-  color: #0e2431;
-  font-size: 80px;
-}
-.skills-details .experience .exp {
-  color: #0e2431;
-  margin-left: 20px;
-  font-size: 18px;
-  font-weight: 500;
-  margin: 0 6px;
-}
+   
 .boxes {
   margin-bottom: 20px;
-}
-.skills-details .boxes {
-  width: 45%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-.skills-details .box {
-  width: calc(100% / 2 - 20px);
-  margin: 20px 0;
-}
-.skills-details .boxes .topic {
-  font-size: 20px;
-  color: #377a77;
-}
-.skills-details .boxes .per {
-  font-size: 60px;
-  color: #377a77;
-}
+} 
 
 /* My Services CSS */
 .services .boxes {
@@ -599,21 +546,7 @@ footer .text span a:hover {
   }
   .home .text-three {
     font-size: 35px;
-  }
-  .skills .skills-details {
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-  }
-  .skills-details .text {
-    width: 100%;
-    margin-bottom: 50px;
-  }
-  .skills-details .boxes {
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-  }
+  }  
   .services .boxes .box {
     margin: 20px 0;
     width: 100%;
@@ -629,11 +562,7 @@ footer .text span a:hover {
   }
   .home .text-three {
     font-size: 33px;
-  }
-  .skills-details .boxes .per {
-    font-size: 50px;
-    color: #377a77;
-  }
+  } 
 }
 
 /* Form */
@@ -866,47 +795,4 @@ form button:hover {
 .grid-item p {
   font-size: 16px;
   color: #377a77;
-}
-
-/* Skills Section */
-.skills {
-  background: #f9f9f9;
-}
-
-.skills .title {
-  text-align: center;
-  font-size: 30px;
-  font-weight: 600;
-  margin-bottom: 20px;
-}
-
-.skills-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-}
-
-.skill-box {
-  background: #fff;
-  border-radius: 8px;
-  padding: 20px;
-  text-align: center;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s;
-}
-
-.skill-box:hover {
-  transform: translateY(-10px);
-}
-
-.skill-box .icon {
-  font-size: 40px;
-  color: #377a77;
-  margin-bottom: 10px;
-}
-
-.skill-box .skill-name {
-  font-size: 18px;
-  font-weight: 500;
-}
+}  
