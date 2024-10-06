@@ -403,7 +403,7 @@
                 <div class="field phoneField" style="display: none;">
                     <label class="label">Phone Number</label>
                     <div class="control">
-                        <input type="number" id="mobile_code" placeholder="Enter Phone Number" name="Number" />
+                        <input type="text" id="mobile_code" placeholder="Enter Phone Number" name="Number" />
                     </div>
                 </div>
 
@@ -467,11 +467,20 @@
 </footer>
 
 <script>
+
     $("#mobile_code").intlTelInput({
-        initialCountry: "pk",
-        separateDialCode: true
-            // utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.4/js/utils.js"
-    });
+    initialCountry: "pk",
+    separateDialCode: true
+        // utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.4/js/utils.js"
+}).on("input", function(e) {
+    var input = e.target.value;
+    e.target.value = input.replace(/[^0-9]/g, '').slice(0, 11);
+    if (e.target.value.length < 10) {
+        e.target.setCustomValidity("Phone number must be at least 10 digits.");
+    } else {
+        e.target.setCustomValidity("");
+    }
+});
 
     function remove() {
         let i = 0;
