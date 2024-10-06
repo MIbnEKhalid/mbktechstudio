@@ -17,6 +17,37 @@
 </head>
 
 <style>
+    .notification {
+        padding: 10px;
+        border-radius: 8px;
+        color: #333;
+        font-size: 16px;
+        font-family: Arial, sans-serif;
+    }
+    
+    .notification.is-form {
+        padding: 15px;
+        background-color: #eef8ff;
+        border: 1px solid #a7d4ff;
+        color: #31708f;
+        /*  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
+    }
+    
+    .notification.is-link {
+        background-color: #fff8e1;
+        border: 1px solid #ffe082;
+        color: #8a6d3b;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .notification.is-info {
+        margin: 10px 0;
+        background-color: #d1ecf1;
+        border: 1px solid #bee5eb;
+        color: #0c5460;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
     .required-label::after {
         content: "*";
         color: red;
@@ -28,7 +59,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        width: 85%;
+        width: 90%;
         margin-top: 20px;
     }
     
@@ -60,6 +91,7 @@
     form select {
         width: 100%;
         margin-bottom: 10px;
+        margin-top: 5px;
         padding: 10px;
         border: 1px solid #ccc;
         border-radius: 6px;
@@ -235,7 +267,8 @@
 
             <div class="title"><span>Support & Contact</span></div>
 
-            <form action="https://api.web3forms.com/submit" style="display: block;" id="form" class="container m-4 pl-4" method="POST">
+
+            <form action="https://api.web3forms.com/submit" style="display: block;" id="form" class="container notification is-form m-4 pl-4" method="POST">
 
                 <input type="hidden" name="access_key" value="d2837145-a5b5-49af-b269-cb79e9b57456">
                 <input class="input" type="hidden" name="Timestamp">
@@ -379,14 +412,12 @@
                     <div class="control"><textarea class="input" placeholder="Enter Your Message" name="Message" rows="4" required=""></textarea></div>
                 </div>
 
-
                 <div class="notification is-info">
                     <p>
                         <strong>Note:</strong> For Quicker Assistance, Contact Us On Social Media. Email Responses May Take 1-2 Business Days.
                     </p>
                 </div>
 
-                <!-- Improved textp section for email fallback -->
                 <div class="notification is-link">
                     <p>
                         If The Form Is Not Working, <a class="links" href="mailto:support@mbktechstudio.com?body=Hello%20MBK%20Tech%20Studio%20Support%20Team,%0D%0A%0D%0A
