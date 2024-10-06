@@ -4,15 +4,15 @@
 
 <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/css/intlTelInput.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/js/intlTelInput-jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <script src="https://kit.fontawesome.com/0934e8e9d3.js" crossorigin="anonymous"></script>
-    <title id="page-title"></title>
     <link rel="stylesheet" href="https://docs.mbktechstudio.com/Assets/project.css">
     <link rel="icon" type="image/x-icon" href="../Assets/Images/dgicon.svg">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/js/intlTelInput-jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/0934e8e9d3.js" crossorigin="anonymous"></script>
+    <title id="page-title"></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
@@ -23,7 +23,6 @@
         font-weight: normal;
         margin-left: 2px;
     }
-    /* Form */
     
     .container {
         display: flex;
@@ -53,14 +52,14 @@
     form .label {
         color: rgb(0, 0, 0);
         font-weight: bold;
-        margin-bottom: 5px;
+        margin-bottom: 10px;
     }
     
     form input,
     form textarea,
     form select {
         width: 100%;
-        margin-bottom: 5px;
+        margin-bottom: 10px;
         padding: 10px;
         border: 1px solid #ccc;
         border-radius: 6px;
@@ -118,6 +117,79 @@
     body {
         background-color: #f0f8ff;
     }
+    
+    .links {
+        font-weight: 600;
+        color: #59a09c;
+        transition: all 0.3s ease;
+    }
+    /*Star rating*/
+    
+    .rating {
+        display: inline-block;
+        position: relative;
+        height: 50px;
+        line-height: 50px;
+        font-size: 35px;
+    }
+    
+    .rating label {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        cursor: pointer;
+    }
+    
+    .rating label:last-child {
+        position: static;
+    }
+    
+    .rating label:nth-child(1) {
+        z-index: 5;
+    }
+    
+    .rating label:nth-child(2) {
+        z-index: 4;
+    }
+    
+    .rating label:nth-child(3) {
+        z-index: 3;
+    }
+    
+    .rating label:nth-child(4) {
+        z-index: 2;
+    }
+    
+    .rating label:nth-child(5) {
+        z-index: 1;
+    }
+    
+    .rating label input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+    }
+    
+    .rating label .icon {
+        float: left;
+        color: transparent;
+    }
+    
+    .rating label:last-child .icon {
+        color: #bdbdbd;
+    }
+    
+    .rating:not(:hover) label input:checked~.icon,
+    .rating:hover label:hover input~.icon {
+        color: #59a09c;
+    }
+    
+    .rating label input:focus:not(:checked)~.icon:last-child {
+        color: #bdbdbd;
+        text-shadow: 0 0 5px #59a09c;
+    }
 </style>
 
 <header>
@@ -156,7 +228,9 @@
 </header>
 
 <body>
+
     <section class="contact" id="contact">
+
         <div class="content">
 
             <div class="title"><span>Support & Contact</span></div>
@@ -255,7 +329,6 @@
                 <div class="field ratingWeb" style="display: none;">
                     <label class="label">Rating</label>
                     <requirAs style="color: red;">*</requirAs>
-
                     <div class="control">
                         <div class="rating">
                             <label>
@@ -303,13 +376,29 @@
 
                 <div class="field">
                     <label class="label required-label">Message</label>
-
                     <div class="control"><textarea class="input" placeholder="Enter Your Message" name="Message" rows="4" required=""></textarea></div>
                 </div>
 
-                <textp>
-                    Note: For Quicker Assistance, Contact Us On Social Media. Email Responses May Take 1-2 Business Days.
-                </textp>
+
+                <div class="notification is-info">
+                    <p>
+                        <strong>Note:</strong> For Quicker Assistance, Contact Us On Social Media. Email Responses May Take 1-2 Business Days.
+                    </p>
+                </div>
+
+                <!-- Improved textp section for email fallback -->
+                <div class="notification is-link">
+                    <p>
+                        If The Form Is Not Working, <a class="links" href="mailto:support@mbktechstudio.com?body=Hello%20MBK%20Tech%20Studio%20Support%20Team,%0D%0A%0D%0A
+                I%20Am%20Having%20An%20Issue%20Submitting%20The%20Form,%20So%20Here%20Are%20Details:%0D%0A
+                - Support%20Type%20(if%20applicable):%20%0D%0A
+                - Project%20Name%20(if%20applicable):%20%0D%0A
+                - Phone%20Number%20(if%20applicable):%20%0D%0A
+                - Other%20Contact%20Email%20(if%20applicable):%20%0D%0A%0D%0A
+                Name:%20%0D%0A
+                Message:%20%0D%0A%0D%0A">Click Here</a> To Write A Direct Email.
+                    </p>
+                </div>
 
                 <div class="button field is-grouped" style="display: flex; justify-content: center;">
                     <div class="control"><button class="button is-primary" type="submit" id="submit-button">Submit</button></div>
@@ -320,22 +409,20 @@
             </form>
 
             <div class="ssmedis" id="ssmedia">
-
-                <a href="https://www.facebook.com/people/MBK-Tech-Studio/61559079077988/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://x.com/ibnekhalid28" target="_blank"><i class="fab fa-twitter"></i></a>
                 <a href="https://instagram.com/mbktech.studios" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="https://github.com/MIbnEKhalid" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://signal.me/#eu/0Bxn3qmtp8gtYNuy6eJ_F3WaHWHrQW3uefaC2y01VCWtduFQCwJHvIFL6N4VOtsv" target="_blank"><i class="fa-brands fa-signal-messenger"></i></a>
+                <a href="https://www.facebook.com/people/MBK-Tech-Studio/61559079077988/" target="_blank"><i class="fab fa-facebook-f"></i></a>
                 <a href="https://www.linkedin.com/in/muhammad-bin-khalid-89711b25b" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://x.com/ibnekhalid28" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://github.com/MIbnEKhalid" target="_blank"><i class="fab fa-github"></i></a>
                 <a href="https://youtube.com/@mibnekhalid" target="_blank"><i class="fab fa-youtube"></i></a>
-                <a href="https://discord.gg/MUAyAeckrM" target="_blank"><i class="fab fa-discord"></i></a>
-                <a href="https://discord.gg/MUAyAeckrM" target="_blank">
-                    <i class="fa-brands fa-signal-messenger"></i>
-                </a>
-
+                <a href="https://discord.gg/" target="_blank"><i class="fab fa-discord"></i></a>
             </div>
 
         </div>
+
     </section>
+
 </body>
 
 <footer>
@@ -348,15 +435,20 @@
 
 </footer>
 
-<!--Form Submission-->
 <script>
-    //phone
-
     $("#mobile_code").intlTelInput({
         initialCountry: "pk",
         separateDialCode: true
             // utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.4/js/utils.js"
     });
+
+    function remove() {
+        let i = 0;
+        while (i < 5) {
+            stars[i].className = "star";
+            i++;
+        }
+    }
 
     document.getElementById("subjectSelect").addEventListener("change", function() {
         var numberField = document.querySelector(".phoneField");
@@ -462,24 +554,6 @@
         }
     });
 
-    function remove() {
-        let i = 0;
-        while (i < 5) {
-            stars[i].className = "star";
-            i++;
-        }
-    }
-
-    function resetMessageBoxColor() {
-        var messageBox = document.getElementById("message");
-        messageBox.style.backgroundColor = "beige";
-        messageBox.style.color = "green";
-    }
-
-    function getPageUrl() {
-        return window.location.href;
-    }
-
     document.getElementById("form").addEventListener("submit", function(e) {
         e.preventDefault();
         resetMessageBoxColor();
@@ -536,6 +610,16 @@
         });
     });
 
+    function resetMessageBoxColor() {
+        var messageBox = document.getElementById("message");
+        messageBox.style.backgroundColor = "beige";
+        messageBox.style.color = "green";
+    }
+
+    function getPageUrl() {
+        return window.location.href;
+    }
+
     let nav = document.querySelector("nav");
     let val;
     window.onscroll = function() {
@@ -546,7 +630,6 @@
         }
     }
 
-    // Side NavIgation Menu JS Code
     let body = document.querySelector("body");
     let navBar = document.querySelector(".navbar");
     let menuBtn = document.querySelector(".menu-btn");
@@ -565,8 +648,6 @@
         body.style.overflow = "auto";
         scrollBtn.style.pointerEvents = "auto";
     }
-
-    // Side Navigation Bar Close While We Click On Navigation Links
     let navLinks = document.querySelectorAll(".menu li a");
     for (var i = 0; i < navLinks.length; i++) {
         navLinks[i].addEventListener("click", function() {
