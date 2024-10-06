@@ -47,6 +47,19 @@ function getPageUrl() {
     return window.location.href;
 }
 
+$("#mobile_code").intlTelInput({
+    initialCountry: "pk",
+    separateDialCode: true 
+}).on("input", function(e) {
+    var input = e.target.value;
+    e.target.value = input.replace(/[^0-9]/g, '').slice(0, 11);
+    if (e.target.value.length < 10) {
+        e.target.setCustomValidity("Phone number must be at least 10 digits.");
+    } else {
+        e.target.setCustomValidity("");
+    }
+});
+
 function resetMessageBoxColor() {
     document.getElementById("message").style.backgroundColor = "beige";
     document.getElementById("message").style.color = "green";
@@ -79,7 +92,7 @@ document.getElementById("form").addEventListener("submit", function(e) {
 
     var countryCode = $("#mobile_code").intlTelInput("getSelectedCountryData").dialCode;
     var inputNumber = document.querySelector('input[name="Number"]').value;
-    var combinedNumber = "+" + countryCode + inputNumber; // Add the '+' sign here
+    var combinedNumber = "+" + countryCode + inputNumber;
     document.querySelector('input[name="Timestamp"]').value = timestamp;
     document.querySelector('input[name="Number"]').value = combinedNumber;
 
