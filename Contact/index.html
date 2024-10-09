@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/css/intlTelInput.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://docs.mbktechstudio.com/Assets/project.css">
+    <link rel="icon" type="image/x-icon" href="../Assets/Images/dgicon.svg">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/js/intlTelInput-jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/0934e8e9d3.js" crossorigin="anonymous"></script>
+    <title>Support & Contact</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<style>
+    .notification {
+        padding: 10px;
+        border-radius: 8px;
+        color: #333;
+        font-size: 16px;
+        font-family: Arial, sans-serif;
+    }
+    
+    .notification.is-form {
+        padding: 15px;
+        background-color: #eef8ff;
+        border: 1px solid #a7d4ff;
+        color: #31708f;
+        /*  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
+    }
+    
+    .notification.is-link {
+        background-color: #fff8e1;
+        border: 1px solid #ffe082;
+        color: #8a6d3b;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .notification.is-info {
+        margin: 10px 0;
+        background-color: #d1ecf1;
+        border: 1px solid #bee5eb;
+        color: #0c5460;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .required-label::after {
+        content: "*";
+        color: red;
+        font-weight: normal;
+        margin-left: 2px;
+    }
+    
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 90%;
+        margin-top: 20px;
+    }
+    
+    form select {
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        background-color: #fff;
+    }
+    
+    form {
+        margin: auto;
+    }
+    
+    form .field {
+        margin-bottom: 5px;
+    }
+    
+    form .label {
+        color: rgb(0, 0, 0);
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+    
+    form input,
+    form textarea,
+    form select {
+        width: 100%;
+        margin-bottom: 10px;
+        margin-top: 5px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        background-color: #fff;
+    }
+    
+    .ssmedis {
+        padding: auto;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        justify-content: center;
+        flex-wrap: wrap;
+        display: flex;
+    }
+    
+    .ssmedis a {
+        color: #377a77;
+        font-size: 40px;
+        margin: 0 6px;
+        transition: all 0.3s ease;
+    }
+    
+    .ssmedis a:hover {
+        color: #8c8e96;
+        transition: all 0.4s ease;
+    }
+    
+    .signal {
+        color: #377a77;
+        display: inline-block;
+        width: 35px;
+        height: 35px;
+        background-image: url('Assets/Images/Signal-Logo-White.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+    
+    section .title {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 30px;
+        margin-top: 30px;
+    }
+    
+    section .title span {
+        color: #6698e4;
+    }
+    
+    section .button button {
+        font-size: 20px;
+        padding: 7px 16px;
+    }
+    
+    html,
+    body {
+        background-color: #f0f8ff;
+    }
+    
+    .links {
+        font-weight: 600;
+        color: #59a09c;
+        transition: all 0.3s ease;
+    }
+    /*Star rating*/
+    
+    .rating {
+        display: inline-block;
+        position: relative;
+        height: 50px;
+        line-height: 50px;
+        font-size: 35px;
+    }
+    
+    .rating label {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        cursor: pointer;
+    }
+    
+    .rating label:last-child {
+        position: static;
+    }
+    
+    .rating label:nth-child(1) {
+        z-index: 5;
+    }
+    
+    .rating label:nth-child(2) {
+        z-index: 4;
+    }
+    
+    .rating label:nth-child(3) {
+        z-index: 3;
+    }
+    
+    .rating label:nth-child(4) {
+        z-index: 2;
+    }
+    
+    .rating label:nth-child(5) {
+        z-index: 1;
+    }
+    
+    .rating label input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+    }
+    
+    .rating label .icon {
+        float: left;
+        color: transparent;
+    }
+    
+    .rating label:last-child .icon {
+        color: #bdbdbd;
+    }
+    
+    .rating:not(:hover) label input:checked~.icon,
+    .rating:hover label:hover input~.icon {
+        color: #59a09c;
+    }
+    
+    .rating label input:focus:not(:checked)~.icon:last-child {
+        color: #bdbdbd;
+        text-shadow: 0 0 5px #59a09c;
+    }
+</style>
+
+<header>
+    <nav>
+        <div class="navbar">
+            <div class="logo">
+                <div class="image">
+                    <img src="../Assets/Images/dg.svg" alt="" />
+                </div>
+                <div class="text">
+                    <a href="https://mbktechstudio.com">MBK Tech Studio</a>
+                </div>
+            </div>
+            <ul style="display: none;" class="menu">
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#services">Projects</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+                <div class="cancel-btn">
+                    <i class="fas fa-times"></i>
+                </div>
+            </ul>
+            <div class="media-icons">
+                <a href="https://www.facebook.com/people/MBK-Tech-Studio/61559079077988/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://x.com/ibnekhalid28" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://instagram.com/mbktech.studios" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://github.com/MIbnEKhalid" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/muhammad-bin-khalid-89711b25b" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://youtube.com/@mibnekhalid" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://discord.gg/MUAyAeckrM" target="_blank"><i class="fab fa-discord"></i></a>
+            </div>
+        </div>
+        <div style="display: none;" class="menu-btn">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+</header>
+
+<body>
+
+    <section class="contact" id="contact">
+
+        <div class="content">
+
+            <div class="title"><span>Support & Contact</span></div>
+
+
+            <form action="https://api.web3forms.com/submit" style="display: block;" id="form" class="container notification is-form m-4 pl-4" method="POST">
+
+                <input type="hidden" name="access_key" value="d2837145-a5b5-49af-b269-cb79e9b57456">
+                <input class="input" type="hidden" name="Timestamp">
+
+                <div class="field">
+
+                    <label class="label required-label">Subject</label>
+
+                    <div class="control">
+
+                        <div class="select">
+                            <select name="Subject" id="subjectSelect" required="">
+                           <option value="" disabled="" selected="">Select a subject</option>
+                           <option value="Feedback">Feedback</option>
+                           <option value="Collaboration">Collaboration</option>
+                           <option value="Support">Support</option>
+                           <option value="General Inquiry">General Inquiry</option>
+                       </select>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Support Field Appear When Support is Selected -->
+
+                <div class="field supportfield" style="display: none;">
+
+                    <label class="label required-label">Support Type</label>
+
+                    <div class="control">
+
+                        <div class="select">
+                            <select name="support" id="supportselect">
+                           <option value="" disabled="" selected="">Select support type</option>
+                           <option value="Blogs">Blogs</option>
+                           <option value="Technical">Technical</option>
+                           <option value="CopyRightIssue">CopyRight Issue</option>
+                           <option value="SourceCodeAssistance">Source Code Assistance</option>
+                           <option value="BugReportingFeatureRequests">Bug Reporting &amp; Feature Requests</option>
+                           <option value="other">other</option>
+                        </select>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="field projectCatogo" style="display: none;">
+
+                    <label class="label required-label">Project</label>
+
+                    <div class="control">
+
+                        <div class="select">
+                            <select name="projectCato" id="projectCatogo">
+                        <option value="" disabled="" selected="">Select Project</option>
+                        <option value="SMP">SMP/SMP-Unity</option>
+                        <option value="UnityFeedback">UnityFeedback</option> 
+                        <option value="other">other</option>
+                     </select>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="field otherProjecCato" style="display: none;">
+                    <label class="label required-label">Project Name</label>
+                    <div class="control">
+                        <input type="text" id="otherProjecCatO" placeholder="Enter Project Name" name="projectCatoN" />
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label required-label">Name</label>
+                    <div class="control">
+                        <div class="input"><input type="text" placeholder="Enter Your Name" name="UserName" required=""></div>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label required-label">Email</label>
+                    <div class="control">
+                        <div class="input"><input type="email" placeholder="Enter Your Email" name="Email" required=""></div>
+                    </div>
+                </div>
+
+                <!-- Support Field Appear When Feedback is Selected -->
+
+                <div class="field ratingWeb" style="display: none;">
+                    <label class="label">Rating</label>
+                    <requirAs style="color: red;">*</requirAs>
+                    <div class="control">
+                        <div class="rating">
+                            <label>
+                           <input type="radio" name="stars" value="1">
+                           <span class="fa fa-star icon"></span>
+                       </label>
+                            <label>
+                           <input type="radio" name="stars" value="2">
+                           <span class="fa fa-star icon"></span>
+                           <span class="fa fa-star icon"></span>
+                       </label>
+                            <label>
+                           <input type="radio" name="stars" value="3">
+                           <span class="fa fa-star icon"></span>
+                           <span class="fa fa-star icon"></span>
+                           <span class="fa fa-star icon"></span>   
+                       </label>
+                            <label>
+                           <input type="radio" name="stars" value="4">
+                           <span class="fa fa-star icon"></span>
+                           <span class="fa fa-star icon"></span>
+                           <span class="fa fa-star icon"></span>
+                           <span class="fa fa-star icon"></span>
+                       </label>
+                            <label>
+                           <input type="radio" name="stars" value="5">
+                           <span class="fa fa-star icon"></span>
+                           <span class="fa fa-star icon"></span>
+                           <span class="fa fa-star icon"></span>
+                           <span class="fa fa-star icon"></span>
+                           <span class="fa fa-star icon"></span>
+                       </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Support Field Appear When Collabration & Support is Selected -->
+
+                <div class="field phoneField" style="display: none;">
+                    <label class="label">Phone Number</label>
+                    <div class="control">
+                        <input type="text" id="mobile_code" placeholder="Enter Phone Number" name="Number" />
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label required-label">Message</label>
+                    <div class="control"><textarea class="input" placeholder="Enter Your Message" name="Message" rows="4" required=""></textarea></div>
+                </div>
+
+                <div class="notification is-info">
+                    <p>
+                        <strong>Note:</strong> For Quicker Assistance, Contact Us On Social Media. Email Responses May Take 1-2 Business Days.
+                    </p>
+                </div>
+
+                <div class="notification is-link">
+                    <p>
+                        If The Form Is Not Working, <a class="links" href="mailto:support@mbktechstudio.com?body=" id="direct-email-link">Click Here</a>
+                        To Write A Direct Email.
+                    </p>
+                </div>
+
+                <div class="button field is-grouped" style="display: flex; justify-content: center;">
+                    <div class="control"><button class="button is-primary" type="submit" id="submit-button">Submit</button></div>
+                </div>
+
+                <div id="message" style="display: none; font-weight: bold; color: green; padding: 8px; background-color: beige; border-radius: 4px; border-color: aquamarine;"></div>
+
+            </form>
+
+            <div class="ssmedis" id="ssmedia">
+                <a href="https://instagram.com/mbktech.studios" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://signal.me/#eu/0Bxn3qmtp8gtYNuy6eJ_F3WaHWHrQW3uefaC2y01VCWtduFQCwJHvIFL6N4VOtsv" target="_blank"><i class="fa-brands fa-signal-messenger"></i></a>
+                <a href="https://www.facebook.com/people/MBK-Tech-Studio/61559079077988/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.linkedin.com/in/muhammad-bin-khalid-89711b25b" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://x.com/ibnekhalid28" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://github.com/MIbnEKhalid" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://youtube.com/@mibnekhalid" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://discord.gg/" target="_blank"><i class="fab fa-discord"></i></a>
+            </div>
+
+        </div>
+
+    </section>
+
+</body>
+
+<footer>
+
+    <div class="text">
+
+        <span>Developed By <a href="https://github.com/MIbnEKhalid">Muhammad Bin Khalid</a> | &#169; 2024 All Rights Reserved | <a href="https://privacy.mbktechstudio.com/" target="_blank" >Terms & Conditions</a> | <a href="https://mbktechstudio.com/FAQS" target="_blank">FAQs</a> | <a href="mailto:support@mbktechstudio.com" title="support@mbktechstudio.com" >support@mbktechstudio.com</a> </span>
+
+    </div>
+
+</footer>
+
+<script>
+ 
+ const emailLink = document.getElementById('direct-email-link');
+const form = document.getElementById('form');
+
+emailLink.addEventListener('click', function(event) {
+  event.preventDefault(); // Prevent default mailto behavior
+
+  // Build the email body with field names and values, handling special characters
+  let emailBody = "";
+  const formData = new FormData(form);
+
+  for (const [key, value] of formData.entries()) {
+    if (key === 'access_key' || key === 'Timestamp') {
+      continue;
+    }
+    emailBody += `- ${key}: ${encodeURIComponent(value)}\n`;
+  }
+
+  // Update the mailto link with pre-filled body
+  this.href = `mailto:support@mbktechstudio.com?subject=${encodeURIComponent(document.getElementById('subjectSelect').value)}&body=${encodeURIComponent(emailBody)}`;
+
+  // Try opening the email client
+  window.location.href = this.href;
+});
+    $("#mobile_code").intlTelInput({
+    initialCountry: "pk",
+    separateDialCode: true
+        // utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.4/js/utils.js"
+}).on("input", function(e) {
+    var input = e.target.value;
+    e.target.value = input.replace(/[^0-9]/g, '').slice(0, 11);
+    if (e.target.value.length < 10) {
+        e.target.setCustomValidity("Phone number must be at least 10 digits.");
+    } else {
+        e.target.setCustomValidity("");
+    }
+});
+
+    function remove() {
+        let i = 0;
+        while (i < 5) {
+            stars[i].className = "star";
+            i++;
+        }
+    }
+
+    document.getElementById("subjectSelect").addEventListener("change", function() {
+        var numberField = document.querySelector(".phoneField");
+        var ratingField = document.querySelector(".ratingWeb");
+        var supportField = document.querySelector(".supportfield");
+
+        // Get the value of the selected option
+        var selectedOption = this.value;
+
+        if (selectedOption === "Collaboration") {
+            // Show phone number field for collaboration
+            numberField.style.display = "block";
+            document.querySelector('input[name="Number"]').setAttribute("required", "required");
+
+            // Hide rating field
+            ratingField.style.display = "none";
+            document.querySelectorAll('input[name="stars"]').forEach(function(input) {
+                input.removeAttribute("required");
+            });
+
+            // Hide support field
+            supportField.style.display = "none";
+            document.querySelectorAll('select[name="support"]').forEach(function(input) {
+                input.removeAttribute("required");
+            });
+        } else if (selectedOption === "Feedback") {
+            // Show rating field for feedback
+            ratingField.style.display = "block";
+            document.querySelectorAll('input[name="stars"]').forEach(function(input) {
+                input.setAttribute("required", "required");
+            });
+
+            // Hide phone number field
+            numberField.style.display = "none";
+            document.querySelector('input[name="Number"]').removeAttribute("required");
+
+            // Hide support field
+            supportField.style.display = "none";
+            document.querySelectorAll('select[name="support"]').forEach(function(input) {
+                input.removeAttribute("required");
+            });
+        } else if (selectedOption === "Support") {
+            // Show support field for support
+            supportField.style.display = "block";
+            document.querySelectorAll('select[name="support"]').forEach(function(input) {
+                input.setAttribute("required", "required");
+            });
+
+            // Show phone number field for support
+            numberField.style.display = "block";
+            document.querySelector('input[name="Number"]').setAttribute("required", "required");
+
+            // Hide rating field
+            ratingField.style.display = "none";
+            document.querySelectorAll('input[name="stars"]').forEach(function(input) {
+                input.removeAttribute("required");
+            });
+        } else {
+            // Hide all additional fields for other options
+            numberField.style.display = "none";
+            document.querySelector('input[name="Number"]').removeAttribute("required");
+            ratingField.style.display = "none";
+            document.querySelectorAll('input[name="stars"]').forEach(function(input) {
+                input.removeAttribute("required");
+            });
+            supportField.style.display = "none";
+            document.querySelectorAll('select[name="support"]').forEach(function(input) {
+                input.removeAttribute("required");
+            });
+        }
+    });
+
+    document.getElementById("supportselect").addEventListener("change", function() {
+        var projectCatogery = document.querySelector(".projectCatogo");
+
+        var selectedOption = this.value;
+
+        if (selectedOption === "CopyRightIssue" || selectedOption === "SourceCodeAssistance" || selectedOption === "BugReportingFeatureRequests") {
+            projectCatogery.style.display = "block";
+            document.querySelectorAll('select[name="projectCato"]').forEach(function(input) {
+                input.setAttribute("required", "required");
+            });
+        } else {
+            projectCatogery.style.display = "none";
+            document.querySelectorAll('select[name="projectCato"]').forEach(function(input) {
+                input.removeAttribute("required");
+            });
+        }
+    });
+
+    document.getElementById("projectCatogo").addEventListener("change", function() {
+
+        var projectNCatogery = document.querySelector(".otherProjecCato");
+        var selectedOption = this.value;
+
+        if (selectedOption === "other") {
+            projectNCatogery.style.display = "block";
+            document.querySelector('input[name="projectCatoN"]').setAttribute("required", "required");
+
+        } else {
+            projectNCatogery.style.display = "none";
+            document.querySelector('input[name="projectCatoN"]').removeAttribute("required");
+        }
+    });
+
+    document.getElementById("form").addEventListener("submit", function(e) {
+        e.preventDefault();
+        resetMessageBoxColor();
+        var messageBox = document.getElementById("message");
+        messageBox.textContent = "Submitting..";
+        messageBox.style.display = "block";
+        document.getElementById("submit-button").disabled = true;
+
+        var currentDate = new Date();
+        var day = String(currentDate.getDate()).padStart(2, "0");
+        var month = String(currentDate.getMonth() + 1).padStart(2, "0");
+        var year = currentDate.getFullYear();
+        var hours = String(currentDate.getHours()).padStart(2, "0");
+        var minutes = String(currentDate.getMinutes()).padStart(2, "0");
+        var seconds = String(currentDate.getSeconds()).padStart(2, "0");
+        var timestamp = `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
+
+        document.querySelector('input[name="Timestamp"]').value = timestamp;
+
+        var formData = new FormData(this);
+
+        fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            body: formData
+        }).then(function(response) {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error("Failed to submit the form.");
+            }
+        }).then(function(data) {
+            messageBox.textContent = "Message Submitted Successfully!";
+            messageBox.style.backgroundColor = "green";
+            messageBox.style.color = "beige";
+            document.getElementById("submit-button").disabled = false;
+            document.getElementById("form").reset();
+
+            setTimeout(function() {
+                messageBox.textContent = "";
+                messageBox.style.display = "none";
+                // Hide additional fields if necessary
+                var numberField = document.querySelector(".phoneField");
+                if (numberField) numberField.style.display = "none";
+                var supportField = document.querySelector(".supportfield");
+                if (supportField) supportField.style.display = "none";
+                var pField = document.querySelector(".projectCatogo");
+                if (pField) pField.style.display = "none";
+                var opField = document.querySelector(".otherProjecCato");
+                if (opField) opField.style.display = "none";
+            }, 2000);
+        }).catch(function(error) {
+            console.error(error);
+            messageBox.textContent = "An error occurred while submitting the form.";
+        });
+    });
+
+    function resetMessageBoxColor() {
+        var messageBox = document.getElementById("message");
+        messageBox.style.backgroundColor = "beige";
+        messageBox.style.color = "green";
+    }
+
+    function getPageUrl() {
+        return window.location.href;
+    }
+
+    let nav = document.querySelector("nav");
+    let val;
+    window.onscroll = function() {
+        if (document.documentElement.scrollTop > 20) {
+            nav.classList.add("sticky");
+        } else {
+            nav.classList.remove("sticky");
+        }
+    }
+
+    let body = document.querySelector("body");
+    let navBar = document.querySelector(".navbar");
+    let menuBtn = document.querySelector(".menu-btn");
+    let cancelBtn = document.querySelector(".cancel-btn");
+    menuBtn.onclick = function() {
+        navBar.classList.add("active");
+        menuBtn.style.opacity = "0";
+        menuBtn.style.pointerEvents = "none";
+        body.style.overflow = "hidden";
+        scrollBtn.style.pointerEvents = "none";
+    }
+    cancelBtn.onclick = function() {
+        navBar.classList.remove("active");
+        menuBtn.style.opacity = "1";
+        menuBtn.style.pointerEvents = "auto";
+        body.style.overflow = "auto";
+        scrollBtn.style.pointerEvents = "auto";
+    }
+    let navLinks = document.querySelectorAll(".menu li a");
+    for (var i = 0; i < navLinks.length; i++) {
+        navLinks[i].addEventListener("click", function() {
+            navBar.classList.remove("active");
+            menuBtn.style.opacity = "1";
+            menuBtn.style.pointerEvents = "auto";
+        });
+    }
+</script>
+
+</html>
