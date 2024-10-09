@@ -409,7 +409,7 @@
 
                 <div class="field">
                     <label class="label required-label">Message</label>
-                    <div class="control"><textarea class="input" id="message_form" placeholder="Enter Your Message" name="Message" rows="4" required=""></textarea></div>
+                    <div class="control"><textarea class="input" id="message_form" placeholder="Enter Your Message" name="Message" rows="6" required=""></textarea></div>
                 </div>
 
                 <div class="notification is-info">
@@ -480,7 +480,12 @@ if (window.location.hash === "#requestbook") {
 
   subjectSelect.value = "Support";
   supportSelect.value = "other";
-  messageForm.value = "Requesting Book:\nBook Name:\nBook Link:(leave blank if you don't have book link and want me to find)";
+  messageForm.value =  "Book Request:
+Semester: 
+Course Name or Code:
+Book Name: 
+Book Link: (Leave Blank If not available)
+";
 }
     
  const emailLink = document.getElementById('direct-email-link');
