@@ -409,7 +409,7 @@
 
                 <div class="field">
                     <label class="label required-label">Message</label>
-                    <div class="control"><textarea class="input" placeholder="Enter Your Message" name="Message" rows="4" required=""></textarea></div>
+                    <div class="control"><textarea class="input" id="message_form" placeholder="Enter Your Message" name="Message" rows="4" required=""></textarea></div>
                 </div>
 
                 <div class="notification is-info">
@@ -461,7 +461,28 @@
 </footer>
 
 <script>
+
+// Check for the hash fragment on page load
+if (window.location.hash === "#requestbook") {
+  loadFormValues();
+}
  
+ function loadFormValues() {
+             var supportField = document.querySelector(".supportfield");
+            supportField.style.display = "block";
+            document.querySelectorAll('select[name="support"]').forEach(function(input) {
+                input.setAttribute("required", "required");
+            });
+     
+  const subjectSelect = document.getElementById("subjectSelect");
+  const supportSelect = document.getElementById("supportselect");
+  const messageForm = document.getElementById("message_form");
+
+  subjectSelect.value = "Support";
+  supportSelect.value = "other";
+  messageForm.value = "Requesting Book:\nBook Name:\nBook Link:(leave blank if you don't have book link and want me to find)";
+}
+    
  const emailLink = document.getElementById('direct-email-link');
 const form = document.getElementById('form');
 
