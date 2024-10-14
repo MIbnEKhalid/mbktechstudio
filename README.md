@@ -2,15 +2,19 @@
 
 https://mbktechstudio.com/ or https://MIbnEKhalid.github.io/
 
+Website Source Code 
+
+https://github.com/MIbnEKhalid/MIbnEKhalid.github.io/ or https://github.com/MIbnEKhalid/mbktech.studios/
+
 Detailed Documentation of this website will be available soon on: [docs.mbktechstudio.com/mbktechstudio.com](https://docs.mbktechstudio.com/mbktechstudio.com)
 
 ### List Of Main Domains 
 
-|                         | Domains                       | Purpose                                                                                                 |
-|-------------------------|-------------------------------|---------------------------------------------------------------------------------------------------------|
-| **Main Domain**         | mbktechstudio.com             | Main Domain Used For all purposes for personal and official                                             |
-| **Secondary Domain**    | mbktech.xyz                   | Backup domain, rarely used.                                                                             |
-| **Portfolio Domain**    | ibnekhalid.me                 | The primary website for my personal portfolio, domain was provided as part of the GitHub Student Pack.  |
+|                         | Domains                                        | Purpose                                                                                                 |
+|-------------------------|------------------------------------------------|---------------------------------------------------------------------------------------------------------|
+| **Main Domain**         | [mbktechstudio.com](https://mbktechstudio.com) | Main Domain Used For all purposes for personal and official                                             |
+| **Secondary Domain**    | [mbktech.xyz](https://mbktech.xyz)             | Backup domain, rarely used.                                                                             |
+| **Portfolio Domain**    | [ibnekhalid.me](https://ibnekhalid.me)         | The primary website for my personal portfolio, domain was provided as part of the GitHub Student Pack.  |
 
 
 ### List Of mbktechstudio.com sub domains
@@ -42,11 +46,6 @@ Detailed Documentation of this website will be available soon on: [docs.mbktechs
  
 **Note:** `mibnekhalid.github.io`, `privacy-mbktechstudio.netlify.app`, `docs-mbktechstudio.netlify.app`, `portal-mbktechstudio.netlify.app`, `portfolio-mbktechstudio.netlify.app`, `unilib-mbktechstudio.netlify.app`, `test-mbktechstudio.netlify.app`, `protfolio-mbktechstudio.netlify.app`, `domain-mbktechstudio.netlify.app` and `maintenance-mbktechstudio.netlify.app` are original domains. The `mbktechstudio.com` domain is a custom domains with CNAME records redirecting to the original domains.
 
- 
-Website Source Code 
-https://github.com/MIbnEKhalid/MIbnEKhalid.github.io/ or https://github.com/MIbnEKhalid/mbktech.studios/
-
-https://mbktechstudio.com/ or https://mbktechstudio.com/mbktech.studios/
 
 ## Hosting:
 The Main Website (MBKTechStudio.com) Is Hosted On GitHub, While Other Website (SubDomains Of MBKTechStudio) Is Hosted On Netlify
