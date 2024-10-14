@@ -17,11 +17,6 @@
 </head>
 
 <style>
-    #filename {
-        margin-top: 15px;
-        margin-bottom: 5px;
-    }
-    
     .notification {
         padding: 10px;
         border-radius: 8px;
@@ -485,6 +480,19 @@
 </footer>
 
 <script>
+    // Global Var
+    var noteW = document.querySelector(".notereq");
+    var supportField = document.querySelector(".supportfield");
+    const subjectSelect = document.getElementById("subjectSelect");
+    const supportSelect = document.getElementById("supportselect");
+    const messageForm = document.getElementById("message_form");
+    var numberField = document.querySelector(".phoneField");
+    var ratingField = document.querySelector(".ratingWeb");
+    var projectCatogery = document.querySelector(".projectCatogo");
+    var projectNCatogery = document.querySelector(".otherProjecCato");
+    var messageBox = document.getElementById("message");
+
+
     $("#mobile_code").intlTelInput({
         initialCountry: "pk",
         separateDialCode: true
@@ -504,17 +512,10 @@
     if (window.location.hash === "#requestbook") {
         loadFormValues();
     } else {
-        var noteW = document.querySelector(".notereq");
         noteW.style.display = "none";
     }
 
     function loadFormValues() {
-        var supportField = document.querySelector(".supportfield");
-        const subjectSelect = document.getElementById("subjectSelect");
-        const supportSelect = document.getElementById("supportselect");
-        const messageForm = document.getElementById("message_form");
-        var noteW = document.querySelector(".notereq");
-
         supportField.style.display = "block";
         document.querySelectorAll('select[name="support"]').forEach(function(input) {
             input.setAttribute("required", "required");
@@ -539,11 +540,7 @@
     }
 
     document.getElementById("subjectSelect").addEventListener("change", function() {
-        var numberField = document.querySelector(".phoneField");
-        var ratingField = document.querySelector(".ratingWeb");
-        var supportField = document.querySelector(".supportfield");
 
-        // Get the value of the selected option
         var selectedOption = this.value;
 
         if (selectedOption === "Collaboration") {
@@ -610,7 +607,6 @@
     });
 
     document.getElementById("supportselect").addEventListener("change", function() {
-        var projectCatogery = document.querySelector(".projectCatogo");
 
         var selectedOption = this.value;
 
@@ -629,7 +625,6 @@
 
     document.getElementById("projectCatogo").addEventListener("change", function() {
 
-        var projectNCatogery = document.querySelector(".otherProjecCato");
         var selectedOption = this.value;
 
         if (selectedOption === "other") {
@@ -645,7 +640,6 @@
     document.getElementById("form").addEventListener("submit", function(e) {
         e.preventDefault();
         resetMessageBoxColor();
-        var messageBox = document.getElementById("message");
         messageBox.textContent = "Submitting..";
         messageBox.style.display = "block";
         document.getElementById("submit-button").disabled = true;
@@ -683,14 +677,11 @@
                 messageBox.textContent = "";
                 messageBox.style.display = "none";
                 // Hide additional fields if necessary
-                var numberField = document.querySelector(".phoneField");
                 if (numberField) numberField.style.display = "none";
-                var supportField = document.querySelector(".supportfield");
                 if (supportField) supportField.style.display = "none";
-                var pField = document.querySelector(".projectCatogo");
-                if (pField) pField.style.display = "none";
-                var opField = document.querySelector(".otherProjecCato");
-                if (opField) opField.style.display = "none";
+                if (projectCatogery) projectCatogery.style.display = "none";
+                if (projectNCatogery) projectNCatogery.style.display = "none";
+                if (noteW) noteW.style.display = "none";
                 if (window.location.hash) {
                     history.replaceState(null, null, window.location.pathname);
                 }
@@ -702,7 +693,6 @@
     });
 
     function resetMessageBoxColor() {
-        var messageBox = document.getElementById("message");
         messageBox.style.backgroundColor = "beige";
         messageBox.style.color = "green";
     }
