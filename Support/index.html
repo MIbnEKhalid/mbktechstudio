@@ -17,6 +17,11 @@
 </head>
 
 <style>
+    #filename {
+        margin-top: 15px;
+        margin-bottom: 5px;
+    }
+    
     .notification {
         padding: 10px;
         border-radius: 8px;
@@ -29,7 +34,7 @@
         padding: 15px;
         background-color: #eef8ff;
         border: 1px solid #a7d4ff;
-        color: #31708f;
+        color: #000000;
         /*  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
     }
     
@@ -343,14 +348,14 @@
                     </div>
                 </div>
 
-                <div class="field">
+                <div class="field NameFie">
                     <label class="label required-label">Name</label>
                     <div class="control">
                         <div class="input"><input type="text" placeholder="Enter Your Name" name="UserName" required=""></div>
                     </div>
                 </div>
 
-                <div class="field">
+                <div class="field emailFie">
                     <label class="label required-label">Email</label>
                     <div class="control">
                         <div class="input"><input type="email" placeholder="Enter Your Email" name="Email" required=""></div>
@@ -407,7 +412,20 @@
                     </div>
                 </div>
 
-                <div class="field">
+                <div class="notification is-link notereq" style="margin-bottom: 10px;" style="display: none;">
+                    <p>
+                    </p>
+                    <ul>
+                        <li>
+                            If You Have A Book In PDF Or Any Other Format, Please Upload It <a style="font-weight: 700;" href="https://driveuploader.com/upload/NxfqGG1OAh/">Here</a>, And Then Fill Out The Form To Alert Me That Your Book Request Has Been
+                            Submitted. Note That I Do Not Receive Notifications For Uploads, So I Won’t Know If You Upload A Book Without Filling Out The Form.
+                        </li>
+                        <li> If You Don't Have A Book To Upload, Please Submit The Form, And I Will Personally Find The Book And Upload It For You.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="field messageF">
                     <label class="label required-label">Message</label>
                     <div class="control"><textarea class="input" placeholder="Enter Your Message" id="message_form" name="Message" rows="6" required=""></textarea></div>
                 </div>
@@ -467,45 +485,48 @@
 </footer>
 
 <script>
-
     $("#mobile_code").intlTelInput({
-    initialCountry: "pk",
-    separateDialCode: true
-        // utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.4/js/utils.js"
-}).on("input", function(e) {
-    var input = e.target.value;
-    e.target.value = input.replace(/[^0-9]/g, '').slice(0, 11);
-    if (e.target.value.length < 10) {
-        e.target.setCustomValidity("Phone number must be at least 10 digits.");
-    } else {
-        e.target.setCustomValidity("");
-    }
-});
+        initialCountry: "pk",
+        separateDialCode: true
+            // utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.4/js/utils.js"
+    }).on("input", function(e) {
+        var input = e.target.value;
+        e.target.value = input.replace(/[^0-9]/g, '').slice(0, 11);
+        if (e.target.value.length < 10) {
+            e.target.setCustomValidity("Phone number must be at least 10 digits.");
+        } else {
+            e.target.setCustomValidity("");
+        }
+    });
 
 
     // Check for the hash fragment on page load
     if (window.location.hash === "#requestbook") {
         loadFormValues();
+    } else {
+        var noteW = document.querySelector(".notereq");
+        noteW.style.display = "none";
     }
 
     function loadFormValues() {
         var supportField = document.querySelector(".supportfield");
+        const subjectSelect = document.getElementById("subjectSelect");
+        const supportSelect = document.getElementById("supportselect");
+        const messageForm = document.getElementById("message_form");
+        var noteW = document.querySelector(".notereq");
+
         supportField.style.display = "block";
         document.querySelectorAll('select[name="support"]').forEach(function(input) {
             input.setAttribute("required", "required");
         });
-
-        const subjectSelect = document.getElementById("subjectSelect");
-        const supportSelect = document.getElementById("supportselect");
-        const messageForm = document.getElementById("message_form");
+        noteW.style.display = "block";
 
         subjectSelect.value = "Support";
         supportSelect.value = "other";
         messageForm.value = "Book Request\n" +
             "Book Name:\n" +
             "Course Name or Code:\n" +
-            "Book Link: (Leave Blank If not available)\n";
-
+            "Book Link: (Leave Blank If not available or )\n";
 
     }
 
