@@ -78,7 +78,6 @@ The Main Website (MBKTechStudio.com) Is Hosted On GitHub, While Other Website (S
 
 <p  align="center"> <img src="https://github-profile-trophy.vercel.app/?username=MIbnEKhalid&theme=onestar" alt="rgr" /></a> </p>
   <img src="https://github-readme-stats.vercel.app/api?username=MIbnEKhalid&hide_title=false&hide_rank=false&show_icons=true&include_all_commits=true&count_private=true&disable_animations=false&theme=dracula&locale=en&hide_border=false&order=1" height="150" alt="stats graph" />
-  
-[![An image of @sandeepvashishtha's Holopin badges, which is a link to view their full Holopin profile](https://holopin.me/sandeepvashishtha)](https://holopin.io/@sandeepvashishtha)
+
 <br><br>
 [![wakatime](https://wakatime.com/badge/user/018ebc8f-c218-42ef-9ef3-48791b875e59.svg)](https://wakatime.com/@018ebc8f-c218-42ef-9ef3-48791b875e59)
