@@ -71,10 +71,14 @@ The Main Website (MBKTechStudio.com) Is Hosted On GitHub, While Other Website (S
 </table>
 
 <table style="border:none;margin:0 auto" align="center">
-  <tr style="border:none;margin:0 auto" align="center">
+  <tr style="border:none;">
+    <td style="border:none;">
+        <img src="https://github-readme-stats.vercel.app/api?username=MIbnEKhalid&include_all_commits=true&count_private=true&theme=github-dark&hide_border=true" height="400" alt="stats graph" />
+    </td>
     <td style="border:none;">
       <img src="https://github-readme-activity-graph.vercel.app/graph?username=MIbnEKhalid&theme=github-dark&hide_border=true"
       alt="Muhammad Bin Khalid Activity Graph" />
+    </td>="MIbnEKhalid Stats" />
     </td>
   </tr>
 </table>
