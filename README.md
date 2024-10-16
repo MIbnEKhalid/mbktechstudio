@@ -1,7 +1,4 @@
-# MBK Tech Studio Website
-<div align="center">
-  <img src="https://profile-counter.glitch.me/mibnekhalid/count.svg?"  />
-</div>
+# MBK Tech Studio Website 
 
 https://mbktechstudio.com/ or https://MIbnEKhalid.github.io/
 
