@@ -9,6 +9,9 @@ Website Source Code
 
 https://github.com/MIbnEKhalid/MIbnEKhalid.github.io/ or https://github.com/MIbnEKhalid/mbktech.studios/
 
+### NOTE:  
+Only the source code of this website is covered under the [WTFPL](https://choosealicense.com/licenses/wtfpl/). The project documentation, some images, blog posts, and other content are NOT covered under this license and remain the intellectual property of the author.
+
 Detailed Documentation of this website will be available soon on: [docs.mbktechstudio.com/mbktechstudio.com](https://docs.mbktechstudio.com/mbktechstudio.com)
 
 ### List Of Main Domains 
