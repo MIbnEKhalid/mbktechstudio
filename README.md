@@ -55,37 +55,6 @@ Only The Source Code Of This Website Is Covered Under The [WTFP LICENSE](https:/
 ## Hosting:
 The Main Website (MBKTechStudio.com) Is Hosted On GitHub, While Other Website (SubDomains Of MBKTechStudio) Is Hosted On Netlify
 
-<h2 align="center">
-  Stats ⚡️
-</h2>
-<table style="border:none;margin:0 auto" align="center">
-  <tr style="border:none;">
-    <td style="border:none;">
-      <img src="https://github-readme-streak-stats.herokuapp.com?user=MIbnEKhalid&theme=transparent&hide_border=true&date_format=j%20M%5B%20Y%5D"
-      alt="GitHub Streak" />
-    </td>
-    <td style="border:none;">
-      <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=MIbnEKhalid&layout=compact&theme=transparent&hide_border=true"
-      alt="MIbnEKhalid Stats" />
-    </td>
-  </tr>
-</table>
-
-<table style="border:none;margin:0 auto" align="center">
-  <tr style="border:none;">
-    <td style="border:none;">
-        <img src="https://github-readme-stats.vercel.app/api?username=MIbnEKhalid&include_all_commits=true&count_private=true&theme=github-dark&hide_border=true" height="400" alt="stats graph" />
-    </td>
-    <td style="border:none;">
-      <img src="https://github-readme-activity-graph.vercel.app/graph?username=MIbnEKhalid&theme=github-dark&hide_border=true"
-      alt="Muhammad Bin Khalid Activity Graph" />
-    </td>="MIbnEKhalid Stats" />
-    </td>
-  </tr>
-</table>
-
-<p  align="center"> <img src="https://github-profile-trophy.vercel.app/?username=MIbnEKhalid&theme=onestar" alt="rgr" /></a> </p>
-  <img src="https://github-readme-stats.vercel.app/api?username=MIbnEKhalid&hide_title=false&hide_rank=false&show_icons=true&include_all_commits=true&count_private=true&disable_animations=false&theme=dracula&locale=en&hide_border=false&order=1" height="150" alt="stats graph" />
-
+![Customized Card](https://github-readme-stats.vercel.app/api/pin?username=mibnekhalid\&repo=CentreTheMessageCpp\&title_color=fff\&icon_color=f9f9f9\&text_color=9f9f9f\&bg_color=151515)
 <br><br>
 [![wakatime](https://wakatime.com/badge/user/018ebc8f-c218-42ef-9ef3-48791b875e59.svg)](https://wakatime.com/@018ebc8f-c218-42ef-9ef3-48791b875e59)
