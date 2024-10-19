@@ -554,9 +554,20 @@ function showLink() {
 
     // Update the content based on the parameter
     var contentDiv = document.getElementById('content');
-    if (project === 'requestbook') {
-        loadFormValues();
-    }  
+    if (project === 'MIbnEKhalid.github.io') {
+        subjectSelect.value = "Support";
+        projectCatogery.value = "MIbnEKhalidWeb";
+        subjectSelect.style.display = "block";
+        projectCatogery.style.display = "block";
+        supportSelect.style.display = "block";
+    } else if(project === "SMP-Unity")
+    {
+        subjectSelect.value = "Support";
+        projectCatogery.value = "SMPUnity";
+        subjectSelect.style.display = "block";
+        projectCatogery.style.display = "block";
+        supportSelect.style.display = "block";
+    }
     // Check for the hash fragment on page load
     if (window.location.hash === "#requestbook") {
         loadFormValues();
