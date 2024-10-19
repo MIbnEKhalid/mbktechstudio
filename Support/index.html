@@ -513,6 +513,7 @@ function showLink() {
             link.style.display = 'none';
         }
     }
+   
     // Global Var
     var noteW = document.querySelector(".notereq");
     var supportField = document.querySelector(".supportfield");
@@ -541,10 +542,25 @@ function showLink() {
     });
 
 
+    function getUrlParameter(name) {
+        name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+        var regex = new RegExp('[\\?&]' + name + '=([^&#]*)'),
+            results = regex.exec(location.search);
+        return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+    }
+
+    // Get the "Project" parameter from the URL
+    var project = getUrlParameter('Project');
+
+    // Update the content based on the parameter
+    var contentDiv = document.getElementById('content');
+    if (project === 'requestbook') {
+        loadFormValues();
+    }  
     // Check for the hash fragment on page load
     if (window.location.hash === "#requestbook") {
         loadFormValues();
-    } else {
+    }  else {
         noteW.style.display = "none";
     }
 
