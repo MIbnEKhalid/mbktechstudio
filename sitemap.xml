@@ -8,6 +8,14 @@
         <priority>1.0</priority>
     </url>
 
+    <!-- Support Page -->
+    <url>
+        <loc>https://mbktechstudio.com/Support/</loc>
+        <lastmod>2024-08-13</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+
     <!-- FAQs Page -->
     <url>
         <loc>https://mbktechstudio.com/FAQs/</loc>

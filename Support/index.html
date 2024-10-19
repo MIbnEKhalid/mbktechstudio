@@ -223,6 +223,13 @@
         color: #bdbdbd;
         text-shadow: 0 0 5px #59a09c;
     }
+    #projectLink{
+        display: none;
+        margin-left: 2px;
+        margin-bottom: 5px;
+        font-weight: 550;
+        font-size: 14px; 
+    }
 </style>
 
 <header>
@@ -330,7 +337,7 @@
 
                         <div class="select">
 
-                            <select name="projectCato" id="projectCatogo" onchange="showLink()">
+                            <select style="margin-bottom:2px;" name="projectCato" id="projectCatogo" onchange="showLink()">
                                 <option value="" disabled="" selected="">Select Project</option>
                                 <option value="None">None</option>
                                 <option value="SMPUnity">SMP Unity</option>
@@ -343,8 +350,7 @@
                                 <option value="other">other</option>
                             </select>
 
-                            <a id="projectLink" href="" target="_blank"
-                                style="display: none; margin-left: 5px;font-weight: 550;">Visit Project</a>
+                            <a id="projectLink" href="" target="_blank">Visit Project Link</a>
 
                         </div>
 
