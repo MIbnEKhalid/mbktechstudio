@@ -24,6 +24,16 @@
     transition: all 0.3s ease;
 }
 
+a{
+  transition: all 0.4s ease;
+}
+a:visited {
+  color: #377a77;
+}
+a:hover {
+  color: #9eb5f7;  
+  transition: all 0.4s ease;
+}
 
 /* Custom Scroll Bar CSS */
 
