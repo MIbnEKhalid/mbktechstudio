@@ -17,6 +17,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
+<style>
+    #projectLink{
+        display: none;
+        margin-left: 2px;
+        margin-bottom: 5px;
+        font-weight: 550;
+        font-size: 14px; 
+    }
+</style>
+
 <!-- Ask For Cookie Consent-->
 <div id="cookie"></div>
 
@@ -275,12 +285,22 @@
                     <div class="control">
 
                         <div class="select">
-                            <select name="projectCato" id="projectCatogo">
-                      <option value="" disabled="" selected="">Select Project</option>
-                      <option value="SMP">SMP/SMP-Unity</option>
-                      <option value="UnityFeedback">UnityFeedback</option> 
-                      <option value="other">other</option>
-                   </select>
+
+                            <select style="margin-bottom: 2px;" name="projectCato" id="projectCatogo" onchange="showLink()">
+                                <option value="" disabled="" selected="">Select Project</option>
+                                <option value="None">None</option>
+                                <option value="SMPUnity">SMP Unity</option>
+                                <option value="UnityFeedback">Unity Feedback</option>
+                                <option value="CentreTheMessageCpp">Centre The Message Cpp</option>
+                                <option value="QGCCLI">Quiz Game Cpp CLI</option>
+                                <option value="MIbnEKhalidWeb">MIbnEKhalid.github.io</option>
+                                <option value="MIbnEKhalidSubWeb">*.MIbnEKhalid.github.io</option>
+                                <option value="WFV">Win-Fake-Virus</option>
+                                <option value="other">other</option>
+                            </select>
+
+                            <a id="projectLink" href="" target="_blank">Visit Project Link <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                            
                         </div>
 
                     </div>
@@ -431,7 +451,30 @@
             // utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.4/js/utils.js"
     });
 
+    function showLink() {
+        const select = document.getElementById('projectCatogo');
+        const link = document.getElementById('projectLink');
+        const selectedValue = select.value;
 
+        // Define mapping between option values and URLs
+        const urlMap = {
+            SMPUnity: "https://github.com/mibnekhalid/SMP-Unity",
+            //    UnityFeedback: "https://github.com/Unity-Feedback-System/FeedBack-Report-Unity",
+            CentreTheMessageCpp: "https://github.com/mibnekhalid/CentreTheMessageCpp",
+            MIbnEKhalidWeb: "https://github.com/mibnekhalid/MIbnEKhalid.github.io",
+            QGCCLI: "https://github.com/MIbnEKhalid/Quiz-Game-Cpp-CLI",
+            WFV: "https://github.com/MIbnEKhalid/Win-Fake-Virus"
+        };
+
+        // Check if the selected option has a corresponding URL
+        if (urlMap[selectedValue]) {
+            link.href = urlMap[selectedValue];
+            link.style.display = 'inline';
+        } else {
+            // Hide the link if no URL exists or "other" is selected
+            link.style.display = 'none';
+        }
+    }
 
     function remove() {
         let i = 0;
