@@ -757,16 +757,25 @@
         messageBox.style.display = "block";
         document.getElementById("submit-button").disabled = true;
 
-        var currentDate = new Date();
-        var day = String(currentDate.getDate()).padStart(2, "0");
-        var month = String(currentDate.getMonth() + 1).padStart(2, "0");
-        var year = currentDate.getFullYear();
-        var hours = String(currentDate.getHours()).padStart(2, "0");
-        var minutes = String(currentDate.getMinutes()).padStart(2, "0");
-        var seconds = String(currentDate.getSeconds()).padStart(2, "0");
-        var timestamp = `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
 
-        document.querySelector('input[name="Timestamp"]').value = timestamp;
+    var currentDate = new Date();
+    var day = String(currentDate.getDate()).padStart(2, "0");
+    var month = String(currentDate.getMonth() + 1).padStart(2, "0");
+    var year = currentDate.getFullYear();
+    var hours = String(currentDate.getHours()).padStart(2, "0");
+    var minutes = String(currentDate.getMinutes()).padStart(2, "0");
+    var seconds = String(currentDate.getSeconds()).padStart(2, "0");
+
+    // 12-hour format conversion
+    var hours12 = hours % 12 || 12; // Converts to 12-hour format
+    var period = currentDate.getHours() >= 12 ? "PM" : "AM";
+
+    // Retrieve the time zone
+    var region = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+    var timestamp = `${day}/${month}/${year} ${hours}:${minutes}:${seconds} or ${hours12}:${minutes}:${seconds} ${period} ${region}`;
+
+    document.querySelector('input[name="Timestamp"]').value = timestamp;
 
         var formData = new FormData(this);
 
