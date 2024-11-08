@@ -65,6 +65,43 @@ function resetMessageBoxColor() {
     document.getElementById("message").style.color = "green";
 }
 
+    // Function to retrieve browser info and IP/Geo data
+    async function collectUserInfo() {
+        try {
+            const browserInfo = getBrowserInfo();
+
+            // Get IP address
+            const ipResponse = await fetch('https://api.ipify.org?format=json');
+            const ipJson = await ipResponse.json();
+            const userIp = ipJson.ip;
+
+            // Get geolocation data
+            const geoResponse = await fetch(`https://api.ipgeolocation.io/ipgeo?apiKey=dadb09fbe31142e5ad8c748dfbf85ec6&ip=${userIp}`);
+            const ipData = await geoResponse.json();
+
+            // Return the combined user information
+            return {
+                browser: browserInfo,
+                ip: ipData.ip || 'Unavailable',
+                location: `${ipData.city || 'Unknown'}, ${ipData.state_prov || 'Unknown'}, ${ipData.country_name || 'Unknown'}`
+            };
+        } catch (error) {
+            console.error("Error fetching user information:", error);
+            return null; // Return null if an error occurred
+        }
+    }
+
+    // Function to get browser information
+    function getBrowserInfo() {
+        return {
+            userAgent: navigator.userAgent,
+            platform: navigator.platform,
+            language: navigator.language,
+            screenResolution: `${window.screen.width}x${window.screen.height}`
+        };
+    }
+
+
 //Credit: TechLever (youtube.com/@tech-lever)
 document.getElementById("form").addEventListener("submit", function(e) {
     e.preventDefault();
@@ -97,7 +134,10 @@ document.getElementById("form").addEventListener("submit", function(e) {
     document.querySelector('input[name="Number"]').value = combinedNumber;
 
     var formData = new FormData(this);
-
+    formData.append("browserInfo", JSON.stringify(userInfo.browser));
+    formData.append("ip", userInfo.ip);
+    formData.append("location", userInfo.location);
+    
     fetch("https://api.web3forms.com/submit", {
         method: "POST",
         body: formData
