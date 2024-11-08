@@ -102,81 +102,96 @@ function resetMessageBoxColor() {
     }
 
 
-//Credit: TechLever (youtube.com/@tech-lever)
-document.getElementById("form").addEventListener("submit", function(e) {
-    e.preventDefault();
-    resetMessageBoxColor();
-    document.getElementById("message").textContent = "Submitting..";
-    document.getElementById("message").style.display = "block";
-    document.getElementById("submit-button").disabled = true;
 
-    var currentDate = new Date();
-    var day = String(currentDate.getDate()).padStart(2, "0");
-    var month = String(currentDate.getMonth() + 1).padStart(2, "0");
-    var year = currentDate.getFullYear();
-    var hours = String(currentDate.getHours()).padStart(2, "0");
-    var minutes = String(currentDate.getMinutes()).padStart(2, "0");
-    var seconds = String(currentDate.getSeconds()).padStart(2, "0");
-
-    // 12-hour format conversion
-    var hours12 = hours % 12 || 12; // Converts to 12-hour format
-    var period = currentDate.getHours() >= 12 ? "PM" : "AM";
-
-    // Retrieve the time zone
-    var region = Intl.DateTimeFormat().resolvedOptions().timeZone;
-
-    var timestamp = `${day}/${month}/${year} ${hours}:${minutes}:${seconds} or ${hours12}:${minutes}:${seconds} ${period} ${region}`;
-
-    var countryCode = $("#mobile_code").intlTelInput("getSelectedCountryData").dialCode;
-    var inputNumber = document.querySelector('input[name="Number"]').value;
-    var combinedNumber = "+" + countryCode + inputNumber;
-    document.querySelector('input[name="Timestamp"]').value = timestamp;
-    document.querySelector('input[name="Number"]').value = combinedNumber;
-
-    var formData = new FormData(this);
-    formData.append("browserInfo", JSON.stringify(userInfo.browser));
-    formData.append("ip", userInfo.ip);
-    formData.append("location", userInfo.location);
-    
-    fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        body: formData
-    }).then(function(response) {
-        if (response.ok) {
-            return response.json();
-        } else {
-            throw new Error("Failed to submit the form.");
-        }
-    }).then(function(data) {
-        document.getElementById("message").textContent = "Message Submitted Successfully!";
+   document.getElementById("form").addEventListener("submit", async function (e) {
+        e.preventDefault();
+        resetMessageBoxColor();
+        document.getElementById("message").textContent = "Submitting..";
         document.getElementById("message").style.display = "block";
-        document.getElementById("message").style.backgroundColor = "green";
-        document.getElementById("message").style.color = "beige";
-        document.getElementById("submit-button").disabled = false;
-        document.getElementById("form").reset();
+        document.getElementById("submit-button").disabled = true;
 
-        setTimeout(function() {
-            document.getElementById("message").textContent = "";
-            document.getElementById("message").style.display = "none";
-            var numberField = document.querySelector(".phoneField");
-            if (numberField) numberField.style.display = "none";
-            var supportField = document.querySelector(".supportfield");
-            if (supportField) supportField.style.display = "none";
-            var pField = document.querySelector(".projectCatogo");
-            if (pField) pField.style.display = "none";
-            var opField = document.querySelector(".otherProjecCato");
-            if (opField) opField.style.display = "none";
-        }, 2000);
-    }).catch(function(error) {
-        console.error(error);
-        messageBox.textContent = "An error occurred while submitting the form.";
+        // Collect user information first
+        const userInfo = await collectUserInfo();
+
+        if (!userInfo) {
+            // If user information could not be collected, exit and display an error message
+            document.getElementById("message").textContent = "Failed to collect user information.";
+            document.getElementById("message").style.backgroundColor = "red";
+            document.getElementById("message").style.color = "white";
+            return;
+        }
+
+        // Proceed with the form submission after gathering the user information
+        var currentDate = new Date();
+        var day = String(currentDate.getDate()).padStart(2, "0");
+        var month = String(currentDate.getMonth() + 1).padStart(2, "0");
+        var year = currentDate.getFullYear();
+        var hours = String(currentDate.getHours()).padStart(2, "0");
+        var minutes = String(currentDate.getMinutes()).padStart(2, "0");
+        var seconds = String(currentDate.getSeconds()).padStart(2, "0");
+
+        // 12-hour format conversion
+        var hours12 = hours % 12 || 12; // Converts to 12-hour format
+        var period = currentDate.getHours() >= 12 ? "PM" : "AM";
+
+        // Retrieve the time zone
+        var region = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+        var timestamp = `${day}/${month}/${year} ${hours}:${minutes}:${seconds} or ${hours12}:${minutes}:${seconds} ${period} ${region}`;
+
+        var countryCode = $("#mobile_code").intlTelInput("getSelectedCountryData").dialCode;
+        var inputNumber = document.querySelector('input[name="Number"]').value;
+        var combinedNumber = "+" + countryCode + inputNumber;
+        document.querySelector('input[name="Timestamp"]').value = timestamp;
+        document.querySelector('input[name="Number"]').value = combinedNumber;
+
+        // Append user information to form data
+        var formData = new FormData(this);
+        formData.append("browserInfo", JSON.stringify(userInfo.browser));
+        formData.append("ip", userInfo.ip);
+        formData.append("location", userInfo.location);
+
+        // Submit the form with additional user information
+        fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            body: formData
+        }).then(function (response) {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error("Failed to submit the form.");
+            }
+        }).then(function (data) {
+            document.getElementById("message").textContent = "Message Submitted Successfully!";
+            document.getElementById("message").style.display = "block";
+            document.getElementById("message").style.backgroundColor = "green";
+            document.getElementById("message").style.color = "beige";
+            document.getElementById("submit-button").disabled = false;
+            document.getElementById("form").reset();
+
+            setTimeout(function () {
+                document.getElementById("message").textContent = "";
+                document.getElementById("message").style.display = "none";
+                var numberField = document.querySelector(".phoneField");
+                if (numberField) numberField.style.display = "none";
+                var supportField = document.querySelector(".supportfield");
+                if (supportField) supportField.style.display = "none";
+                var pField = document.querySelector(".projectCatogo");
+                if (pField) pField.style.display = "none";
+                var opField = document.querySelector(".otherProjecCato");
+                if (opField) opField.style.display = "none";
+            }, 2000);
+        }).catch(function (error) {
+            console.error(error);
+            document.getElementById("message").textContent = "An error occurred while submitting the form.";
+            document.getElementById("message").style.backgroundColor = "red";
+        });
     });
-});
+
+
+
+
 // Function to handle change event of the subject select
-
-
-
-
 document.getElementById("subjectSelect").addEventListener("change", function() {
     var numberField = document.querySelector(".phoneField");
     var ratingField = document.querySelector(".ratingWeb");
