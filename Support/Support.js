@@ -26,6 +26,8 @@
         { name: "Docs.MIbnEKhalid.github.io", value: "DocsMIbnEKhalid", link: "https://github.com/MIbnEKhalid/docs.MIbnEKhalid.github.io" },
         { name: "Portfolio.MIbnEKhalid.github.io", value: "PortfolioMIbnEKhalid", link: "https://github.com/MIbnEKhalid/portfolio.MIbnEKhalid.github.io" },
         { name: "Unilib.MIbnEKhalid.github.io", value: "UnilibMIbnEKhalid", link: "https://github.com/MIbnEKhalid/unilib.MIbnEKhalid.github.io" },
+        { name: "Portal.MIbnEKhalid.github.io", value: "PortalMIbnEKhalid", link: "https://github.com/MIbnEKhalid/Portal.MIbnEKhalid.github.io" },
+        { name: "Privacy.MIbnEKhalid.github.io", value: "PrivacyMIbnEKhalid", link: "https://github.com/MIbnEKhalid/Privacy.MIbnEKhalid.github.io" },
         { name: "Other", value: "other", link: "" }
     ];
 
