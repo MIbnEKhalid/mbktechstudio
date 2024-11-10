@@ -14,8 +14,7 @@
     var messageBox = document.getElementById("message");
 
     document.addEventListener("DOMContentLoaded", function() {
-        const projectSelect = document.getElementById("projectCatogo");
-    
+        const projectSelect = document.getElementById("projectCatogo"); 
         // Fetch the JSON data
         fetch('projects.json')
             .then(response => response.json())
@@ -256,6 +255,12 @@
     document.querySelector('input[name="Timestamp"]').value = timestamp;
     document.querySelector('input[name="PageUrl"]').value = getPageUrl();
 
+    const ticketNumber = 'T' + Math.random().toString(36).substring(2, 11).toUpperCase(); // Generate 9 characters after 'TICKET-'
+    document.querySelector('input[name="TicketNumber"]').value = ticketNumber;
+
+    
+
+
         var formData = new FormData(this);
 
         fetch("https://api.web3forms.com/submit", {
@@ -273,6 +278,12 @@
             messageBox.style.color = "beige";
             document.getElementById("submit-button").disabled = false;
             document.getElementById("form").reset();
+
+
+            showbox('tG-form');
+            // Display ticket number to user
+            document.querySelector('input[name="ticketNumberInput"]').value = ticketNumber;
+
 
             setTimeout(function () {
                 messageBox.textContent = "";
@@ -341,4 +352,70 @@
             menuBtn.style.opacity = "1";
             menuBtn.style.pointerEvents = "auto";
         });
+    }
+
+    function copyTicketNumber() {
+        const ticketInput = document.getElementById('ticketNumber');
+        ticketInput.select(); // Selects the content of the input field
+        document.execCommand('copy'); // Copies the content to clipboard
+        alert("Ticket number copied to clipboard!"); // Optional: Alert to notify the user
+    }
+
+    function hidebox(link) {
+        document.getElementById(link).classList.remove('show');
+    }
+
+    function showbox(link) {
+        document.getElementById(link).classList.add('show');
+    }
+
+    document.getElementById('ticketStatusForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        let ticketId = document.getElementById('ticketId').value;
+
+        // Fetch the ticket data from Google Drive JSON file
+        fetch('https://raw.githubusercontent.com/MIbnEKhalid/MIbnEKhalid.github.io/main/Support/ticket.json ')   
+            .then(response => response.json())
+            .then(ticketData => {
+                let ticketStatuses = checkTicketStatus(ticketId, ticketData);
+
+                let ticketStatusDiv = document.getElementById('ticketStatus');
+                if (ticketStatuses.length > 0) {
+                    // Create a table to display all matching tickets
+                    let tableHTML = `
+                        <table border="1">
+                            <tr>
+                                <th>ID</th>
+                                <th>Status</th>
+                                <th>Desc</th> 
+                            </tr>
+                    `;
+
+                    // Loop through all matching tickets and add rows to the table
+                    ticketStatuses.forEach(ticket => {
+                        tableHTML += `
+                            <tr>
+                                <td>${ticket.id}</td>
+                                <td>${ticket.status}</td>
+                                <td>${ticket.description}</td> 
+                            </tr>
+                        `;
+                    });
+
+                    tableHTML += '</table>';
+                    ticketStatusDiv.innerHTML = tableHTML;
+                } else {
+                    ticketStatusDiv.innerHTML = 'Your ticket might have been created, but it has not yet been reviewed by the support team. Please double-check your ID number or try again later.';
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching the ticket data:', error);
+                document.getElementById('ticketStatus').innerHTML = 'There was an error retrieving ticket data. Please try again later.';
+            });
+    });
+
+    function checkTicketStatus(ticketId, ticketData) {
+        // Filter the tickets array to find all tickets with the matching ticketId
+        return ticketData.filter(ticket => ticket.id === ticketId);
     }

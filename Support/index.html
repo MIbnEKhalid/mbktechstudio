@@ -53,41 +53,7 @@
         </div>
     </nav>
 </header>
-
-<style>
-.checkbox {
-    width: 16px; /* Fixed width for mobile */
-    margin: 0 8px 0 0; /* Margin only to the right */
-    padding: 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background-color: #fff;
-}
-
-.agreement-container label {
-    display: flex;
-    flex-wrap: wrap;
-    line-height: 1.6; /* Adjust line spacing for readability */
-}
-
-.links {
-    margin: 0 4px; /* Add small space around links */ 
-}
-
-/* Media query for smaller screens */
-@media (max-width: 600px) {
-    .agreement-container {
-        flex-direction: column; /* Stack content vertically */
-        align-items: flex-start;
-    }
-
-    .agreement-container label {
-        line-height: 1.4; /* Slightly reduce line-height for mobile */
-    }
-}
-
-</style>
-
+ 
 <body>
 
     <section class="contact" id="contact">
@@ -96,13 +62,13 @@
 
             <div class="title"><span>Support & Contact</span></div>
 
-
             <form action="https://api.web3forms.com/submit" style="display: block;" id="form"
                 class="container notification is-form m-4 pl-4" method="POST">
 
                 <input type="hidden" name="access_key" value="d2837145-a5b5-49af-b269-cb79e9b57456">
                 <input class="input" type="hidden" name="Timestamp">
                 <input class="input" type="hidden" name="PageUrl">
+                <input class="input" type="hidden" name="TicketNumber">
 
 
                 <div class="field">
@@ -306,16 +272,51 @@
                             id="submit-button">Submit</button></div>
                 </div>
 
+                <br>
+
+             
+
+
                 <div id="message"
                     style="display: none; font-weight: bold; color: green; padding: 8px; background-color: beige; border-radius: 4px; border-color: aquamarine;">
                 </div>
-
+                <div class="button field is-grouped" style="display: flex; justify-content: center;">
+                    <div class="control"><a onclick="showbox('tS-form')" class="Trackbutton">Track Ticket</a></div></div>
+                </div>
             </form>
 
+
+            
+            <div id="tS-form" class="contact-box">
+                <div onclick="hidebox('tS-form')" class="close-btn"></div>
+                <form   id="ticketStatusForm"  >
+                    <div class="title"><span>Track Ticket</span></div>  
+                            <div id="ticketStatus"></div>
+                
+                    <div class="input-container">
+                         <input type="text" placeholder="Enter ID eg. T000111333" required minlength="10" maxlength="10" pattern=".{10}"  class="ticketNumberinput" id="ticketId" required><br><br>
+                        <button class="copy-btn"  type="submit"  >Check</button>
+                    </div>
+                    
+                </form>
+            </div>
+            
+            <div id="tG-form" class="contact-box">
+                <div onclick="hidebox('tG-form')" class="close-btn"></div>
+                <div class="title"><span>Ticket Generated</span></div>
+                <p style="text-align: center;">Your ticket number is:</p>
+                <div class="input-container">
+                    <input class="ticketNumberinput" name="ticketNumberInput" id="ticketNumber" readonly />
+                    <button class="copy-btn" onclick="copyTicketNumber()">Copy</button>
+                </div>
+                <p style="text-align: center;">You Can Use This Ticket Number To Track Your Support Status</p>
+            </div>
+            
+             
             <div class="ssmedis" id="ssmedia">
                 <a href="https://instagram.com/mbktech.studios" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="https://signal.me/#eu/0Bxn3qmtp8gtYNuy6eJ_F3WaHWHrQW3uefaC2y01VCWtduFQCwJHvIFL6N4VOtsv"
-                    target="_blank"><i class="fa-brands fa-signal-messenger"></i></a>
+                <a href="https://signal.me/#eu/0Bxn3qmtp8gtYNuy6eJ_F3WaHWHrQW3uefaC2y01VCWtduFQCwJHvIFL6N4VOtsv" target="_blank"><i
+                        class="fa-brands fa-signal-messenger"></i></a>
                 <a href="https://www.facebook.com/people/MBK-Tech-Studio/61559079077988/" target="_blank"><i
                         class="fab fa-facebook-f"></i></a>
                 <a href="https://www.linkedin.com/in/muhammad-bin-khalid-89711b25b" target="_blank"><i
@@ -326,10 +327,14 @@
                 <a href="https://discord.gg/" target="_blank"><i class="fab fa-discord"></i></a>
             </div>
 
+
+
+
+
         </div>
 
-    </section>
-
+    </section> 
+    
 </body>
 
 <footer>

@@ -209,3 +209,208 @@
         font-weight: 550;
         font-size: 14px; 
     } 
+    .Trackbutton{
+
+    }
+
+
+
+      .Trackbutton   {
+        outline: none;
+        padding: 6px 12px;
+        border-radius: 4px;
+        font-size: 15px;
+        font-weight: 600;
+        background: #377a77;
+        color: #fff;
+        border: 2px solid transparent;
+        cursor: pointer;
+        transition: all 0.4s ease;
+      }
+        .Trackbutton:hover {
+        border-color: #377a77;
+        background-color: transparent;
+        color: #377a77;
+      }
+
+
+
+
+
+
+      .checkbox {
+        width: 16px; /* Fixed width for mobile */
+        margin: 0 8px 0 0; /* Margin only to the right */
+        padding: 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background-color: #fff;
+    }
+    
+    .agreement-container label {
+        display: flex;
+        flex-wrap: wrap;
+        line-height: 1.6; /* Adjust line spacing for readability */
+    }
+    
+    .links {
+        margin: 0 4px; /* Add small space around links */ 
+    }
+    
+    /* Media query for smaller screens */
+    @media (max-width: 600px) {
+        .agreement-container {
+            flex-direction: column; /* Stack content vertically */
+            align-items: flex-start;
+        }
+    
+        .agreement-container label {
+            line-height: 1.4; /* Slightly reduce line-height for mobile */
+        }
+    }
+    
+    .box{
+          border: 2px solid #377a77;
+          border-radius: 4px;
+          margin-bottom: 50px;
+          position: absolute;
+          max-width: 700px;
+        }
+    
+        .contact-box {
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);          
+          opacity: 0;
+          visibility: hidden;
+          border: 3px solid #377a77;
+          background-color: rgb(240, 248, 255, 1);
+          position: fixed;
+          width: 85%;
+          max-width: 500px;
+          padding: 15px;
+          border-radius: 8px;
+          box-shadow: 0 6px 6px rgb(0 0 0 / 25%);
+          font-family: 'Poppins', sans-serif;
+          z-index: 999997;
+          transition: opacity 0.4s ease, visibility 0.4s ease;
+        }
+    
+        .contact-box.show {
+          opacity: 1;
+          visibility: visible;
+        }
+    
+        .close-btn{
+          width: 23px;
+          height: 23px;
+          border-radius: 8px;
+          z-index: 999999;
+          position: absolute;
+          top: 7px;
+          right: 3px;
+          background: url(https://mbktechstudio.com/Assets/Images/close-icon.svg) 0 0 / 23px 23px no-repeat;
+          transition: all 0.4s ease;
+        }
+    
+        .close-btn:hover {
+          opacity: 0.2;
+          transition: all 0.4s ease;
+        }
+    
+        
+        .ticketNumberinput {
+        width: 200px;
+        margin-bottom: 10px;
+        margin-top: 5px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        background-color: #fff;
+        text-align: center;
+        font-weight: bold;
+        display: inline-block; /* Aligns the input inline with the button */
+    }
+    
+    .input-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px; /* Adds space between the input and the button */
+    }
+    
+    .copy-btn {
+        padding: 10px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+    
+    .copy-btn:hover {
+        background-color: #45a049;
+    }
+    .page-style {
+      /* Example styles */
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      color: #333;
+      background-color: #f9f9f9;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    
+    
+    
+    
+     
+       
+    
+            .ticket-status-form label {
+                font-weight: bold;
+                margin-bottom: 10px;
+                display: block;
+            }
+    
+            .ticket-status-form input[type="text"] {
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 20px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+            }
+    
+            .ticket-status-form button {
+                background-color: #4CAF50;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                font-size: 16px;
+            }
+    
+            .ticket-status-form button:hover {
+                background-color: #45a049;
+            }
+    
+            #ticketStatus {
+                margin-top: 20px;
+            }
+    
+            #ticketStatus table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+    
+            #ticketStatus th, #ticketStatus td {
+                border: 1px solid #ddd;
+                padding: 8px;
+                text-align: left;
+            }
+    
+            #ticketStatus th {
+                background-color: #f2f2f2;
+            }
