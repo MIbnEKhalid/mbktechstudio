@@ -1,0 +1,213 @@
+     .notification {
+        padding: 10px;
+        border-radius: 8px;
+        color: #333;
+        font-size: 16px;
+        font-family: Arial, sans-serif;
+    }
+
+    .notification.is-form {
+        padding: 15px;
+        background-color: #eef8ff;
+        border: 1px solid #a7d4ff;
+        color: #000000;
+        /*  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
+    }
+
+    .notification.is-link {
+        background-color: #fff8e1;
+        border: 1px solid #ffe082;
+        color: #8a6d3b;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .notification.is-info {
+        margin: 10px 0;
+        background-color: #d1ecf1;
+        border: 1px solid #bee5eb;
+        color: #0c5460;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .required-label::after {
+        content: "*";
+        color: red;
+        font-weight: normal;
+        margin-left: 2px;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 90%;
+        margin-top: 20px;
+    }
+
+    form select {
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        background-color: #fff;
+    }
+
+    form {
+        margin: auto;
+    }
+
+    form .field {
+        margin-bottom: 5px;
+    }
+
+    form .label {
+        color: rgb(0, 0, 0);
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    form input,
+    form textarea,
+    form select {
+        width: 100%;
+        margin-bottom: 10px;
+        margin-top: 5px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        background-color: #fff;
+    }
+
+    .ssmedis {
+        padding: auto;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        justify-content: center;
+        flex-wrap: wrap;
+        display: flex;
+    }
+
+    .ssmedis a {
+        color: #377a77;
+        font-size: 40px;
+        margin: 0 6px;
+        transition: all 0.3s ease;
+    }
+
+    .ssmedis a:hover {
+        color: #8c8e96;
+        transition: all 0.4s ease;
+    }
+
+    .signal {
+        color: #377a77;
+        display: inline-block;
+        width: 35px;
+        height: 35px;
+        background-image: url('Assets/Images/Signal-Logo-White.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+    section .title {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 30px;
+        margin-top: 30px;
+    }
+
+    section .title span {
+        color: #6698e4;
+    }
+
+    section .button button {
+        font-size: 20px;
+        padding: 7px 16px;
+    }
+
+    html,
+    body {
+        background-color: #f0f8ff;
+    }
+
+    .links {
+        font-weight: 600;
+        color: #59a09c;
+        transition: all 0.3s ease;
+    }
+
+    /*Star rating*/
+
+    .rating {
+        display: inline-block;
+        position: relative;
+        height: 50px;
+        line-height: 50px;
+        font-size: 35px;
+    }
+
+    .rating label {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        cursor: pointer;
+    }
+
+    .rating label:last-child {
+        position: static;
+    }
+
+    .rating label:nth-child(1) {
+        z-index: 5;
+    }
+
+    .rating label:nth-child(2) {
+        z-index: 4;
+    }
+
+    .rating label:nth-child(3) {
+        z-index: 3;
+    }
+
+    .rating label:nth-child(4) {
+        z-index: 2;
+    }
+
+    .rating label:nth-child(5) {
+        z-index: 1;
+    }
+
+    .rating label input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+    }
+
+    .rating label .icon {
+        float: left;
+        color: transparent;
+    }
+
+    .rating label:last-child .icon {
+        color: #bdbdbd;
+    }
+
+    .rating:not(:hover) label input:checked~.icon,
+    .rating:hover label:hover input~.icon {
+        color: #59a09c;
+    }
+
+    .rating label input:focus:not(:checked)~.icon:last-child {
+        color: #bdbdbd;
+        text-shadow: 0 0 5px #59a09c;
+    }
+    #projectLink{
+        display: none;
+        margin-left: 2px;
+        margin-bottom: 5px;
+        font-weight: 550;
+        font-size: 14px; 
+    } 
