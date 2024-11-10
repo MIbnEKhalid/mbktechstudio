@@ -64,7 +64,9 @@ function resetMessageBoxColor() {
     document.getElementById("message").style.backgroundColor = "beige";
     document.getElementById("message").style.color = "green";
 }
-
+function getPageUrl() {
+    return window.location.href;
+}
 
     document.getElementById("form").addEventListener("submit", async function (e) {
         e.preventDefault();
@@ -73,6 +75,7 @@ function resetMessageBoxColor() {
         document.getElementById("message").style.display = "block";
         document.getElementById("submit-button").disabled = true;
 
+        /*
         // Collect user information first
         const userInfo = await collectUserInfo();
 
@@ -83,6 +86,7 @@ function resetMessageBoxColor() {
             document.getElementById("message").style.color = "white";
             return;
         }
+        */
 
         // Proceed with the form submission after gathering the user information
         var currentDate = new Date();
@@ -107,12 +111,16 @@ function resetMessageBoxColor() {
         var combinedNumber = "+" + countryCode + inputNumber;
         document.querySelector('input[name="Timestamp"]').value = timestamp;
         document.querySelector('input[name="Number"]').value = combinedNumber;
+        document.querySelector('input[name="PageUrl"]').value = getPageUrl();
 
-        // Append user information to form data
         var formData = new FormData(this);
+
+        /*
+        // Append user information to form data
         formData.append("browserInfo", JSON.stringify(userInfo.browser));
         formData.append("ip", userInfo.ip);
         formData.append("location", userInfo.location);
+        */        
 
         // Submit the form with additional user information
         fetch("https://api.web3forms.com/submit", {
@@ -151,6 +159,7 @@ function resetMessageBoxColor() {
         });
     });
 
+/*
     // Function to retrieve browser info and IP/Geo data
     async function collectUserInfo() {
         try {
@@ -186,7 +195,7 @@ function resetMessageBoxColor() {
             screenResolution: `${window.screen.width}x${window.screen.height}`
         };
     }
-
+*/
 
 
 

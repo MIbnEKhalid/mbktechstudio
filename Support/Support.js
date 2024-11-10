@@ -13,46 +13,35 @@
     var projectNCatogery = document.querySelector(".otherProjecCato");
     var messageBox = document.getElementById("message");
 
-    const projects = [
-        { name: "None", value: "None", link: "" },
-        { name: "SMP Unity", value: "SMPUnity", link: "https://github.com/mibnekhalid/SMP-Unity" },
-        { name: "Unity Feedback", value: "UnityFeedback", link: "https://github.com/Unity-Feedback-System/FeedBack-Report-Unity" },
-        { name: "Centre The Message Cpp", value: "CentreTheMessageCpp", link: "https://github.com/mibnekhalid/CentreTheMessageCpp" },
-        { name: "Quiz Game Cpp CLI", value: "QGCCLI", link: "https://github.com/MIbnEKhalid/Quiz-Game-Cpp-CLI" },
-        { name: "Win-Fake-Virus", value: "WFV", link: "https://github.com/MIbnEKhalid/Win-Fake-Virus" },
-        { name: "MIbnEKhalid.github.io", value: "MIbnEKhalidWeb", link: "https://github.com/MIbnEKhalid/MIbnEKhalid.github.io" },
-        { name: "*.MIbnEKhalid.github.io", value: "MIbnEKhalidSubWeb", link: "" },
-        { name: "Blog.MIbnEKhalid.github.io", value: "BlogMIbnEKhalid", link: "https://github.com/MIbnEKhalid/Blog.MIbnEKhalid.github.io" },
-        { name: "Docs.MIbnEKhalid.github.io", value: "DocsMIbnEKhalid", link: "https://github.com/MIbnEKhalid/docs.MIbnEKhalid.github.io" },
-        { name: "Portfolio.MIbnEKhalid.github.io", value: "PortfolioMIbnEKhalid", link: "https://github.com/MIbnEKhalid/portfolio.MIbnEKhalid.github.io" },
-        { name: "Unilib.MIbnEKhalid.github.io", value: "UnilibMIbnEKhalid", link: "https://github.com/MIbnEKhalid/unilib.MIbnEKhalid.github.io" },
-        { name: "Portal.MIbnEKhalid.github.io", value: "PortalMIbnEKhalid", link: "https://github.com/MIbnEKhalid/Portal.MIbnEKhalid.github.io" },
-        { name: "Privacy.MIbnEKhalid.github.io", value: "PrivacyMIbnEKhalid", link: "https://github.com/MIbnEKhalid/Privacy.MIbnEKhalid.github.io" },
-        { name: "Other", value: "other", link: "" }
-    ];
-
     document.addEventListener("DOMContentLoaded", function() {
         const projectSelect = document.getElementById("projectCatogo");
     
-        projects.forEach(project => {
-            const option = document.createElement("option");
-            option.value = project.value;
-            option.textContent = project.name;
-            projectSelect.appendChild(option);
-        });
- 
-        // Get the "Project" parameter from the URL
-        const projectParam = getUrlParameter('Project');
-
-        // Find the matching project based on `value`
-        const selectedProject = projects.find(project => project.value === projectParam);
-
-        // If a matching project is found, load its support values
-        if (selectedProject) {
-            LoadProjectSupportValues(selectedProject.value);
-        }
-
+        // Fetch the JSON data
+        fetch('projects.json')
+            .then(response => response.json())
+            .then(projects => {
+                // Populate the select dropdown
+                projects.forEach(project => {
+                    const option = document.createElement("option");
+                    option.value = project.value;
+                    option.textContent = project.name;
+                    projectSelect.appendChild(option);
+                });
+    
+                // Get the "Project" parameter from the URL
+                const projectParam = getUrlParameter('Project');
+    
+                // Find the matching project based on `value`
+                const selectedProject = projects.find(project => project.value === projectParam);
+    
+                // If a matching project is found, load its support values
+                if (selectedProject) {
+                    LoadProjectSupportValues(selectedProject.value);
+                }
+            })
+            .catch(error => console.error("Error loading projects:", error));
     });
+    
 
     function showLink() {
         const selectedValue = document.getElementById("projectCatogo").value;
@@ -265,6 +254,7 @@
     var timestamp = `${day}/${month}/${year} ${hours}:${minutes}:${seconds} or ${hours12}:${minutes}:${seconds} ${period} ${region}`;
 
     document.querySelector('input[name="Timestamp"]').value = timestamp;
+    document.querySelector('input[name="PageUrl"]').value = getPageUrl();
 
         var formData = new FormData(this);
 

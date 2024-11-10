@@ -54,6 +54,40 @@
     </nav>
 </header>
 
+<style>
+.checkbox {
+    width: 16px; /* Fixed width for mobile */
+    margin: 0 8px 0 0; /* Margin only to the right */
+    padding: 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+.agreement-container label {
+    display: flex;
+    flex-wrap: wrap;
+    line-height: 1.6; /* Adjust line spacing for readability */
+}
+
+.links {
+    margin: 0 4px; /* Add small space around links */ 
+}
+
+/* Media query for smaller screens */
+@media (max-width: 600px) {
+    .agreement-container {
+        flex-direction: column; /* Stack content vertically */
+        align-items: flex-start;
+    }
+
+    .agreement-container label {
+        line-height: 1.4; /* Slightly reduce line-height for mobile */
+    }
+}
+
+</style>
+
 <body>
 
     <section class="contact" id="contact">
@@ -68,6 +102,8 @@
 
                 <input type="hidden" name="access_key" value="d2837145-a5b5-49af-b269-cb79e9b57456">
                 <input class="input" type="hidden" name="Timestamp">
+                <input class="input" type="hidden" name="PageUrl">
+
 
                 <div class="field">
 
@@ -76,7 +112,7 @@
                     <div class="control">
 
                         <div class="select">
-                            <select name="Subject" id="subjectSelect" required="">
+                            <select class="input" name="Subject" id="subjectSelect" required="">
                                 <option value="" disabled="" selected="">Select a subject</option>
                                 <option value="Feedback">Feedback</option>
                                 <option value="Collaboration">Collaboration</option>
@@ -98,7 +134,7 @@
                     <div class="control">
 
                         <div class="select">
-                            <select name="support" id="supportselect">
+                            <select class="input" name="support" id="supportselect">
                                 <option value="" disabled="" selected="">Select support type</option>
                                 <option value="Blogs">Blogs</option>
                                 <option value="Technical">Technical</option>
@@ -122,11 +158,13 @@
 
                         <div class="select">
 
-                            <select style="margin-bottom: 2px;" name="projectCato" id="projectCatogo" onchange="showLink()">
+                            <select class="input" style="margin-bottom: 2px;" name="projectCato" id="projectCatogo"
+                                onchange="showLink()">
                                 <option value="" disabled="" selected="">Select Project</option>
                             </select>
 
-                            <a id="projectLink" href="" target="_blank">Visit Project Link <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                            <a id="projectLink" href="" target="_blank">Visit Project Link <i
+                                    class="fa-solid fa-arrow-up-right-from-square"></i></a>
 
                         </div>
 
@@ -137,23 +175,22 @@
                 <div class="field otherProjecCato" style="display: none;">
                     <label class="label required-label">Project Name</label>
                     <div class="control">
-                        <input type="text" id="otherProjecCatO" placeholder="Enter Project Name" name="projectCatoN" />
+                        <input class="input" type="text" id="otherProjecCatO" placeholder="Enter Project Name"
+                            name="projectCatoN" />
                     </div>
                 </div>
 
                 <div class="field NameFie">
                     <label class="label required-label">Name</label>
                     <div class="control">
-                        <div class="input"><input type="text" placeholder="Enter Your Name" name="UserName" required="">
-                        </div>
+                        <input class="input" type="text" placeholder="Enter Your Name" name="UserName" required="">
                     </div>
                 </div>
 
                 <div class="field emailFie">
                     <label class="label required-label">Email</label>
                     <div class="control">
-                        <div class="input"><input type="email" placeholder="Enter Your Email" name="Email" required="">
-                        </div>
+                        <input class="input" type="email" placeholder="Enter Your Email" name="Email" required="">
                     </div>
                 </div>
 
@@ -203,7 +240,8 @@
                 <div class="field phoneField" style="display: none;">
                     <label class="label">Phone Number</label>
                     <div class="control">
-                        <input type="text" id="mobile_code" placeholder="Enter Phone Number" name="Number" />
+                        <input class="input" type="text" id="mobile_code" placeholder="Enter Phone Number"
+                            name="Number" />
                     </div>
                 </div>
 
@@ -229,6 +267,19 @@
                     <div class="control"><textarea class="input" placeholder="Enter Your Message" id="message_form"
                             name="Message" rows="6" required=""></textarea></div>
                 </div>
+
+                <div class="field agreement-container"> 
+                    <div class="control">
+                        <label>
+                            <input class="checkbox" type="checkbox" required>
+                            I Certify That I Have Read And Agree To The 
+                            <a class="links" href="https://blog.mbktechstudio.com/post/privacy-policy/">Privacy Policy</a>, 
+                            <a class="links" href="https://blog.mbktechstudio.com/post/terms-and-conditions/">Terms and Conditions</a>, 
+                            and <a class="links" href="https://blog.mbktechstudio.com/post/cookies-policy/">Cookie Policy</a> of <a class="links" href="https://mbktechstudio.com/">MBK Tech Studio</a> .
+                        </label>
+                    </div>
+                </div>
+                
 
                 <div class="notification is-info">
                     <p>
@@ -295,6 +346,6 @@
 
 </footer>
 
-<script src="Support.js" ></script>
- 
+<script src="Support.js"></script>
+
 </html>
