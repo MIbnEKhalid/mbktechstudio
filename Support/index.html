@@ -73,8 +73,7 @@
 
             <div class="title"><span>Support & Contact</span></div>
 
-            <form action="https://api.web3forms.com/submit" style="display: block;" id="form"
-                class="container notification is-form m-4 pl-4" method="POST">
+            <form action="https://api.web3forms.com/submit" style="display: block;" id="form" class="container notification is-form m-4 pl-4" method="POST">
 
                 <input type="hidden" name="access_key" value="">
                 <input class="input" type="hidden" name="Timestamp">
@@ -113,7 +112,7 @@
                         <div class="select">
                             <select class="input" name="support" id="supportselect">
                                 <option value="" disabled="" selected="">Select support type</option>
-                                <option value="Blogs">Blogs</option>
+                                <option value="Blogs&Docs">Blogs / Docs</option>
                                 <option value="Technical">Technical</option>
                                 <option value="CopyRightIssue">CopyRight Issue</option>
                                 <option value="SourceCodeAssistance">Source Code Assistance</option>
@@ -223,8 +222,6 @@
                 </div>
 
                 <div class="notification is-link notereq" style="margin-bottom: 10px;" style="display: none;">
-                    <p>
-                    </p>
                     <ul>
                         <li>
                             If You Have A Book In PDF Or Any Other Format, Please Upload It <a style="font-weight: 700;"
@@ -241,8 +238,7 @@
 
                 <div class="field messageF">
                     <label class="label required-label">Message</label>
-                    <div class="control"><textarea class="input" placeholder="Enter Your Message" id="message_form"
-                            name="Message" rows="6" required=""></textarea></div>
+                    <div class="control"><textarea class="input" placeholder="Enter Your Message" id="message_form" name="Message" rows="6" required=""></textarea></div>
                 </div>
 
                 <div class="field agreement-container"> 
@@ -279,36 +275,32 @@
                 </div>
 
                 <div class="button field is-grouped" style="display: flex; justify-content: center;">
-                    <div class="control"><button class="button is-primary" type="submit"
-                            id="submit-button">Submit</button></div>
+                    <div class="control"><button class="button is-primary" type="submit" id="submit-button">Submit</button></div>
                 </div>
 
                 <br>
 
-             
+                <div id="message" style="display: none; font-weight: bold; color: green; padding: 8px; background-color: beige; border-radius: 4px; border-color: aquamarine;"></div>
 
-
-                <div id="message"
-                    style="display: none; font-weight: bold; color: green; padding: 8px; background-color: beige; border-radius: 4px; border-color: aquamarine;">
-                </div>
                 <div class="button field is-grouped" style="display: flex; justify-content: center;">
-                    <div class="control"><a onclick="showbox('tS-form')" class="Trackbutton">Track Ticket</a></div></div>
+                    <div class="control">
+                        <a onclick="showbox('tS-form')" class="Trackbutton">Track Ticket</a>
+                    </div> 
                 </div>
+
             </form>
-
-
             
             <div id="tS-form" class="contact-box">
                 <div onclick="hidebox('tS-form')" class="close-btn"></div>
-                <form   id="ticketStatusForm"  >
+                <form id="ticketStatusForm" >
                     <div class="title"><span>Track Ticket</span></div>  
-                            <div id="ticketStatus"></div>
-                
+                    <div id="ticketStatus"></div>
                     <div class="input-container">
                          <input type="text" placeholder="Enter ID eg. T000111333" required minlength="10" maxlength="10" pattern=".{10}"  class="ticketNumberinput" id="ticketId" required><br><br>
-                        <button class="copy-btn"  type="submit"  >Check</button>
-                    </div>
-                    
+                         <div class="button field is-grouped" style="display: flex; justify-content: center;">
+                            <div class="control"><button class="button is-primary" type="submit" id="submit-button">Check</button></div>
+                        </div>       
+                     </div>
                 </form>
             </div>
             
@@ -322,8 +314,7 @@
                 </div>
                 <p style="text-align: center;">You Can Use This Ticket Number To Track Your Support Status</p>
             </div>
-            
-             
+                 
             <div class="ssmedis" id="ssmedia">
                 <a href="https://instagram.com/mbktech.studios" target="_blank"><i class="fab fa-instagram"></i></a>
                 <a href="https://signal.me/#eu/0Bxn3qmtp8gtYNuy6eJ_F3WaHWHrQW3uefaC2y01VCWtduFQCwJHvIFL6N4VOtsv" target="_blank"><i
@@ -337,10 +328,6 @@
                 <a href="https://youtube.com/@mibnekhalid" target="_blank"><i class="fab fa-youtube"></i></a>
                 <a href="https://discord.gg/" target="_blank"><i class="fab fa-discord"></i></a>
             </div>
-
-
-
-
 
         </div>
 

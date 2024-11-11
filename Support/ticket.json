@@ -2,19 +2,22 @@
     {
         "id": "T000111333",
         "firstName": "test",
-        "status": "Close",
-        "description": "Testing"
-    },
-    {
-        "id": "T12345",
-        "firstName": "John",
         "status": "Pending",
-        "description": "Issue with logging in"
+        "description": "Login issue",
+        "comment": "Waiting for user response respinse via email"
     },
     {
-        "id": "T67890",
-        "firstName": "Jane",
+        "id": "T000111333",
+        "firstName": "John",
         "status": "Resolved",
-        "description": "Password reset completed"
+        "description": "Testing",
+        "comment": "Testing"
+    },
+    {
+        "id": "T000111333",
+        "firstName": "Jane",
+        "status": "Close",
+        "description": "Testing",
+        "comment": "Testing"
     }
 ]

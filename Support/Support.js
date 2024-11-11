@@ -1,6 +1,3 @@
-
-
-
     // Global Var
     var noteW = document.querySelector(".notereq");
     var supportField = document.querySelector(".supportfield");
@@ -41,7 +38,6 @@
             .catch(error => console.error("Error loading projects:", error));
     });
     
-
     function showLink() {
         const selectedValue = document.getElementById("projectCatogo").value;
         const project = projects.find(p => p.value === selectedValue);
@@ -75,7 +71,6 @@
             results = regex.exec(location.search);
         return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
     }
-
 
     function LoadProjectSupportValues(proId) {
 
@@ -199,8 +194,8 @@
     document.getElementById("supportselect").addEventListener("change", function () {
 
         var selectedOption = this.value;
-
-        if (selectedOption === "CopyRightIssue" || selectedOption === "SourceCodeAssistance" || selectedOption === "BugReportingFeatureRequests" || selectedOption === "Technical") {
+        
+        if (selectedOption === "Blogs&Docs" || selectedOption === "Technical" || selectedOption === "CopyRightIssue" || selectedOption === "SourceCodeAssistance" || selectedOption === "BugReportingFeatureRequests"|| selectedOption === "other") {
             projectCatogery.style.display = "block";
             document.querySelectorAll('select[name="projectCato"]').forEach(function (input) {
                 input.setAttribute("required", "required");
@@ -371,42 +366,43 @@
 
     document.getElementById('ticketStatusForm').addEventListener('submit', function(event) {
         event.preventDefault();
-
+    
         let ticketId = document.getElementById('ticketId').value;
-
+    
         // Fetch the ticket data from Google Drive JSON file
-        fetch('https://raw.githubusercontent.com/MIbnEKhalid/MIbnEKhalid.github.io/main/Support/ticket.json ')   
+        fetch('ticket.json')   
             .then(response => response.json())
             .then(ticketData => {
                 let ticketStatuses = checkTicketStatus(ticketId, ticketData);
-
+    
                 let ticketStatusDiv = document.getElementById('ticketStatus');
                 if (ticketStatuses.length > 0) {
-                    // Create a table to display all matching tickets
+                    // Wrap the table in a div with scrollable property
                     let tableHTML = `
-                        <table border="1">
-                            <tr>
-                                <th>ID</th>
-                                <th>Status</th>
-                                <th>Desc</th> 
-                            </tr>
+                        <div id="tableContainer">
+                            <table border="1">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Status</th>
+                                    <th>Comments</th> 
+                                </tr>
                     `;
-
+    
                     // Loop through all matching tickets and add rows to the table
                     ticketStatuses.forEach(ticket => {
                         tableHTML += `
                             <tr>
                                 <td>${ticket.id}</td>
                                 <td>${ticket.status}</td>
-                                <td>${ticket.description}</td> 
+                                <td>${ticket.description}, ${ticket.comment}</td> 
                             </tr>
                         `;
                     });
-
-                    tableHTML += '</table>';
+    
+                    tableHTML += '</table></div>';
                     ticketStatusDiv.innerHTML = tableHTML;
                 } else {
-                    ticketStatusDiv.innerHTML = 'Your ticket might have been created, but it has not yet been reviewed by the support team. Please double-check your ID number or try again later.';
+                    ticketStatusDiv.innerHTML = '<p class="notFound">Your Ticket Might Have Been Created, But It Has Not Yet Been Reviewed By The Support Team. Please Double-Check Your ID Number Or Try Again Later.</p>';
                 }
             })
             .catch(error => {
@@ -414,7 +410,7 @@
                 document.getElementById('ticketStatus').innerHTML = 'There was an error retrieving ticket data. Please try again later.';
             });
     });
-
+    
     function checkTicketStatus(ticketId, ticketData) {
         // Filter the tickets array to find all tickets with the matching ticketId
         return ticketData.filter(ticket => ticket.id === ticketId);
