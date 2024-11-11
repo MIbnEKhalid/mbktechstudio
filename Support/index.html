@@ -274,13 +274,16 @@
                     </p>
                 </div>
 
-                <div class="button field is-grouped" style="display: flex; justify-content: center;">
-                    <div class="control"><button class="button is-primary" type="submit" id="submit-button">Submit</button></div>
-                </div>
-
                 <br>
 
                 <div id="message" style="display: none; font-weight: bold; color: green; padding: 8px; background-color: beige; border-radius: 4px; border-color: aquamarine;"></div>
+
+
+                <div class="button field is-grouped" style="display: flex; justify-content: center;">
+                    <div class="control"><button style="font-size: 20px;" class="button is-primary" type="submit" id="submit-button">Submit</button></div>
+                </div>  
+
+                <br>
 
                 <div class="button field is-grouped" style="display: flex; justify-content: center;">
                     <div class="control">
@@ -307,10 +310,12 @@
             <div id="tG-form" class="contact-box">
                 <div onclick="hidebox('tG-form')" class="close-btn"></div>
                 <div class="title"><span>Ticket Generated</span></div>
-                <p style="text-align: center;">Your ticket number is:</p>
+                <p style="text-align: center;">Your Ticket Number Is:</p>
                 <div class="input-container">
                     <input class="ticketNumberinput" name="ticketNumberInput" id="ticketNumber" readonly />
-                    <button class="copy-btn" onclick="copyTicketNumber()">Copy</button>
+                    <div class="button field is-grouped" style="display: flex; justify-content: center;">
+                        <div class="control"><button class="button" onclick="copyTicketNumber()">Copy</button></div>
+                    </div>    
                 </div>
                 <p style="text-align: center;">You Can Use This Ticket Number To Track Your Support Status</p>
             </div>
