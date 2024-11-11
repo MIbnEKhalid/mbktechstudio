@@ -126,7 +126,7 @@
 
     document.getElementById("subjectSelect").addEventListener("change", function () {
 
-        var selectedOption = this.value;
+        var selectedOption = this.value; 
 
         if (selectedOption === "Collaboration") {
             // Show phone number field for collaboration
@@ -144,7 +144,15 @@
             document.querySelectorAll('select[name="support"]').forEach(function (input) {
                 input.removeAttribute("required");
             });
-        } else if (selectedOption === "Feedback") {
+
+            // Hide project category field
+            projectCatogery.style.display = "none";
+            document.querySelectorAll('select[name="projectCato"]').forEach(function (input) {
+                input.removeAttribute("required");
+            });
+        }
+        
+        else if (selectedOption === "Feedback") {
             // Show rating field for feedback
             ratingField.style.display = "block";
             document.querySelectorAll('input[name="stars"]').forEach(function (input) {
@@ -160,7 +168,15 @@
             document.querySelectorAll('select[name="support"]').forEach(function (input) {
                 input.removeAttribute("required");
             });
-        } else if (selectedOption === "Support") {
+
+            // Hide project category field
+            projectCatogery.style.display = "none";
+            document.querySelectorAll('select[name="projectCato"]').forEach(function (input) {
+                input.removeAttribute("required");
+            });
+        } 
+        
+        else if (selectedOption === "Support") {
             // Show support field for support
             supportField.style.display = "block";
             document.querySelectorAll('select[name="support"]').forEach(function (input) {
@@ -176,7 +192,35 @@
             document.querySelectorAll('input[name="stars"]').forEach(function (input) {
                 input.removeAttribute("required");
             });
-        } else {
+        } 
+        
+        else if (selectedOption === "General Inquiry") {
+ 
+
+            // Hide all additional fields for other options
+            numberField.style.display = "none";
+            document.querySelector('input[name="Number"]').removeAttribute("required");
+
+            // Hide rating field
+            ratingField.style.display = "none";
+            document.querySelectorAll('input[name="stars"]').forEach(function (input) {
+                input.removeAttribute("required");
+            });
+
+            // Show support field for support
+            supportField.style.display = "none";
+            document.querySelectorAll('select[name="support"]').forEach(function (input) {
+                input.removeAttribute("required");
+            });
+
+            // Hide project category field
+            projectCatogery.style.display = "none";
+            document.querySelectorAll('select[name="projectCato"]').forEach(function (input) {
+                input.removeAttribute("required");
+            });
+        } 
+
+        else {
             // Hide all additional fields for other options
             numberField.style.display = "none";
             document.querySelector('input[name="Number"]').removeAttribute("required");
@@ -186,6 +230,10 @@
             });
             supportField.style.display = "none";
             document.querySelectorAll('select[name="support"]').forEach(function (input) {
+                input.removeAttribute("required");
+            }); 
+            projectCatogery.style.display = "none";
+            document.querySelectorAll('select[name="projectCato"]').forEach(function (input) {
                 input.removeAttribute("required");
             });
         }
