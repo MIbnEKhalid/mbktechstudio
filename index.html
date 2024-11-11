@@ -15,6 +15,15 @@
     <title>Home</title>
     <link rel="icon" type="image/x-icon" href="Assets/Images/Icon/dgicon.svg">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://mbktechstudio.com/Assets/config.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {  
+            const input = document.querySelector('input[name="access_key"]');
+            if (input) {
+                input.value =  web3forms_API_KEY;
+            }
+        });
+    </script>
 </head>
 
 <style>
@@ -231,7 +240,7 @@
 
             <form action="https://api.web3forms.com/submit" style="display: block;" id="form" class="container m-4 pl-4" method="POST">
 
-                <input type="hidden" name="access_key" value="d2837145-a5b5-49af-b269-cb79e9b57456">
+                <input type="hidden" name="access_key" value="">
                 <input class="input" type="hidden" name="Timestamp">
                 <input class="input" type="hidden" name="Subject" value="ContactUSMain">
                 <input class="input" type="hidden" name="Number">
