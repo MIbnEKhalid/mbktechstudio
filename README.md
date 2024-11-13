@@ -12,6 +12,16 @@ Detailed Documentation of this website will be available soon on: [docs.mbktechs
 Only The Source Code Of This Website Is Covered Under The [WTFP LICENSE](https://choosealicense.com/licenses/wtfpl/). The Project Documentation, Some Images, Blog Posts, And Other Content Are NOT Covered Under This License And Remain The Intellectual Property Of The Author.
 
 
+# To DO
+- [x] Improve Support Page Functionality
+- [x] Redesign Footer
+- [ ] Redesign Docs
+- [ ] Add Auto Subject Support For Blog
+- [ ] Add Auto Subject Support For Docs
+
+
+
+
 ### List Of Main Domains 
 
 |                         | Domains                                        | Purpose                                                                                                 |
