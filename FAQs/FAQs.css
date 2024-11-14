@@ -1,96 +1,105 @@
+    /* FAQ Container */
+    .faq-container {
+      display: block;
+      width: 90%;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* FAQ Item Styles */
+    .faq-item {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+      overflow: hidden;
+      transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+    }
+
+    .faq-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    /* FAQ Question */
+    .faq-question {
+      font-size: 18px;
+      font-weight: bold;
+      padding: 20px;
+      background: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      border-bottom: 1px solid #ddd;
+      transition: all 0.4s ease;
+    }
+
+    .faq-question:hover {
+      background: #377a77;
+      color: #fff;
+      transition: all 0.4s ease;
+    }
+
+    .faq-question:hover::after {
+      color: #fff !important;
+    }
+
+    .faq-question::after {
+      content: "\f078";
+      font-family: "Font Awesome 5 Free";
+      font-size: 18px;
+      padding: 5px;
+      color: #333;
+      transition: all 0.4s ease;
+    }
 
 
-.faq-container {
-    width: 90%;
-    max-width: 700px;
-    margin: 0 auto;
-  }
+    .faq-item.active .faq-question::after {
+      content: "\f077";
+      transform: rotate(180deg);
+    }
 
-  .faq-item {
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease-in-out;
-  }
+    /* FAQ Answer */
+    .faq-answer {
+      padding: 0 auto;
+      font-size: 16px;
+      line-height: 1.6;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      visibility: hidden;
+      transition: opacity 0.5s ease, max-height 0.5s ease, visibility 0s linear 0.5s;
+    }
 
-  .faq-item:hover {
-    background-color: #f5fcff; 
-  }
+    /* When the FAQ Item is Active */
+    .faq-item.active .faq-answer {
+      max-height: 1000px;
+      /* You can adjust this to fit your content */
+      opacity: 1;
+      visibility: visible;
+      padding: 0 auto;
+      transition: opacity 0.5s ease, max-height 0.5s ease;
+      background-color: #e6f7ff;
+    }
 
-  .faq-question {
-    cursor: pointer;
-    font-weight: bold;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-    padding-left: 30px;
-    padding-right: 17px;
-    font-size: large;
-  }
- 
-  .faq-question::before {
-    content: "\f078";  
-    font-family: "Font Awesome 5 Free"; 
-    position: absolute;
-    right: 0;
-    font-size: 20px;  
-    color: #000000;  
-    transition: transform 0.3s ease-in-out;
-  }
+    /* List Style for Answers */
+    .faq-answer ul {
+      padding-left: 20px;
+    }
 
-  .faq-item.active .faq-question::before {
-    content: "\f077";
-    font-size: 20px;  
-  }
+    .faq-answer ul li {
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
 
-  .faq-answer {
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    font-size: 15px;
-    padding-left: 30px;
-    transition: opacity 0s ease-out, max-height 0s ease-out;
-    transition: max-height 0.4s ease-in, opacity 0.4s ease-in;
-  }
+    /* Media Queries for Responsiveness */
+    @media (max-width: 768px) {
+      .faq-question {
+        font-size: 16px;
+      }
 
-  .faq-item.active .faq-answer {
-    margin-top: 5px;
-    max-height: 500px;  
-    opacity: 1;
-  }
-
-  .faq-item.active {
-    background-color: #e6f7ff;  
-  }
-
-  .hs {
-    display: inline-block;
-  }
-  
-  .hs a {
-    color: #8ba7f3;
-    font-size: 17px;
-  }
-  
-  .hs a:hover {
-    color: #377a77;
-    transition: all 0.3s ease;
-  }
-  
-  .faq-answer ul li {
-    padding: 2px 0px 2px;
-    list-style-type: decimal;
-    font-weight: bold;
-  }
-  
-  .faq-answer ul {
-    padding: 0px 5px;
-  }
-  .faq-answer ul h3 {
-    font-size: 17px;
-    text-align: left;
-  }
+      .faq-answer {
+        font-size: 14px;
+      }
+    }
