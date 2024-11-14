@@ -15,8 +15,9 @@ Only The Source Code Of This Website Is Covered Under The [WTFP LICENSE](https:/
 # To DO
 - [x] Improve Support Page Functionality
 - [x] Redesign Footer
-- [ ] Redesign Docs
-
+- [ ] Redesign Docs (Use blog template)
+- [ ] Redesign Privacy (Use blog template)
+- [ ] 
 - [ ] Add New Subject For Blog
 - [ ] Add New Support For Blog
 
