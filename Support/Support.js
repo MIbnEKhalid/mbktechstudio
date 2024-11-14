@@ -7,49 +7,131 @@
     var numberField = document.querySelector(".phoneField");
     var ratingField = document.querySelector(".ratingWeb");
     var projectCatogery = document.querySelector(".projectCatogo");
-    var projectNCatogery = document.querySelector(".otherProjecCato");
+    var blogCatogery = document.querySelector(".blogCatogo"); 
     var messageBox = document.getElementById("message");
 
-    document.addEventListener("DOMContentLoaded", function() {
-        const projectSelect = document.getElementById("projectCatogo"); 
-        // Fetch the JSON data
+
+    var projects = [];
+    var blogs = [];
+    
+    document.addEventListener("DOMContentLoaded", function () {
+        const projectSelect = document.getElementById("projectCatogo");
+        const blogSelect = document.getElementById("blogCatogo");
+    
+        // Fetch and handle projects JSON
         fetch('projects.json')
             .then(response => response.json())
-            .then(projects => {
-                // Populate the select dropdown
-                projects.forEach(project => {
-                    const option = document.createElement("option");
-                    option.value = project.value;
-                    option.textContent = project.name;
-                    projectSelect.appendChild(option);
-                });
-    
-                // Get the "Project" parameter from the URL
-                const projectParam = getUrlParameter('Project');
-    
-                // Find the matching project based on `value`
-                const selectedProject = projects.find(project => project.value === projectParam);
-    
-                // If a matching project is found, load its support values
-                if (selectedProject) {
-                    LoadProjectSupportValues(selectedProject.value);
-                }
+            .then(data => {
+                projects = data; // Assign fetched data to the global projects variable
+                populateSelect(projectSelect, projects);
+                initializeSelection('Project', projects, projectSelect, handleProjectSelection);
             })
             .catch(error => console.error("Error loading projects:", error));
+    
+        // Fetch and handle blogs JSON
+        fetch('https://blog.mbktechstudio.com/blogs.json')
+            .then(response => response.json())
+            .then(data => {
+                blogs = data; // Assign fetched data to the global blogs variable
+                populateSelect(blogSelect, blogs);
+                initializeSelection('Blog', blogs, blogSelect, handleBlogSelection);
+            })
+            .catch(error => console.error("Error loading blogs:", error));
     });
     
-    function showLink() {
-        const selectedValue = document.getElementById("projectCatogo").value;
-        const project = projects.find(p => p.value === selectedValue);
-        const projectLink = document.getElementById("projectLink");
+    // Populate dropdown with items
+    function populateSelect(selectElement, items) {
+        items.forEach(item => {
+            const option = document.createElement("option");
+            option.value = item.value;
+            option.textContent = item.name;
+            selectElement.appendChild(option);
+        });
+    }
     
-        if (project && project.link) {
-            projectLink.href = project.link;
-            projectLink.style.display = "inline"; // Show link if available
-        } else {
-            projectLink.style.display = "none"; // Hide link if not available
+    // Initialize selection based on URL parameter
+    function initializeSelection(paramName, items, selectElement, callback) {
+        const paramValue = getUrlParameter(paramName);
+        const selectedItem = items.find(item => item.value === paramValue);
+    
+        if (selectedItem) {
+            selectElement.value = selectedItem.value;
+            callback(selectedItem.value); // Execute callback if provided
         }
     }
+    
+    // Get URL parameter value by name
+    function getUrlParameter(name) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(name);
+    }
+    
+    // Handle project selection
+    function handleProjectSelection(selectedValue) {
+        const selectedProject = projects.find(project => project.value === selectedValue);
+    
+        if (selectedProject) {
+            // Show support field
+            supportField.style.display = "block";
+            supportSelect.style.display = "block";
+            projectCatogery.style.display = "block";
+    
+            // Set required attributes
+            document.querySelectorAll('select[name="support"]').forEach(input => input.setAttribute("required", "required"));
+            document.querySelectorAll('select[name="projectCato"]').forEach(input => input.setAttribute("required", "required"));
+    
+            // Update subject and selection
+            subjectSelect.value = "Support";
+            document.getElementById("projectCatogo").value = selectedProject.value;
+    
+            // Show link for the project
+            showLink("projectLink", "projectCatogo");
+        }
+    }
+    
+    // Handle blog selection
+    function handleBlogSelection(selectedValue) {
+        const selectedBlog = blogs.find(blog => blog.value === selectedValue);
+    
+        if (selectedBlog) {
+            // Show support field
+            supportField.style.display = "block";
+            blogCatogery.style.display = "block";
+    
+            // Update subject and selection
+            subjectSelect.value = "Support";
+            document.getElementById("blogCatogo").value = selectedBlog.value;
+    
+            // Set the "Support" dropdown to "Blog"
+            const supportDropdown = document.getElementById("supportselect");
+            if (supportDropdown) {
+                const blogOption = Array.from(supportDropdown.options).find(option => option.textContent === "Blog");
+                if (blogOption) {
+                    supportDropdown.value = blogOption.value;
+                }
+            }
+    
+            // Show link for the blog
+            showLink("blogLink", "blogCatogo");
+        }
+    }
+    
+    
+    // Show link for the selected item
+    function showLink(linkID, fieldID) {
+        const selectedValue = document.getElementById(fieldID).value;
+        const items = fieldID === "projectCatogo" ? projects : blogs;
+        const item = items.find(i => i.value === selectedValue);
+        const linkElement = document.getElementById(linkID);
+    
+        if (item && item.link) {
+            linkElement.href = item.link;
+            linkElement.style.display = "inline"; // Show link if available
+        } else {
+            linkElement.style.display = "none"; // Hide link if not available
+        }
+    }
+    
 
     $("#mobile_code").intlTelInput({
         initialCountry: "pk",
@@ -65,33 +147,8 @@
         }
     });
 
-    function getUrlParameter(name) {
-        name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-        var regex = new RegExp('[\\?&]' + name + '=([^&#]*)'),
-            results = regex.exec(location.search);
-        return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-    }
-
-    function LoadProjectSupportValues(proId) {
-
-        const projectSelect = document.getElementById('projectCatogo');
-
-        supportField.style.display = "block";
-        supportSelect.style.display = "block";
-        projectCatogery.style.display = "block";
-
-        document.querySelectorAll('select[name="support"]').forEach(function (input) {
-            input.setAttribute("required", "required");
-        });
-        document.querySelectorAll('select[name="projectCato"]').forEach(function (input) {
-            input.setAttribute("required", "required");
-        });
-        noteW.style.display = "none";
-
-        subjectSelect.value = "Support";
-        projectSelect.value = proId;
-        showLink();
-    }
+ 
+   
 
     // Check for the hash fragment on page load
     if (window.location.hash === "#requestbook") {
@@ -242,33 +299,38 @@
     document.getElementById("supportselect").addEventListener("change", function () {
 
         var selectedOption = this.value;
-        
-        if (selectedOption === "Blogs&Docs" || selectedOption === "Technical" || selectedOption === "CopyRightIssue" || selectedOption === "SourceCodeAssistance" || selectedOption === "BugReportingFeatureRequests"|| selectedOption === "other") {
+        //selectedOption === "Blogs" || selectedOption === "Docs"
+        if (selectedOption === "Technical" || selectedOption === "CopyRightIssue" || selectedOption === "SourceCodeAssistance" || selectedOption === "BugReportingFeatureRequests" || selectedOption === "other") {
             projectCatogery.style.display = "block";
             document.querySelectorAll('select[name="projectCato"]').forEach(function (input) {
                 input.setAttribute("required", "required");
             });
-        } else {
+        }
+        else if (selectedOption === "Blogs") {
+            blogCatogery.style.display = "block";
+            document.querySelectorAll('select[name="blogCatogo"]').forEach(function (input) {
+                input.setAttribute("required", "required");
+            });
+        } else if (selectedOption === "Docs") {
+            blogCatogery.style.display = "none";
+            document.querySelectorAll('select[name="blogCatogo"]').forEach(function (input) {
+                input.removeAttribute("required");
+            });
+        }
+        else {
             projectCatogery.style.display = "none";
             document.querySelectorAll('select[name="projectCato"]').forEach(function (input) {
+                input.removeAttribute("required");
+            });
+
+            blogCatogery.style.display = "none";
+            document.querySelectorAll('select[name="blogCatogo"]').forEach(function (input) {
                 input.removeAttribute("required");
             });
         }
     });
 
-    document.getElementById("projectCatogo").addEventListener("change", function () {
-
-        var selectedOption = this.value;
-
-        if (selectedOption === "other") {
-            projectNCatogery.style.display = "block";
-            document.querySelector('input[name="projectCatoN"]').setAttribute("required", "required");
-
-        } else {
-            projectNCatogery.style.display = "none";
-            document.querySelector('input[name="projectCatoN"]').removeAttribute("required");
-        }
-    });
+ 
 
     document.getElementById("form").addEventListener("submit", function (e) {
         e.preventDefault();
@@ -334,8 +396,7 @@
                 // Hide additional fields if necessary
                 if (numberField) numberField.style.display = "none";
                 if (supportField) supportField.style.display = "none";
-                if (projectCatogery) projectCatogery.style.display = "none";
-                if (projectNCatogery) projectNCatogery.style.display = "none";
+                if (projectCatogery) projectCatogery.style.display = "none"; 
                 if (noteW) noteW.style.display = "none";
                 if (window.location.hash) {
                     history.replaceState(null, null, window.location.pathname);
