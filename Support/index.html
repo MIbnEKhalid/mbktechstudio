@@ -112,7 +112,9 @@
                         <div class="select">
                             <select class="input" name="support" id="supportselect">
                                 <option value="" disabled="" selected="">Select support type</option>
-                                <option value="Blogs&Docs">Blogs / Docs</option>
+                                <option value="Docs">Docs</option>
+                                <option value="Blogs">Blog</option>
+                                <option value="Blogs">Privacy, Term & Conditions, Cookie Policy</option>
                                 <option value="Technical">Technical</option>
                                 <option value="CopyRightIssue">CopyRight Issue</option>
                                 <option value="SourceCodeAssistance">Source Code Assistance</option>
@@ -135,7 +137,7 @@
                         <div class="select">
 
                             <select class="input" style="margin-bottom: 2px;" name="projectCato" id="projectCatogo"
-                                onchange="showLink()">
+                                onchange="showLink('projectLink','projectCatogo')">
                                 <option value="" disabled="" selected="">Select Project</option>
                             </select>
 
@@ -147,6 +149,52 @@
                     </div>
 
                 </div>
+
+                <div class="field blogCatogo" style="display: none;">
+
+                    <label class="label required-label">Blogs</label>
+
+                    <div class="control">
+
+                        <div class="select">
+
+                            <select class="input" style="margin-bottom: 2px;" name="blogCato" id="blogCatogo"
+                                onchange="showLink('blogLink','blogCatogo')">
+                                <option value="" disabled="" selected="">Select Blog</option>
+                            </select>
+
+                            <a id="blogLink" href="" target="_blank">Visit Project Link <i
+                                    class="fa-solid fa-arrow-up-right-from-square"></i></a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="field blogCatogo" style="display: none;">
+
+                    <label class="label required-label">Blogs</label>
+
+                    <div class="control">
+
+                        <div class="select">
+
+                            <select class="input" style="margin-bottom: 2px;" name="blogCato" id="blogCatogo"
+                                onchange="showLink('blogLink','blogCatogo')">
+                                <option value="" disabled="" selected="">Select Blog</option>
+                            </select>
+
+                            <a id="blogLink" href="" target="_blank">Visit Project Link <i
+                                    class="fa-solid fa-arrow-up-right-from-square"></i></a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
 
                 <div class="field otherProjecCato" style="display: none;">
                     <label class="label required-label">Project Name</label>
@@ -353,3 +401,19 @@
 <script src="Support.js"></script>
 
 </html>
+
+<!--
+        const blotSelect = document.getElementById("blogCatogo");
+
+        fetch('https://blog.mbktechstudio.com/blogFiles.json')
+            .then(response => response.json())
+            .then(files => { 
+                files.forEach(fileName => {
+                    const option = document.createElement("option");
+                    option.value = fileName;
+                    option.textContent = fileName;
+                    blotSelect.appendChild(option);
+                });
+            })
+            .catch(error => console.error("Error loading blog files:", error));
+-->
