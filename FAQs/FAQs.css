@@ -103,3 +103,25 @@
         font-size: 14px;
       }
     }
+
+    .RedboxInfo {
+      position: fixed; 
+      top: 70px; 
+      right: 5px; 
+      left: 60%;
+      background-color: rgb(248, 215, 218,0.6); 
+      color: #721c24; 
+      padding: 15px;
+      border: 1px solid #f5c6cb;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      font-size: 14px; z-index: 1000;
+      font-weight: bold;
+      pointer-events: none;    
+
+    }
+    @media (max-width: 768px) {
+      .RedboxInfo {
+        left: 62%;
+      } 
+    }
