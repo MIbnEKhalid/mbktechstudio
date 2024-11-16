@@ -2,15 +2,14 @@
 <html lang="en" dir="ltr">
 
 <head>
+  <title>FAQs</title>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Lato:wght@400;700&display=swap"
     rel="stylesheet">
   <meta charset="UTF-8" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/css/intlTelInput.css">
-  <title>FAQs</title>
-  <meta name="description" content="At MBK Tech Studio, We're A Team Of Passionate Tech Innovators">
+  <meta name="description" content="Frequently Asked Questions">
   <link rel="stylesheet" href="https://docs.mbktechstudio.com/Assets/project.css">
-  <link rel="stylesheet" href="FAQs.css">
-  <!-- Fontawesome CDN Link -->
+  <link rel="stylesheet" href="FAQs.css"> 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
   <link rel="icon" type="image/x-icon" href="../Assets/Images/Icon/dgicon.svg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -23,26 +22,15 @@
     body {
       background: url("https://mbktechstudio.com/Assets/Images/background.png") no-repeat center center fixed;
       background-size: cover;
-      font-family: 'Arial', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      color: #333;
+      font-family: 'Open Sans', sans-serif;
       margin: 0;
       padding: 0;
       scroll-behavior: smooth;
-      color: #333;
     }
 
-
-    /* General Body Styling */
-    body {
-      font-family: 'Open Sans', sans-serif;
-      font-size: 16px;
-      /* Ensure readability */
-      line-height: 1.6;
-      color: #333;
-      margin: 0;
-      padding: 0;
-      background-color: #f9f9f9;
-      /* Minimalistic background */
-    }
 
     /* Headings (H1, H2, H3) */
     h1,
@@ -89,8 +77,6 @@
       color: #444;
     }
 
-
-
     @media (max-width: 768px) {
       .faq-question {
         font-size: 16px;
@@ -136,7 +122,7 @@
       </div>
 
     </div>
- 
+
 
   </nav>
 
@@ -260,7 +246,6 @@
           });
         })
         .catch(error => console.error('Error fetching FAQ data:', error));
-
 
     });
 

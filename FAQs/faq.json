@@ -15,7 +15,7 @@
       "question": "What services do you offer?",
       "answer": "We offer a wide range of services, including software development, cloud solutions, DevOps consulting, and more. We are dedicated to providing tailored solutions that meet the unique needs of each client.",
       "id": "2",
-      "display": "true"
+      "display": "false"
     },
     {
       "question": "Need the Documentation but It's Delayed? Here's What to Do",
@@ -43,7 +43,7 @@
     },
     {
       "question": "What is the process for starting a new project with MBK Tech Studio?",
-      "answer": "To start a new project, you can reach out to us through our contact page or email us at support@mbktechstudio.com. We'll schedule an initial consultation to understand your requirements, provide a proposal, and outline the steps to get started.",
+      "answer": "To start a new project, You can contact <strong>MBK Tech Studio</strong> via the <a style='font-weight:bold;' href='https://mbktechstudio.com/Support/'>Support & Contact</a> Page on our website, though <a> Social Media </a> or by sending an Direct email to <a class='link' style='font-weight:bold;' href='mailto:support@mbktechstudio.com'>support@mbktechstudio.com</a>. . We'll schedule an initial consultation to understand your requirements, provide a proposal, and outline the steps to get started.",
       "id":"7",
       "display": "true"
     },
