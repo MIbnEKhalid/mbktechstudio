@@ -2,6 +2,7 @@
 <html lang="en" dir="ltr">
 
 <head>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Lato:wght@400;700&display=swap" rel="stylesheet">
   <meta charset="UTF-8" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/css/intlTelInput.css">
   <title>FAQs</title>
@@ -30,7 +31,67 @@
     }
 
  
-    
+    /* General Body Styling */
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px; /* Ensure readability */
+  line-height: 1.6;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9; /* Minimalistic background */
+}
+
+/* Headings (H1, H2, H3) */
+h1, h2, h3 {
+  font-family: 'Lato', sans-serif;
+  font-weight: 700; /* Bold for emphasis */
+  color: #222; /* Slightly darker for contrast */
+  margin-bottom: 20px;
+}
+
+/* Subheadings or Secondary Text */
+h4, h5, h6 {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;  
+  color: #555;
+  margin-bottom: 15px;
+}
+
+/* Links */
+.link {
+  font-family: 'Open Sans', sans-serif;
+  color: #007bff;
+  text-decoration: none;
+} 
+
+/* FAQ Section Example */
+.faq-question {
+  font-family: 'Lato', sans-serif;
+  font-size: 20px;  
+  font-weight: 800;
+  cursor: pointer;
+  color: #0056b3;
+ }
+
+.faq-answer {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;  
+  line-height: 1.6;
+  color: #444;
+ }
+
+
+
+ @media (max-width: 768px) {
+  .faq-question {
+    font-size: 16px; 
+  } 
+  .faq-answer {
+    font-size: 14px;  
+  } 
+    }
+
   </style> 
 </head>
 <!-- navgaition menu -->
@@ -47,7 +108,7 @@
         </div>
 
         <div class="text">
-          <a href="#">MBK Tech Studio</a>
+          <a href="../">MBK Tech Studio</a>
         </div>
 
       </div>
@@ -90,8 +151,7 @@
   <!-- FAQ Section -->
   <section class="about" id=".">
     <br> <br> <br>
-    <div class="title"><span>FAQs</span></div>
-
+    <div class="title"><span>Frequently Asked Questions</span></div> 
 
     <div class="faq-container" id="faq-container"></div>
  
@@ -119,39 +179,46 @@
   <script>
 
     
-    document.addEventListener('DOMContentLoaded', function() {
-      fetch('faq.json')
-        .then(response => response.json())
-        .then(data => {
-          const faqContainer = document.getElementById('faq-container');
-          data.forEach(item => {
-            const faqItem = document.createElement('div');
-            faqItem.classList.add('faq-item');
+document.addEventListener('DOMContentLoaded', function() {
+  fetch('faq.json')
+    .then(response => response.json())
+    .then(data => {
+      const faqContainer = document.getElementById('faq-container');
+      data.forEach(item => {
+        const faqItem = document.createElement('div');
+        faqItem.classList.add('faq-item');
 
-            const faqQuestion = document.createElement('div');
-            faqQuestion.classList.add('faq-question');
-            faqQuestion.innerHTML = item.question;
+        const faqQuestion = document.createElement('div');
+        faqQuestion.classList.add('faq-question');
+        faqQuestion.innerHTML = item.question;
 
-            const faqAnswer = document.createElement('div');
-            faqAnswer.classList.add('faq-answer');
-            faqAnswer.innerHTML = `<div style='padding: 20px;'>`+ item.answer +`</div>`;
+        const faqAnswer = document.createElement('div');
+        faqAnswer.classList.add('faq-answer');
 
-            faqItem.appendChild(faqQuestion);
-            faqItem.appendChild(faqAnswer);
-            faqContainer.appendChild(faqItem);
-          });
+        // Capitalize text outside <a> tags
+        const capitalizedAnswer = item.answer.replace(/(<a\b[^>]*>.*?<\/a>)|(\b\w)/g, (match, anchor, word) => {
+          return anchor ? anchor : word.toUpperCase(); // Skip <a> content, capitalize other words
+        });
 
-          // FAQ Item Toggle
-          document.querySelectorAll('.faq-question').forEach(item => {
-            item.addEventListener('click', function () {
-              const faqItem = this.parentNode;
-              faqItem.classList.toggle('active');
-            });
-          });
-        })
-        .catch(error => console.error('Error fetching FAQ data:', error));
-    });
-  </script>
+        faqAnswer.innerHTML = `<div style='padding: 20px;'>${capitalizedAnswer}</div>`;
+        faqItem.appendChild(faqQuestion);
+        faqItem.appendChild(faqAnswer);
+        faqContainer.appendChild(faqItem);
+      });
+
+      // FAQ Item Toggle
+      document.querySelectorAll('.faq-question').forEach(item => {
+        item.addEventListener('click', function () {
+          const faqItem = this.parentNode;
+          faqItem.classList.toggle('active');
+        });
+      });
+    })
+    .catch(error => console.error('Error fetching FAQ data:', error));
+});
+
+ 
+ </script>
 
 </body>
 
