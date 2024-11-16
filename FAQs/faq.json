@@ -1,50 +1,74 @@
 [
     {
       "question": "What is MBK Tech Studio?",
-      "answer": "MBK Tech Studio is a team of passionate tech innovators united by a mission to empower creators and problem-solvers through cutting-edge technology and software development solutions."
+      "answer": "MBK Tech Studio, founded by Muhammad Bin Khalid, is a collaborative development studio focusing on open-source contributions and innovative technology solutions. We empower creators and problem-solvers through software development services and hardware projects, with an emphasis on community-driven initiatives. Our goal is to create impactful digital and hardware solutions that benefit the global tech community, fostering growth, collaboration, and the advancement of open-source technologies.",
+      "id": "0",
+      "display": "true"
     },
     {
       "question": "How can I contact MBK Tech Studio?",
-      "answer": "You can contact <strong>MBK Tech Studio</strong> via the <a style='font-weight:bold;' href='https://mbktechstudio.com/Support/'>Support & Contact</a> Page on our website, though <a> Social Media </a> or by sending an Direct email to <a class='link' style='font-weight:bold;' href='mailto:support@mbktechstudio.com'>support@mbktechstudio.com</a>. We strive to respond to all inquiries within 24-48 hours."
+      "answer": "You can contact <strong>MBK Tech Studio</strong> via the <a style='font-weight:bold;' href='https://mbktechstudio.com/Support/'>Support & Contact</a> Page on our website, though <a> Social Media </a> or by sending an Direct email to <a class='link' style='font-weight:bold;' href='mailto:support@mbktechstudio.com'>support@mbktechstudio.com</a>. We strive to respond to all inquiries within 24-48 hours.",
+      "id": "1",
+      "display": "true"
     },
     {
       "question": "What services do you offer?",
-      "answer": "We offer a wide range of services, including software development, cloud solutions, DevOps consulting, and more. We are dedicated to providing tailored solutions that meet the unique needs of each client."
+      "answer": "We offer a wide range of services, including software development, cloud solutions, DevOps consulting, and more. We are dedicated to providing tailored solutions that meet the unique needs of each client.",
+      "id": "2",
+      "display": "true"
     },
     {
       "question": "Need the Documentation but It's Delayed? Here's What to Do",
-      "answer": "<ul style='text-align: left;> <li> <h3>Submit a Request on the Documentation Page</h3> </li> If you're looking for documentation for a specific project (e.g., docs.mbktechstudio.com/project1), use the contact form on that page to let me know. <li> <h3>Main Contact Form</h3> </li> If the documentation page doesn't exist yet, please submit a request through the contact form on the main site: <div class='hs'><a href='https://mbktechstudio.com/#contact' target='_blank'>mbktechstudio.com</a> </div> <li> <h3>Reach Out on Social Media</h3> </li> You can also contact me on through Social Media (Instagram Prefred). <li> <h3>Need a Faster Response?</h3> </li> Here's my Phone Number: +923264552255. Feel Free To Bully Me until I Upload The Documentation! </ul>"
+      "answer": "<ul style='text-align: left;> <li> <h3>Submit a Request on the Documentation Page</h3> </li> If you're looking for documentation for a specific project (e.g., docs.mbktechstudio.com/project1), use the contact form on that page to let me know. <li> <h3>Main Contact Form</h3> </li> If the documentation page doesn't exist yet, please submit a request through the contact form on the main site: <div class='hs'><a href='https://mbktechstudio.com/#contact' target='_blank'>mbktechstudio.com</a> </div> <li> <h3>Reach Out on Social Media</h3> </li> You can also contact me on through Social Media (Instagram Prefred). <li> <h3>Need a Faster Response?</h3> </li> Here's my Phone Number: +923264552255. Feel Free To Bully Me until I Upload The Documentation! </ul>",
+      "id": "3",
+      "display": "true"
     },
     {
       "question": "Do you provide customized software development services?",
-      "answer": "Yes, we work closely with clients to deliver software solutions that fit their specific goals, from concept to deployment."
+      "answer": "Yes, we work closely with clients to deliver software solutions that fit their specific goals, from concept to deployment.",
+      "id": "4",
+      "display": "false"
     },
     {
       "question": "What technologies does MBK Tech Studio work with?",
-      "answer": "We work with a wide range of modern technologies, including but not limited to JavaScript, Python, C#, Unity, AWS, Azure, Docker, Kubernetes, and various CI/CD tools. Our expertise spans both frontend and backend development, cloud solutions, and mobile app development."
+      "answer": "We work with a wide range of modern technologies, including but not limited to JavaScript, Python, C#, Unity, AWS, Azure, Docker, Kubernetes, and various CI/CD tools. Our expertise spans both frontend and backend development, cloud solutions, and mobile app development.",
+      "id": "5",
+      "display": "true"
     },
     {
       "question": "How do you ensure the security of your projects?",
-      "answer": "Security is a top priority for us. We follow best practices in coding and architecture, including regular security audits, encryption, and secure coding standards to safeguard data and protect your applications from potential threats."
+      "answer": "Security is a top priority for us. We follow best practices in coding and architecture, including regular security audits, encryption, and secure coding standards to safeguard data and protect your applications from potential threats.",
+      "id": "6",
+      "display": "true"
     },
     {
       "question": "What is the process for starting a new project with MBK Tech Studio?",
-      "answer": "To start a new project, you can reach out to us through our contact page or email us at support@mbktechstudio.com. We'll schedule an initial consultation to understand your requirements, provide a proposal, and outline the steps to get started."
+      "answer": "To start a new project, you can reach out to us through our contact page or email us at support@mbktechstudio.com. We'll schedule an initial consultation to understand your requirements, provide a proposal, and outline the steps to get started.",
+      "id":"7",
+      "display": "true"
     },
     {
       "question": "What are your typical project timelines?",
-      "answer": "Project timelines vary depending on the scope and complexity of the work. After an initial consultation and requirement analysis, we provide a timeline estimate tailored to your project. We aim to deliver quality work on time and within budget."
+      "answer": "Project timelines vary depending on the scope and complexity of the work. After an initial consultation and requirement analysis, we provide a timeline estimate tailored to your project. We aim to deliver quality work on time and within budget.",
+      "id": "8",
+      "display": "false"
     },
     {
       "question": "Do you offer ongoing support after project completion?",
-      "answer": "Yes, we offer ongoing support and maintenance for all our projects. Whether it's fixing bugs, implementing new features, or ensuring system stability, our team is here to assist you long after your project goes live."
+      "answer": "Yes, we offer ongoing support and maintenance for all our projects. Whether it's fixing bugs, implementing new features, or ensuring system stability, our team is here to assist you long after your project goes live.",
+      "id": "9",
+      "display": "true"
     },
     {
       "question": "What industries does MBK Tech Studio serve?",
-      "answer": "We serve a wide range of industries, including e-commerce, healthcare, finance, gaming, and more. Our versatile expertise allows us to deliver effective solutions across different sectors."
+      "answer": "We serve a wide range of industries, including e-commerce, healthcare, finance, gaming, and more. Our versatile expertise allows us to deliver effective solutions across different sectors.",
+      "id": "10",
+      "display": "fa"
     },
     {
       "question": "Can MBK Tech Studio help with cloud migration?",
-      "answer": "Absolutely! We specialize in cloud migration services, helping businesses transition from on-premise systems to cloud infrastructure. We ensure the migration process is smooth, secure, and aligned with your business goals."
+      "answer": "Absolutely! We specialize in cloud migration services, helping businesses transition from on-premise systems to cloud infrastructure. We ensure the migration process is smooth, secure, and aligned with your business goals.",
+      "id": "11",
+      "display": "false"
     }
   ]

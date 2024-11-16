@@ -2,7 +2,7 @@
     .faq-container {
       display: block;
       width: 90%;
-      max-width: 800px;
+      max-width: 1600px;
       margin: 0 auto;
     }
 
@@ -70,17 +70,16 @@
       opacity: 0;
       overflow: hidden;
       visibility: hidden;
-      transition: opacity 0.5s ease, max-height 0.5s ease, visibility 0s linear 0.5s;
+      transition: all 0.3s ease;
     }
 
     /* When the FAQ Item is Active */
     .faq-item.active .faq-answer {
-      max-height: 1000px;
-      /* You can adjust this to fit your content */
+      max-height: 1000px; 
       opacity: 1;
       visibility: visible;
       padding: 0 auto;
-      transition: opacity 0.5s ease, max-height 0.5s ease;
+      transition: all 1.2s ease;
       background-color: #e6f7ff;
     }
 
@@ -107,7 +106,7 @@
 
     .RedboxInfo {
       position: fixed; 
-      top: 70px; 
+      top: 90px; 
       right: 5px; 
       left: 60%;
       background-color: rgb(248, 215, 218,0.6); 
