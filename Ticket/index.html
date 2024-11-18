@@ -79,7 +79,7 @@
             line-height: 1.6;
         }
 
-        .button button {
+        .button .button {
             outline: none;
             padding: 6px 12px;
             border-radius: 4px;
@@ -92,7 +92,7 @@
             transition: all 0.4s ease;
         }
 
-        .button button:hover {
+        .button .button:hover {
             border-color: #377a77;
             background-color: transparent;
             color: #377a77;
@@ -330,7 +330,7 @@
         <div class="navbar">
             <div class="logo">
                 <div class="image">
-                    <img src="../../Assets/Images/Icon/dg.svg" alt="" />
+                    <img src="../Assets/Images/Icon/dg.svg" alt="" />
                 </div>
                 <div class="text">
                     <a href="https://mbktechstudio.com">MBK Tech Studio</a>
@@ -377,12 +377,17 @@
         <div class="section card">
             <h2>Search Your Ticket</h2>
             <p>Enter Your Ticket Number Below To Check The Status of Your Request:</p>
-            <input type="text" id="ticketNumber"  placeholder="Enter ID eg. T000111333" required minlength="10" maxlength="10" pattern=".{10}"  />
+            <form id="form">
+                <input type="text" id="ticketNumber" placeholder="Enter ID eg. T000111333" required minlength="10"
+                maxlength="10" pattern=".{10}" />
 
             <div class="button" style="display: flex; justify-content: space-between;">
-                <button onclick="searchTicket()">Search</button>
-                <button onclick="clearSearchTicket()">Clear</button>
+                <button class="button" type="submit" id="submit">Search</button>
+                <a class="button" onclick="clearSearchTicket()">Clear</a>
             </div>
+
+            </form>
+
             <br>
             <p>Submit New Ticket By Visiting<a class="links" href="https://mbktechstudio.com/Support">Support &
                     Contact</a>Page.</p>
@@ -515,6 +520,10 @@
         </div>
 
         <script>
+            document.getElementById("form").addEventListener("submit", function (e) {
+                e.preventDefault();
+                searchTicket();
+            });
             // Toggle FAQ answer visibility
             function toggleAnswer(id) {
                 var answer = document.getElementById("answer" + id);
@@ -622,7 +631,7 @@
                     });
                 } else {
                     document.getElementById("notfound").style.display = "block";
-                    document.getElementById("ticketResult").style.display = "none"; 
+                    document.getElementById("ticketResult").style.display = "none";
                     document.getElementById("RedultMessge").textContent = "Your Ticket Might Have Been Created, But It Has Not Yet Been Reviewed By The Support Team. Please Double-Check Your ID Number Or Try Again Later.";
                     document.getElementById("RedultMessge").style.display = "block";
 

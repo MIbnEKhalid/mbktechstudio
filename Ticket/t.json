@@ -1,5 +1,5 @@
 {
-    "TICKET91011": {
+    "TICKET9101": {
       "id": "TICKET1234",
       "title": "System Outage",
       "name": "John Doe",
@@ -44,7 +44,7 @@
         }
       ]
     },
-    "TICKET5678": {
+    "TICKET568": {
       "id": "TICKET5678",
       "title": "Network Connectivity Issue",
       "name": "Jane Smith",
@@ -74,7 +74,7 @@
         }
       ]
     },
-    "TICKET91011": {
+    "TICKET9101": {
       "id": "TICKET91011",
       "title": "Login Issues",
       "name": "Alice Green",
@@ -109,7 +109,7 @@
         }
       ]
     },
-    "TICKET91011": {
+    "TICKET9101": {
       "id": "TICKET91011",
       "title": "Login Issues",
       "name": "Alice Green",
