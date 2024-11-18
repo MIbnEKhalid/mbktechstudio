@@ -23,6 +23,13 @@
             margin-top: 5%;
         }
 
+        /* Media query for smaller screens */
+        @media (max-width: 600px) {
+            main {
+                margin-top: 10%;
+            }
+        }
+
         .section {
             margin-bottom: 30px;
         }
@@ -251,6 +258,67 @@
         #auditTrailToggleIcon.rotate {
             transform: rotate(180deg);
         }
+
+        /* FAQ Section Styles */
+        .faq {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq h3 {
+            margin-bottom: 15px;
+            color: #5692ed;
+            font-size: 1.6em;
+        }
+
+        .faq-item {
+            margin-bottom: 15px;
+        }
+
+        .faq-question {
+            font-size: 1.1em;
+            color: #333;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: #ddd;
+        }
+
+        .faq-answer {
+            display: none;
+            font-size: 0.95em;
+            color: #555;
+            margin-top: 5px;
+            padding: 10px;
+            background: #f9f9f9;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-question i {
+            margin-right: 10px;
+            color: #5692ed;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-question i.fa-minus-circle {
+            color: #e74c3c;
+        }
+
+        .faq-answer p {
+            line-height: 1.6;
+            margin: 0;
+        }
     </style>
 
 
@@ -309,12 +377,20 @@
         <div class="section card">
             <h2>Search Your Ticket</h2>
             <p>Enter Your Ticket Number Below To Check The Status of Your Request:</p>
-            <input type="text" id="ticketNumber" placeholder="Enter Ticket Number" />
+            <input type="text" id="ticketNumber"  placeholder="Enter ID eg. T000111333" required minlength="10" maxlength="10" pattern=".{10}"  />
 
             <div class="button" style="display: flex; justify-content: space-between;">
                 <button onclick="searchTicket()">Search</button>
                 <button onclick="clearSearchTicket()">Clear</button>
             </div>
+            <br>
+            <p>Submit New Ticket By Visiting<a class="links" href="https://mbktechstudio.com/Support">Support &
+                    Contact</a>Page.</p>
+
+        </div>
+
+        <div id="RedultMessge"
+            style="display: none; padding: 10px; border-radius: 5px; background-color: #0c5460; color: #fff; text-align: center; font-weight: bold; margin-bottom: 20px;">
         </div>
 
         <!-- Ticket Result Section -->
@@ -384,15 +460,76 @@
 
 
         <!-- FAQ Section -->
-        <div class="section faq">
+        <!-- FAQ Section -->
+        <div class="section card faq">
             <h3>Frequently Asked Questions</h3>
-            <p><strong>What if I don’t have a ticket number?</strong> You need to submit a ticket through our support
-                form to get a ticket number.</p>
-            <p><strong>How long does it take to resolve an issue?</strong> Response times may vary, but most issues are
-                resolved within 1-3 business days.</p>
-            <p><strong>Can I update my ticket?</strong> Yes, you can update your ticket by replying to the support email
-                associated with it.</p>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleAnswer(1)">
+                    <i class="fas fa-plus-circle"></i> What is the Support Ticket System?
+                </div>
+                <div class="faq-answer" id="answer1">
+                    <p>Our Support Ticket System helps you track and resolve queries by submitting tickets that can be
+                        easily tracked and managed.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleAnswer(2)">
+                    <i class="fas fa-plus-circle"></i> How do I check the status of my ticket?
+                </div>
+                <div class="faq-answer" id="answer2">
+                    <p>You can check the status of your ticket by entering the ticket number in the search bar at the
+                        top of the page.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleAnswer(3)">
+                    <i class="fas fa-plus-circle"></i> How can I submit a new support ticket?
+                </div>
+                <div class="faq-answer" id="answer3">
+                    <p>You can submit a new support ticket by contacting our support team via the "Contact Us" section
+                        or emailing us directly.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleAnswer(4)">
+                    <i class="fas fa-plus-circle"></i> What do I do if my ticket is not found?
+                </div>
+                <div class="faq-answer" id="answer4">
+                    <p>If your ticket is not found, double-check the ticket number for accuracy or try reaching out to
+                        the support team for further assistance.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleAnswer(5)">
+                    <i class="fas fa-plus-circle"></i> How can I track the progress of my support request?
+                </div>
+                <div class="faq-answer" id="answer5">
+                    <p>All tickets are updated with the latest progress in real-time. You can see any changes in the
+                        ticket status under "Ticket Details".</p>
+                </div>
+            </div>
         </div>
+
+        <script>
+            // Toggle FAQ answer visibility
+            function toggleAnswer(id) {
+                var answer = document.getElementById("answer" + id);
+                var icon = answer.previousElementSibling.querySelector("i");
+                if (answer.style.display === "block") {
+                    answer.style.display = "none";
+                    icon.classList.replace("fa-minus-circle", "fa-plus-circle");
+                } else {
+                    answer.style.display = "block";
+                    icon.classList.replace("fa-plus-circle", "fa-minus-circle");
+                }
+            }
+        </script>
+
+
 
     </main>
 
@@ -485,7 +622,10 @@
                     });
                 } else {
                     document.getElementById("notfound").style.display = "block";
-                    document.getElementById("ticketResult").style.display = "none";
+                    document.getElementById("ticketResult").style.display = "none"; 
+                    document.getElementById("RedultMessge").textContent = "Your Ticket Might Have Been Created, But It Has Not Yet Been Reviewed By The Support Team. Please Double-Check Your ID Number Or Try Again Later.";
+                    document.getElementById("RedultMessge").style.display = "block";
+
                 }
             } catch (error) {
                 console.error("Error fetching ticket data:", error);
@@ -497,7 +637,10 @@
         function clearSearchTicket() {
             document.getElementById("ticketNumber").value = "";
             document.getElementById("ticketResult").style.display = "none";
-            document.getElementById("notfound").style.display = "none"; 
+            document.getElementById("RedultMessge").textContent = "";
+            document.getElementById("RedultMessge").style.display = "none";
+            document.getElementById("notfound").style.display = "none";
+            history.pushState("", document.title, window.location.pathname + window.location.search);
         }
 
     </script>
