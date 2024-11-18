@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Ticket System - MBK Tech Studio</title>
+    <link rel="stylesheet" href="https://docs.mbktechstudio.com/Assets/project.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+
+        main {
+            padding: 20px;
+            margin-top: 5%;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .card h2 {
+            margin-bottom: 15px;
+            color: #5692ed;
+        }
+
+        .card p {
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        .card input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+
+
+        .faq {
+            background: #eef2f3;
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .faq h3 {
+            margin-bottom: 15px;
+            color: #5692ed;
+        }
+
+        .faq p {
+            margin: 5px 0;
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+
+        .button button {
+            outline: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 15px;
+            font-weight: 600;
+            background: #377a77;
+            color: #fff;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        .button button:hover {
+            border-color: #377a77;
+            background-color: transparent;
+            color: #377a77;
+        }
+
+
+        /* Divider */
+        .divider {
+            border-top: 1px solid #ccc;
+            margin: 15px 0;
+        }
+
+        .result-card {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #5692ed;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .result-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .result-card h3 {
+            color: #5692ed;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #5692ed;
+            padding-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+
+        .result-card h3 i {
+            margin-right: 8px;
+            margin-top: 3px;
+            color: #377a77;
+        }
+
+        .result-card p {
+            margin: 8px 0;
+            font-size: 1rem;
+            color: #333;
+            display: flex;
+            align-items: center;
+        }
+
+        .result-card p strong {
+            color: #555;
+            font-weight: bold;
+            margin-right: 8px;
+            margin-left: 5px;
+        }
+
+        .result-card ul {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 15px;
+        }
+
+        .result-card ul li {
+            background: #f9f9f9;
+            margin: 5px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+
+        .status-badge {
+            padding: 6px 12px;
+            border-radius: 16px;
+            font-weight: bold;
+            color: #fff;
+            display: inline-block;
+            font-size: 0.9rem;
+            margin-left: 0px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .status-badge.Pending {
+            background: linear-gradient(45deg, #f39c12, #f1c40f);
+        }
+
+        .status-badge.Resolved {
+            background: linear-gradient(45deg, #27ae60, #2ecc71);
+        }
+
+        .status-badge.Open {
+            background: linear-gradient(45deg, #3498db, #5dade2);
+        }
+
+        .status-badge.Closed {
+            background: linear-gradient(45deg, #e74c3c, #c0392b);
+        }
+
+        .fa,
+        .fas {
+            margin-top: 3px;
+        }
+
+
+
+        /* Styling for Audit Trail Section */
+        #auditTrailContainer {
+            padding: 15px;
+            background-color: #f7f7f7;
+            border-left: 5px solid #5692ed;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+
+        #resultAuditTrail {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #resultAuditTrail li {
+            background: #fff;
+            border-radius: 5px;
+            margin: 8px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            transition: background 0.3s ease;
+        }
+
+        #resultAuditTrail li:hover {
+            background-color: #eef2f3;
+        }
+
+        /* Icons for different types of actions (Add icon classes to actions) */
+        .audit-action-status {
+            font-weight: bold;
+            color: #2e6a4f;
+        }
+
+        .audit-action-update {
+            font-weight: bold;
+            color: #f39c12;
+        }
+
+        .audit-action-error {
+            font-weight: bold;
+            color: #e74c3c;
+        }
+
+        .audit-action span {
+            font-size: 0.9em;
+            color: #888;
+        }
+
+        /* Styling for the toggle icon */
+        #auditTrailToggleIcon {
+            margin-left: 10px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        #auditTrailToggleIcon.rotate {
+            transform: rotate(180deg);
+        }
+    </style>
+
+
+    <link rel="stylesheet" href="../Supportstyle.css">
+
+</head>
+<header>
+    <nav>
+        <div class="navbar">
+            <div class="logo">
+                <div class="image">
+                    <img src="../../Assets/Images/Icon/dg.svg" alt="" />
+                </div>
+                <div class="text">
+                    <a href="https://mbktechstudio.com">MBK Tech Studio</a>
+                </div>
+            </div>
+            <ul style="display: none;" class="menu">
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#services">Projects</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+                <div class="cancel-btn">
+                    <i class="fas fa-times"></i>
+                </div>
+            </ul>
+            <div class="media-icons">
+                <a href="https://www.facebook.com/people/MBK-Tech-Studio/61559079077988/" target="_blank"><i
+                        class="fab fa-facebook-f"></i></a>
+                <a href="https://x.com/ibnekhalid28" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://instagram.com/mbktech.studios" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://github.com/MIbnEKhalid" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/muhammad-bin-khalid-89711b25b" target="_blank"><i
+                        class="fab fa-linkedin"></i></a>
+                <a href="https://youtube.com/@mibnekhalid" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://discord.gg/MUAyAeckrM" target="_blank"><i class="fab fa-discord"></i></a>
+            </div>
+        </div>
+        <div style="display: none;" class="menu-btn">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+</header>
+
+<body>
+
+    <main>
+
+        <!-- Introduction Section -->
+        <div class="section card">
+            <h2>Welcome to the Support Ticket System</h2>
+            <p>Our Ticketing System is Here To Help You Track & Resolve Your Queries Efficiently. If You’ve Submitted
+                A Ticket, Use The Search Feature Below To Check Its Status.</p>
+        </div>
+
+        <!-- Ticket Search Section -->
+        <div class="section card">
+            <h2>Search Your Ticket</h2>
+            <p>Enter Your Ticket Number Below To Check The Status of Your Request:</p>
+            <input type="text" id="ticketNumber" placeholder="Enter Ticket Number" />
+
+            <div class="button" style="display: flex; justify-content: space-between;">
+                <button onclick="searchTicket()">Search</button>
+                <button onclick="clearSearchTicket()">Clear</button>
+            </div>
+        </div>
+
+        <!-- Ticket Result Section -->
+        <div id="ticketResult" class="section result-card" style="display: none;">
+            <h3><i class="fas fa-ticket-alt"></i> Ticket Details</h3>
+            <p><i class="fas fa-hashtag"></i> <strong>Ticket Number:</strong> <span id="resultNumber"></span></p>
+            <p><i class="fas fa-info-circle"></i> <strong>Issue:</strong> <span id="resultTitle"></span></p>
+            <p><i class="fas fa-exclamation-circle"></i> <strong>Status:</strong>
+                <span id="resultStatus" class="status-badge"></span>
+            </p>
+            <p><i class="fas fa-user"></i> <strong>Submitted By:</strong> <span id="resultName"></span></p>
+            <p><i class="fas fa-calendar-alt"></i> <strong>Created On:</strong> <span id="resultCreated"></span></p>
+            <p><i class="fas fa-clock"></i> <strong>Last Updated:</strong> <span id="resultUpdated"></span></p>
+            <!-- Audit Trail Section -->
+            <hr>
+            <h4 style="cursor: pointer; font-size: 1.2em; font-weight: bold;" onclick="toggleAuditTrail()">Audit Trail
+                <i id="auditTrailToggleIcon" class="fas fa-chevron-up"></i>
+            </h4>
+            <div id="auditTrailContainer"
+                style="display: block; padding: 10px; border-left: 3px solid #5692ed; margin-top: 10px; background-color: #f7f7f7; border-radius: 5px;">
+                <ul id="resultAuditTrail" style="padding-left: 20px;"></ul>
+            </div>
+
+
+        </div>
+
+        <!-- Ticket Result Section -->
+        <div id="notfound" class="section result-card"
+            style="display: none; padding: 20px; border: 1px solid #ddd; border-radius: 10px; background-color: #fff;">
+            <!-- Ticket Header -->
+            <h3 style="font-size: 1.5em; color: #333;"><i class="fas fa-ticket-alt"></i> Ticket Not Found</h3>
+
+            <!-- Ticket Details -->
+            <p style="font-size: 1.1em; color: #555;">
+                <i class="fas fa-exclamation-circle" style="color: #ff6f61;"></i> <strong>Ticket Number:</strong>
+                <span id="resultNumber" style="font-weight: bold; color: #ff6f61;">Not Available</span>
+            </p>
+
+            <p style="font-size: 1.1em; color: #555;">
+                <i class="fas fa-info-circle"></i> <strong>Issue:</strong>
+                <span id="resultTitle" style="font-weight: bold; color: #ff6f61;">No matching ticket found</span>
+            </p>
+
+            <p style="font-size: 1.1em; color: #555;">
+                <i class="fas fa-exclamation-circle"></i> <strong>Status:</strong>
+                <span id="resultStatus" class="status-badge"
+                    style="background-color: #ff6f61; color: #fff; padding: 5px 10px; border-radius: 5px;">Not
+                    Found</span>
+            </p>
+
+            <p style="font-size: 1.1em; color: #555;">
+                <i class="fas fa-user"></i> <strong>Submitted By:</strong>
+                <span id="resultName" style="font-weight: bold; color: #ff6f61;">N/A</span>
+            </p>
+
+            <p style="font-size: 1.1em; color: #555;">
+                <i class="fas fa-calendar-alt"></i> <strong>Created On:</strong>
+                <span id="resultCreated" style="font-weight: bold; color: #ff6f61;">N/A</span>
+            </p>
+
+            <p style="font-size: 1.1em; color: #555;">
+                <i class="fas fa-clock"></i> <strong>Last Updated:</strong>
+                <span id="resultUpdated" style="font-weight: bold; color: #ff6f61;">N/A</span>
+            </p>
+
+        </div>
+
+
+        <!-- FAQ Section -->
+        <div class="section faq">
+            <h3>Frequently Asked Questions</h3>
+            <p><strong>What if I don’t have a ticket number?</strong> You need to submit a ticket through our support
+                form to get a ticket number.</p>
+            <p><strong>How long does it take to resolve an issue?</strong> Response times may vary, but most issues are
+                resolved within 1-3 business days.</p>
+            <p><strong>Can I update my ticket?</strong> Yes, you can update your ticket by replying to the support email
+                associated with it.</p>
+        </div>
+
+    </main>
+
+
+    <footer>
+
+        <div class="text">
+
+            <span> © 2024 <a href="https://mbktechstudio.com/" target="_blank">MBK Tech Studio</a>. All Rights Reserved
+                | <a href="https://privacy.mbktechstudio.com/" target="_blank">Terms &amp; Conditions</a> | <a
+                    href="https://mbktechstudio.com/FAQs" target="_blank">FAQs</a> | <a
+                    href="mailto:support@mbktechstudio.com"
+                    title="support@mbktechstudio.com">support@mbktechstudio.com</a> </span>
+
+        </div>
+
+    </footer>
+
+
+    <script>
+
+        function toggleAuditTrail() {
+            const auditTrailContainer = document.getElementById("auditTrailContainer");
+            const toggleIcon = document.getElementById("auditTrailToggleIcon");
+
+            if (auditTrailContainer.style.display === "none") {
+                auditTrailContainer.style.display = "block";
+                toggleIcon.classList.remove("fa-chevron-down");
+                toggleIcon.classList.add("fa-chevron-up");
+                toggleIcon.classList.add("rotate");
+            } else {
+                auditTrailContainer.style.display = "none";
+                toggleIcon.classList.remove("fa-chevron-up");
+                toggleIcon.classList.add("fa-chevron-down");
+                toggleIcon.classList.remove("rotate");
+            }
+        }
+
+        window.onload = function () {
+            const hash = window.location.hash;
+            const ticketParam = hash.substring(1); // Remove the '#' character
+
+            // Check if the ticket ID starts with 'T' followed by any alphanumeric characters
+            if (ticketParam && /^T[A-Za-z0-9]+$/.test(ticketParam)) {
+                document.getElementById("ticketNumber").value = ticketParam;
+                searchTicket();
+            }
+        }
+
+        async function searchTicket() {
+            const ticketNumber = document.getElementById("ticketNumber").value.trim();
+
+            if (!ticketNumber) {
+                alert("Please enter a ticket number.");
+                return;
+            }
+
+            try {
+                const response = await fetch('t.json');
+                if (!response.ok) {
+                    throw new Error("Failed to load ticket data.");
+                }
+
+                const tickets = await response.json();
+                const result = tickets[ticketNumber];
+
+                if (result) {
+                    document.getElementById("ticketResult").style.display = "block";
+                    document.getElementById("resultNumber").textContent = result.id;
+                    document.getElementById("resultTitle").textContent = result.title;
+                    document.getElementById("resultName").textContent = result.name;
+                    document.getElementById("resultCreated").textContent = new Date(result.createdDate).toLocaleString();
+                    document.getElementById("resultUpdated").textContent = new Date(result.lastUpdated).toLocaleString();
+
+                    const statusElement = document.getElementById("resultStatus");
+                    statusElement.textContent = result.status;
+                    statusElement.className = `status-badge ${result.status}`;
+
+                    const auditTrailContainer = document.getElementById("resultAuditTrail");
+                    auditTrailContainer.innerHTML = "";
+
+                    result.auditTrail.forEach((entry) => {
+                        const listItem = document.createElement("li");
+                        const actionClass = entry.type === 'status' ? 'audit-action-status' :
+                            entry.type === 'update' ? 'audit-action-update' :
+                                'audit-action-error';
+
+                        listItem.innerHTML = `<strong class="${actionClass}">${entry.action}</strong> <span>${new Date(entry.timestamp).toLocaleString()}</span>`;
+                        auditTrailContainer.appendChild(listItem);
+                    });
+                } else {
+                    document.getElementById("notfound").style.display = "block";
+                    document.getElementById("ticketResult").style.display = "none";
+                }
+            } catch (error) {
+                console.error("Error fetching ticket data:", error);
+                alert("Unable to fetch ticket data. Please try again later.");
+            }
+        }
+
+        // clearSearchTicket function
+        function clearSearchTicket() {
+            document.getElementById("ticketNumber").value = "";
+            document.getElementById("ticketResult").style.display = "none";
+            document.getElementById("notfound").style.display = "none"; 
+        }
+
+    </script>
+
+</body>
+<script src="Ticket.js"></script>
+
+</html>

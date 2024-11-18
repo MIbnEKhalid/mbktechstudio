@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .catch(error => console.error("Error loading blogs:", error));
 
-        const ticketParam = getUrlParameter('Ticket');
+        const ticketParam = getUrlParameter('Ticket') || getUrlParameter('ticket');
         if (ticketParam && ticketParam.length === 10) {
             showbox('tS-form');
             document.getElementById('ticketId').value = ticketParam;
@@ -404,7 +404,8 @@ document.getElementById("form").addEventListener("submit", function (e) {
     const ticketNumber = 'T' + Math.random().toString(36).substring(2, 11).toUpperCase(); // Generate 9 characters after 'TICKET-'
     document.querySelector('input[name="TicketNumber"]').value = ticketNumber;
     
-    document.getElementById("TicketIdURL").value = ticketNumber;
+    document.getElementById("TicketIdURL").textContent = `mbktechstudio.com/Support/?Ticket=${ticketNumber}`;
+    document.getElementById("TicketIdURL").href = `https://mbktechstudio.com/Support/?Ticket=${ticketNumber}`;
 
 
 
