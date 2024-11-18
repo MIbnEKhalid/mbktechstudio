@@ -37,6 +37,13 @@ document.addEventListener("DOMContentLoaded", function () {
             initializeSelection('Blog', blogs, blogSelect, handleBlogSelection);
         })
         .catch(error => console.error("Error loading blogs:", error));
+
+        const ticketParam = getUrlParameter('Ticket');
+        if (ticketParam && ticketParam.length === 10) {
+            showbox('tS-form');
+            document.getElementById('ticketId').value = ticketParam;
+            document.getElementById('ticketStatusForm').dispatchEvent(new Event('submit'));
+        }
 });
 
 // Populate dropdown with items
@@ -396,7 +403,8 @@ document.getElementById("form").addEventListener("submit", function (e) {
 
     const ticketNumber = 'T' + Math.random().toString(36).substring(2, 11).toUpperCase(); // Generate 9 characters after 'TICKET-'
     document.querySelector('input[name="TicketNumber"]').value = ticketNumber;
-
+    
+    document.getElementById("TicketIdURL").value = ticketNumber;
 
 
 
