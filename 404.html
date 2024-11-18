@@ -158,7 +158,7 @@
         <div id="c-form" class="contact-box">
           <div onclick="hidebox()" class="close-btn"></div>
           <div class="title"><span>Contact Us Form</span></div>
-          <form action="https://api.web3forms.com/submit" method="POST" class="m-4 pl-4" id="form">
+          <form action="https://formspree.io/f/xeojkrqo"? method="POST" class="m-4 pl-4" id="form">
               <input class="input" type="hidden" name="Timestamp"/>
               <input class="input" type="hidden" name="Subject" value="404-Error"/>
               <input class="input" type="hidden" name="PageUrl"/>
@@ -267,7 +267,7 @@ document.getElementById("form").addEventListener("submit", function(e) {
 
   var formData = new FormData(this);
 
-  fetch("https://api.web3forms.com/submit", {
+  fetch("https://formspree.io/f/xeojkrqo", {
       method: "POST",
       body: formData
   }).then(function(response) {
