@@ -712,7 +712,7 @@
                 if (matchingTickets.length > 1) {
                     //alert("Multiple tickets found. Please check the ticket details such as name or issue date to identify your ticket.");
                     // Ask the user to enter the name associated with the ticket
-                    const nameInput = prompt("Multiple tickets found. Please enter the name associated with the ticket:");
+                    const nameInput = prompt("Multiple tickets found. Please enter the Full name associated with the ticket:");
 
                     // Filter the matchingTickets by name
                     const nameFilteredTickets = matchingTickets.filter(
@@ -761,7 +761,7 @@
                         document.getElementById("RedultMessge").textContent = "1 Ticket Found!";
                         document.getElementById("RedultMessge").style.display = "block";
                     } else if (nameFilteredTickets.length > 1) {
-                        alert("Multiple tickets found with that name. Please contact support for assistance.");
+                        alert("Multiple tickets found with that name. Please check the ticket details such as issue date to identify your ticket.");
                     } else {
                         alert("No tickets found matching that name.");
                     }
