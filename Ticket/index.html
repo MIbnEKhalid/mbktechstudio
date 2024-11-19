@@ -320,10 +320,7 @@
             margin: 0;
         }
     </style>
-
-
     <link rel="stylesheet" href="../Support/Supportstyle.css">
-
 </head>
 <header>
     <nav>
@@ -704,11 +701,73 @@
                 document.getElementById("RedultMessge").textContent = matchingTickets.length + " Ticket(s) Found!";
                 document.getElementById("RedultMessge").style.display = "block";
 
+                
+
                 window.scrollTo({
                     top: resultsContainer.offsetTop - 150, // Adjust the offset value as needed
                     behavior: 'smooth'
                 });
 
+
+                if (matchingTickets.length > 1) {
+                    //alert("Multiple tickets found. Please check the ticket details such as name or issue date to identify your ticket.");
+                    // Ask the user to enter the name associated with the ticket
+                    const nameInput = prompt("Multiple tickets found. Please enter the name associated with the ticket:");
+
+                    // Filter the matchingTickets by name
+                    const nameFilteredTickets = matchingTickets.filter(
+                        ticket => ticket.name.toLowerCase() === nameInput.toLowerCase()
+                    );
+
+                    if (nameFilteredTickets.length === 1) {
+                        // Clear previous results
+                        resultsContainer.innerHTML = "";
+                        // Display the specific ticket
+                        const ticket = nameFilteredTickets[0];
+                        const uniqueId = `${ticket.id}-${ticket.name.replace(/\s+/g, '')}`;
+
+                        const ticketElement = document.createElement("div");
+                        ticketElement.className = "section result-card";
+                        ticketElement.innerHTML = `
+                            <h3><i class="fas fa-ticket-alt"></i> Ticket Details</h3>
+                            <p><i class="fas fa-hashtag"></i> <strong>Ticket Number:</strong> ${ticket.id}</p>
+                            <p><i class="fas fa-info-circle"></i> <strong>Issue:</strong> ${ticket.title}</p>
+                            <p><i class="fas fa-exclamation-circle"></i> <strong>Status:</strong>
+                                <span class="status-badge ${ticket.status}">${ticket.status}</span>
+                            </p>
+                            <p><i class="fas fa-user"></i> <strong>Submitted By:</strong> ${ticket.name}</p>
+                            <p><i class="fas fa-calendar-alt"></i> <strong>Created On:</strong> ${new Date(ticket.createdDate).toLocaleString()}</p>
+                            <p><i class="fas fa-clock"></i> <strong>Last Updated:</strong> ${new Date(ticket.lastUpdated).toLocaleString()}</p>
+                            <div class="audit-trail-section">
+                                <div class="audit-trail-header" onclick="toggleAuditTrail('${uniqueId}')">
+                                    <h4>Audit Trail <i id="auditTrailToggleIcon-${uniqueId}" class="fas fa-chevron-down"></i></h4>
+                                </div>
+                                <div id="auditTrailContainer-${uniqueId}" style="display: none;">
+                                    <ul id="resultAuditTrail-${uniqueId}">
+                                        ${ticket.auditTrail.map(entry => `
+                                            <li>
+                                                <strong class="audit-action-${entry.type}">
+                                                    ${entry.action}
+                                                </strong>
+                                                <span>${new Date(entry.timestamp).toLocaleString()}</span>
+                                            </li>
+                                        `).join('')}
+                                    </ul>
+                                </div>
+                            </div>
+                        `;
+                        resultsContainer.appendChild(ticketElement);
+
+                        document.getElementById("RedultMessge").textContent = "1 Ticket Found!";
+                        document.getElementById("RedultMessge").style.display = "block";
+                    } else if (nameFilteredTickets.length > 1) {
+                        alert("Multiple tickets found with that name. Please contact support for assistance.");
+                    } else {
+                        alert("No tickets found matching that name.");
+                    }
+                }
+           
+           
             } else {
                 document.getElementById("ticketResultsContainer").style.display = "none";
                 document.getElementById("notfound").style.display = "block";
