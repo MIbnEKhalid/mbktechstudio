@@ -16,6 +16,14 @@
         <priority>1.0</priority>
     </url>
 
+    <!-- Ticket Page -->
+    <url>
+        <loc>https://mbktechstudio.com/Ticket/</loc>
+        <lastmod>2024-111-19</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+
     <!-- FAQs Page -->
     <url>
         <loc>https://mbktechstudio.com/FAQs/</loc>
