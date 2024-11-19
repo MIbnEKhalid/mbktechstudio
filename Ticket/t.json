@@ -1,148 +1,92 @@
-{
-    "TICKET9101": {
-      "id": "TICKET1234",
-      "title": "System Outage",
-      "name": "John Doe",
-      "createdDate": "2024-11-15T10:00:00Z",
-      "lastUpdated": "2024-11-17T15:30:00Z",
-      "status": "In Progress",
-      "auditTrail": [
-        {
-          "action": "Ticket Created",
-          "type": "status",
-          "timestamp": "2024-11-15T10:00:00Z"
-        },
-        {
-          "action": "Assigned to Technician",
-          "type": "update",
-          "timestamp": "2024-11-16T09:15:00Z"
-        },
-        {
-          "action": "Status changed to 'In Progress'",
-          "type": "status",
-          "timestamp": "2024-11-16T14:00:00Z"
-        },
-        {
-          "action": "Error: Missing Information",
-          "type": "error",
-          "timestamp": "2024-11-16T16:20:00Z"
-        },
-        {
-          "action": "Updated Details with Resolution Plan",
-          "type": "update",
-          "timestamp": "2024-11-17T09:30:00Z"
-        },
-        {
-          "action": "Status changed to 'Resolved'",
-          "type": "status",
-          "timestamp": "2024-11-17T15:00:00Z"
-        },
-        {
-          "action": "Closed Ticket",
-          "type": "status",
-          "timestamp": "2024-11-17T15:30:00Z"
-        }
-      ]
-    },
-    "TICKET568": {
-      "id": "TICKET5678",
-      "title": "Network Connectivity Issue",
-      "name": "Jane Smith",
-      "createdDate": "2024-11-14T08:45:00Z",
-      "lastUpdated": "2024-11-15T10:00:00Z",
-      "status": "Resolved",
-      "auditTrail": [
-        {
-          "action": "Ticket Created",
-          "type": "status",
-          "timestamp": "2024-11-14T08:45:00Z"
-        },
-        {
-          "action": "Status changed to 'In Progress'",
-          "type": "status",
-          "timestamp": "2024-11-14T09:30:00Z"
-        },
-        {
-          "action": "Network Issue Investigated",
-          "type": "update",
-          "timestamp": "2024-11-14T10:00:00Z"
-        },
-        {
-          "action": "Status changed to 'Resolved'",
-          "type": "status",
-          "timestamp": "2024-11-15T10:00:00Z"
-        }
-      ]
-    },
-    "TICKET9101": {
-      "id": "TICKET91011",
-      "title": "Login Issues",
-      "name": "Alice Green",
-      "createdDate": "2024-11-13T13:00:00Z",
-      "lastUpdated": "2024-11-13T13:45:00Z",
-      "status": "Closed",
-      "auditTrail": [
-        {
-          "action": "Ticket Created",
-          "type": "status",
-          "timestamp": "2024-11-13T13:00:00Z"
-        },
-        {
-          "action": "Initial Investigation",
-          "type": "update",
-          "timestamp": "2024-11-13T13:15:00Z"
-        },
-        {
-          "action": "Error: Invalid Credentials",
-          "type": "error",
-          "timestamp": "2024-11-13T13:30:00Z"
-        },
-        {
-          "action": "User Account Reset",
-          "type": "update",
-          "timestamp": "2024-11-13T13:35:00Z"
-        },
-        {
-          "action": "Status changed to 'Closed'",
-          "type": "status",
-          "timestamp": "2024-11-13T13:45:00Z"
-        }
-      ]
-    },
-    "TICKET9101": {
-      "id": "TICKET91011",
-      "title": "Login Issues",
-      "name": "Alice Green",
-      "createdDate": "2024-11-13T13:00:00Z",
-      "lastUpdated": "2024-11-13T13:45:00Z",
-      "status": "Open",
-      "auditTrail": [
-        {
-          "action": "Ticket Created",
-          "type": "status",
-          "timestamp": "2024-11-13T13:00:00Z"
-        },
-        {
-          "action": "Initial Investigation",
-          "type": "update",
-          "timestamp": "2024-11-13T13:15:00Z"
-        },
-        {
-          "action": "Error: Invalid Credentials",
-          "type": "error",
-          "timestamp": "2024-11-13T13:30:00Z"
-        },
-        {
-          "action": "User Account Reset",
-          "type": "update",
-          "timestamp": "2024-11-13T13:35:00Z"
-        },
-        {
-          "action": "Status changed to 'Closed'",
-          "type": "status",
-          "timestamp": "2024-11-13T13:45:00Z"
-        }
-      ]
-    }
+[
+  {
+    "id": "T000111333",
+    "title": "Issue One",
+    "name": "User A",
+    "createdDate": "2023-10-10T12:00:00Z",
+    "lastUpdated": "2023-10-10T13:00:00Z",
+    "status": "Open",
+    "auditTrail": [
+      {
+        "action": "Ticket Created",
+        "type": "status",
+        "timestamp": "2024-11-14T08:45:00Z"
+      },
+      {
+        "action": "Status changed to 'In Progress'",
+        "type": "status",
+        "timestamp": "2024-11-14T09:30:00Z"
+      },
+      {
+        "action": "Network Issue Investigated",
+        "type": "update",
+        "timestamp": "2024-11-14T10:00:00Z"
+      },
+      {
+        "action": "Status changed to 'Resolved'",
+        "type": "status",
+        "timestamp": "2024-11-15T10:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "T000111333",
+    "title": "Issue Two",
+    "name": "User B",
+    "createdDate": "2023-10-11T14:00:00Z",
+    "lastUpdated": "2023-10-11T15:00:00Z",
+    "status": "Pending", 
+    "auditTrail": [
+      {
+        "action": "Ticket Created",
+        "type": "status",
+        "timestamp": "2024-11-13T13:00:00Z"
+      },
+      {
+        "action": "Initial Investigation",
+        "type": "update",
+        "timestamp": "2024-11-13T13:15:00Z"
+      }
+    ]
+  } ,
+   {
+    "id": "T000111332",
+    "title": "Issue Two",
+    "name": "User B",
+    "createdDate": "2023-10-11T14:00:00Z",
+    "lastUpdated": "2023-10-11T15:00:00Z",
+    "status": "Pending", 
+    "auditTrail": [
+      {
+        "action": "Ticket Created",
+        "type": "status",
+        "timestamp": "2024-11-13T13:00:00Z"
+      },
+      {
+        "action": "Initial Investigation",
+        "type": "update",
+        "timestamp": "2024-11-13T13:15:00Z"
+      }
+    ]
+  },
+  {
+    "id": "T9PYJG9SFR",
+    "title": "Conatct For Collabration",
+    "name": "John",
+    "createdDate": "2024-11-11T14:00:00Z",
+    "lastUpdated": "2024-11-11T15:00:00Z",
+    "status": "Open", 
+    "auditTrail": [
+      {
+        "action": "Ticket Created",
+        "type": "status",
+        "timestamp": "2024-11-11T14:00:00Z"
+      },
+      {
+        "action": "Request Read By Support Team",
+        "type": "status",
+        "timestamp": "2024-11-11T18:00:00Z"
+      }
+    ]
   }
-  
+]

@@ -379,12 +379,12 @@
             <p>Enter Your Ticket Number Below To Check The Status of Your Request:</p>
             <form id="form">
                 <input type="text" id="ticketNumber" placeholder="Enter ID eg. T000111333" required minlength="10"
-                maxlength="10" pattern=".{10}" />
+                    maxlength="10" pattern=".{10}" />
 
-            <div class="button" style="display: flex; justify-content: space-between;">
-                <button class="button" type="submit" id="submit">Search</button>
-                <a class="button" onclick="clearSearchTicket()">Clear</a>
-            </div>
+                <div class="button" style="display: flex; justify-content: space-between;">
+                    <button class="button" type="submit" id="submit">Search</button>
+                    <a class="button" onclick="clearSearchTicket()">Clear</a>
+                </div>
 
             </form>
 
@@ -395,11 +395,11 @@
         </div>
 
         <div id="RedultMessge"
-            style="display: none; padding: 10px; border-radius: 5px; background-color: #0c5460; color: #fff; text-align: center; font-weight: bold; margin-bottom: 20px;">
-        </div>
+            style="display: none; padding: 15px; border-radius: 8px; background-color: #377a77; color: #fff; text-align: center; font-weight: bold; margin-bottom: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+        </div> 
 
         <!-- Ticket Result Section -->
-        <div id="ticketResult" class="section result-card" style="display: none;">
+        <div id="ticketResultsContainer" class="section " style="display: none;">
             <h3><i class="fas fa-ticket-alt"></i> Ticket Details</h3>
             <p><i class="fas fa-hashtag"></i> <strong>Ticket Number:</strong> <span id="resultNumber"></span></p>
             <p><i class="fas fa-info-circle"></i> <strong>Issue:</strong> <span id="resultTitle"></span></p>
@@ -417,8 +417,7 @@
             <div id="auditTrailContainer"
                 style="display: block; padding: 10px; border-left: 3px solid #5692ed; margin-top: 10px; background-color: #f7f7f7; border-radius: 5px;">
                 <ul id="resultAuditTrail" style="padding-left: 20px;"></ul>
-            </div>
-
+            </div> 
 
         </div>
 
@@ -463,8 +462,68 @@
 
         </div>
 
+        <!-- Ticket Images Section -->
+        <div class="section card" style="display: none;">
+            <h2>Ticket Reference Images</h2>
+            <div class="ticket-images"></div>
+                <!-- Support Page Ticket Creation Image -->
+                <div class="ticket-image-container">
+                    <h3>Support Page Ticket</h3>
+                    <p>Example of ticket creation form on Support Page:</p>
+                    <img id="supportTicketImage" src="../Assets/Images/Support/TicketForm.png" alt="Support Ticket Form" 
+                        class="reference-image">
+                </div>
 
-        <!-- FAQ Section -->
+                <!-- Ticket Search Results Image -->
+                <div class="ticket-image-container">
+                    <h3>Searched Ticket Details</h3> 
+                    <p>Your searched ticket image will appear below:</p>
+                    <img id="ticketImage" src="" alt="Ticket Search Result"
+                        class="reference-image">
+                </div>
+            </div>
+        </div>
+
+        <style>
+        .ticket-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .ticket-image-container {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .ticket-image-container h3 {
+            color: #5692ed;
+            margin-bottom: 10px;
+        }
+
+        .reference-image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .reference-image:hover {
+            transform: scale(1.02);
+        }
+
+        @media (max-width: 768px) {
+            .ticket-images {
+                grid-template-columns: 1fr;
+            }
+        }
+        </style>
+
+ 
         <!-- FAQ Section -->
         <div class="section card faq">
             <h3>Frequently Asked Questions</h3>
@@ -493,8 +552,8 @@
                     <i class="fas fa-plus-circle"></i> How can I submit a new support ticket?
                 </div>
                 <div class="faq-answer" id="answer3">
-                    <p>You can submit a new support ticket by contacting our support team via the "Contact Us" section
-                        or emailing us directly.</p>
+                    <p>You can submit a new support ticket by Visiting<a class="links" href="https://mbktechstudio.com/Support">Support &
+                        Contact</a>Page.</p>
                 </div>
             </div>
 
@@ -503,8 +562,21 @@
                     <i class="fas fa-plus-circle"></i> What do I do if my ticket is not found?
                 </div>
                 <div class="faq-answer" id="answer4">
-                    <p>If your ticket is not found, double-check the ticket number for accuracy or try reaching out to
-                        the support team for further assistance.</p>
+                    <p>If your ticket is not found, please consider the following:
+                        <ul>
+                            <li>Double-check the ticket number for accuracy.</li>
+                            <li>If your ticket was created more than 32 hours ago, contact us through social media or submit a new ticket.</li>
+                            <li>If it has been just a few minutes or a few hours, don't worry, we will upload the ticket within 24 hours and reply within this time, with a maximum of 32 hours.</li>
+                        </ul>
+                    </p>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleAnswer(6)">
+                    <i class="fas fa-plus-circle"></i> Where can I retrieve my Ticket Number?
+                </div>
+                <div class="faq-answer" id="answer6">
+                    <p>The Ticket Number is generated and provided to you when you submit a form on the<a class="links" href="https://mbktechstudio.com/Support">Support & Contact</a>page.</p>
                 </div>
             </div>
 
@@ -517,144 +589,177 @@
                         ticket status under "Ticket Details".</p>
                 </div>
             </div>
-        </div>
-
-        <script>
-            document.getElementById("form").addEventListener("submit", function (e) {
-                e.preventDefault();
-                searchTicket();
-            });
-            // Toggle FAQ answer visibility
-            function toggleAnswer(id) {
-                var answer = document.getElementById("answer" + id);
-                var icon = answer.previousElementSibling.querySelector("i");
-                if (answer.style.display === "block") {
-                    answer.style.display = "none";
-                    icon.classList.replace("fa-minus-circle", "fa-plus-circle");
-                } else {
-                    answer.style.display = "block";
-                    icon.classList.replace("fa-plus-circle", "fa-minus-circle");
-                }
-            }
-        </script>
-
-
+        </div> 
 
     </main>
-
-
-    <footer>
-
-        <div class="text">
-
-            <span> © 2024 <a href="https://mbktechstudio.com/" target="_blank">MBK Tech Studio</a>. All Rights Reserved
-                | <a href="https://privacy.mbktechstudio.com/" target="_blank">Terms &amp; Conditions</a> | <a
-                    href="https://mbktechstudio.com/FAQs" target="_blank">FAQs</a> | <a
-                    href="mailto:support@mbktechstudio.com"
-                    title="support@mbktechstudio.com">support@mbktechstudio.com</a> </span>
-
-        </div>
-
-    </footer>
-
-
-    <script>
-
-        function toggleAuditTrail() {
-            const auditTrailContainer = document.getElementById("auditTrailContainer");
-            const toggleIcon = document.getElementById("auditTrailToggleIcon");
-
-            if (auditTrailContainer.style.display === "none") {
-                auditTrailContainer.style.display = "block";
-                toggleIcon.classList.remove("fa-chevron-down");
-                toggleIcon.classList.add("fa-chevron-up");
-                toggleIcon.classList.add("rotate");
-            } else {
-                auditTrailContainer.style.display = "none";
-                toggleIcon.classList.remove("fa-chevron-up");
-                toggleIcon.classList.add("fa-chevron-down");
-                toggleIcon.classList.remove("rotate");
-            }
-        }
-
-        window.onload = function () {
-            const hash = window.location.hash;
-            const ticketParam = hash.substring(1); // Remove the '#' character
-
-            // Check if the ticket ID starts with 'T' followed by any alphanumeric characters
-            if (ticketParam && /^T[A-Za-z0-9]+$/.test(ticketParam)) {
-                document.getElementById("ticketNumber").value = ticketParam;
-                searchTicket();
-            }
-        }
-
-        async function searchTicket() {
-            const ticketNumber = document.getElementById("ticketNumber").value.trim();
-
-            if (!ticketNumber) {
-                alert("Please enter a ticket number.");
-                return;
-            }
-
-            try {
-                const response = await fetch('t.json');
-                if (!response.ok) {
-                    throw new Error("Failed to load ticket data.");
-                }
-
-                const tickets = await response.json();
-                const result = tickets[ticketNumber];
-
-                if (result) {
-                    document.getElementById("ticketResult").style.display = "block";
-                    document.getElementById("resultNumber").textContent = result.id;
-                    document.getElementById("resultTitle").textContent = result.title;
-                    document.getElementById("resultName").textContent = result.name;
-                    document.getElementById("resultCreated").textContent = new Date(result.createdDate).toLocaleString();
-                    document.getElementById("resultUpdated").textContent = new Date(result.lastUpdated).toLocaleString();
-
-                    const statusElement = document.getElementById("resultStatus");
-                    statusElement.textContent = result.status;
-                    statusElement.className = `status-badge ${result.status}`;
-
-                    const auditTrailContainer = document.getElementById("resultAuditTrail");
-                    auditTrailContainer.innerHTML = "";
-
-                    result.auditTrail.forEach((entry) => {
-                        const listItem = document.createElement("li");
-                        const actionClass = entry.type === 'status' ? 'audit-action-status' :
-                            entry.type === 'update' ? 'audit-action-update' :
-                                'audit-action-error';
-
-                        listItem.innerHTML = `<strong class="${actionClass}">${entry.action}</strong> <span>${new Date(entry.timestamp).toLocaleString()}</span>`;
-                        auditTrailContainer.appendChild(listItem);
-                    });
-                } else {
-                    document.getElementById("notfound").style.display = "block";
-                    document.getElementById("ticketResult").style.display = "none";
-                    document.getElementById("RedultMessge").textContent = "Your Ticket Might Have Been Created, But It Has Not Yet Been Reviewed By The Support Team. Please Double-Check Your ID Number Or Try Again Later.";
-                    document.getElementById("RedultMessge").style.display = "block";
-
-                }
-            } catch (error) {
-                console.error("Error fetching ticket data:", error);
-                alert("Unable to fetch ticket data. Please try again later.");
-            }
-        }
-
-        // clearSearchTicket function
-        function clearSearchTicket() {
-            document.getElementById("ticketNumber").value = "";
-            document.getElementById("ticketResult").style.display = "none";
-            document.getElementById("RedultMessge").textContent = "";
-            document.getElementById("RedultMessge").style.display = "none";
-            document.getElementById("notfound").style.display = "none";
-            history.pushState("", document.title, window.location.pathname + window.location.search);
-        }
-
-    </script>
-
+ 
 </body>
+
+<footer>
+
+    <div class="text">
+
+        <span> © 2024 <a href="https://mbktechstudio.com/" target="_blank">MBK Tech Studio</a>. All Rights Reserved
+            | <a href="https://privacy.mbktechstudio.com/" target="_blank">Terms &amp; Conditions</a> | <a
+                href="https://mbktechstudio.com/FAQs" target="_blank">FAQs</a> | <a
+                href="mailto:support@mbktechstudio.com"
+                title="support@mbktechstudio.com">support@mbktechstudio.com</a> </span>
+
+    </div>
+
+</footer>
+
+<script>
+    document.getElementById("form").addEventListener("submit", function (e) {
+        e.preventDefault();
+        searchTicket();
+    });
+    // Toggle FAQ answer visibility
+    function toggleAnswer(id) {
+        var answer = document.getElementById("answer" + id);
+        var icon = answer.previousElementSibling.querySelector("i");
+        if (answer.style.display === "block") {
+            answer.style.display = "none";
+            icon.classList.replace("fa-minus-circle", "fa-plus-circle");
+        } else {
+            answer.style.display = "block";
+            icon.classList.replace("fa-plus-circle", "fa-minus-circle");
+        }
+    }
+
+    window.onload = function () {
+        const hash = window.location.hash;
+        const ticketParam = hash.substring(1); // Remove the '#' character
+
+        // Check if the ticket ID starts with 'T' followed by any alphanumeric characters
+        if (ticketParam && /^T[A-Za-z0-9]+$/.test(ticketParam)) {
+            document.getElementById("ticketNumber").value = ticketParam;
+            searchTicket();
+        }
+    }
+
+    async function searchTicket() {
+        const ticketNumber = document.getElementById("ticketNumber").value.trim();
+
+        if (!ticketNumber) {
+            alert("Please enter a ticket number.");
+            return;
+        }
+
+        try {
+            const response = await fetch('t.json');
+            if (!response.ok) {
+                throw new Error("Failed to load ticket data.");
+            }
+
+            const tickets = await response.json();
+            const matchingTickets = tickets.filter(ticket => ticket.id === ticketNumber);
+
+            if (matchingTickets.length > 0) {
+                const resultsContainer = document.getElementById("ticketResultsContainer");
+                resultsContainer.innerHTML = ""; // Clear previous results
+
+                matchingTickets.forEach((ticket, index) => {
+                    const uniqueId = `${ticket.id}-${ticket.name.replace(/\s+/g, '')}`;  // Remove spaces from name
+                    const ticketElement = document.createElement("div");
+                    ticketElement.className = "section result-card";
+                    ticketElement.innerHTML = `
+                <h3><i class="fas fa-ticket-alt"></i> Ticket Details</h3>
+                <p><i class="fas fa-hashtag"></i> <strong>Ticket Number:</strong> ${ticket.id}</p>
+                <p><i class="fas fa-info-circle"></i> <strong>Issue:</strong> ${ticket.title}</p>
+                <p><i class="fas fa-exclamation-circle"></i> <strong>Status:</strong>
+                    <span class="status-badge ${ticket.status}">${ticket.status}</span>
+                </p>
+                <p><i class="fas fa-user"></i> <strong>Submitted By:</strong> ${ticket.name}</p>
+                <p><i class="fas fa-calendar-alt"></i> <strong>Created On:</strong> ${new Date(ticket.createdDate).toLocaleString()}</p>
+                <p><i class="fas fa-clock"></i> <strong>Last Updated:</strong> ${new Date(ticket.lastUpdated).toLocaleString()}</p>
+                
+                <!-- Audit Trail Section -->
+                <div class="audit-trail-section">
+                    <div class="audit-trail-header" onclick="toggleAuditTrail('${uniqueId}')">
+                        <h4>Audit Trail <i id="auditTrailToggleIcon-${uniqueId}" class="fas fa-chevron-down"></i></h4>
+                    </div>
+                    <div id="auditTrailContainer-${uniqueId}" style="display: none;">
+                        <ul id="resultAuditTrail-${uniqueId}">
+                            ${ticket.auditTrail.map(entry => `
+                                <li>
+                                    <strong class="audit-action-${entry.type}">
+                                        ${entry.action}
+                                    </strong>
+                                    <span>${new Date(entry.timestamp).toLocaleString()}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                </div>
+            `;
+                    resultsContainer.appendChild(ticketElement);
+                });
+
+                resultsContainer.style.display = "block";
+                document.getElementById("notfound").style.display = "none";
+
+                document.getElementById("RedultMessge").textContent = matchingTickets.length + " Ticket(s) Found!";
+                document.getElementById("RedultMessge").style.display = "block";
+
+                window.scrollTo({
+                    top: resultsContainer.offsetTop - 150, // Adjust the offset value as needed
+                    behavior: 'smooth'
+                });
+
+            } else {
+                document.getElementById("ticketResultsContainer").style.display = "none";
+                document.getElementById("notfound").style.display = "block";
+                document.getElementById("RedultMessge").textContent = "Your Ticket Might Have Been Created, But It Has Not Yet Been Reviewed By The Support Team. Please Double-Check Your ID Number Or Try Again Later.";
+                document.getElementById("RedultMessge").style.display = "block";
+                const resultsContainer = document.getElementById("notfound");
+
+                window.scrollTo({
+                    top: resultsContainer.offsetTop - 220, // Adjust the offset value as needed
+                    behavior: 'smooth'
+                });
+            }
+        } catch (error) {
+            console.error("Error fetching ticket data:", error);
+            alert("Unable to fetch ticket data. Please try again later.");
+        }
+    }
+
+    // Updated toggleAuditTrail function to handle ticket-specific elements
+    function toggleAuditTrail(uniqueId) {
+        const auditTrailContainer = document.getElementById(`auditTrailContainer-${uniqueId}`);
+        const toggleIcon = document.getElementById(`auditTrailToggleIcon-${uniqueId}`);
+
+        if (auditTrailContainer.style.display === "none") {
+            auditTrailContainer.style.display = "block";
+            toggleIcon.classList.remove("fa-chevron-down");
+            toggleIcon.classList.add("fa-chevron-up");
+            toggleIcon.classList.add("rotate");
+        } else {
+            auditTrailContainer.style.display = "none";
+            toggleIcon.classList.remove("fa-chevron-up");
+            toggleIcon.classList.add("fa-chevron-down");
+            toggleIcon.classList.remove("rotate");
+        }
+    }
+    // clearSearchTicket function
+    function clearSearchTicket() {
+        // Clear the ticket number input field
+        document.getElementById("ticketNumber").value = "";
+        // Hide the ticket results container
+        document.getElementById("ticketResultsContainer").style.display = "none";
+        // Clear any content inside the ticket results container
+        document.getElementById("ticketResultsContainer").innerHTML = "";
+        // Hide the 'not found' message
+        document.getElementById("notfound").style.display = "none";
+        // Clear and hide any result messages
+        document.getElementById("RedultMessge").textContent = "";
+        document.getElementById("RedultMessge").style.display = "none";
+        // Reset the URL to remove any query parameters or hash
+        history.pushState("", document.title, window.location.pathname + window.location.search);
+    }
+
+</script>
 <script src="Ticket.js"></script>
 
 </html>
