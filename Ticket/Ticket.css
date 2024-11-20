@@ -35,16 +35,18 @@ body.dark-mode .faq-answer,
 body.dark-mode .faq-item.active .faq-answer,
 body.dark-mode .faq-item,
 body.dark-mode .faq-question::after {
-    background-color: #1f1e1e; 
+    background-color: #1f1e1e;
     color: #ffffff;
 }
-body.dark-mode .faq-item{
+
+body.dark-mode .faq-item {
     border: 1px solid #333;
 }
+
 body.dark-mode .faq-question:hover,
 body.dark-mode .faq-question:hover::after {
     background: #377a77;
-    background-color: #377a77; 
+    background-color: #377a77;
     color: #fff;
     transition: all 0.4s ease;
 }
@@ -300,6 +302,7 @@ main {
     border: 1px solid #ddd;
     border-radius: 10px;
     background-color: #fff;
+    border: 2px solid #ff6f61;
 }
 
 .not-found-header {
@@ -381,23 +384,63 @@ main {
     }
 }
 
-.result-message {
-    margin: 20px auto;
+
+
+
+
+
+.result-message-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     width: 90%;
-    display: none;
-    padding: 15px;
-    border-radius: 8px;
-    background-color: #663399;
+    margin: 20px auto;
+    background-color: rebeccapurple;
+    border-radius: 10px;
     color: #fff;
     text-align: center;
     font-weight: bold;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    position: relative; 
 }
 
+.result-message {
+    flex: 1; /* Take up remaining space */
+    text-align: center; /* Align text to the left */
+}
 
+.info-container {
+    position: relative;
+    display: inline-block;
+    margin-left: auto; /* Push the info icon to the right */
+}
 
+.info-icon {
+    font-size: 24px;
+    cursor: pointer;
+}
 
+.info-text {
+    display: none;
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-90%);
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border-radius: 5px;
+    width: 300px;
+    max-width: 90vw;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    word-wrap: break-word;
+}
+
+.info-container:hover .info-text {
+    display: block;
+}
 
 
 
@@ -466,8 +509,8 @@ main {
     opacity: 0;
     overflow: hidden;
     visibility: hidden;
-    transition: all 0.3s ease; 
-    border-top: 1px solid #e9e9e9; 
+    transition: all 0.3s ease;
+    border-top: 1px solid #e9e9e9;
 }
 
 /* When the FAQ Item is Active */

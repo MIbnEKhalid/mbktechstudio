@@ -76,7 +76,24 @@
                     Contact</a> Page.</p>
         </div>
 
-        <div id="RedultMessge" class="result-message"></div>
+        <div id="RedultMessgeCont" class="result-message-container">
+            <div id="RedultMessge" class="result-message">This is a result message.</div>
+            <div class="info-container">
+                <span class="info-icon">
+                    <i class="fas fa-info-circle"></i>
+                </span>
+                <div class="info-text">
+                    The CSS color "rebeccapurple" (#663399) was named in honor of Rebecca Meyer, the
+                    six-year-old daughter of web advocate Eric Meyer, who passed away from brain cancer in 2014.
+                    This tribute reflects the web community’s compassion and preserves Rebecca’s memory in the
+                    digital world.
+                </div>
+            </div>
+        </div>
+        
+
+
+
 
         <!-- Ticket Result Section -->
         <div id="ticketResultsContainer" class="section " style="display: none;">
@@ -99,6 +116,11 @@
                 <ul id="resultAuditTrail" style="padding-left: 20px;"></ul>
             </div>
 
+            <div class="info-container">
+                <span class="info-icon">ℹ️</span>
+                <div class="info-text">This is some important information that will be displayed when you hover over the
+                    info icon.</div>
+            </div>
         </div>
 
         <!-- Ticket Result Section -->
@@ -238,13 +260,13 @@
 
 </footer>
 <script>
-/*    
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark-mode');
-    }
-
-    document.body.style.transition = "background-color 0.4s ease, color 0.4s ease";
-*/
+    /*    
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.body.classList.add('dark-mode');
+        }
+    
+        document.body.style.transition = "background-color 0.4s ease, color 0.4s ease";
+    */
     document.addEventListener('DOMContentLoaded', function () {
 
         // FAQ Item Toggle

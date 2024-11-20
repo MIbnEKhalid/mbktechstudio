@@ -148,7 +148,7 @@ async function searchTicket() {
             document.getElementById("notfound").style.display = "none";
 
             document.getElementById("RedultMessge").textContent = matchingTickets.length + " Ticket(s) Found!";
-            document.getElementById("RedultMessge").style.display = "block";
+            document.getElementById("RedultMessgeCont").style.display = "flex";
 
             
 
@@ -208,7 +208,7 @@ async function searchTicket() {
                     resultsContainer.appendChild(ticketElement);
 
                     document.getElementById("RedultMessge").textContent = "1 Ticket Found!";
-                    document.getElementById("RedultMessge").style.display = "block";
+                    document.getElementById("RedultMessgeCont").style.display = "flex";
                 } else if (nameFilteredTickets.length > 1) {
                     alert("Multiple tickets found with that name. Please check the ticket details such as issue date to identify your ticket.");
                 } else {
@@ -221,7 +221,7 @@ async function searchTicket() {
             document.getElementById("ticketResultsContainer").style.display = "none";
             document.getElementById("notfound").style.display = "block";
             document.getElementById("RedultMessge").textContent = "Your Ticket Might Have Been Created, But It Has Not Yet Been Reviewed By The Support Team. Please Double-Check Your ID Number Or Try Again Later.";
-            document.getElementById("RedultMessge").style.display = "block";
+            document.getElementById("RedultMessgeCont").style.display = "flex";
             const resultsContainer = document.getElementById("notfound");
 
             window.scrollTo({
@@ -264,7 +264,7 @@ function clearSearchTicket() {
     document.getElementById("notfound").style.display = "none";
     // Clear and hide any result messages
     document.getElementById("RedultMessge").textContent = "";
-    document.getElementById("RedultMessge").style.display = "none";
+    document.getElementById("RedultMessgeCont").style.display = "none";
     // Reset the URL to remove any query parameters or hash
     history.pushState("", document.title, window.location.pathname + window.location.search);
 }
