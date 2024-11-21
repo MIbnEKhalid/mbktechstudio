@@ -1,6 +1,7 @@
 /* Google Font CDN Link */
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap");
+
 * {
     margin: 0;
     padding: 0;
@@ -24,15 +25,17 @@
     transition: all 0.3s ease;
 }
 
-a{
-  transition: all 0.4s ease;
+a {
+    transition: all 0.4s ease;
 }
+
 a:visited {
-  color: #377a77;
+    color: #377a77;
 }
+
 a:hover {
-  color: #9eb5f7;  
-  transition: all 0.4s ease;
+    color: #9eb5f7;
+    transition: all 0.4s ease;
 }
 
 /* Custom Scroll Bar CSS */
@@ -168,8 +171,8 @@ nav .menu-btn,
 .navbar .menu .cancel-btn {
     position: absolute;
     color: #fff;
-    right: 20px;
-    top: 10px;
+    right: 10px;
+    top: 30px;
     font-size: 20px;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -561,19 +564,23 @@ footer .text span a:hover {
         justify-content: center;
         flex-direction: column;
     }
+
     .about .about-details .left {
         display: flex;
         justify-content: center;
         width: 100%;
     }
+
     .about-details .right {
         width: 90%;
         margin: 40px 0;
     }
+
     .about-details .centre {
         width: 90%;
         margin: 0px 0;
     }
+
     .services .boxes .box {
         margin: 20px 0;
         width: calc(100% / 2 - 20px);
@@ -586,27 +593,37 @@ footer .text span a:hover {
         width: 350px;
     }
 }
+nav .navbar .media-icons-m {
+    display: none;
+}
 
+nav .navbar .menu .media-icons-m a {
+    font-size: 21px;
+    margin: 0 6px;
+    transition: all 0.3s ease;
+}
 @media (max-width: 750px) {
     nav .navbar {
         width: 90%;
     }
+
     nav .navbar .menu {
         position: fixed;
         left: -100%;
         top: 0;
         background: #0e2431;
         height: 100vh;
-        max-width: 400px;
         width: 100%;
         padding-top: 60px;
         flex-direction: column;
         align-items: center;
         transition: all 0.5s ease;
     }
+
     .navbar.active .menu {
         left: 0;
     }
+
     nav .navbar .menu a {
         font-size: 23px;
         display: block;
@@ -614,27 +631,35 @@ footer .text span a:hover {
         margin: 10px 0;
         transition: all 0.3s ease;
     }
+
     nav.sticky .menu a:hover {
         color: #377a77;
         transition: all 0.3s ease;
     }
+
     nav .navbar .media-icons {
         display: none;
+    } 
+
+    nav .navbar .media-icons-m {
+        display: flex;
     }
+
     nav .menu-btn,
     .navbar .menu .cancel-btn {
         display: block;
     }
+
     .services .boxes .box {
         margin: 20px 0;
         width: 100%;
     }
+
     .contact .text {
         width: 100%;
     }
 }
-
-
+ 
 /* Form */
 
 form select {

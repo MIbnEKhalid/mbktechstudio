@@ -18,10 +18,10 @@
 
     <script src="https://mbktechstudio.com/Assets/config.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', () => {  
+        document.addEventListener('DOMContentLoaded', () => {
             const input = document.querySelector('input[name="access_key"]');
             if (input) {
-                input.value =  web3forms_API_KEY;
+                input.value = web3forms_API_KEY;
             }
         });
     </script>
@@ -29,25 +29,47 @@
 </head>
 
 <header>
+
     <nav>
+
         <div class="navbar">
+
             <div class="logo">
+
                 <div class="image">
                     <img src="../Assets/Images/Icon/dg.svg" alt="" />
                 </div>
+
                 <div class="text">
-                    <a href="https://mbktechstudio.com">MBK Tech Studio</a>
+                    <a href="#">MBK Tech Studio</a>
                 </div>
+
             </div>
-            <ul style="display: none;" class="menu">
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#services">Projects</a></li>
-                <li><a href="#contact">Contact Us</a></li>
+
+            <ul class="menu">
+
+                <div class="media-icons-m">
+
+                    <a href="https://www.facebook.com/people/MBK-Tech-Studio/61559079077988/" target="_blank"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/ibnekhalid28" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://instagram.com/mbktech.studios" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://github.com/MIbnEKhalid" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/muhammad-bin-khalid-89711b25b" target="_blank"><i
+                            class="fab fa-linkedin"></i></a>
+                    <a href="https://youtube.com/@mibnekhalid" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://discord.gg/MUAyAeckrM" target="_blank"><i class="fab fa-discord"></i></a>
+
+                </div>
+
                 <div class="cancel-btn">
                     <i class="fas fa-times"></i>
                 </div>
+
             </ul>
+
             <div class="media-icons">
+
                 <a href="https://www.facebook.com/people/MBK-Tech-Studio/61559079077988/" target="_blank"><i
                         class="fab fa-facebook-f"></i></a>
                 <a href="https://x.com/ibnekhalid28" target="_blank"><i class="fab fa-twitter"></i></a>
@@ -57,15 +79,25 @@
                         class="fab fa-linkedin"></i></a>
                 <a href="https://youtube.com/@mibnekhalid" target="_blank"><i class="fab fa-youtube"></i></a>
                 <a href="https://discord.gg/MUAyAeckrM" target="_blank"><i class="fab fa-discord"></i></a>
+
             </div>
+
         </div>
-        <div style="display: none;" class="menu-btn">
+
+        <div class="menu-btn">
             <i class="fas fa-bars"></i>
         </div>
+
     </nav>
+
 </header>
- 
+
 <body>
+
+    <!-- Move to up button -->
+    <div class="scroll-button">
+        <a href="#contact"><i class="fas fa-arrow-up"></i></a>
+    </div>
 
     <section class="contact" id="contact">
 
@@ -73,7 +105,8 @@
 
             <div class="title"><span>Support & Contact</span></div>
 
-            <form action="https://api.web3forms.com/submit" style="display: block;" id="form" class="container notification is-form m-4 pl-4" method="POST">
+            <form action="https://api.web3forms.com/submit" style="display: block;" id="form"
+                class="container notification is-form m-4 pl-4" method="POST">
 
                 <input type="hidden" name="access_key" value="">
                 <input class="input" type="hidden" name="Timestamp">
@@ -172,7 +205,7 @@
 
                 </div>
 
- 
+
 
                 <div class="field NameFie">
                     <label class="label required-label">Name</label>
@@ -256,21 +289,25 @@
 
                 <div class="field messageF">
                     <label class="label required-label">Message</label>
-                    <div class="control"><textarea class="input" placeholder="Enter Your Message" id="message_form" name="Message" rows="6" required=""></textarea></div>
+                    <div class="control"><textarea class="input" placeholder="Enter Your Message" id="message_form"
+                            name="Message" rows="6" required=""></textarea></div>
                 </div>
 
-                <div class="field agreement-container"> 
+                <div class="field agreement-container">
                     <div class="control">
                         <label>
                             <input class="checkbox" type="checkbox" required>
-                            I Certify That I Have Read And Agree To The 
-                            <a class="links" href="https://blog.mbktechstudio.com/post/privacy-policy/">Privacy Policy</a>, 
-                            <a class="links" href="https://blog.mbktechstudio.com/post/terms-and-conditions/">Terms and Conditions</a>, 
-                            and <a class="links" href="https://blog.mbktechstudio.com/post/cookies-policy/">Cookie Policy</a> of <a class="links" href="https://mbktechstudio.com/">MBK Tech Studio</a> .
+                            I Certify That I Have Read And Agree To The
+                            <a class="links" href="https://blog.mbktechstudio.com/post/privacy-policy/">Privacy
+                                Policy</a>,
+                            <a class="links" href="https://blog.mbktechstudio.com/post/terms-and-conditions/">Terms and
+                                Conditions</a>,
+                            and <a class="links" href="https://blog.mbktechstudio.com/post/cookies-policy/">Cookie
+                                Policy</a> of <a class="links" href="https://mbktechstudio.com/">MBK Tech Studio</a> .
                         </label>
                     </div>
                 </div>
-                
+
 
                 <div class="notification is-info">
                     <p>
@@ -294,37 +331,42 @@
 
                 <br>
 
-                <div id="message" style="display: none; font-weight: bold; color: green; padding: 8px; background-color: beige; border-radius: 4px; border-color: aquamarine;"></div>
+                <div id="message"
+                    style="display: none; font-weight: bold; color: green; padding: 8px; background-color: beige; border-radius: 4px; border-color: aquamarine;">
+                </div>
 
 
                 <div class="button field is-grouped" style="display: flex; justify-content: center;">
-                    <div class="control"><button style="font-size: 20px;" class="button is-primary" type="submit" id="submit-button">Submit</button></div>
-                </div>  
+                    <div class="control"><button style="font-size: 20px;" class="button is-primary" type="submit"
+                            id="submit-button">Submit</button></div>
+                </div>
 
                 <br>
 
                 <div class="button field is-grouped" style="display: flex; justify-content: center;">
                     <div class="control">
                         <a style="font-size: 20px;" onclick="showbox('tS-form')" class="Trackbutton">Track Ticket</a>
-                    </div> 
+                    </div>
                 </div>
 
             </form>
-            
+
             <div id="tS-form" class="contact-box">
                 <div onclick="hidebox('tS-form')" class="close-btn"></div>
-                <form id="ticketStatusForm" >
-                    <div class="title"><span>Track Ticket</span></div>  
+                <form id="ticketStatusForm">
+                    <div class="title"><span>Track Ticket</span></div>
                     <div id="ticketStatus"></div>
                     <div class="input-container">
-                         <input type="text" placeholder="Enter ID eg. T000111333" required minlength="10" maxlength="10" pattern=".{10}"  class="ticketNumberinput" id="ticketId" required><br><br>
-                         <div class="button field is-grouped" style="display: flex; justify-content: center;">
-                            <div class="control"><button class="button is-primary" type="submit" id="submit-button">Check</button></div>
-                        </div>       
-                     </div>
+                        <input type="text" placeholder="Enter ID eg. T000111333" required minlength="10" maxlength="10"
+                            pattern=".{10}" class="ticketNumberinput" id="ticketId" required><br><br>
+                        <div class="button field is-grouped" style="display: flex; justify-content: center;">
+                            <div class="control"><button class="button is-primary" type="submit"
+                                    id="submit-button">Check</button></div>
+                        </div>
+                    </div>
                 </form>
             </div>
-            
+
             <div id="tG-form" class="contact-box">
                 <div onclick="hidebox('tG-form')" class="close-btn"></div>
                 <div class="title"><span>Ticket Generated</span></div>
@@ -333,16 +375,17 @@
                     <input class="ticketNumberinput" name="ticketNumberInput" id="ticketNumber" readonly />
                     <div class="button field is-grouped" style="display: flex; justify-content: center;">
                         <div class="control"><button class="button" onclick="copyTicketNumber()">Copy</button></div>
-                    </div>    
+                    </div>
                 </div>
-                <a id="TicketIdURL" href="" style="text-align: center; display: block; word-wrap: break-word;" class="links"></a>
+                <a id="TicketIdURL" href="" style="text-align: center; display: block; word-wrap: break-word;"
+                    class="links"></a>
                 <p style="text-align: center;">You Can Use This Ticket Number To Track Your Support Status</p>
             </div>
-                 
+
             <div class="ssmedis" id="ssmedia">
                 <a href="https://instagram.com/mbktech.studios" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="https://signal.me/#eu/0Bxn3qmtp8gtYNuy6eJ_F3WaHWHrQW3uefaC2y01VCWtduFQCwJHvIFL6N4VOtsv" target="_blank"><i
-                        class="fa-brands fa-signal-messenger"></i></a>
+                <a href="https://signal.me/#eu/0Bxn3qmtp8gtYNuy6eJ_F3WaHWHrQW3uefaC2y01VCWtduFQCwJHvIFL6N4VOtsv"
+                    target="_blank"><i class="fa-brands fa-signal-messenger"></i></a>
                 <a href="https://www.facebook.com/people/MBK-Tech-Studio/61559079077988/" target="_blank"><i
                         class="fab fa-facebook-f"></i></a>
                 <a href="https://www.linkedin.com/in/muhammad-bin-khalid-89711b25b" target="_blank"><i
@@ -355,15 +398,19 @@
 
         </div>
 
-    </section> 
-    
+    </section>
+
 </body>
 
 <footer>
 
-    <div class="text"> 
+    <div class="text">
 
-        <span> © 2024  <a href="https://mbktechstudio.com/" target="_blank">MBK Tech Studio</a>. All Rights Reserved | <a href="https://privacy.mbktechstudio.com/" target="_blank">Terms &amp; Conditions</a> | <a href="https://mbktechstudio.com/FAQs" target="_blank">FAQs</a> | <a href="mailto:support@mbktechstudio.com" title="support@mbktechstudio.com">support@mbktechstudio.com</a> </span>    
+        <span> © 2024 <a href="https://mbktechstudio.com/" target="_blank">MBK Tech Studio</a>. All Rights Reserved | <a
+                href="https://privacy.mbktechstudio.com/" target="_blank">Terms &amp; Conditions</a> | <a
+                href="https://mbktechstudio.com/FAQs" target="_blank">FAQs</a> | <a
+                href="mailto:support@mbktechstudio.com" title="support@mbktechstudio.com">support@mbktechstudio.com</a>
+        </span>
 
     </div>
 

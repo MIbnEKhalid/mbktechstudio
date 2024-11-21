@@ -81,57 +81,69 @@
 
   </style>
 
-  <header>   
-    
-    <nav>
+<header>
+
+  <nav>
 
       <div class="navbar">
 
-        <div class="logo">
+          <div class="logo">
 
-          <div class="image">
-            <img src="https://mbktechstudio.com/Assets/Images/Icon/dg.svg" alt=""/>
+              <div class="image">
+                  <img src="../Assets/Images/Icon/dg.svg" alt="" />
+              </div>
+
+              <div class="text">
+                  <a href="#">MBK Tech Studio</a>
+              </div>
+
           </div>
 
-          <div class="text">
-            <a href="https://mbktechstudio.com">MBK Tech Studio</a>
+          <ul class="menu">
+
+              <div class="media-icons-m">
+
+                  <a href="https://www.facebook.com/people/MBK-Tech-Studio/61559079077988/" target="_blank"><i
+                          class="fab fa-facebook-f"></i></a>
+                  <a href="https://x.com/ibnekhalid28" target="_blank"><i class="fab fa-twitter"></i></a>
+                  <a href="https://instagram.com/mbktech.studios" target="_blank"><i class="fab fa-instagram"></i></a>
+                  <a href="https://github.com/MIbnEKhalid" target="_blank"><i class="fab fa-github"></i></a>
+                  <a href="https://www.linkedin.com/in/muhammad-bin-khalid-89711b25b" target="_blank"><i
+                          class="fab fa-linkedin"></i></a>
+                  <a href="https://youtube.com/@mibnekhalid" target="_blank"><i class="fab fa-youtube"></i></a>
+                  <a href="https://discord.gg/MUAyAeckrM" target="_blank"><i class="fab fa-discord"></i></a>
+
+              </div>
+
+              <div class="cancel-btn">
+                  <i class="fas fa-times"></i>
+              </div>
+
+          </ul>
+
+          <div class="media-icons">
+
+              <a href="https://www.facebook.com/people/MBK-Tech-Studio/61559079077988/" target="_blank"><i
+                      class="fab fa-facebook-f"></i></a>
+              <a href="https://x.com/ibnekhalid28" target="_blank"><i class="fab fa-twitter"></i></a>
+              <a href="https://instagram.com/mbktech.studios" target="_blank"><i class="fab fa-instagram"></i></a>
+              <a href="https://github.com/MIbnEKhalid" target="_blank"><i class="fab fa-github"></i></a>
+              <a href="https://www.linkedin.com/in/muhammad-bin-khalid-89711b25b" target="_blank"><i
+                      class="fab fa-linkedin"></i></a>
+              <a href="https://youtube.com/@mibnekhalid" target="_blank"><i class="fab fa-youtube"></i></a>
+              <a href="https://discord.gg/MUAyAeckrM" target="_blank"><i class="fab fa-discord"></i></a>
+
           </div>
-
-        </div>
-
-        <ul style="display: none;" class="menu">
-
-          <li><a href="#about">About Us</a></li>
-          <li><a href="#services">Projects</a></li>
-          <li><a href="#contact">Contact Us</a></li>
-
-          <div class="cancel-btn">
-            <i class="fas fa-times"></i>
-          </div>
-
-        </ul>
-
-        <div class="media-icons">
-
-          <a href="https://www.facebook.com/people/MBK-Tech-Studio/61559079077988/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-          <a href="https://x.com/ibnekhalid28"                                      target="_blank"><i class="fab fa-twitter"></i></a>
-          <a href="https://instagram.com/mbktech.studios"                           target="_blank"><i class="fab fa-instagram"></i></a>
-          <a href="https://github.com/MIbnEKhalid"                                  target="_blank"><i class="fab fa-github"></i></a>
-          <a href="https://www.linkedin.com/in/muhammad-bin-khalid-89711b25b"       target="_blank"><i class="fab fa-linkedin"></i></a>
-          <a href="https://youtube.com/@mibnekhalid"                                target="_blank"><i class="fab fa-youtube"></i></a>
-          <a href="https://discord.gg/MUAyAeckrM"                                   target="_blank"><i class="fab fa-discord"></i></a>
-
-        </div>
 
       </div>
 
-      <div style="display: none;" class="menu-btn">
-        <i class="fas fa-bars"></i>
+      <div class="menu-btn">
+          <i class="fas fa-bars"></i>
       </div>
 
-    </nav>
+  </nav>
 
-  </header>
+</header>
 
   <body>
 
@@ -202,6 +214,45 @@
   </footer> 
  
   <script>
+
+    // Sticky Navigation Menu JS Code
+let nav = document.querySelector("nav");
+ let val;
+window.onscroll = function() {
+    if (document.documentElement.scrollTop > 20) {
+        nav.classList.add("sticky");
+     } else {
+        nav.classList.remove("sticky");
+     }
+}
+
+// Side NavIgation Menu JS Code
+let body = document.querySelector("body");
+let navBar = document.querySelector(".navbar");
+let menuBtn = document.querySelector(".menu-btn");
+let cancelBtn = document.querySelector(".cancel-btn");
+menuBtn.onclick = function() {
+    navBar.classList.add("active");
+    menuBtn.style.opacity = "0";
+    menuBtn.style.pointerEvents = "none";
+    body.style.overflow = "hidden";
+ }
+cancelBtn.onclick = function() {
+    navBar.classList.remove("active");
+    menuBtn.style.opacity = "1";
+    menuBtn.style.pointerEvents = "auto";
+    body.style.overflow = "auto";
+ }
+
+// Side Navigation Bar Close While We Click On Navigation Links
+let navLinks = document.querySelectorAll(".menu li a");
+for (var i = 0; i < navLinks.length; i++) {
+    navLinks[i].addEventListener("click", function() {
+        navBar.classList.remove("active");
+        menuBtn.style.opacity = "1";
+        menuBtn.style.pointerEvents = "auto";
+    });
+}
  
     function showbox() {
       document.getElementById('c-form').classList.add('show');
@@ -497,16 +548,7 @@ document.getElementById("form").addEventListener("submit", function(e) {
 
   </body>
 
-  <footer>
-
-    <div class="text">
-
-      <span> © 2024  <a href="https://mbktechstudio.com/" target="_blank">MBK Tech Studio</a>. All Rights Reserved | <a href="https://privacy.mbktechstudio.com/" target="_blank">Terms &amp; Conditions</a> | <a href="https://mbktechstudio.com/FAQs" target="_blank">FAQs</a> | <a href="https://mbktechstudio.com/Support/" target="_blank">Support &amp; Contact</a></span>    
-    
-    </div>
   
-  </footer> 
- 
   <script>
  
     function showbox() {
