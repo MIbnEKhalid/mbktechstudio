@@ -18,14 +18,12 @@ menuBtn.onclick = function () {
     menuBtn.style.opacity = "0";
     menuBtn.style.pointerEvents = "none";
     body.style.overflow = "hidden";
-    scrollBtn.style.pointerEvents = "none";
 }
 cancelBtn.onclick = function () {
     navBar.classList.remove("active");
     menuBtn.style.opacity = "1";
     menuBtn.style.pointerEvents = "auto";
     body.style.overflow = "auto";
-    scrollBtn.style.pointerEvents = "auto";
 }
 let navLinks = document.querySelectorAll(".menu li a");
 for (var i = 0; i < navLinks.length; i++) {
@@ -34,34 +32,13 @@ for (var i = 0; i < navLinks.length; i++) {
         menuBtn.style.opacity = "1";
         menuBtn.style.pointerEvents = "auto";
     });
-} 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}  
 
 document.getElementById("form").addEventListener("submit", function (e) {
     e.preventDefault();
     searchTicket();
 });
+
 // Toggle FAQ answer visibility
 function toggleAnswer(id) {
     var answer = document.getElementById("answer" + id);
@@ -150,7 +127,7 @@ async function searchTicket() {
             document.getElementById("RedultMessge").textContent = matchingTickets.length + " Ticket(s) Found!";
             document.getElementById("RedultMessgeCont").style.display = "flex";
 
-            
+
 
             window.scrollTo({
                 top: resultsContainer.offsetTop - 165, // Adjust the offset value as needed
@@ -215,8 +192,8 @@ async function searchTicket() {
                     alert("No tickets found matching that name.");
                 }
             }
-       
-       
+
+
         } else {
             document.getElementById("ticketResultsContainer").style.display = "none";
             document.getElementById("notfound").style.display = "block";
@@ -267,4 +244,4 @@ function clearSearchTicket() {
     document.getElementById("RedultMessgeCont").style.display = "none";
     // Reset the URL to remove any query parameters or hash
     history.pushState("", document.title, window.location.pathname + window.location.search);
-}
+} 
