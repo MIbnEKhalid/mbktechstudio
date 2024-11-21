@@ -12,30 +12,32 @@
 
 .links {
     font-weight: 600;
-    color: #59a09c;
-    transition: all 0.3s ease;
+    color: #007bff;
+    transition: all 0.5s ease;
 }
 
 .links:visited {
-    color: none;
+    color: #007bff;
+    transition: all 0.5s ease;
 }
 
 .links:hover {
-    color: #377a77;
-    transition: all 0.3s ease;
+    color: #9eb5f7;
+    transition: all 0.5s ease;
 }
 
 a {
-    transition: all 0.4s ease;
+    transition: all 0.5s ease;
 }
 
 a:visited {
-    color: #377a77;
+    color: #007bff;
+    transition: all 0.5s ease;
 }
 
 a:hover {
     color: #9eb5f7;
-    transition: all 0.4s ease;
+    transition: all 0.5s ease;
 }
 
 /* Custom Scroll Bar CSS */
