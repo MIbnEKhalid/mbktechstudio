@@ -72,7 +72,6 @@ nav {
 
 nav.sticky {
     background: #377a77;
-    padding: 13px 0;
 }
 
 nav .navbar {
@@ -593,15 +592,17 @@ footer .text span a:hover {
         width: 350px;
     }
 }
+
 nav .navbar .media-icons-m {
     display: none;
 }
 
 nav .navbar .menu .media-icons-m a {
-    font-size: 21px;
-    margin: 0 6px;
+    font-size: 25px;
+    margin: 0 8px;
     transition: all 0.3s ease;
 }
+
 @media (max-width: 750px) {
     nav .navbar {
         width: 90%;
@@ -639,7 +640,7 @@ nav .navbar .menu .media-icons-m a {
 
     nav .navbar .media-icons {
         display: none;
-    } 
+    }
 
     nav .navbar .media-icons-m {
         display: flex;
@@ -659,7 +660,7 @@ nav .navbar .menu .media-icons-m a {
         width: 100%;
     }
 }
- 
+
 /* Form */
 
 form select {
