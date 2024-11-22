@@ -4,15 +4,25 @@ function getPageUrl() {
     return window.location.href;
 }
 
-function resetMessageBoxColor() {
-    document.getElementById("message").style.backgroundColor = "beige";
-    document.getElementById("message").style.color = "green";
-}
+function resetMessageBoxStyle() {
+    const messageBox = document.getElementById("message");
+    messageBox.className = "message-box info";
+  }
+  
+  function showMessage(content, type = "info") {
+    const messageBox = document.getElementById("message");
+    messageBox.textContent = content;
+    messageBox.style.display = "block";
+    messageBox.className = `message-box ${type}`;
+    if(type === "error") {
+        messageBox.innerHTML = content + "Please Try Again Later Or Contact Us Directly At: <a class='links' title='support@mbktechstudio.com' href='mailto:support@mbktechstudio.com'>support@mbktechstudio.com</a> for Contact & Support.";
+    }
+  }
 
 document.getElementById("form").addEventListener("submit", async function (e) {
     e.preventDefault();
-    resetMessageBoxColor();
-    document.getElementById("message").textContent = "Submitting..";
+    resetMessageBoxStyle();
+    showMessage("Submitting..", "info");
     document.getElementById("message").style.display = "block";
     document.getElementById("submit-button").disabled = true; 
 
@@ -54,21 +64,16 @@ document.getElementById("form").addEventListener("submit", async function (e) {
             throw new Error("Failed to submit the form.");
         }
     }).then(function (data) {
-        document.getElementById("message").textContent = "Message Submitted Successfully!";
-        document.getElementById("message").style.display = "block";
-        document.getElementById("message").style.backgroundColor = "green";
-        document.getElementById("message").style.color = "beige";
+        showMessage("Message Submitted Successfully!", "success");
         document.getElementById("submit-button").disabled = false;
         document.getElementById("form").reset();
 
         setTimeout(function () {
-            document.getElementById("message").textContent = "";
-            document.getElementById("message").style.display = "none"; 
+            showMessage("", "info");
         }, 2000);
     }).catch(function (error) {
         console.error(error);
-        document.getElementById("message").textContent = "An error occurred while submitting the form.";
-        document.getElementById("message").style.backgroundColor = "red";
+        showMessage("An error occurred while submitting the form.", "error");
     });
 });
 
