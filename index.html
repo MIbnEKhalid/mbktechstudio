@@ -15,25 +15,23 @@
     <title>Home</title>
     <link rel="icon" type="image/x-icon" href="Assets/Images/Icon/dgicon.svg">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="Assets/config.js"></script>
+    <script src="Assets/Scripts/config.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const input = document.querySelector('input[name="access_key"]');
-            if (input) {
+            if (input) { 
                 input.value = web3forms_API_KEY;
             }
         });
     </script>
-</head>
+</head> 
+
 
 <style>
-    #projectLink {
-        display: none;
-        margin-left: 2px;
-        margin-bottom: 5px;
-        font-weight: 550;
-        font-size: 14px;
-    }
+    section form .button button {
+        font-size: 20px;
+        padding: 7px 16px;
+    } 
 </style>
 
 <!-- Ask For Cookie Consent-->
@@ -83,14 +81,6 @@
     </nav>
 
 </header>
-<style>
-    section form .button button {
-        font-size: 20px;
-        padding: 7px 16px;
-    }
-
-    /*Star rating*/
-</style>
 
 <body>
 
@@ -326,30 +316,13 @@
 
 </footer>
 
-<script src="Assets/script.js"></script>
+<script src="Assets/Scripts/header.js"></script>
+<script src="Assets/Scripts/cookie.js"></script> 
+<script src="Assets/Scripts/form.main.js"></script> 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/js/intlTelInput-jquery.min.js"></script>
 
-<script>
-    //phone
-
-    $("#mobile_code").intlTelInput({
-        initialCountry: "pk",
-        separateDialCode: true
-        // utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.4/js/utils.js"
-    });
-
-    function remove() {
-        let i = 0;
-        while (i < 5) {
-            stars[i].className = "star";
-            i++;
-        }
-    }
-
-    document.addEventListener("DOMContentLoaded", function () {
-        AskForCookieConsent();
-    });
+<script>  
 
     document.addEventListener('DOMContentLoaded', function () {
         const headerHeight = document.querySelector('header').offsetHeight;
@@ -370,6 +343,7 @@
             });
         });
     });
+
 </script>
 
 </html>
