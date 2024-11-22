@@ -567,3 +567,23 @@ function checkTicketStatus(ticketId, ticketData) {
     // Filter the tickets array to find all tickets with the matching ticketId
     return ticketData.filter(ticket => ticket.id === ticketId);
 }
+
+/*
+
+
+    //phone
+
+    $("#mobile_code").intlTelInput({
+        initialCountry: "pk",
+        separateDialCode: true
+        // utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.4/js/utils.js"
+    });
+
+    function remove() {
+        let i = 0;
+        while (i < 5) {
+            stars[i].className = "star";
+            i++;
+        }
+    }
+*/
