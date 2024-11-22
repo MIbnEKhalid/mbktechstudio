@@ -81,7 +81,33 @@
     </nav>
 
 </header>
-
+<style>
+    .message-box {
+      display: block;
+      font-weight: bold;
+      padding: 8px;
+      border-radius: 4px;
+      border: 2px solid #377a77;
+      background-color: beige;
+      color: green;
+    }
+  
+    .message-box.success {
+      background-color: green;
+      color: beige;
+    }
+  
+    .message-box.error {
+      background-color: rebeccapurple;
+      color: white;
+    }
+  
+    .message-box.info {
+      background-color: beige;
+      color: green;
+    }
+  </style>
+  
 <body>
 
     <!-- Move to up button -->
@@ -287,9 +313,7 @@
                             id="submit-button">Submit</button></div>
                 </div>
 
-                <div id="message"
-                    style="display: none; font-weight: bold; color: green; padding: 8px; background-color: beige; border-radius: 4px; border-color: aquamarine;">
-                </div>
+                <div  id="message"> </div>
 
             </form>
 
