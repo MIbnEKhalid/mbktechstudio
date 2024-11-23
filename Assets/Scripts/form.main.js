@@ -69,7 +69,7 @@ document.getElementById("form").addEventListener("submit", async function (e) {
         document.getElementById("form").reset();
 
         setTimeout(function () {
-            showMessage("", "info");
+            document.getElementById("message").style.display = "none"; // Hide message box
         }, 2000);
     }).catch(function (error) {
         console.error(error);

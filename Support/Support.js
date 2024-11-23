@@ -380,7 +380,6 @@ document.getElementById("form").addEventListener("submit", function (e) {
     messageBox.style.display = "block";
     document.getElementById("submit-button").disabled = true;
 
-
     var currentDate = new Date();
     var day = String(currentDate.getDate()).padStart(2, "0");
     var month = String(currentDate.getMonth() + 1).padStart(2, "0");
@@ -401,13 +400,43 @@ document.getElementById("form").addEventListener("submit", function (e) {
     document.querySelector('input[name="Timestamp"]').value = timestamp;
     document.querySelector('input[name="PageUrl"]').value = getPageUrl();
 
-    const ticketNumber = 'T' + Math.random().toString(36).substring(2, 11).toUpperCase(); // Generate 9 characters after 'TICKET-'
-    document.querySelector('input[name="TicketNumber"]').value = ticketNumber;
-    
-    document.getElementById("TicketIdURL").textContent = `mbktechstudio.com/Support/?Ticket=${ticketNumber}`;
-    document.getElementById("TicketIdURL").href = `https://mbktechstudio.com/Support/?Ticket=${ticketNumber}`;
+    // Function to generate a ticket number
+    function generateTicketNumber() {
+        return 'T' + Math.random().toString(36).substring(2, 11).toUpperCase();
+    }
 
+    // Function to check if ticket number exists in the list
+    function isTicketNumberUnique(ticketNumber, existingTickets) {
+        return !existingTickets.some(ticket => ticket.id === ticketNumber);
+    }
 
+    // Function to generate and assign a unique ticket number
+    function generateAndAssignTicketNumber(existingTickets) {
+        let ticketNumber = generateTicketNumber();
+        
+        // Check if the generated ticket number exists in the existing tickets
+        while (!isTicketNumberUnique(ticketNumber, existingTickets)) {
+            ticketNumber = generateTicketNumber(); // Regenerate if a match is found
+        }
+
+        // Set the ticket number and URL
+        document.querySelector('input[name="TicketNumber"]').value = ticketNumber;
+        document.getElementById("TicketIdURL").textContent = `mbktechstudio.com/Ticket/#${ticketNumber}`;
+        document.getElementById("TicketIdURL").href = `https://mbktechstudio.com/Ticket/#${ticketNumber}`;
+
+        // Assign the ticket number to ticketNumberInput
+        document.querySelector('input[name="ticketNumberInput"]').value = ticketNumber;
+        console.log("Ticket Number Assigned: ", ticketNumber);  // For debugging
+    }
+
+    // Fetch existing tickets from t.json
+    fetch('../Ticket/t.json')  // Replace with the actual path to your JSON file
+        .then(response => response.json())  // Parse the JSON data
+        .then(data => {
+            // Generate and assign a unique ticket number after loading the existing tickets
+            generateAndAssignTicketNumber(data);
+        })
+        .catch(error => console.error('Error loading JSON:', error));
 
     var formData = new FormData(this);
 
@@ -427,11 +456,9 @@ document.getElementById("form").addEventListener("submit", function (e) {
         document.getElementById("submit-button").disabled = false;
         document.getElementById("form").reset();
 
-
         showbox('tG-form');
         // Display ticket number to user
-        document.querySelector('input[name="ticketNumberInput"]').value = ticketNumber;
-
+        document.querySelector('input[name="ticketNumberInput"]').value = ticketNumber;  // Ensure ticket number is assigned
 
         setTimeout(function () {
             messageBox.textContent = "";
@@ -453,6 +480,7 @@ document.getElementById("form").addEventListener("submit", function (e) {
         messageBox.textContent = "An error occurred while submitting the form.";
     });
 });
+
 
 function resetMessageBoxColor() {
     messageBox.style.backgroundColor = "beige";

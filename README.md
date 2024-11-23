@@ -8,8 +8,7 @@ https://github.com/MIbnEKhalid/MIbnEKhalid.github.io/ or https://github.com/MIbn
 
 Detailed Documentation of this website will be available soon on: [docs.mbktechstudio.com/mbktechstudio.com](https://docs.mbktechstudio.com/mbktechstudio.com)
 
-### NOTE:
-Only The Source Code Of This Website Is Covered Under The [WTFP LICENSE](https://choosealicense.com/licenses/wtfpl/). The Project Documentation, Some Images, Blog Posts, And Other Content Are NOT Covered Under This License And Remain The Intellectual Property Of The Author.
+
 
 
 # To DO
@@ -68,21 +67,19 @@ Only The Source Code Of This Website Is Covered Under The [WTFP LICENSE](https:/
 [mbktechstudio.com](https://mbktechstudio.com/Support/?Project=requestbook)
 
 ## Hosting:
+
 The Main Website (MBKTechStudio.com) Is Hosted On GitHub, While Other Website (SubDomains Of MBKTechStudio) Is Hosted On Netlify
-
-![Customized Card](https://github-readme-stats.vercel.app/api/pin?username=mibnekhalid\&repo=CentreTheMessageCpp\&title_color=fff\&icon_color=f9f9f9\&text_color=9f9f9f\&bg_color=151515)
-<br><br>
-[![wakatime](https://wakatime.com/badge/user/018ebc8f-c218-42ef-9ef3-48791b875e59.svg)](https://wakatime.com/@018ebc8f-c218-42ef-9ef3-48791b875e59)
-
-
-
 
 
 ## License
+ 
 
-This project is licensed under the WTFPL - see the [LICENSE](LICENSE) file for details.
+**Note:** Only The Source Code Of This Website Is Covered Under The **[MIT License](https://opensource.org/license/mit)**.  
+The Project Documentation Covered Under The **[Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-nc-sa/4.0/)** But Some **Images, Blog Posts, And Other Content Are NOT  
+Covered Under This License And Remain The Intellectual Property Of The Author**.
+
+See the [LICENSE](LICENSE) file for details.
  
 ## Contact
 
 For questions or contributions, please contact Muhammad Bin Khalid at [mbktechstudio.com/Support](https://mbktechstudio.com/Support/?Project=MIbnEKhalidWeb), [support@mbktechstudio.com](mailto:support@mbktechstudio.com) or [chmuhammadbinkhalid28.com](mailto:chmuhammadbinkhalid28.com).
-
