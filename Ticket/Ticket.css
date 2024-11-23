@@ -79,17 +79,7 @@ body.dark-mode .status-badge.Open {
 
 body.dark-mode .status-badge.Closed {
     background: linear-gradient(45deg, #e74c3c, #c0392b);
-}
-
-main {
-    margin-top: 7%;
-}
-
-@media (max-width: 600px) {
-    main {
-        margin-top: 21%;
-    }
-}
+} 
 
 .section {
     margin-bottom: 30px;
