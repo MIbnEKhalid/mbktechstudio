@@ -24,16 +24,39 @@
             }
         });
     </script>
-</head> 
-
+</head>
 
 <style>
     section form .button button {
         font-size: 20px;
         padding: 7px 16px;
     } 
-</style>
-
+    .message-box {
+      display: block;
+      font-weight: bold;
+      padding: 8px;
+      border-radius: 4px;
+      border: 2px solid #377a77;
+      background-color: beige;
+      color: green;
+    }
+  
+    .message-box.success {
+      background-color: green;
+      color: beige;
+    }
+  
+    .message-box.error {
+      background-color: rebeccapurple;
+      color: white;
+    }
+  
+    .message-box.info {
+      background-color: beige;
+      color: green;
+    }
+</style> 
+  
 <!-- Ask For Cookie Consent-->
 <div id="cookie"></div>
 
@@ -81,33 +104,7 @@
     </nav>
 
 </header>
-<style>
-    .message-box {
-      display: block;
-      font-weight: bold;
-      padding: 8px;
-      border-radius: 4px;
-      border: 2px solid #377a77;
-      background-color: beige;
-      color: green;
-    }
-  
-    .message-box.success {
-      background-color: green;
-      color: beige;
-    }
-  
-    .message-box.error {
-      background-color: rebeccapurple;
-      color: white;
-    }
-  
-    .message-box.info {
-      background-color: beige;
-      color: green;
-    }
-  </style>
-  
+
 <body>
 
     <!-- Move to up button -->
@@ -273,8 +270,7 @@
                 <input class="input" type="hidden" name="Timestamp">
                 <input class="input" type="hidden" name="Subject" value="ContactUSMain">
                 <input class="input" type="hidden" name="Number">
-                <input class="input" type="hidden" name="PageUrl">
-
+                <input class="input" type="hidden" name="PageUrl"> 
 
                 <div class="field">
                     <label class="label required-label">Name</label>
@@ -304,9 +300,7 @@
                         <strong>Note:</strong> For Support or Project Inquiry, Please Visit <a class="links"
                             href="Support/">Support & Contact</a> Page.
                     </p>
-                </div>
-
-
+                </div> 
 
                 <div class="button field is-grouped" style="display: flex; justify-content: center;">
                     <div class="control"><button class="button is-primary" type="submit"

@@ -59,6 +59,7 @@
     <main>
 
         <br><br><br>
+
         <!-- Introduction Section -->
         <div class="section card">
             <h2>Welcome to the Support Ticket System</h2>
@@ -95,11 +96,7 @@
                     digital world.
                 </div>
             </div>
-        </div>
-        
-
-
-
+        </div> 
 
         <!-- Ticket Result Section -->
         <div id="ticketResultsContainer" class="section " style="display: none;">
@@ -249,7 +246,10 @@
         </div>
 
     </main>
-
+    <!-- Move to up button -->
+    <div class="scroll-button">
+        <a href="#"><i class="fas fa-arrow-up"></i></a>
+    </div>
 </body>
 
 <footer>
@@ -266,6 +266,7 @@
 
 </footer>
 <script>
+
     /*    
         if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
             document.body.classList.add('dark-mode');
@@ -273,6 +274,7 @@
     
         document.body.style.transition = "background-color 0.4s ease, color 0.4s ease";
     */
+
     document.addEventListener('DOMContentLoaded', function () {
 
         // FAQ Item Toggle
@@ -283,10 +285,11 @@
             });
         });
 
-    });
-
+    }); 
 
 </script>
+
 <script src="Ticket.js"></script>
+<script src="../Assets/Scripts/header.js"></script>
 
 </html>
