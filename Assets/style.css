@@ -60,7 +60,6 @@ a:hover {
     background: #4ea19d;
 }
 
-
 /* navbar styling */
 
 nav {
@@ -165,7 +164,6 @@ nav.sticky .media-icons a:hover {
     transition: all 0.3s ease;
 }
 
-
 /* Side Navigation Menu Button CSS */
 
 nav .menu-btn,
@@ -191,7 +189,6 @@ nav.sticky .menu-btn {
 .navbar .menu .menu-btn {
     color: #fff;
 }
-
 
 /* Style for select element */
 
@@ -248,7 +245,6 @@ nav.sticky .menu-btn {
     transition: all 0.4s ease;
 }
 
-
 /* home section styling */
 
 .home {
@@ -294,9 +290,7 @@ nav.sticky .menu-btn {
     transition: all 0.3s ease;
 }
 
-
 /* About Section Styling */
-
 
 /* Those Elements Where We Have Apply Same CSS,
  I'm Selecting Directly 'Section Tag' and 'Class'  */
@@ -424,7 +418,6 @@ section .button button:hover {
     transition: all 0.3s ease;
 }
 
-
 /* My Services CSS */
 
 .boxes {
@@ -489,7 +482,6 @@ section .button button:hover {
     opacity: 0.6;
 }
 
-
 /* Contact Me CSS */
 
 .contact {
@@ -507,12 +499,17 @@ section .button button:hover {
     margin: auto;
 }
 
-
 /* Footer CSS */
+ 
+@media (max-width: 950px) {
+    footer {
+      margin-top: auto;
+    }
+  }
 
 footer {
     background: #377a77;
-    padding: 15px 0;
+    padding: 15px 5px;
     text-align: center;
     font-family: "Poppins", sans-serif;
 }
@@ -526,15 +523,15 @@ footer .text span {
 footer .text span a {
     font-weight: 500;
     color: #fff;
+   /* color: #72abff;*/
     transition: all 0.3s ease;
 }
 
 footer .text span a:hover {
     text-decoration: underline;
-    color: #c4c6ce;
+    color: #c4c6ce; 
     transition: all 0.3s ease;
 }
-
 
 /* Scroll TO Top Button CSS */
 
@@ -550,7 +547,6 @@ footer .text span a:hover {
     box-shadow: rgba(0, 0, 0, 0.15);
     display: none;
 }
-
 
 /* Responsive Media Query */
 
@@ -700,7 +696,6 @@ form select {
     background-color: #fff;
 }
 
-
 /*Star rating*/
 
 .rating {
@@ -804,14 +799,12 @@ form select {
     transition: all 0.4s ease;
 }
 
-
 /* Dropdown Container */
 
 .select-dropdown {
     margin-bottom: 20px;
     /* Adjust spacing */
 }
-
 
 /* Label Styling */
 
@@ -823,7 +816,6 @@ form select {
     margin-bottom: 8px;
     text-align: center;
 }
-
 
 /* Select Styling */
 
@@ -854,7 +846,6 @@ form select {
     color: #fff;
     border-color: #377a77;
 }
-
 
 /* Option Styling */
 

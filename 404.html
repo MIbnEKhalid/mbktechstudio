@@ -6,83 +6,22 @@
   <meta charset="UTF-8" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/css/intlTelInput.css">
   <title>404 - Page Not Found</title>
-  <link rel="stylesheet" href="https://docs.mbktechstudio.com/Assets/style.css">
+  <link rel="stylesheet" href="Assets/Style/404.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
   <link rel="icon" type="image/x-icon" href="https://mbktechstudio.com/Assets/Images/Icon/dgicon.svg">
   <script src="https://kit.fontawesome.com/0934e8e9d3.js" crossorigin="anonymous"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="../Assets/config.js"></script>
+  <script src="Assets/config.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const input = document.querySelector('input[name="access_key"]');
       if (input) {
-        input.value = web3forms_API_KEY;
-      }
+        input.value = apiKey_access_key;
+        console.log("API Key: " + apiKey_access_key);
+       }
     });
   </script>
-</head>
-
-<style>
-  .box {
-    border: 2px solid #377a77;
-    border-radius: 4px;
-    margin-bottom: 50px;
-    position: absolute;
-    max-width: 700px;
-  }
-
-  .contact-box {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    opacity: 0;
-    visibility: hidden;
-    border: 3px solid #377a77;
-    background-color: rgb(240, 248, 255, 1);
-    position: fixed;
-    width: 85%;
-    max-width: 1000px;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 6px 6px rgb(0 0 0 / 25%);
-    font-family: 'Poppins', sans-serif;
-    z-index: 999997;
-    transition: opacity 0.4s ease, visibility 0.4s ease;
-  }
-
-  .contact-box.show {
-    opacity: 1;
-    visibility: visible;
-  }
-
-  .close-btn {
-    width: 23px;
-    height: 23px;
-    border-radius: 8px;
-    z-index: 999999;
-    position: absolute;
-    top: 7px;
-    right: 3px;
-    background: url(https://mbktechstudio.com/Assets/Images/close-icon.svg) 0 0 / 23px 23px no-repeat;
-    transition: all 0.4s ease;
-  }
-
-  .close-btn:hover {
-    opacity: 0.2;
-    transition: all 0.4s ease;
-  }
-
-  input[readonly] {
-    background-color: #f0f0f0;
-    /* Change this to the desired background color */
-    color: #333;
-    /* Optionally, change the text color */
-    border: 1px solid #ccc;
-    /* Optionally, change the border color */
-    cursor: not-allowed;
-    /* Optionally, change the cursor to indicate it's readonly */
-  }
-</style>
+</head> 
 
 <header>
 
@@ -125,7 +64,9 @@
 </header>
 
 <body>
-
+  <div class="scroll-button">
+    <a href="#about"><i class="fas fa-arrow-up"></i></a>
+</div>
   <section class="about" id="about">
 
     <div class="content">
