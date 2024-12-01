@@ -30,7 +30,34 @@
             section .content {
                 width: 100%;
             }
-            
+
+        }
+
+        .searchbari {
+            display: flex;
+            align-items: center;
+            position: relative;
+            margin: 0 auto;
+            border-radius: 6px;
+            background-color: transparent;
+            width: 100%;
+            height: 40px;
+            margin-top: 5px;
+        }
+
+        .clearbtni {
+            position: absolute;
+            right: 5px;
+            background: transparent;
+            border: none;
+            font-size: 16px;
+            color: #377a77;
+            cursor: pointer;
+            display: none;
+        }
+
+        .clearbtni:hover {
+            color: rgb(233, 233, 233);
         }
     </style>
 </head>
@@ -79,7 +106,7 @@
     <!-- Under Development Box -->
     <div class="RedboxInfo" style="display: none">
         Notice: This Page Is Under Development. You May Face Some Issues.
-      </div>
+    </div>
     <!-- Move to up button -->
     <div class="scroll-button">
         <a href="#contact"><i class="fas fa-arrow-up"></i></a>
@@ -148,25 +175,25 @@
                 </div>
 
                 <div class="field projectCatogo" style="display: none;">
-
                     <label class="label required-label">Project</label>
-
                     <div class="control">
-
                         <div class="select">
 
+                            <div class="searchbari">
+                                <input class="input" type="text" id="projectSearch" placeholder="Search Project"
+                                    oninput="filterOptions()">
+                                <button type="button" id="clearSearch" class="clearbtni"><i class="fas fa-times"
+                                        aria-hidden="true"></i></button>
+                            </div>
+
                             <select class="input" style="margin-bottom: 2px;" name="projectCato" id="projectCatogo"
-                                onchange="showLink('projectLink','projectCatogo')">
+                                onchange="showLink('projectLink','projectCatogo'); closeoptionbox();">
                                 <option value="" disabled="" selected="">Select Project</option>
                             </select>
-
                             <a class="VisitLINK" id="projectLink" href="" target="_blank">Visit Project Link <i
                                     class="fa-solid fa-arrow-up-right-from-square"></i></a>
-
                         </div>
-
                     </div>
-
                 </div>
 
                 <div class="field blogCatogo" style="display: none;">
@@ -190,8 +217,6 @@
                     </div>
 
                 </div>
-
-
 
                 <div class="field NameFie">
                     <label class="label required-label">Name</label>
@@ -392,7 +417,95 @@
 
 <script src="Support.js"></script>
 <script src="../Assets/Scripts/header.js"></script>
+<script>
 
+    document.addEventListener("DOMContentLoaded", function () {
+        // Always trigger filtering based on the current dropdown value
+        filterOptions();
+        const searchInput = document.getElementById('projectSearch');
+        const clearBtn = document.getElementById('clearSearch');
+        // Show clear button when there is input
+        searchInput.addEventListener('input', function () {
+            if (this.value.length > 0) {
+                clearBtn.style.display = 'block';
+            } else {
+                clearBtn.style.display = 'none';
+            }
+        });
+        // Clear input when clear button is clicked
+        clearBtn.addEventListener('click', function () {
+            searchInput.value = '';
+            clearBtn.style.display = 'none';
+            filterOptions(); // Optionally trigger the filter function to show all products again
+            closeoptionbox();
+        });
+    });
+
+    function closeoptionbox() {
+        const selectBox = document.getElementById("projectCatogo");
+        const options = selectBox.options;
+        console.log('fuck')
+        // Show select box
+        selectBox.size = Math.min(options.length, 1);
+        selectBox.style.display = "block";
+    }
+
+    function filterOptions() {
+        const searchInput = document.getElementById("projectSearch").value.toLowerCase();
+        const selectBox = document.getElementById("projectCatogo");
+        const options = selectBox.options;
+
+        // Show select box
+        selectBox.size = Math.min(options.length, 6);
+        selectBox.style.display = "block";
+
+        let anyVisible = false;
+
+        // Loop through options and filter based on search input
+        for (let i = 0; i < options.length; i++) {
+            const option = options[i];
+            if (
+                option.value.toLowerCase().includes(searchInput) ||
+                option.text.toLowerCase().includes(searchInput)
+            ) {
+                option.style.display = "";
+                anyVisible = true;
+            } else {
+                option.style.display = "none";
+            }
+        }
+
+        // If no options are visible, add "none" and "other"
+        if (!anyVisible) {
+            // Remove existing "none" and "other" options if they exist
+            for (let i = options.length - 1; i >= 0; i--) {
+                if (options[i].value === "none" || options[i].value === "other") {
+                    selectBox.removeChild(options[i]);
+                }
+            }
+
+            // Create "none" option
+            const noneOption = document.createElement("option");
+            noneOption.value = "none";
+            noneOption.text = "None";
+            selectBox.appendChild(noneOption);
+
+            // Create "other" option
+            const otherOption = document.createElement("option");
+            otherOption.value = "other";
+            otherOption.text = "Other";
+            selectBox.appendChild(otherOption);
+        } else {
+            // Remove "none" and "other" options if they exist
+            for (let i = options.length - 1; i >= 0; i--) {
+                if (options[i].value === "none" || options[i].value === "other") {
+                    selectBox.removeChild(options[i]);
+                }
+            }
+        }
+    }
+
+</script> 
 
 </html>
 
