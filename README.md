@@ -78,7 +78,7 @@ The Main Website (MBKTechStudio.com) Is Hosted On GitHub, While Other Website (S
 The Project Documentation Covered Under The **[Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-nc-sa/4.0/)** But Some **Images, Blog Posts, And Other Content Are NOT  
 Covered Under This License And Remain The Intellectual Property Of The Author**.
 
-See the [LICENSE](LICENSE) file for details.
+See the [LICENSE](LICENSE.md) file for details.
  
 ## Contact
 
