@@ -8,6 +8,7 @@ https://github.com/MIbnEKhalid/MIbnEKhalid.github.io/ or https://github.com/MIbn
 
 Detailed Documentation of this website will be available soon on: [docs.mbktechstudio.com/mbktechstudio.com](https://docs.mbktechstudio.com/mbktechstudio.com)
 
+![Deployment Status](https://readme.deploystatus.mbktechstudio.com/?platform=github&user=mibnekhalid&repo=MIbnEKhalid.github.io&background=333333&hide_border=false&border=ff0&width=200&height=50)
 
 
 
