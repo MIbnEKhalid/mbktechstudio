@@ -2,6 +2,7 @@ User-agent: *
 Disallow: /404.html
 Disallow: /Assets/
 Disallow: /FAQs/
+Disallow: /FAQs/What-Web-Tools-Do-You-Use-for-Website-hosting-Business-Email-etc/
 Disallow: /Support/
 Disallow: /Ticket/
 Allow: /Assets/Images/
