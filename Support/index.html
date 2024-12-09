@@ -356,7 +356,7 @@
 
                 <div class="button field is-grouped" style="display: flex; justify-content: center;">
                     <div class="control">
-                        <a style="font-size: 20px;" onclick="showbox('tS-form')" class="Trackbutton">Track Ticket</a>
+                        <a style="font-size: 20px;" onclick="openTicketPage()" class="Trackbutton">Track Ticket</a>
                     </div>
                 </div>
 
@@ -418,6 +418,9 @@
 <script src="Support.js"></script>
 <script src="../Assets/Scripts/header.js"></script>
 <script>
+    function openTicketPage(){
+        window.open(`../Ticket/`, '_blank');
+    }
 
     document.addEventListener("DOMContentLoaded", function () {
         // Always trigger filtering based on the current dropdown value
@@ -444,7 +447,6 @@
     function closeoptionbox() {
         const selectBox = document.getElementById("projectCatogo");
         const options = selectBox.options;
-        console.log('fuck')
         // Show select box
         selectBox.size = Math.min(options.length, 1);
         selectBox.style.display = "block";

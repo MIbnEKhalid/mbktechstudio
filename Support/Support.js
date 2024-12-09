@@ -10,7 +10,6 @@ var projectCatogery = document.querySelector(".projectCatogo");
 var blogCatogery = document.querySelector(".blogCatogo");
 var messageBox = document.getElementById("message");
 
-
 var projects = [];
 var blogs = [];
 
@@ -38,12 +37,12 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .catch(error => console.error("Error loading blogs:", error));
 
-        const ticketParam = getUrlParameter('Ticket') || getUrlParameter('ticket');
-        if (ticketParam && ticketParam.length === 10) {
-            showbox('tS-form');
-            document.getElementById('ticketId').value = ticketParam;
-            document.getElementById('ticketStatusForm').dispatchEvent(new Event('submit'));
-        }
+    const ticketParam = getUrlParameter('Ticket') || getUrlParameter('ticket');
+    if (ticketParam && ticketParam.length === 10) {
+        showbox('tS-form');
+        document.getElementById('ticketId').value = ticketParam;
+        document.getElementById('ticketStatusForm').dispatchEvent(new Event('submit'));
+    }
 });
 
 // Populate dropdown with items
@@ -123,7 +122,6 @@ function handleBlogSelection(selectedValue) {
     }
 }
 
-
 // Show link for the selected item
 function showLink(linkID, fieldID) {
     const selectedValue = document.getElementById(fieldID).value;
@@ -139,7 +137,6 @@ function showLink(linkID, fieldID) {
     }
 }
 
-
 $("#mobile_code").intlTelInput({
     initialCountry: "pk",
     separateDialCode: true
@@ -154,17 +151,18 @@ $("#mobile_code").intlTelInput({
     }
 });
 
-
-
-
 // Check for the hash fragment on page load
 if (window.location.hash === "#requestbook") {
-    loadFormValues();
-} else {
+    loadFormValues_requestbook();
+}
+else if (window.location.hash === "#requestquizass") {
+    loadFormValues_requestquizass();
+}
+else {
     noteW.style.display = "none";
 }
 
-function loadFormValues() {
+function loadFormValues_requestbook() {
     supportField.style.display = "block";
     document.querySelectorAll('select[name="support"]').forEach(function (input) {
         input.setAttribute("required", "required");
@@ -178,6 +176,22 @@ function loadFormValues() {
         "Course Name or Code:\n" +
         "Book Link: (Leave Blank If not available or )\n";
 
+}
+
+function loadFormValues_requestquizass() {
+    supportField.style.display = "block";
+    document.querySelectorAll('select[name="support"]').forEach(function (input) {
+        input.setAttribute("required", "required");
+    });
+    noteW.style.display = "none";
+    subjectSelect.value = "Support";
+    supportSelect.value = "other";
+    messageForm.value = "Request To Add Quiz/Assigment:-\n" +
+        "Subject:\n" +
+        "Quiz/Assigment Number:\n" +
+        "Description:\n" +
+        "Due Date:\n" +
+        "Issue Date:\n";
 }
 
 function remove() {
@@ -371,8 +385,6 @@ document.getElementById("supportselect").addEventListener("change", function () 
     }
 });
 
-
-
 document.getElementById("form").addEventListener("submit", function (e) {
     e.preventDefault();
     resetMessageBoxColor();
@@ -413,7 +425,7 @@ document.getElementById("form").addEventListener("submit", function (e) {
     // Function to generate and assign a unique ticket number
     function generateAndAssignTicketNumber(existingTickets) {
         let ticketNumber = generateTicketNumber();
-        
+
         // Check if the generated ticket number exists in the existing tickets
         while (!isTicketNumberUnique(ticketNumber, existingTickets)) {
             ticketNumber = generateTicketNumber(); // Regenerate if a match is found
@@ -480,7 +492,6 @@ document.getElementById("form").addEventListener("submit", function (e) {
         messageBox.textContent = "An error occurred while submitting the form.";
     });
 });
-
 
 function resetMessageBoxColor() {
     messageBox.style.backgroundColor = "beige";
