@@ -19,10 +19,11 @@ const isAllowedDomain = (domain) => {
 const currentDomain = window.location.hostname;
 
 let apiKey_access_key = null;
-
-if (isAllowedDomain(currentDomain)) {
+let restriction_enabled = true;
+if (isAllowedDomain(currentDomain) || !restriction_enabled) {
     apiKey_access_key = Web3Forms_API_KEY_Private;
 } 
+
 else {
     console.warn('Unauthorized domain:', currentDomain);
     apiKey_access_key = null;  

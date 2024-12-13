@@ -933,3 +933,30 @@ form select {
     font-weight: normal;
     margin-left: 2px;
 }
+
+
+
+.message-box {
+    display: block;
+    font-weight: bold;
+    padding: 8px;
+    border-radius: 4px;
+    border: 2px solid #377a77;
+    background-color: beige;
+    color: green;
+  }
+
+  .message-box.success {
+    background-color: green;
+    color: beige;
+  }
+
+  .message-box.error {
+    background-color: rebeccapurple;
+    color: white;
+  }
+
+  .message-box.info {
+    background-color: beige;
+    color: green;
+  }

@@ -15,7 +15,7 @@ function resetMessageBoxStyle() {
     messageBox.style.display = "block";
     messageBox.className = `message-box ${type}`;
     if(type === "error") {
-        messageBox.innerHTML = content + "Please Try Again Later Or Contact Us Directly At: <a class='links' title='support@mbktechstudio.com' href='mailto:support@mbktechstudio.com'>support@mbktechstudio.com</a> for Contact & Support.";
+        messageBox.innerHTML = content + " Please Try Again Later Or Contact Us Directly At: <a class='links' title='support@mbktechstudio.com' href='mailto:support@mbktechstudio.com'>support@mbktechstudio.com</a> for Contact & Support.";
     }
   }
 
