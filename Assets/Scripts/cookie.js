@@ -3,9 +3,9 @@ async function getTermsVersionFromPrivacyPolicy() {
         console.log('Fetching terms version from privacy policy...');
         const response = await fetch('https://privacy.mbktechstudio.com/');
         const html = await response.text();
-        let parser = new DOMParser();
-        let doc = parser.parseFromString(html, 'text/html');
-        let termsVersionElement = doc.getElementById('termVersionPrivacy');
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        const termsVersionElement = doc.getElementById('termVersionPrivacy');
         if (termsVersionElement) {
             const termsVersion = termsVersionElement.innerText.split(': ')[1];
             console.log('Fetched terms version:', termsVersion);
@@ -27,11 +27,9 @@ async function AskForCookieConsent() {
         document.getElementById('cookie').innerHTML = html;
         console.log('Cookie consent HTML loaded.');
 
-        console.log('Getting terms version...');
         const termsVersion = await getTermsVersionFromPrivacyPolicy();
         console.log('Terms version obtained:', termsVersion);
 
-        console.log('Checking cookie with terms version...');
         checkCookie(termsVersion);
     } catch (err) {
         console.error('Error in AskForCookieConsent:', err);
@@ -46,7 +44,6 @@ async function SaveCookie() {
         setCookie('agreed', termsVersion, 365);
         console.log('Cookie saved.');
         hideOverlay();
-        console.log('Overlay hidden.');
     } catch (err) {
         console.error('Error in SaveCookie:', err);
     }
@@ -57,53 +54,37 @@ function checkCookie(currentVersion) {
     const agreedVersion = getCookie('agreed');
     console.log('Agreed version:', agreedVersion, 'Current version:', currentVersion);
     if (agreedVersion === currentVersion) {
-        console.log('Cookie versions match. Hiding overlay.');
         hideOverlay();
     } else {
-        console.log('Cookie versions do not match. Showing cookie notice.');
         document.getElementById('cookieNotice').style.display = 'block';
     }
 }
 
 function hideOverlay() {
-    console.log('Hiding overlay...');
     document.getElementById('cookieNotice').style.display = 'none';
 }
 
 function setCookie(name, value, days) {
     console.log('Setting cookie:', name, value, days);
-
-    // Determine expiration date
     let expires = "";
     if (days) {
         const date = new Date();
         date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
         expires = "; expires=" + date.toUTCString();
     }
-
-    // Determine cookie domain
-    let domain = "";
-    if (window.location.hostname === "mbktechstudio.com") {
-        domain = "; domain=.mbktechstudio.com"; // Allows access on both main domain and subdomains
-    }
-
-    // Construct and set cookie
+    const domain = window.location.hostname === "mbktechstudio.com" ? "; domain=.mbktechstudio.com" : "";
     document.cookie = `${name}=${value || ""}${expires}; path=/${domain}`;
     console.log(`Cookie set with domain scope: ${domain || "current domain only"}`);
 }
 
-
 function getCookie(name) {
     console.log('Getting cookie:', name);
-    var nameEQ = name + "=";
-    var cookies = document.cookie.split(';');
-    for (var i = 0; i < cookies.length; i++) {
-        var cookie = cookies[i];
-        while (cookie.charAt(0) === ' ') {
-            cookie = cookie.substring(1, cookie.length);
-        }
+    const nameEQ = name + "=";
+    const cookies = document.cookie.split(';');
+    for (let cookie of cookies) {
+        cookie = cookie.trim();
         if (cookie.indexOf(nameEQ) === 0) {
-            const value = cookie.substring(nameEQ.length, cookie.length);
+            const value = cookie.substring(nameEQ.length);
             console.log('Cookie found:', value);
             return value;
         }
@@ -112,12 +93,4 @@ function getCookie(name) {
     return null;
 }
 
-function hideCookieNotice() {
-    console.log('Hiding cookie notice...');
-    document.getElementById('cookieNotice').style.display = 'none';
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-    console.log('Document loaded. Asking for cookie consent...');
-    AskForCookieConsent();
-});
+document.addEventListener("DOMContentLoaded", AskForCookieConsent);
