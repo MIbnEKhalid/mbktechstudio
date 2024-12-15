@@ -67,16 +67,18 @@ function hideOverlay() {
 function setCookie(name, value, days) {
     console.log('Setting cookie:', name, value, days);
     let expires = "";
+    // Set expiration time if specified
     if (days) {
         const date = new Date();
         date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
         expires = "; expires=" + date.toUTCString();
     }
     let domain = "";
-    if (window.location.hostname === "mbktechstudio.com") {
-        domain = "; domain=.mbktechstudio.com"; // Allows access on both main domain and subdomains
-    } 
-    // Construct and set cookie
+    // Set domain to .mbktechstudio.com for both main domain and subdomains
+    if (window.location.hostname.endsWith("mbktechstudio.com")) {
+        domain = "; domain=.mbktechstudio.com"; // Apply to all subdomains
+    }
+    // Construct and set the cookie
     document.cookie = `${name}=${value || ""}${expires}; path=/${domain}`;
     console.log(`Cookie set with domain scope: ${domain || "current domain only"}`);
 }
