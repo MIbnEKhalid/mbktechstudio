@@ -72,7 +72,11 @@ function setCookie(name, value, days) {
         date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
         expires = "; expires=" + date.toUTCString();
     }
-    const domain = window.location.hostname === "mbktechstudio.com" ? "; domain=.mbktechstudio.com" : "";
+    let domain = "";
+    if (window.location.hostname === "mbktechstudio.com") {
+        domain = "; domain=.mbktechstudio.com"; // Allows access on both main domain and subdomains
+    } 
+    // Construct and set cookie
     document.cookie = `${name}=${value || ""}${expires}; path=/${domain}`;
     console.log(`Cookie set with domain scope: ${domain || "current domain only"}`);
 }
