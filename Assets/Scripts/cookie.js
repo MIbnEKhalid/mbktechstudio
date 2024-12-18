@@ -99,4 +99,8 @@ function getCookie(name) {
     return null;
 }
 
+function hideCookieNotice() {
+    document.getElementById('cookieNotice').style.display = 'none';
+}
+
 document.addEventListener("DOMContentLoaded", AskForCookieConsent);
