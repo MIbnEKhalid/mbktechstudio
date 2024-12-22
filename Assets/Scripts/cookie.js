@@ -75,8 +75,14 @@ function setCookie(name, value, days) {
     }
     let domain = "";
     // Set domain to .mbktechstudio.com for both main domain and subdomains
-    if (window.location.hostname.endsWith("mbktechstudio.com")) {
+        if (window.location.hostname.endsWith("mbktechstudio.com")) {
         domain = "; domain=.mbktechstudio.com"; // Apply to all subdomains
+    }
+    else if (window.location.hostname.endsWith("mbktech.xyz")) {
+        domain = "; domain=.mbktech.xyz"; // Apply to all subdomains
+    }
+    else if (window.location.hostname.endsWith("ibnekhalid.me")) {
+        domain = "; domain=.ibnekhalid.me";
     }
     // Construct and set the cookie
     document.cookie = `${name}=${value || ""}${expires}; path=/${domain}`;
