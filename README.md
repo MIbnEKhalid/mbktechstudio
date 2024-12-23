@@ -11,22 +11,6 @@ Detailed Documentation of this website will be available soon on: [docs.mbktechs
 ![Deployment Status](https://readme.deploystatus.mbktechstudio.com/?platform=github&user=mibnekhalid&repo=MIbnEKhalid.github.io&background=333333&hide_border=false&border=ff0&width=200&height=50)
 
 
-
-# To DO
-- [x] Improve Support Page Functionality
-- [x] Redesign Footer
-- [ ] Redesign Docs (Use blog template)
-- [ ] Redesign Privacy (Use blog template)
-
-- [x] Fix Show Link Isusue In Support 
-
-- [ ] Add Auto Subject Support For Blog
-- [x] Add Auto Subject Support For Projects
-- [ ] Add Auto Subject Support For Docs
-
-
-
-
 ### List Of Main Domains 
 
 |                         | Domains                                        | Purpose                                                                                                 |
