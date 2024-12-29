@@ -74,7 +74,7 @@ document.getElementById("form").addEventListener("submit", function (e) {
     }
 
     // Fetch existing tickets from t.json
-    fetch('../Ticket/t.json')  // Replace with the actual path to your JSON file
+    fetch('https://mbktechstudio.com/TrackTicket/Assets/TicketsData.json')  // Replace with the actual path to your JSON file
         .then(response => response.json())  // Parse the JSON data
         .then(data => {
             // Generate and assign a unique ticket number after loading the existing tickets
