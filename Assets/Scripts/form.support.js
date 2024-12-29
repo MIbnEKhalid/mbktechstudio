@@ -65,8 +65,8 @@ document.getElementById("form").addEventListener("submit", function (e) {
 
         // Set the ticket number and URL
         document.querySelector('input[name="TicketNumber"]').value = ticketNumber;
-        document.getElementById("TicketIdURL").textContent = `mbktechstudio.com/Ticket/#${ticketNumber}`;
-        document.getElementById("TicketIdURL").href = `https://mbktechstudio.com/Ticket/#${ticketNumber}`;
+        document.getElementById("TicketIdURL").textContent = `mbktechstudio.com/TrackTicket/#${ticketNumber}`;
+        document.getElementById("TicketIdURL").href = `https://mbktechstudio.com/TrackTicket/#${ticketNumber}`;
 
         // Assign the ticket number to ticketNumberInput
         document.querySelector('input[name="ticketNumberInput"]').value = ticketNumber;
