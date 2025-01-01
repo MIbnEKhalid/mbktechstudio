@@ -329,6 +329,7 @@ section .title {
     justify-content: center;
     margin-bottom: 30px;
     margin-top: 30px;
+    text-align: center;
 }
 
 section .title span {
