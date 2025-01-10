@@ -1,427 +1,459 @@
-     .notification {
-         padding: 10px;
-         border-radius: 8px;
-         color: #333;
-         font-size: 16px;
-         font-family: Arial, sans-serif;
-     }
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
 
-     .notification.is-form {
-         padding: 15px;
-         background-color: #eef8ff;
-         border: 1px solid #a7d4ff;
-         color: #000000;
-         /*  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
-     }
+html.dark-mode {
+    background-color: #121212;
+}
 
-     .notification.is-link {
-         background-color: #fff8e1;
-         border: 1px solid #ffe082;
-         color: #8a6d3b;
-         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-     }
+body.dark-mode .notification.is-form {
+    background-color: #1e1e1e;
+    color: #ffffff;
+    border-color: #333;
+    padding: 20px;
+    border-radius: 12px !important;
+}
 
-     .notification.is-info {
-         margin: 10px 0;
-         background-color: #d1ecf1;
-         border: 1px solid #bee5eb;
-         color: #0c5460;
-         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-     }
+body.dark-mode form .label {
+    color: #ffffff;
+}
 
-     .required-label::after {
-         content: "*";
-         color: red;
-         font-weight: normal;
-         margin-left: 2px;
-     }
+body.dark-mode .close-btn { 
+    background: url(https://mbktechstudio.com/Assets/Images/close-icon-white.svg) 0 0 / 23px 23px no-repeat;
+}
 
-     .container {
-         display: flex;
-         flex-direction: column;
-         align-items: center;
-         width: 90%;
-         margin-top: 20px;
-     }
+.iti--separate-dial-code .iti__selected-dial-code{
+    color: #000000 !important;
+}
+.notification {
+    padding: 10px;
+    border-radius: 8px;
+    color: #333;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+}
 
-     form select {
-         width: 100%;
-         margin-bottom: 10px;
-         padding: 10px;
-         border: 1px solid #ccc;
-         border-radius: 6px;
-         background-color: #fff;
-     }
+.notification.is-form {
+    padding: 15px;
+    background-color: #eef8ff;
+    border: 2px solid #a7d4ff;
+    color: #000000;
+    border-radius: 12px !important; 
+    /*  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
+}
 
-     form {
-         margin: auto;
-     }
+.notification.is-link {
+    background-color: #fff8e1;
+    border: 1px solid #ffe082;
+    color: #8a6d3b;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
-     form .field {
-         margin-bottom: 5px;
-     }
+.notification.is-info {
+    margin: 10px 0;
+    background-color: #d1ecf1;
+    border: 1px solid #bee5eb;
+    color: #0c5460;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
-     form .label {
-         color: rgb(0, 0, 0);
-         font-weight: bold;
-         margin-bottom: 10px;
-     }
+.required-label::after {
+    content: "*";
+    color: red;
+    font-weight: normal;
+    margin-left: 2px;
+}
 
-     form .input {
-         width: 100%;
-         margin-bottom: 10px;
-         margin-top: 5px;
-         padding: 10px;
-         border: 1px solid #ccc;
-         border-radius: 6px;
-         background-color: #fff;
-     }
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    margin-top: 20px;
+}
 
-     .ssmedis {
-         padding: auto;
-         margin-top: 20px;
-         margin-bottom: 20px;
-         justify-content: center;
-         flex-wrap: wrap;
-         display: flex;
-     }
+form select {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #fff;
+}
 
-     .ssmedis a {
-         color: #377a77;
-         font-size: 40px;
-         margin: 0 6px;
-         transition: all 0.3s ease;
-     }
+form {
+    margin: auto;
+}
 
-     .ssmedis a:hover {
-         color: #8c8e96;
-         transition: all 0.4s ease;
-     }
+form .field {
+    margin-bottom: 5px;
+}
 
-     .signal {
-         color: #377a77;
-         display: inline-block;
-         width: 35px;
-         height: 35px;
-         background-image: url('Assets/Images/Signal-Logo-White.svg');
-         background-size: contain;
-         background-repeat: no-repeat;
-     }
+form .label {
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    margin-bottom: 10px;
+}
 
-     section .title {
-         display: flex;
-         justify-content: center;
-         margin-bottom: 30px;
-         margin-top: 30px;
-     }
+form .input {
+    width: 100%;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #fff;
+}
 
-     section .title span {
-         color: #6698e4;
-     }
+.ssmedis {
+    padding: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    display: flex;
+}
 
-     html,
-     body {
-         background-color: #f0f8ff;
-     }
+.ssmedis a {
+    color: #377a77;
+    font-size: 40px;
+    margin: 0 6px;
+    transition: all 0.3s ease;
+}
 
-     .links {
-         font-weight: 600;
-         color: #007bff;
-         transition: all 0.3s ease;
-     }
+.ssmedis a:hover {
+    color: #8c8e96;
+    transition: all 0.4s ease;
+}
 
-     /*Star rating*/
+.signal {
+    color: #377a77;
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    background-image: url('Assets/Images/Signal-Logo-White.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
 
-     .rating {
-         display: inline-block;
-         position: relative;
-         height: 50px;
-         line-height: 50px;
-         font-size: 35px;
-     }
+section .title {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
 
-     .rating label {
-         position: absolute;
-         top: 0;
-         left: 0;
-         height: 100%;
-         cursor: pointer;
-     }
+section .title span {
+    color: #6698e4;
+}
 
-     .rating label:last-child {
-         position: static;
-     }
+html,
+body {
+    background-color: #f0f8ff;
+}
 
-     .rating label:nth-child(1) {
-         z-index: 5;
-     }
+.links {
+    font-weight: 600;
+    color: #007bff;
+    transition: all 0.3s ease;
+}
 
-     .rating label:nth-child(2) {
-         z-index: 4;
-     }
+/*Star rating*/
 
-     .rating label:nth-child(3) {
-         z-index: 3;
-     }
+.rating {
+    display: inline-block;
+    position: relative;
+    height: 50px;
+    line-height: 50px;
+    font-size: 35px;
+}
 
-     .rating label:nth-child(4) {
-         z-index: 2;
-     }
+.rating label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    cursor: pointer;
+}
 
-     .rating label:nth-child(5) {
-         z-index: 1;
-     }
+.rating label:last-child {
+    position: static;
+}
 
-     .rating label input {
-         position: absolute;
-         top: 0;
-         left: 0;
-         opacity: 0;
-     }
+.rating label:nth-child(1) {
+    z-index: 5;
+}
 
-     .rating label .icon {
-         float: left;
-         color: transparent;
-     }
+.rating label:nth-child(2) {
+    z-index: 4;
+}
 
-     .rating label:last-child .icon {
-         color: #bdbdbd;
-     }
+.rating label:nth-child(3) {
+    z-index: 3;
+}
 
-     .rating:not(:hover) label input:checked~.icon,
-     .rating:hover label:hover input~.icon {
-         color: #59a09c;
-     }
+.rating label:nth-child(4) {
+    z-index: 2;
+}
 
-     .rating label input:focus:not(:checked)~.icon:last-child {
-         color: #bdbdbd;
-         text-shadow: 0 0 5px #59a09c;
-     }
+.rating label:nth-child(5) {
+    z-index: 1;
+}
 
-     .VisitLINK {
-         display: none;
-         margin-left: 2px;
-         margin-bottom: 5px;
-         font-weight: 550;
-         font-size: 14px;
-     }
+.rating label input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
 
-     .Trackbutton {
-         outline: none;
-         padding: 6px 12px;
-         border-radius: 4px;
-         font-size: 15px;
-         font-weight: 600;
-         background: #377a77;
-         color: #fff;
-         border: 2px solid transparent;
-         cursor: pointer;
-         transition: all 0.4s ease;
-     }
+.rating label .icon {
+    float: left;
+    color: transparent;
+}
 
-     .Trackbutton:hover {
-         border-color: #377a77;
-         background-color: transparent;
-         color: #377a77;
-     }
+.rating label:last-child .icon {
+    color: #bdbdbd;
+}
 
-     .checkbox {
-         width: 16px;
-         /* Fixed width for mobile */
-         margin: 0 8px 0 0;
-         /* Margin only to the right */
-         padding: 0;
-         border: 1px solid #ccc;
-         border-radius: 4px;
-         background-color: #fff;
-     }
+.rating:not(:hover) label input:checked~.icon,
+.rating:hover label:hover input~.icon {
+    color: #59a09c;
+}
 
-     .agreement-container label {
-         display: flex;
-         flex-wrap: wrap;
-         line-height: 1.6;
-         /* Adjust line spacing for readability */
-     }
+.rating label input:focus:not(:checked)~.icon:last-child {
+    color: #bdbdbd;
+    text-shadow: 0 0 5px #59a09c;
+}
 
-     .links {
-         margin: 0 4px;
-         /* Add small space around links */
-     }
+.VisitLINK {
+    display: none;
+    margin-left: 2px;
+    margin-bottom: 5px;
+    font-weight: 550;
+    font-size: 14px;
+    color: #007bff;
+}
 
-     /* Media query for smaller screens */
-     @media (max-width: 600px) {
-         .agreement-container {
-             flex-direction: column;
-             /* Stack content vertically */
-             align-items: flex-start;
-         }
+.Trackbutton {
+    outline: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 15px;
+    font-weight: 600;
+    background: #377a77;
+    color: #fff;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
 
-         .agreement-container label {
-             line-height: 1.4;
-             /* Slightly reduce line-height for mobile */
-         }
-     }
+.Trackbutton:hover {
+    border-color: #377a77;
+    background-color: transparent;
+    color: #377a77;
+}
 
-     .box {
-         border: 2px solid #377a77;
-         border-radius: 4px;
-         margin-bottom: 50px;
-         position: absolute;
-         max-width: 700px;
-     }
+.checkbox {
+    width: 16px;
+    /* Fixed width for mobile */
+    margin: 0 8px 0 0;
+    /* Margin only to the right */
+    padding: 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+}
 
-     .contact-box {
-         top: 50%;
-         left: 50%;
-         transform: translate(-50%, -50%);
-         opacity: 0;
-         visibility: hidden;
-         border: 3px solid #377a77;
-         background-color: rgb(240, 248, 255, 1);
-         position: fixed;
-         width: 95%;
-         max-width: 600px;
-         padding: 15px;
-         border-radius: 8px;
-         box-shadow: 0 6px 6px rgb(0 0 0 / 25%);
-         font-family: 'Poppins', sans-serif;
-         z-index: 999997;
-         transition: opacity 0.4s ease, visibility 0.4s ease;
-     }
+.agreement-container label {
+    display: flex;
+    flex-wrap: wrap;
+    line-height: 1.6;
+    /* Adjust line spacing for readability */
+}
 
-     .contact-box.show {
-         opacity: 1;
-         visibility: visible;
-     }
+.links {
+    margin: 0 4px;
+    /* Add small space around links */
+}
 
-     .close-btn {
-         width: 23px;
-         height: 23px;
-         border-radius: 8px;
-         z-index: 999999;
-         position: absolute;
-         top: 7px;
-         right: 3px;
-         background: url(https://mbktechstudio.com/Assets/Images/close-icon.svg) 0 0 / 23px 23px no-repeat;
-         transition: all 0.4s ease;
-     }
+/* Media query for smaller screens */
+@media (max-width: 600px) {
+    .agreement-container {
+        flex-direction: column;
+        /* Stack content vertically */
+        align-items: flex-start;
+    }
 
-     .close-btn:hover {
-         opacity: 0.2;
-         transition: all 0.4s ease;
-     }
+    .agreement-container label {
+        line-height: 1.4;
+        /* Slightly reduce line-height for mobile */
+    }
+}
 
+.box {
+    border: 2px solid #377a77;
+    border-radius: 4px;
+    margin-bottom: 50px;
+    position: absolute;
+    max-width: 700px;
+}
 
-     .ticketNumberinput {
-         width: 200px;
-         margin-bottom: 10px;
-         margin-top: 10px;
-         padding: 10px;
-         border: 1px solid #ccc;
-         border-radius: 6px;
-         background-color: #fff;
-         text-align: center;
-         font-weight: bold;
-         display: inline-block;
-     }
+.contact-box {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    visibility: hidden;
+    border: 3px solid #377a77;
+    background-color: #1e1e1e;
+    position: fixed;
+    width: 95%;
+    max-width: 600px;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 6px 6px rgb(0 0 0 / 25%);
+    font-family: 'Poppins', sans-serif;
+    z-index: 999997;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
 
-     .input-container {
-         display: flex;
-         justify-content: center;
-         gap: 10px;
-     }
+.contact-box.show {
+    opacity: 1;
+    visibility: visible;
+}
 
-     .page-style {
-         /* Example styles */
-         font-family: Arial, sans-serif;
-         font-size: 16px;
-         color: #333;
-         background-color: #f9f9f9;
-         padding: 20px;
-         border: 1px solid #ddd;
-         border-radius: 5px;
-     }
+.close-btn {
+    width: 23px;
+    height: 23px;
+    border-radius: 8px;
+    z-index: 999999;
+    position: absolute;
+    top: 7px;
+    right: 3px;
+    background: url(https://mbktechstudio.com/Assets/Images/close-icon.svg) 0 0 / 23px 23px no-repeat;
+    transition: all 0.4s ease;
+}
 
-     #ticketStatusForm .notFound {
-         font-size: 18px;
-         /* Adjust size as needed */
-         color: white;
-         text-align: center;
-         /* Text color */
-         text-shadow:
-             -1px -1px 2px #000,
-             /* Shadow to the top-left */
-             1px -1px 2px #000,
-             /* Shadow to the top-right */
-             -1px 1px 2px #000,
-             /* Shadow to the bottom-left */
-             1px 1px 2px #000;
-         /* Shadow to the bottom-right */
-         font-weight: bold;
-     }
-
-     .ticketStatusForm button {
-         background-color: #4CAF50;
-         color: white;
-         padding: 6px 10px;
-         border: none;
-         border-radius: 4px;
-         cursor: pointer;
-         font-size: 16px;
-         font-weight: bold;
-     }
-
-     .ticketStatusForm button:hover {
-         background-color: #45a049;
-     }
-
-     #ticketStatus {
-         margin-top: 20px;
-     }
+.close-btn:hover {
+    opacity: 0.2;
+    transition: all 0.4s ease;
+}
 
 
-     #tableContainer {
-         max-height: 300px;
-         /* Set the max height as needed */
-         overflow-y: auto;
-         /* Allows scrolling when content overflows */
-     }
+.ticketNumberinput {
+    width: 200px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #fff;
+    text-align: center;
+    font-weight: bold;
+    display: inline-block;
+}
 
-     #ticketStatus table {
-         width: 100%;
-         border-collapse: collapse;
-     }
+.input-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
 
-     #ticketStatus th,
-     #ticketStatus td {
-         border: 3px solid #ddd;
-         padding: 8px;
-         text-align: left;
-     }
+.page-style {
+    /* Example styles */
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    color: #333;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
 
-     #ticketStatus th {
-         background-color: #f2f2f2;
-     }
+#ticketStatusForm .notFound {
+    font-size: 18px;
+    /* Adjust size as needed */
+    color: white;
+    text-align: center;
+    /* Text color */
+    text-shadow:
+        -1px -1px 2px #000,
+        /* Shadow to the top-left */
+        1px -1px 2px #000,
+        /* Shadow to the top-right */
+        -1px 1px 2px #000,
+        /* Shadow to the bottom-left */
+        1px 1px 2px #000;
+    /* Shadow to the bottom-right */
+    font-weight: bold;
+}
 
-     
+.ticketStatusForm button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 6px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.ticketStatusForm button:hover {
+    background-color: #45a049;
+}
+
+#ticketStatus {
+    margin-top: 20px;
+}
+
+
+#tableContainer {
+    max-height: 300px;
+    /* Set the max height as needed */
+    overflow-y: auto;
+    /* Allows scrolling when content overflows */
+}
+
+#ticketStatus table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#ticketStatus th,
+#ticketStatus td {
+    border: 3px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+#ticketStatus th {
+    background-color: #f2f2f2;
+}
+
+
+.RedboxInfo {
+    position: fixed;
+    top: 90px;
+    right: 5px;
+    left: 60%;
+    background-color: rgb(248, 215, 218, 0.6);
+    color: #721c24;
+    padding: 15px;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    z-index: 1000;
+    font-weight: bold;
+    pointer-events: none;
+
+}
+
+@media (max-width: 768px) {
     .RedboxInfo {
-        position: fixed; 
-        top: 90px; 
-        right: 5px; 
-        left: 60%;
-        background-color: rgb(248, 215, 218,0.6); 
-        color: #721c24; 
-        padding: 15px;
-        border: 1px solid #f5c6cb;
-        border-radius: 5px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        font-size: 14px; z-index: 1000;
-        font-weight: bold;
-        pointer-events: none;    
-  
-      }
-      @media (max-width: 768px) {
-        .RedboxInfo {
-          left: 62%;
-        } 
-      }
+        left: 62%;
+    }
+}

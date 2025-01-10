@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en" dir="ltr">
+<html class="dark-mode" lang="en" dir="ltr">
 
 <head>
     <meta charset="UTF-8" />
@@ -102,7 +102,7 @@
 
 </header>
 
-<body>
+<body class="dark-mode">
     <!-- Under Development Box -->
     <div class="RedboxInfo" style="display: none">
         Notice: This Page Is Under Development. You May Face Some Issues.
@@ -277,16 +277,33 @@
 
                 <div class="field phoneField" style="display: none;">
                     <label class="label">Phone Number</label>
-                    <div class="control">
+                    <div class="control" style="margin-bottom: 15px;">
                         <input class="input" type="text" id="mobile_code" placeholder="Enter Phone Number"
                             name="Number" />
                     </div>
                 </div>
 
+                <div class="notification is-link notereq" style="margin-bottom: 10px;" style="display: none;">
+                    <ul>
+                        <li>
+                            If You Have A Book In PDF Or Any Other Format, Please Upload It <a style="font-weight: 700;"
+                                href="https://driveuploader.com/upload/NxfqGG1OAh/">Here</a>, And Then Fill Out The Form
+                            To Alert Me That Your Book Request Has Been
+                            Submitted. Note That I Do Not Receive Notifications For Uploads, So I Won’t Know If You
+                            Upload A Book Without Filling Out The Form.
+                        </li>
+                        <li> If You Don't Have A Book To Upload, Please Submit The Form, And I Will Personally Find The
+                            Book And Upload It For You.
+                        </li>
+                    </ul>
+                </div>
+
                 <div class="field messageF">
                     <label class="label required-label">Message</label>
-                    <div class="control"><textarea class="input" placeholder="Enter Your Message" id="message_form"
-                            name="Message" rows="6" required=""></textarea></div>
+                    <div class="control">
+                        <textarea class="input" placeholder="Enter Your Message" id="message_form" name="Message"
+                            rows="6" required=""></textarea>
+                    </div>
                 </div>
 
                 <div class="field agreement-container">
@@ -333,8 +350,10 @@
 
 
                 <div class="button field is-grouped" style="display: flex; justify-content: center;">
-                    <div class="control"><button style="font-size: 20px;" class="button is-primary" type="submit"
-                            id="submit-button">Submit</button></div>
+                    <div class="control">
+                        <button style="font-size: 20px;" class="button is-primary" type="submit"
+                            id="submit-button">Submit</button>
+                    </div>
                 </div>
 
                 <br>
@@ -404,8 +423,8 @@
 <script src="../Assets/Scripts/header.js"></script>
 <script src="../Assets/Scripts/form.support.js"></script>
 <script>
-    function openTicketPage(){
-        window.open(`../Ticket/`, '_blank');
+    function openTicketPage() {
+        window.open(`../TrackTicket/`, '_blank');
     }
 
     document.addEventListener("DOMContentLoaded", function () {
@@ -493,22 +512,6 @@
         }
     }
 
-</script> 
+</script>
 
 </html>
-
-<!--
-        const blotSelect = document.getElementById("blogCatogo");
-
-        fetch('https://blog.mbktechstudio.com/blogFiles.json')
-            .then(response => response.json())
-            .then(files => { 
-                files.forEach(fileName => {
-                    const option = document.createElement("option");
-                    option.value = fileName;
-                    option.textContent = fileName;
-                    blotSelect.appendChild(option);
-                });
-            })
-            .catch(error => console.error("Error loading blog files:", error));
--->
