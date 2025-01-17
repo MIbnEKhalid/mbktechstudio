@@ -328,7 +328,7 @@ section .content {
 }
 
 .about {
-    background: url("https://mbktechstudio.com/Assets/Images/background.png");
+    background: #f0f8ff;
     height: 100%;
 }
 
@@ -665,7 +665,7 @@ section .content {
 }
 
 .about {
-    background: url("https://mbktech.xyz/Images/background.png");
+    background: #f0f8ff;
     height: 100%;
 }
 
