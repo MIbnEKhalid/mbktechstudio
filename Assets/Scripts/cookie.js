@@ -1,7 +1,7 @@
 async function getTermsVersionFromPrivacyPolicy() {
     try {
         console.log('Fetching terms version from privacy policy...');
-        const response = await fetch('https://privacy.mbktechstudio.com/');
+        const response = await fetch('https://www.privacy.mbktechstudio.com/');
         const html = await response.text();
         const parser = new DOMParser();
         const doc = parser.parseFromString(html, 'text/html');
@@ -22,7 +22,7 @@ async function getTermsVersionFromPrivacyPolicy() {
 async function AskForCookieConsent() {
     try {
         console.log('Fetching cookie consent HTML...');
-        const response = await fetch('https://mbktechstudio.com/Assets/Cookie/cookie.html');
+        const response = await fetch('https://www.mbktechstudio.com/Assets/Cookie/cookie.html');
         const html = await response.text();
         document.getElementById('cookie').innerHTML = html;
         console.log('Cookie consent HTML loaded.');
