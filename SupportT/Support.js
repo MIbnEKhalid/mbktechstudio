@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const blogSelect = document.getElementById("blogCatogo");
 
     // Fetch and handle projects JSON
-    fetch('https://raw.githubusercontent.com/MIbnEKhalid/MIbnEKhalid.github.io/refs/heads/main/Support/projects.json')
+    fetch('https://raw.githubusercontent.com/MIbnEKhalid/Support/refs/heads/main/projects.json')
         .then(response => response.json())
         .then(data => {
             projects = data; // Assign fetched data to the global projects variable
