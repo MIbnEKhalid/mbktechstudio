@@ -80,7 +80,7 @@
                     digital world.
                 </div>
             </div>
-        </div> 
+        </div>
 
         <!-- Ticket Result Section -->
         <div id="ticketResultsContainer" class="section " style="display: none;">
@@ -240,12 +240,15 @@
 
     <div class="text">
 
-        <span> © 2025 <a href="https://mbktechstudio.com/" target="_blank">MBK Tech Studio</a>. All Rights Reserved
+        <span> © <span id="year"></span> <a href="https://mbktechstudio.com/" target="_blank">MBK Tech Studio</a>. All
+            Rights Reserved
             | <a href="https://privacy.mbktechstudio.com/" target="_blank">Terms &amp; Conditions</a> | <a
                 href="https://mbktechstudio.com/FAQs" target="_blank">FAQs</a> | <a
                 href="mailto:support@mbktechstudio.com" title="support@mbktechstudio.com">support@mbktechstudio.com</a>
         </span>
-
+        <script>
+            document.getElementById('year').textContent = new Date().getFullYear();
+        </script>
     </div>
 
 </footer>
@@ -269,7 +272,7 @@
             });
         });
 
-    }); 
+    });
 
 </script>
 

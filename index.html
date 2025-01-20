@@ -4,17 +4,24 @@
 
 <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/css/intlTelInput.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/js/intlTelInput-jquery.min.js"></script>
-    <script src="https://kit.fontawesome.com/0934e8e9d3.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="Assets/Style/style.css">
-    <meta name="description" content="At MBK Tech Studio, We're A Team Of Passionate Tech Innovators">
-    <title>Home</title>
-    <link rel="icon" type="image/x-icon" href="Assets/Images/Icon/dgicon.svg">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="At MBK Tech Studio, We're A Team Of Passionate Tech Innovators">
+    <meta name="keywords" content="MBK Tech Studio, Open-Source, Software Development, Technology Solutions">
+    <title>MBK Tech Studio | Open-Source and Innovation</title>
+    <link rel="icon" type="image/x-icon" href="Assets/Images/Icon/dgicon.svg">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- intl-tel-input CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/css/intlTelInput.css">
+    <!-- Local CSS -->
+    <link rel="stylesheet" href="Assets/Style/style.css">
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" defer></script>
+    <!-- intl-tel-input JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/js/intlTelInput-jquery.min.js"
+        defer></script>
+    <!-- Font Awesome Kit -->
+    <script src="https://kit.fontawesome.com/0934e8e9d3.js" crossorigin="anonymous" defer></script>
     <script>
         document.addEventListener('DOMContentLoaded', async () => {
             const input = document.querySelector('input[name="access_key"]');
@@ -26,7 +33,6 @@
                             'Content-Type': 'application/json'
                         }
                     });
-
                     if (response.ok) {
                         const apiKey_access_key = await response.text(); // Assuming the API sends a plain string
                         input.value = apiKey_access_key;
@@ -57,7 +63,7 @@
         <div class="navbar">
             <div class="logo">
                 <div class="image">
-                    <img src="Assets/Images/Icon/dg.svg" alt="" />
+                    <img src="Assets/Images/Icon/dg.svg" alt="Logo" />
                 </div>
                 <div class="text">
                     <a href="#">MBK Tech Studio</a>
@@ -145,18 +151,16 @@
                     <div class="icon">
                         <i class="fas fa-desktop"></i>
                     </div>
-                    <div class="topic">Web Devlopment</div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia autem quam odio, qui
-                        voluptatem eligendi?</p>
+                    <div class="topic">Web Development</div>
+                    <p>We create responsive and dynamic websites tailored to your needs.</p>
                 </div>
 
                 <div onclick="openProjectPage('game')" class="box">
                     <div class="icon">
                         <i class="fas fa-paint-brush"></i>
                     </div>
-                    <div class="topic">Game Devlopment</div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia autem quam odio, qui
-                        voluptatem eligendi?</p>
+                    <div class="topic">Game Development</div>
+                    <p>Our team develops engaging and immersive games for various platforms.</p>
                 </div>
 
                 <div onclick="openProjectPage('cpp')" class="box">
@@ -164,8 +168,7 @@
                         <i class="fas fa-chart-line"></i>
                     </div>
                     <div class="topic">C++ Projects</div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia autem quam odio, qui
-                        voluptatem eligendi?</p>
+                    <p>Explore our advanced C++ projects that solve real-world problems.</p>
                 </div>
 
                 <div onclick="openProjectPage('unity')" class="box">
@@ -173,8 +176,7 @@
                         <i class="fas fa-camera-retro"></i>
                     </div>
                     <div class="topic">Unity Assets</div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia autem quam odio, qui
-                        voluptatem eligendi?</p>
+                    <p>Check out our high-quality Unity assets for your game development needs.</p>
                 </div>
 
                 <div onclick="openProjectPage('')" class="box">
@@ -182,8 +184,7 @@
                         <i class="fas fa-camera-retro"></i>
                     </div>
                     <div class="topic">All Projects</div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia autem quam odio, qui
-                        voluptatem eligendi?</p>
+                    <p>Browse through all our projects to find what interests you the most.</p>
                 </div>
 
                 <div onclick="openProjectPage('py')" class="box">
@@ -191,8 +192,7 @@
                         <i class="fas fa-tablet-alt"></i>
                     </div>
                     <div class="topic">Python Projects</div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia autem quam odio, qui
-                        voluptatem eligendi?</p>
+                    <p>Discover our innovative Python projects that showcase our expertise.</p>
                 </div>
 
             </div>
@@ -291,11 +291,14 @@
 
     <div class="text">
 
-        <span>Developed By <a href="https://github.com/MIbnEKhalid">Muhammad Bin Khalid</a> | © 2025 All Rights Reserved
+        <span>Developed By <a href="https://github.com/MIbnEKhalid">Muhammad Bin Khalid</a> | © <span id="year"></span>
+            All Rights Reserved
             | <a href="https://privacy.mbktechstudio.com/" target="_blank">Terms &amp; Conditions</a> | <a
                 href="https://mbktechstudio.com/FAQs" target="_blank">FAQs</a> | <a
                 href="https://mbktechstudio.com/Support/" target="_blank">Support &amp; Contact</a> </span>
-
+        <script>
+            document.getElementById('year').textContent = new Date().getFullYear();
+        </script>
     </div>
 
 </footer>

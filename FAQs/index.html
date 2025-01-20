@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/css/intlTelInput.css">
   <meta name="description" content="Frequently Asked Questions">
   <link rel="stylesheet" href="https://docs.mbktechstudio.com/Assets/project.css">
-  <link rel="stylesheet" href="../Assets/Style/FAQs.css"> 
+  <link rel="stylesheet" href="../Assets/Style/FAQs.css">
   <script src="https://kit.fontawesome.com/0934e8e9d3.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
   <link rel="icon" type="image/x-icon" href="../Assets/Images/Icon/dgicon.svg">
@@ -94,26 +94,26 @@
 <!-- navgaition menu -->
 <header>
   <nav>
-      <div class="navbar">
-          <div class="logo">
-              <div class="image">
-                  <img src="../Assets/Images/Icon/dg.svg" alt="" />
-              </div>
-              <div class="text">
-                  <a href="../">MBK Tech Studio</a>
-              </div>
-          </div>
-          <ul class="menu">
-              <div class="media-icons-m" id="media-icons-m"></div>
-              <div class="cancel-btn">
-                  <i class="fas fa-times"></i>
-              </div>
-          </ul>
-          <div class="media-icons" id="media-icons"></div>
+    <div class="navbar">
+      <div class="logo">
+        <div class="image">
+          <img src="../Assets/Images/Icon/dg.svg" alt="" />
+        </div>
+        <div class="text">
+          <a href="../">MBK Tech Studio</a>
+        </div>
       </div>
-      <div class="menu-btn">
-          <i class="fas fa-bars"></i>
-      </div>
+      <ul class="menu">
+        <div class="media-icons-m" id="media-icons-m"></div>
+        <div class="cancel-btn">
+          <i class="fas fa-times"></i>
+        </div>
+      </ul>
+      <div class="media-icons" id="media-icons"></div>
+    </div>
+    <div class="menu-btn">
+      <i class="fas fa-bars"></i>
+    </div>
   </nav>
 </header>
 
@@ -143,11 +143,15 @@
 
     <div class="text">
 
-      <span> © 2025 <a href="https://mbktechstudio.com/" target="_blank">MBK Tech Studio</a>. All Rights Reserved | <a
-          href="https://privacy.mbktechstudio.com/" target="_blank">Terms &amp; Conditions</a> | <a
-          href="https://mbktechstudio.com/FAQs" target="_blank">FAQs</a> | <a href="https://mbktechstudio.com/Support/"
-          target="_blank">Support &amp; Contact</a></span>
-
+      <span> © <span id="year"></span> <a href="https://mbktechstudio.com/" target="_blank">MBK Tech Studio</a>. All
+        Rights Reserved
+        | <a href="https://privacy.mbktechstudio.com/" target="_blank">Terms &amp; Conditions</a> | <a
+          href="https://mbktechstudio.com/FAQs" target="_blank">FAQs</a> | <a href="mailto:support@mbktechstudio.com"
+          title="support@mbktechstudio.com">support@mbktechstudio.com</a>
+      </span>
+      <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+      </script>
     </div>
 
   </footer>
