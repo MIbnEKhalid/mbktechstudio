@@ -190,6 +190,42 @@ nav.sticky .menu-btn {
     color: #fff;
 }
 
+@media(max-width: 400px) {
+    nav .navbar .logo a {
+        font-size: 33px;
+    }
+    .logo img {
+        width: 95%;
+        height: 95%;
+    }
+}
+
+@media(max-width: 376px) {
+    nav .navbar .logo a {
+        font-size: 28px;
+    }
+    .logo img {
+        width: 87%;
+        height: 87%;
+    } 
+    nav .menu-btn{
+        top: 25px;
+    }
+}
+
+@media(max-width: 339px) {
+    nav .navbar .logo a {
+        font-size: 26px;
+    }
+    .logo img {
+        width: 85%;
+        height: 85%;
+    }   
+    nav .menu-btn{
+        top: 23px;
+    }
+}
+
 /* Style for select element */
 
 .text .select select {
