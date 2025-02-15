@@ -59,13 +59,64 @@
             }
         });
     </script>
-
 </head>
 
 <style>
     section form .button button {
         font-size: 20px;
         padding: 7px 16px;
+    }
+
+    .Servicecontainer {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .Serviceh1 {
+        font-size: 2.5rem;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .Servicegrid {
+        display: grid;
+        gap: 1.5rem;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    .Servicecard {
+        background-color: #ffffff;
+        border-radius: 1rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 1.5rem;
+        transition: box-shadow 0.3s ease;
+        text-decoration: none;
+        color: inherit;
+        transition: all 0.5s ease;
+    }
+
+    .Servicecard:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        transition: all 0.5s ease;
+    }
+
+    .Servicecard h2 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: #007bff;
+    }
+
+    .Servicecard p {
+        font-size: 0.875rem;
+        color: #6b7280;
+    }
+
+    @media (min-width: 1115px) {
+        .Servicegrid a:nth-child(7) {
+            grid-column-start: 2;
+        }
     }
 </style>
 
@@ -139,7 +190,7 @@
                     <p>
                         Ready to join the movement? Follow Us On <a class="links"
                             href="https://mbktechstudio.com/#ssmedia">Social Media</a> or Connect with us through the <a
-                            class="links" href="#form">Contact Form</a>,<a class="links" href="Support/">Support
+                            class="links" href="#form">Contact Form</a>, <a class="links" href="Support/">Support
                             Form</a>
                         or <a class="links" title="support@mbktechstudio.com"
                             href="mailto:support@mbktechstudio.com">Email</a>.
@@ -154,66 +205,47 @@
     </section>
 
     <!-- My Services Section Start -->
-    <section class="services" id="services">
+    <section class="services" id="services" style="padding-top: 0px !important;">
 
         <div class="content">
 
-            <div class="title"><span>Projects</span></div>
+            <div class="title"><span>Products & Services</span></div>
 
-            <div class="boxes">
-
-                <div onclick="openProjectPage('web')" class="box">
-                    <div class="icon">
-                        <i class="fas fa-desktop"></i>
-                    </div>
-                    <div class="topic">Web Development</div>
-                    <p>We create responsive and dynamic websites tailored to your needs.</p>
+            <div class="Servicecontainer">
+                <div class="Servicegrid">
+                    <a href="https://privacy.mbktechstudio.com" target="_blank" class="links Servicecard">
+                        <h2>Privacy</h2>
+                        <p>Access the privacy policies and legal notices for our services.</p>
+                    </a>
+                    <a href="https://docs.mbktechstudio.com" target="_blank" class="links Servicecard">
+                        <h2>Projects & Documentations</h2>
+                        <p>Explore technical and user documentation for projects and services.</p>
+                    </a>
+                    <a href="https://blog.mbktechstudio.com" target="_blank" class="links Servicecard">
+                        <h2>Blog</h2>
+                        <p>Read our latest articles, updates, and insights.</p>
+                    </a>
+                    <a href="https://portal.mbktechstudio.com" target="_blank" class="links Servicecard">
+                        <h2>Web Portal</h2>
+                        <p>Centralized portal for private use or team members only.</p>
+                    </a>
+                    <a href="https://portfolio.mbktechstudio.com" target="_blank" class="links Servicecard">
+                        <h2>Portfolio</h2>
+                        <p>Showcasing professional projects and personal achievements of our team.</p>
+                    </a>
+                    <a href="https://unilib.mbktechstudio.com" target="_blank" class="links Servicecard">
+                        <h2>Unilib</h2>
+                        <p>Resource hub for course materials, quizzes, and assignments.</p>
+                    </a>
+                    <a href="https://api.mbktechstudio.com" target="_blank" class="links Servicecard">
+                        <h2>API Services</h2>
+                        <p>Explore and interact with our APIs for integration and development.</p>
+                    </a>
                 </div>
-
-                <div onclick="openProjectPage('game')" class="box">
-                    <div class="icon">
-                        <i class="fas fa-paint-brush"></i>
-                    </div>
-                    <div class="topic">Game Development</div>
-                    <p>Our team develops engaging and immersive games for various platforms.</p>
-                </div>
-
-                <div onclick="openProjectPage('cpp')" class="box">
-                    <div class="icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <div class="topic">C++ Projects</div>
-                    <p>Explore our advanced C++ projects that solve real-world problems.</p>
-                </div>
-
-                <div onclick="openProjectPage('unity')" class="box">
-                    <div class="icon">
-                        <i class="fas fa-camera-retro"></i>
-                    </div>
-                    <div class="topic">Unity Assets</div>
-                    <p>Check out our high-quality Unity assets for your game development needs.</p>
-                </div>
-
-                <div onclick="openProjectPage('')" class="box">
-                    <div class="icon">
-                        <i class="fas fa-camera-retro"></i>
-                    </div>
-                    <div class="topic">All Projects</div>
-                    <p>Browse through all our projects to find what interests you the most.</p>
-                </div>
-
-                <div onclick="openProjectPage('py')" class="box">
-                    <div class="icon">
-                        <i class="fas fa-tablet-alt"></i>
-                    </div>
-                    <div class="topic">Python Projects</div>
-                    <p>Discover our innovative Python projects that showcase our expertise.</p>
-                </div>
-
             </div>
 
         </div>
-
+        <div style="margin-bottom: 30px;"> </div>
     </section>
 
     <!-- Contact Us section Start -->
