@@ -16,7 +16,7 @@
    
   #cookieNotice {
     border: 3px solid #377a77;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgb(36 36 36 / 50%);
     box-sizing: border-box;
     position: fixed;
     padding: 15px;
@@ -38,7 +38,7 @@
     position: absolute;
     top: 7px;
     right: 5px;
-    background: url(../Images/close-icon.svg) 0 0 / 20px 20px no-repeat;
+    background: url(../Images/close-icon-white.svg) 0 0 / 20px 20px no-repeat;
   }
   
   #cookieNotice #closeIcon:hover {

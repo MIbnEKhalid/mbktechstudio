@@ -86,9 +86,9 @@
     }
 
     .Servicecard {
-        background-color: #ffffff;
+        background-color: #222;
         border-radius: 1rem;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
         padding: 1.5rem;
         transition: box-shadow 0.3s ease;
         text-decoration: none;
@@ -97,7 +97,7 @@
     }
 
     .Servicecard:hover {
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        box-shadow: 0 4px 6px rgba(255, 255, 255, 0.15);
         transition: all 0.5s ease;
     }
 
@@ -121,7 +121,7 @@
 
     .technologies {
         padding: 4rem 1rem;
-        background-color: #f9f9f9;
+        background-color: #1a1a1a;
         text-align: center;
     }
 
@@ -137,60 +137,15 @@
     }
 
     .technology-card {
-        background-color: #ffffff;
+        background-color: #222;
         border-radius: 1rem;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
         padding: 1.5rem;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        transition: transform 0.3s ease;
-    }
-
-    .technology-card i {
-        font-size: 3rem;
-        margin-bottom: 1rem;
-        color: #007bff;
-    }
-
-    .technology-card h2 {
-        font-size: 1.2rem;
-        color: #333;
-    }
-
-    .technology-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-    }
-
-    .technologies {
-        padding: 4rem 1rem;
-        background-color: #f9f9f9;
-        text-align: center;
-    }
-
-    .technology-container {
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-
-    .technology-grid {
-        display: grid;
-        gap: 2rem;
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    }
-
-    .technology-card {
-        background-color: #ffffff;
-        border-radius: 1rem;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        padding: 1.5rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        transition: transform 0.3s ease;
+        transition: all 0.5s ease;
     }
 
     .technology-card i {
@@ -214,12 +169,12 @@
 
     .technology-card h2 {
         font-size: 1.2rem;
-        color: #333;
+        color: #fff;
     }
 
     .technology-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        box-shadow: 0 6px 12px rgba(255, 255, 255, 0.15);
+        transition: all 0.5s ease;
     }
 
     .technology-card .icon-text {
@@ -252,9 +207,6 @@
                 </div>
             </div>
             <ul class="menu">
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#services">Projects</a></li>
-                <li><a href="#contact">Contact Us</a></li>
                 <div class="media-icons-m" id="media-icons-m"></div>
                 <div class="cancel-btn">
                     <i class="fas fa-times"></i>
@@ -278,7 +230,7 @@
     <!-- About Section Start -->
     <section class="about" id="about">
 
-        <div class="content">
+        <div class="content" style="margin: 0px auto;">
 
             <div class="title"><span>Welcome To MBK Tech Studio</span></div>
 
@@ -318,50 +270,6 @@
 
         </div>
 
-    </section>
-
-    <!-- My Services Section Start -->
-    <section class="services" id="services" style="padding-top: 0px !important;">
-
-        <div class="content">
-
-            <div class="title"><span>Products & Services</span></div>
-
-            <div class="Servicecontainer">
-                <div class="Servicegrid">
-                    <a href="https://privacy.mbktechstudio.com" target="_blank" class="links Servicecard">
-                        <h2>Privacy</h2>
-                        <p>Access the privacy policies and legal notices for our services.</p>
-                    </a>
-                    <a href="https://docs.mbktechstudio.com" target="_blank" class="links Servicecard">
-                        <h2>Projects & Documentations</h2>
-                        <p>Explore technical and user documentation for projects and services.</p>
-                    </a>
-                    <a href="https://blog.mbktechstudio.com" target="_blank" class="links Servicecard">
-                        <h2>Blog</h2>
-                        <p>Read our latest articles, updates, and insights.</p>
-                    </a>
-                    <a href="https://portal.mbktechstudio.com" target="_blank" class="links Servicecard">
-                        <h2>Web Portal</h2>
-                        <p>Centralized portal for private use or team members only.</p>
-                    </a>
-                    <a href="https://portfolio.mbktechstudio.com" target="_blank" class="links Servicecard">
-                        <h2>Portfolio</h2>
-                        <p>Showcasing professional projects and personal achievements of our team.</p>
-                    </a>
-                    <a href="https://unilib.mbktechstudio.com" target="_blank" class="links Servicecard">
-                        <h2>Unilib</h2>
-                        <p>Resource hub for course materials, quizzes, and assignments.</p>
-                    </a>
-                    <a href="https://api.mbktechstudio.com" target="_blank" class="links Servicecard">
-                        <h2>API Services</h2>
-                        <p>Explore and interact with our APIs for integration and development.</p>
-                    </a>
-                </div>
-            </div>
-
-        </div>
-        <div style="margin-bottom: 30px;"> </div>
     </section>
 
     <section class="technologies" id="technologies">
@@ -414,7 +322,8 @@
                         <h2>C#</h2>
                     </div>
                     <div class="technology-card">
-                        <img height="90px" weight="90px" src="data:image/png;base64,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">
+                        <img height="80px" weight="80px"
+                            src="data:image/png;base64,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">
                         <h2>Unity</h2>
                     </div>
                 </div>
@@ -422,6 +331,49 @@
         </div>
     </section>
 
+    <!-- My Services Section Start -->
+    <section class="services" id="services" style="padding-top: 0px !important;">
+
+        <div class="content">
+
+            <div class="title"><span>Usefull Links</span></div>
+
+            <div class="Servicecontainer">
+                <div class="Servicegrid">
+                    <a href="https://privacy.mbktechstudio.com" target="_blank" class="links Servicecard">
+                        <h2>Privacy</h2>
+                        <p>Access the privacy policies and legal notices for our services.</p>
+                    </a>
+                    <a href="https://docs.mbktechstudio.com" target="_blank" class="links Servicecard">
+                        <h2>Projects & Documentations</h2>
+                        <p>Explore technical and user documentation for projects and services.</p>
+                    </a>
+                    <a href="https://blog.mbktechstudio.com" target="_blank" class="links Servicecard">
+                        <h2>Blog</h2>
+                        <p>Read our latest articles, updates, and insights.</p>
+                    </a>
+                    <a href="https://portal.mbktechstudio.com" target="_blank" class="links Servicecard">
+                        <h2>Web Portal</h2>
+                        <p>Centralized portal for private use or team members only.</p>
+                    </a>
+                    <a href="https://portfolio.mbktechstudio.com" target="_blank" class="links Servicecard">
+                        <h2>Portfolio</h2>
+                        <p>Showcasing professional projects and personal achievements of our team.</p>
+                    </a>
+                    <a href="https://unilib.mbktechstudio.com" target="_blank" class="links Servicecard">
+                        <h2>Unilib</h2>
+                        <p>Resource hub for course materials, quizzes, and assignments.</p>
+                    </a>
+                    <a href="https://api.mbktechstudio.com" target="_blank" class="links Servicecard">
+                        <h2>API Services</h2>
+                        <p>Explore and interact with our APIs for integration and development.</p>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+        <div style="margin-bottom: 30px;"> </div>
+    </section>
 
     <!-- Contact Us section Start -->
     <section class="contact" id="contact">

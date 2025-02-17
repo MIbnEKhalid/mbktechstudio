@@ -65,14 +65,15 @@ a:hover {
 nav {
     position: fixed;
     width: 100%;
-    padding: 20px 0;
+    padding: 15px 0;
     z-index: 998;
     transition: all 0.3s ease;
     font-family: "Ubuntu", sans-serif;
 }
 
 nav.sticky {
-    background: #377a77;
+    background: rgba(0, 0, 0, 0.3) !important;
+    backdrop-filter: blur(8px) !important;
 }
 
 nav .navbar {
@@ -103,7 +104,7 @@ nav .navbar {
 nav .navbar .logo a {
     font-weight: 500;
     font-size: 35px;
-    color: #377a77;
+    color: #fff;
 }
 
 nav.sticky .navbar .logo a {
@@ -143,7 +144,7 @@ nav.sticky .menu a:hover {
 }
 
 .navbar .media-icons a {
-    color: #377a77;
+    color: #fff;
     font-size: 21px;
     margin: 0 6px;
     transition: all 0.3s ease;
@@ -171,29 +172,18 @@ nav .menu-btn,
     position: absolute;
     color: #fff;
     right: 10px;
-    top: 30px;
+    top: 25px;
     font-size: 20px;
     cursor: pointer;
     transition: all 0.3s ease;
     display: none;
 }
 
-nav .menu-btn {
-    color: #377a77;
-}
-
-nav.sticky .menu-btn {
-    color: #fff;
-}
-
-.navbar .menu .menu-btn {
-    color: #fff;
-}
-
 @media(max-width: 400px) {
     nav .navbar .logo a {
         font-size: 33px;
     }
+
     .logo img {
         width: 95%;
         height: 95%;
@@ -204,12 +194,14 @@ nav.sticky .menu-btn {
     nav .navbar .logo a {
         font-size: 28px;
     }
+
     .logo img {
         width: 87%;
         height: 87%;
-    } 
-    nav .menu-btn{
-        top: 27.5px;
+    }
+
+    nav .menu-btn {
+        top: 22px;
     }
 }
 
@@ -217,12 +209,14 @@ nav.sticky .menu-btn {
     nav .navbar .logo a {
         font-size: 26px;
     }
+
     .logo img {
         width: 85%;
         height: 85%;
-    }   
-    nav .menu-btn{
-        top: 25px;
+    }
+
+    nav .menu-btn {
+        top: 20px;
     }
 }
 
@@ -350,7 +344,7 @@ section .content {
 }
 
 .services {
-    background-color: #fdfeff;
+    background-color:rgb(19, 19, 19);
 }
 
 .about .about-details {
@@ -369,7 +363,7 @@ section .title {
 }
 
 section .title span {
-    color: #0e2431;
+    color: #fff;
     font-size: 30px;
     font-weight: 600;
     position: relative;
@@ -414,7 +408,7 @@ section .title span::after {
 }
 
 section .topic {
-    color: #0e2431;
+    color: #fff;
     font-size: 25px;
     font-weight: 500;
     margin-bottom: 10px;
@@ -522,7 +516,7 @@ section .button button:hover {
 /* Contact Me CSS */
 
 .contact {
-    background: #f0f8ff;
+    background:  #1a1a1a;
 }
 
 .contact .content {
@@ -537,18 +531,21 @@ section .button button:hover {
 }
 
 /* Footer CSS */
- 
+
 @media (max-width: 950px) {
     footer {
-      margin-top: auto;
+        margin-top: auto;
     }
-  }
+}
 
+/* Footer CSS */
 footer {
-    background: #377a77;
+    background-color: #121212 !important;
+    background: #121212 !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
     padding: 15px 5px;
     text-align: center;
-    font-family: "Poppins", sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 footer .text span {
@@ -559,14 +556,13 @@ footer .text span {
 
 footer .text span a {
     font-weight: 500;
-    color: #fff;
-   /* color: #72abff;*/
+    color: #72abff;
     transition: all 0.3s ease;
 }
 
 footer .text span a:hover {
     text-decoration: underline;
-    color: #c4c6ce; 
+    color: #d9dbe2;
     transition: all 0.3s ease;
 }
 
@@ -583,6 +579,13 @@ footer .text span a:hover {
     border-radius: 6px;
     box-shadow: rgba(0, 0, 0, 0.15);
     display: none;
+}
+
+.about,
+html,
+body {
+    background-color: rgb(19, 19, 19);
+    color: #fff; 
 }
 
 /* Responsive Media Query */
@@ -716,7 +719,7 @@ form .field {
 }
 
 form .label {
-    color: rgb(0, 0, 0);
+    color: #fff;
     font-weight: bold;
     margin-bottom: 10px;
 }
@@ -981,19 +984,19 @@ form select {
     border: 2px solid #377a77;
     background-color: beige;
     color: green;
-  }
+}
 
-  .message-box.success {
+.message-box.success {
     background-color: green;
     color: beige;
-  }
+}
 
-  .message-box.error {
+.message-box.error {
     background-color: rebeccapurple;
     color: white;
-  }
+}
 
-  .message-box.info {
+.message-box.info {
     background-color: beige;
     color: green;
-  }
+}

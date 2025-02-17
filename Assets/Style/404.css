@@ -76,14 +76,15 @@ a:hover {
 nav {
     position: fixed;
     width: 100%;
-    padding: 20px 0;
+    padding: 15px 0;
     z-index: 998;
     transition: all 0.3s ease;
     font-family: 'Ubuntu', sans-serif;
 }
 
 nav.sticky {
-    background: #377a77;
+    background: rgba(0, 0, 0, 0.3) !important;
+    backdrop-filter: blur(8px) !important;
 }
 
 nav .navbar {
@@ -114,7 +115,7 @@ nav .navbar {
 nav .navbar .logo a {
     font-weight: 500;
     font-size: 35px;
-    color: #377a77;
+    color: #fff;
 }
 
 nav.sticky .navbar .logo a {
@@ -155,7 +156,7 @@ nav.sticky .menu a:hover {
 }
 
 .navbar .media-icons a {
-    color: #377a77;
+    color: #fff;
     font-size: 21px;
     margin: 0 6px;
     transition: all 0.3s ease;
@@ -187,10 +188,6 @@ nav .menu-btn,
     cursor: pointer;
     transition: all 0.3s ease;
     display: none;
-}
-
-nav .menu-btn {
-    color: #377a77;
 }
 
 nav.sticky .menu-btn {
@@ -344,33 +341,6 @@ section .title {
     justify-content: center;
     margin-bottom: 40px;
 }
-
-section .title span {
-    color: #0E2431;
-    font-size: 30px;
-    font-weight: 600;
-    position: relative;
-    padding-bottom: 8px;
-}
-
-section .title span::before,
-section .title span::after {
-    content: '';
-    position: absolute;
-    height: 3px;
-    width: 100%;
-    background: #377a77;
-    left: 0;
-    bottom: 0;
-}
-
-section .title span::after {
-    bottom: -7px;
-    width: 70%;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
 .about .about-details .left {
     width: 45%;
 }
@@ -393,7 +363,7 @@ section .title span::after {
 }
 
 section .topic {
-    color: #0E2431;
+    color: #fff;
     font-size: 25px;
     font-weight: 500;
     margin-bottom: 10px;
@@ -436,7 +406,7 @@ section .button button:hover {
 
 /* Contact Me CSS */
 .contact {
-    background: #F0F8FF;
+    background:  #1a1a1a;
 }
 
 .contact .content {
@@ -452,7 +422,9 @@ section .button button:hover {
 
 /* Footer CSS */
 footer {
-    background: #377a77;
+    background-color: #121212 !important;
+    background: #121212 !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
     padding: 15px 5px;
     text-align: center;
     font-family: 'Poppins', sans-serif;
@@ -466,13 +438,13 @@ footer .text span {
 
 footer .text span a {
     font-weight: 500;
-    color: #FFF;
+    color: #72abff;
     transition: all 0.3s ease;
 }
 
 footer .text span a:hover {
     text-decoration: underline;
-    color: #c4c6ce;
+    color: #d9dbe2;
     transition: all 0.3s ease;
 }
 
@@ -544,7 +516,7 @@ nav .navbar .menu .media-icons-m a {
         left: -100%;
         top: 0;
         background: #0E2431;
-        height: 100vh; 
+        height: 100vh;
         width: 100%;
         padding-top: 60px;
         flex-direction: column;
@@ -615,7 +587,7 @@ form .field {
 }
 
 form .label {
-    color: rgb(0, 0, 0);
+    color:  #fff;
     font-weight: bold;
     margin-bottom: 5px;
 }
@@ -676,7 +648,7 @@ section .title {
 }
 
 section .title span {
-    color: #0e2431;
+    color: #fff;
     font-size: 28px;
     font-weight: 600;
     position: relative;
@@ -744,6 +716,11 @@ body {
     display: flex;
     flex-direction: column;
 }
+
+.about, html, body {
+    background-color: rgb(19, 19, 19);
+}
+
 
 .about {
     display: flex;
@@ -951,9 +928,9 @@ select {
     margin-bottom: 50px;
     position: absolute;
     max-width: 700px;
-  }
+}
 
-  .contact-box {
+.contact-box {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -970,14 +947,14 @@ select {
     font-family: 'Poppins', sans-serif;
     z-index: 999997;
     transition: opacity 0.4s ease, visibility 0.4s ease;
-  }
+}
 
-  .contact-box.show {
+.contact-box.show {
     opacity: 1;
     visibility: visible;
-  }
+}
 
-  .close-btn {
+.close-btn {
     width: 23px;
     height: 23px;
     border-radius: 8px;
@@ -987,14 +964,14 @@ select {
     right: 3px;
     background: url(https://mbktechstudio.com/Assets/Images/close-icon.svg) 0 0 / 23px 23px no-repeat;
     transition: all 0.4s ease;
-  }
+}
 
-  .close-btn:hover {
+.close-btn:hover {
     opacity: 0.2;
     transition: all 0.4s ease;
-  }
+}
 
-  input[readonly] {
+input[readonly] {
     background-color: #f0f0f0;
     /* Change this to the desired background color */
     color: #333;
@@ -1003,4 +980,4 @@ select {
     /* Optionally, change the border color */
     cursor: not-allowed;
     /* Optionally, change the cursor to indicate it's readonly */
-  }
+}
