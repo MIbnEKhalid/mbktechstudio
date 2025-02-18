@@ -16,6 +16,13 @@
     transition: all 0.5s ease;
 }
 
+.links.newtab::after {
+    content: "\f35d";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    margin-left: 5px;
+}
+
 .links:visited {
     color: #007bff;
     transition: all 0.5s ease;
@@ -73,7 +80,7 @@ nav {
 
 nav.sticky {
     background: rgba(0, 0, 0, 0.3) !important;
-    backdrop-filter: blur(8px) !important;
+    backdrop-filter: blur(10px) !important;
 }
 
 nav .navbar {
@@ -324,7 +331,7 @@ section .content {
 section .title {
     display: flex;
     justify-content: center;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
     margin-top: 30px;
     text-align: center;
 }

@@ -16,6 +16,13 @@
     transition: all 0.5s ease;
 }
 
+.links.newtab::after {
+    content: "\f35d";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    margin-left: 5px;
+}
+
 .links:visited {
     color: #007bff;
     transition: all 0.5s ease;
@@ -84,7 +91,7 @@ nav {
 
 nav.sticky {
     background: rgba(0, 0, 0, 0.3) !important;
-    backdrop-filter: blur(8px) !important;
+    backdrop-filter: blur(10px) !important;
 }
 
 nav .navbar {
@@ -339,8 +346,9 @@ section .content {
 section .title {
     display: flex;
     justify-content: center;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
 }
+
 .about .about-details .left {
     width: 45%;
 }
@@ -406,7 +414,7 @@ section .button button:hover {
 
 /* Contact Me CSS */
 .contact {
-    background:  #1a1a1a;
+    background: #1a1a1a;
 }
 
 .contact .content {
@@ -587,7 +595,7 @@ form .field {
 }
 
 form .label {
-    color:  #fff;
+    color: #fff;
     font-weight: bold;
     margin-bottom: 5px;
 }
@@ -717,7 +725,9 @@ body {
     flex-direction: column;
 }
 
-.about, html, body {
+.about,
+html,
+body {
     background-color: rgb(19, 19, 19);
 }
 

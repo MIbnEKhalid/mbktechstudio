@@ -227,6 +227,107 @@
         <a href="#about"><i class="fas fa-arrow-up"></i></a>
     </div>
 
+    <!-- Sidebar Start -->
+    <aside class="sidebar sidebar-collapsed" id="sidebar">
+        <div class="sidebar-toggle" id="sidebar-toggle">
+            <i class="fas fa-chevron-left"></i>
+        </div>
+        <div class="sidebar-content">
+            <h2>Quick Links</h2>
+            <ul>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#technologies">Technologies</a></li>
+                <li><a href="#services">Useful Links</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+            </ul>
+        </div>
+    </aside>
+    <style>
+        .sidebar {
+            position: fixed;
+            right: 0;
+            top: 25%;
+            transform: translateY(-50%);
+            background-color: #333;
+            padding: 1rem;
+            border-radius: 8px 0 0 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: right 0.3s ease;
+            width: 150px;
+        }
+
+        .sidebar-collapsed {
+            right: -150px;
+        }
+
+        .sidebar-toggle {
+            position: absolute;
+            left: -35px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: #333;
+            padding: 6px 9px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar-toggle i {
+            color: #fff;
+            transition: transform 0.3s ease;
+        }
+
+        .sidebar-content h2 {
+            color: #fff;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-family: "Ubuntu", sans-serif;
+        }
+
+        .sidebar-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar-content ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .sidebar-content ul li a {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: "Poppins", sans-serif;
+        }
+
+        .sidebar-content ul li a:hover {
+            text-decoration: underline;
+            color: #5ba5f5; 
+        }
+    </style>
+
+    <script>
+        const sidebar = document.getElementById("sidebar");
+        const toggleButton = document.getElementById("sidebar-toggle");
+        const toggleIcon = toggleButton.querySelector("i");
+
+        toggleButton.addEventListener("click", () => {
+            sidebar.classList.toggle("sidebar-collapsed");
+
+            if (sidebar.classList.contains("sidebar-collapsed")) {
+                toggleIcon.classList.remove("fa-chevron-right");
+                toggleIcon.classList.add("fa-chevron-left");
+            } else {
+                toggleIcon.classList.remove("fa-chevron-left");
+                toggleIcon.classList.add("fa-chevron-right");
+            }
+        });
+    </script> 
+
     <!-- About Section Start -->
     <section class="about" id="about">
 
@@ -258,7 +359,7 @@
                     <p>
                         Ready to join the movement? Follow Us On <a class="links"
                             href="https://mbktechstudio.com/#ssmedia">Social Media</a> or Connect with us through the <a
-                            class="links" href="#form">Contact Form</a>, <a class="links" href="Support/">Support
+                            class="links newtab" href="Support/">Support
                             Form</a>
                         or <a class="links" title="support@mbktechstudio.com"
                             href="mailto:support@mbktechstudio.com">Email</a>.
@@ -272,7 +373,7 @@
 
     </section>
 
-    <section class="technologies" id="technologies">
+    <section class="technologies" id="technologies" style="padding-top: 10px !important;">
         <div class="content">
             <div class="title"><span>Technologies We Use</span></div>
             <div class="technology-container">
@@ -332,7 +433,7 @@
     </section>
 
     <!-- My Services Section Start -->
-    <section class="services" id="services" style="padding-top: 0px !important;">
+    <section class="services" id="services" style="padding-top: 10px !important;">
 
         <div class="content">
 
@@ -376,9 +477,9 @@
     </section>
 
     <!-- Contact Us section Start -->
-    <section class="contact" id="contact">
+    <section class="contact" id="contact" style="padding-top: 0px !important;">
 
-        <div class="content">
+        <div class="content" style="padding: 10px !important;">
 
             <div class="title"><span>Contact Us</span></div>
 
@@ -388,7 +489,7 @@
 
                 <p>
                     If you're interested in exploring collaboration opportunities or have a project idea you'd like to
-                    discuss, don't hesitate to get in touch by visiting <a class="links" href="Support/">Support
+                    discuss, don't hesitate to get in touch by visiting <a class="links newtab" href="Support/">Support
                         Page</a>, <a class="links" title="support@mbktechstudio.com"
                         href="mailto:support@mbktechstudio.com">Email</a> or through <a class="links"
                         href="#ssmedia">Social Media</a>. I'm always open to new collaborations and excited to work with
@@ -437,7 +538,7 @@
 
                 <div class="notification is-info">
                     <p>
-                        <strong>Note:</strong> For Support or Project Inquiry, Please Visit <a class="links"
+                        <strong>Note:</strong> For Support or Project Inquiry, Please Visit <a class="links newtab"
                             href="Support/">Support & Contact</a> Page.
                     </p>
                 </div>
@@ -488,7 +589,7 @@
     document.addEventListener('DOMContentLoaded', function () {
         const headerHeight = document.querySelector('header').offsetHeight;
 
-        document.querySelectorAll('nav .menu li a').forEach(anchor => {
+        document.querySelectorAll('aside a').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href').substring(1);

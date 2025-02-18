@@ -16,6 +16,13 @@
     transition: all 0.5s ease;
 }
 
+.links.newtab::after {
+    content: "\f35d";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    margin-left: 5px;
+}
+
 .links:visited {
     color: #007bff;
     transition: all 0.5s ease;
@@ -73,7 +80,7 @@ nav {
 
 nav.sticky {
     background: rgba(0, 0, 0, 0.3) !important;
-    backdrop-filter: blur(8px) !important;
+    backdrop-filter: blur(10px) !important;
 }
 
 nav .navbar {
@@ -344,7 +351,7 @@ section .content {
 }
 
 .services {
-    background-color:rgb(19, 19, 19);
+    background-color: rgb(19, 19, 19);
 }
 
 .about .about-details {
@@ -357,7 +364,7 @@ section .content {
 section .title {
     display: flex;
     justify-content: center;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
     margin-top: 30px;
     text-align: center;
 }
@@ -516,7 +523,7 @@ section .button button:hover {
 /* Contact Me CSS */
 
 .contact {
-    background:  #1a1a1a;
+    background: #1a1a1a;
 }
 
 .contact .content {
@@ -585,7 +592,7 @@ footer .text span a:hover {
 html,
 body {
     background-color: rgb(19, 19, 19);
-    color: #fff; 
+    color: #fff;
 }
 
 /* Responsive Media Query */
