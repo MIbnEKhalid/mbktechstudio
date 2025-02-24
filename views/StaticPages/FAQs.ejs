@@ -4,7 +4,6 @@
 
 <head>
   <title>FAQs</title>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Lato:wght@400;700&display=swap" rel="stylesheet">
   <meta charset="UTF-8" />
   <meta name="description" content="Find answers to common questions about MBK Tech Studio's services, projects, and support. Contact us for more information." />
   <meta name="keywords" content="FAQs, Frequently Asked Questions, MBK Tech Studio, Help Center" />
@@ -132,7 +131,6 @@
 
 <body>
 
-
   <!-- Move to top button -->
   <div class="scroll-button">
     <a href="#."><i class="fas fa-arrow-up"></i></a>
@@ -164,41 +162,33 @@
         .then(response => response.json())
         .then(data => {
           const faqContainer = document.getElementById('faq-container');
-
           // Get the query parameter value for 'Q'
           const urlParams = new URLSearchParams(window.location.search);
           const queryId = urlParams.get('Q'); // Extracts the 'Q' parameter
           let scrollToFaq = null;
-
           // Render FAQs
           data.forEach(item => {
             // Check if item.display is true
             const validDisplayValues = [
               "true", "True", "1", "Yes", "yes", "Y", "y"
             ];
-
             if (validDisplayValues.includes(item.display)) {
               const faqItem = document.createElement('div');
               faqItem.classList.add('faq-item');
-
               const faqQuestion = document.createElement('div');
               faqQuestion.classList.add('faq-question');
               faqQuestion.id = item.id; // Set ID for matching
               faqQuestion.innerHTML = item.question;
-
               const faqAnswer = document.createElement('div');
               faqAnswer.classList.add('faq-answer');
-
               // Capitalize text outside <a> tags
               const capitalizedAnswer = item.answer.replace(/(<a\b[^>]*>.*?<\/a>)|(\b\w)/g, (match, anchor, word) => {
                 return anchor ? anchor : word.toUpperCase(); // Skip <a> content, capitalize other words
               });
-
               faqAnswer.innerHTML = `<div style='padding: 10px;'>${capitalizedAnswer}</div>`;
               faqItem.appendChild(faqQuestion);
               faqItem.appendChild(faqAnswer);
               faqContainer.appendChild(faqItem);
-
               // Check if this FAQ matches the query parameter
               if (item.id === queryId) {
                 faqItem.classList.add('active'); // Open the matching FAQ
@@ -206,27 +196,22 @@
               }
             }
           });
-
           // Scroll to the matched FAQ if found
           if (scrollToFaq) {
             const headerOffset = document.querySelector('header').offsetHeight || 0; // Get header height
             const elementPosition = scrollToFaq.getBoundingClientRect().top + window.scrollY;
             const offsetPosition = elementPosition - headerOffset - 100; // Adjust by header height and add extra spacing
-
             window.scrollTo({
               top: offsetPosition,
               behavior: 'smooth'
             });
-
             setTimeout(function() {
               const url = new URL(window.location);
               url.search = ''; // Remove query parameters
               window.history.replaceState({}, document.title, url);
               console.log("url");
-
             }, 500);
           }
-
           // FAQ Item Toggle
           document.querySelectorAll('.faq-question').forEach(item => {
             item.addEventListener('click', function() {
@@ -236,7 +221,6 @@
           });
         })
         .catch(error => console.error('Error fetching FAQ data:', error));
-
     });
   </script>
 

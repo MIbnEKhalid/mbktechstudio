@@ -48,6 +48,13 @@ app.get(
   } 
 );
 
+app.get(
+  ["/Terms&Conditions", "/PrivacyPolicy", "/privacypolicy", "/terms&conditions"],
+  (req, res) => {
+    return res.render("StaticPages/Terms&Conditions.ejs");
+  } 
+);
+ 
 app.use("/post", postRoutes);
 
 app.use("/api", apiRoutes);

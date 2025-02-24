@@ -20,7 +20,7 @@ body.dark-mode form .label {
 }
 
 body.dark-mode .close-btn { 
-    background: url(https://mbktechstudio.com/Assets/Images/close-icon-white.svg) 0 0 / 23px 23px no-repeat;
+    background: url(/Assets/Images/close-icon-white.svg) 0 0 / 23px 23px no-repeat;
 }
 
 .iti--separate-dial-code .iti__selected-dial-code{
@@ -323,7 +323,7 @@ body {
     position: absolute;
     top: 7px;
     right: 3px;
-    background: url(https://mbktechstudio.com/Assets/Images/close-icon.svg) 0 0 / 23px 23px no-repeat;
+    background: url(/Assets/Images/close-icon.svg) 0 0 / 23px 23px no-repeat;
     transition: all 0.4s ease;
 }
 

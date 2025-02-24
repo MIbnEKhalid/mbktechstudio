@@ -22,7 +22,7 @@ async function getTermsVersionFromPrivacyPolicy() {
 async function AskForCookieConsent() {
     try {
         console.log('Fetching cookie consent HTML...');
-        const response = await fetch('https://www.mbktechstudio.com/Assets/Cookie/cookie.html');
+        const response = await fetch('/Assets/Cookie/cookie.html');
         const html = await response.text();
         document.getElementById('cookie').innerHTML = html;
         console.log('Cookie consent HTML loaded.');

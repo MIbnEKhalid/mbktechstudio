@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<%- include('../templates/header.ejs') %>
+
+<head>
+  <title>Privacy Policy | Terms & Conditions | MBK Tech Studio Portal</title>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="/Assets/style.css">
+  <link rel="icon" type="image/x-icon" href="/Assets/Images/dgicon.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Read the Terms & Conditions for portal.mbktechstudio.com to understand the rules, policies, and guidelines for
+            using our services securely and responsibly.">
+  <meta name="keywords" content="MBK Tech Studio, Web-Portal, Terms & Conditions, Privacy Policy, User Agreement" />
+  <meta property="og:title" content="Terms & Conditions | MBK Tech STudio" />
+  <meta property="og:image" content="https://www.mbktechstudio.com/Assets/Images/Icon/logo.png" />
+  <meta property="og:url" content="https://portal.mbktechstudio.com/Terms&Conditions">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "MBK Tech Studio",
+      "url": "https://portal.mbktechstudio.com/Terms&Conditions",
+      "logo": "https://www.mbktechstudio.com/Assets/Images/Icon/logo.png",
+      "description": "Read the Terms & Conditions for
+      portal.mbktechstudio.com to understand the rules,
+      policies,
+      and guidelines
+      for using our services securely and
+      responsibly.
+      " }
+  </script>
+  <style>
+    /* Base Styles */
+    * {
+      box-sizing: border-box;
+    }
+
+    .a {
+      color: #27ae60;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .a:hover {
+      color: rgb(33, 131, 72);
+      text-decoration: none;
+    }
+
+    /* Sections */
+    .Section {
+      margin-bottom: 2.5rem;
+      padding: 1.5rem;
+      background: rgb(26, 26, 26);
+      border-radius: 8px;
+      border-left: 4px solid #27ae60;
+    }
+
+    .Section h3 {
+      color: #27ae60;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+
+    .Section h4 {
+      color: #27ae60;
+      margin-bottom: 0.8rem;
+      font-size: 1.1rem;
+    }
+
+    .Section p {
+      margin-bottom: 1rem;
+      font-size: 1rem;
+      color: rgb(103, 127, 150);
+    }
+
+    /* Lists */
+    ul {
+      padding-left: 2rem;
+      margin: 1rem 0;
+    }
+
+    ul li {
+      margin-bottom: 0.8rem;
+      color: rgb(103, 127, 150);
+    }
+
+    ul ul {
+      padding-left: 1.5rem;
+      margin-top: 0.5rem;
+    }
+
+    /* Special Notices */
+    strong {
+      color: #377a77;
+      font-weight: 600;
+    }
+
+    .Section:nth-of-type(8) {
+      /* License Section */
+      background: #fff9e6;
+      border-color: #f1c40f;
+    }
+
+    .Section:nth-of-type(8) h3 {
+      color: #e67e22;
+    }
+
+    #CommentoTerms {
+      background: #e6f3ff;
+      border-color: #3498db;
+    }
+
+    /* Version Info */
+    .DateTimePara {
+      text-align: center;
+      color: #7f8c8d;
+      font-size: 0.9rem;
+      margin-top: 2rem;
+    }
+
+    /* Responsive Design */
+    @media(max-width: 768px) {
+      .title span {
+        font-size: 2rem;
+      }
+
+      .Section {
+        padding: 1rem;
+      }
+
+      .Section h3 {
+        font-size: 1.3rem;
+      }
+
+      ul {
+        padding-left: 1.5rem;
+      }
+    }
+
+    @media(max-width: 480px) {
+      .title span {
+        font-size: 1.75rem;
+      }
+
+      .Section {
+        margin-bottom: 2rem;
+      }
+    }
+
+    /* Print Styles */
+    @media print {
+      body {
+        background: white;
+        color: black;
+        font-size: 12pt;
+      }
+
+      .Section {
+        page-break-inside: avoid;
+      }
+    }
+
+    .DateTimePara {
+      font-style: italic;
+      font-size: 0.85rem;
+    }
+
+    section .title span {
+      color: #fff;
+    }
+
+    .Section:nth-of-type(8) {
+      /* License Section */
+      background: #fff9e6;
+      border-color: #f1c40f;
+    }
+
+    .Section:nth-of-type(8) h3 {
+      color: #e67e22;
+    }
+
+    .Section:nth-of-type(8) strong {
+      color: rebeccapurple;
+    }
+
+    .about {
+      height: auto !important;
+    }
+  </style>
+</head>
+
+
+<body>
+  <div class="scroll-button">
+    <a href="#" style="display: none;">
+      <i class="fas fa-arrow-up" aria-hidden="true"></i>
+    </a>
+  </div>
+
+
+  <aside class="sidebar sidebar-collapsed" id="sidebar">
+    <div class="sidebar-toggle" id="sidebar-toggle">
+      <i class="fas fa-chevron-left"></i>
+    </div>
+    <h2>Quick Links</h2>
+
+    <div class="sidebar-content">
+      <ul>
+        <li><a href="#Section1">Section 1: Access and Usage</a></li>
+        <li><a href="#Section2">Section 2: User Data and Privacy</a></li>
+        <li><a href="#Section3">Section 3: Content and Licensing</a></li>
+        <li><a href="#Section4">Section 4: Cookies</a></li>
+        <li><a href="#Section5">Section 5: Governing Law</a></li>
+        <li><a href="#Section6">Section 6: Changes to Terms</a></li>
+        <li><a href="#Section7">Section 7: Data Protection Disclaimer</a></li>
+        <li><a href="#Section8">Section 8: Website Code License</a></li>
+      </ul>
+    </div>
+  </aside>
+  <style>
+    .sidebar {
+      position: fixed;
+      right: 0;
+      top: 35%;
+      transform: translateY(-50%);
+      background-color: #222;
+      padding: 1rem;
+      border-radius: 8px 0 0 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      transition: right 0.3s ease;
+      width: 150px;
+      max-height: 400px;
+    }
+
+    .sidebar-collapsed {
+      right: -150px;
+    }
+
+    .sidebar-toggle {
+      position: absolute;
+      left: -45px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 30px;
+      height: 30px;
+      background: linear-gradient(145deg, #444, #222);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+      transition: all 0.3s ease;
+    }
+
+    .sidebar-toggle:hover {
+      opacity: 0.8;
+      transition: all 0.3s ease;
+
+    }
+
+    .sidebar-toggle i {
+      color: #fff;
+      font-size: 16px;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .sidebar-content {
+      overflow-y: auto;
+      max-height: 80vh;
+      padding-right: 8px;
+      max-height: 340px;
+    }
+
+    .sidebar-content::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    .sidebar-content::-webkit-scrollbar-track {
+      background: #333;
+    }
+
+    .sidebar-content::-webkit-scrollbar-thumb {
+      background: #4e4e4e;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+    }
+
+    .sidebar-content::-webkit-scrollbar-thumb:hover {
+      background: #5a5a5a;
+    }
+
+    .sidebar h2 {
+      color: #fff;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      font-family: "Ubuntu", sans-serif;
+    }
+
+    .sidebar-content ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .sidebar-content ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    .sidebar-content ul li a {
+      color: #007bff;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 600;
+      font-family: "Poppins", sans-serif;
+    }
+
+    .sidebar-content ul li a:hover {
+      text-decoration: underline;
+      color: #5ba5f5;
+    }
+  </style>
+  <script>
+    const sidebar = document.getElementById("sidebar");
+    const toggleButton = document.getElementById("sidebar-toggle");
+    const toggleIcon = toggleButton.querySelector("i");
+
+    toggleButton.addEventListener("click", () => {
+      sidebar.classList.toggle("sidebar-collapsed");
+
+      if (sidebar.classList.contains("sidebar-collapsed")) {
+        toggleIcon.classList.remove("fa-chevron-right");
+        toggleIcon.classList.add("fa-chevron-left");
+      } else {
+        toggleIcon.classList.remove("fa-chevron-left");
+        toggleIcon.classList.add("fa-chevron-right");
+      }
+    });
+  </script>
+
+
+  <section class="about">
+    <div class="content">
+      <h1>Privacy Policy</h1>
+      <div class="Section">
+        <h4>Introduction</h4>
+        <p>Welcome to MBK Tech Studio ("we," "our," or "us"). This Privacy Policy outlines how we collect, use,
+          disclose, and safeguard your information when you visit our website, use our services, or engage
+          with
+          our
+          projects.</p>
+      </div>
+      <div class="Section">
+        <h4>Information We Collect</h4>
+        <ul>
+          <li><strong>Personal Information:</strong>
+            <ul>
+              <li>When you contact us, sign up for newsletters, or collaborate on projects, we may collect
+                your
+                name, email address, and other relevant details.</li>
+            </ul>
+          </li>
+          <li><strong>Non-Personal Information:</strong>
+            <ul>
+              <li>We may collect non-identifiable information, such as browser type, operating system, and
+                website
+                usage data, to improve our website and services.</li>
+            </ul>
+          </li>
+          <li><strong>Cookies and Tracking Technologies:</strong>
+            <ul>
+              <li>We use cookies to enhance user experience and analyze website traffic. You can control
+                cookies
+                through your browser settings.</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="Section">
+        <h4>How We Use Your Information</h4>
+        <ul>
+          <li>To provide and maintain our services.</li>
+          <li>To communicate with you about updates, projects, or events.</li>
+          <li>To analyze website traffic and improve functionality.</li>
+          <li>To comply with legal obligations or protect our rights.</li>
+        </ul>
+      </div>
+      <div class="Section">
+        <h4>Information Sharing and Disclosure</h4>
+        <p>We do not sell or rent your personal information to third parties. However, we may share your
+          information
+          with:</p>
+        <ul>
+          <li>Service providers assisting us in operations.</li>
+          <li>Legal authorities if required by law.</li>
+          <li>Collaborators in open-source projects with your consent.</li>
+        </ul>
+      </div>
+      <div class="Section">
+        <h4>Data Security</h4>
+        <p>We implement appropriate technical and organizational measures to protect your data. However, no
+          transmission
+          method over the internet is entirely secure, and we cannot guarantee absolute security.</p>
+      </div>
+      <div class="Section">
+        <h4>Third-Party Links</h4>
+        <p>Our website may contain links to third-party websites. We are not responsible for their privacy
+          practices,
+          and we encourage you to review their policies.</p>
+      </div>
+      <div class="Section">
+        <h4>Your Rights</h4>
+        <ul>
+          <li>Access, update, or delete your personal information.</li>
+          <li>Opt-out of communications by following the unsubscribe link in our emails.</li>
+        </ul>
+      </div>
+      <div class="Section">
+        <h4>Changes to This Privacy Policy</h4>
+        <p>We may update this policy periodically. Changes will be posted on this page with the updated
+          effective
+          date.
+        </p>
+      </div>
+      <div class="Section">
+        <h4>Contact Us</h4>
+        <p>If you have any questions about this Privacy Policy, please contact us at [Insert Contact Email].</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="about">
+    <div class="content">
+      <h1>Terms & Conditions</h1>
+
+      <div class="Section">
+        <h4>Introduction</h4>
+        <p>These Terms and Conditions ("Terms") govern your use of MBK Tech Studio’s website, services, and
+          projects. By accessing or using our website, you agree to comply with these Terms.</p>
+      </div>
+      <div class="Section">
+        <h4>Use of Our Services</h4>
+        <ul>
+          <li><strong>Eligibility:</strong> You must be at least [Insert Minimum Age] years old to use our
+            services.
+          </li>
+          <li><strong>Acceptable Use:</strong>
+            You agree not to misuse our services, including engaging in illegal activities, spreading
+            malicious software, or violating intellectual property rights. </li>
+          <li><strong>Open-Source Contributions:</strong>
+            Contributions to open-source projects hosted by MBK Tech Studio must comply with the
+            applicable
+            licenses and guidelines.
+          </li>
+        </ul>
+      </div>
+      <div class="Section"id="Section4">
+        <h4>Intellectual Property</h4>
+        <p>All content on our website, including text, images, and logos, is the property of MBK Tech Studio
+          unless
+          otherwise noted. Unauthorized use is prohibited. Open-source project contributions are governed by
+          their
+          respective licenses.</p>
+      </div>
+      <div class="Section">
+        <h4>Disclaimers</h4>
+        <p>Our website and services are provided "as is" without warranties of any kind. We do not guarantee
+          uninterrupted or error-free services. MBK Tech Studio is not responsible for third-party content or
+          services
+          linked to our website.</p>
+      </div>
+      <div class="Section" id="Section5">
+        <h4>Limitation of Liability</h4>
+        <p>To the extent permitted by law, MBK Tech Studio is not liable for indirect, incidental, or
+          consequential
+          damages arising from your use of our website or services.</p>
+      </div>
+      <div class="Section">
+        <h4>Termination</h4>
+        <p>We reserve the right to suspend or terminate access to our website or services if you violate these
+          Terms.
+        </p>
+      </div>
+      <div class="Section">
+        <h4>Changes to These Terms</h4>
+        <p>We may update these Terms periodically. Changes will be posted on this page with the updated
+          effective
+          date.
+        </p>
+      </div>
+      <div class="Section">
+        <h4>Governing Law</h4>
+        <p>These Terms are governed by the laws of [Insert Jurisdiction], without regard to its conflict of law
+          provisions.</p>
+      </div>
+      <div class="Section">
+        <h4>Contact Us</h4>
+        <p>If you have any questions about these Terms and Conditions, please contact us at [Insert Contact
+          Email].
+        </p>
+      </div>
+    </div>
+  </section>
+</body>
+
+<%- include('../templates/footer.ejs') %>
+
+<script>
+  function SuperAdminsinfo() {
+    showMessage(
+      " SuperAdmins, Muhammad Bin Khalid (<a class='links'>ibnekhalid@mbktechstudio.com</a>) and Maaz Waheed (<a class='links'>" +
+      "maaz.waheed@mbktechstudio.com</a>), oversee portal operations and ensure user data security. They are bound by confident" +
+      "iality agreements and access data only for administrative purposes. Contact MBK Tech Studios for any concerns.",
+      "SuperAdmins Information"
+    );
+  }
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const headerHeight = document.querySelector('header').offsetHeight;
+
+    document.querySelectorAll('aside a').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        console.log("s");
+        const targetId = this.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+
+        if (targetElement) {
+          const targetPosition = targetElement.offsetTop - headerHeight - 70; // Adjust 10px as needed
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  });
+</script>
+
+</html>
