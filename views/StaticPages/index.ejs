@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+<%- include('../templates/header.ejs') %>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="At MBK Tech Studio, We're A Team Of Passionate Tech Innovators">
+  <meta name="keywords" content="MBK Tech Studio, Open-Source, Software Development, Technology Solutions">
+  <meta property="og:title" content="Home | MBK Tech STudio" />
+  <meta property="og:description" content="At MBK Tech Studio, We're A Team Of Passionate Tech Innovators" />
+  <meta property="og:image" content="https://www.mbktechstudio.com/Assets/Images/Icon/logo.png" />
+  <meta property="og:url" content="https://www.mbktechstudio.com/">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "MBK Tech Studio",
+      "url": "https://www.mbktechstudio.com/",
+      "logo": "https://www.mbktechstudio.com/Assets/Images/Icon/logo.png",
+      "description": "MBK Tech Studio: Empowering Technology Through Innovation. Explore our projects, services, and passion for cutting-edge solutions."
+    }
+  </script>
+  <title>MBK Tech Studio | Open-Source and Innovation</title>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      const input = document.querySelector('input[name="access_key"]');
+      if (input) {
+        try {
+          const response = await fetch('https://api.mbktechstudio.com/api/FormAPI', {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          });
+          if (response.ok) {
+            const apiKey_access_key = await response.text(); // Assuming the API sends a plain string
+            input.value = apiKey_access_key;
+          } else {
+            console.error(`Failed to fetch API key. Status: ${response.status}`);
+          }
+        } catch (error) {
+          console.error(`Error fetching API key: ${error}`);
+        }
+      }
+    });
+  </script>
+</head>
+
+<style>
+  section form .button button {
+    font-size: 20px;
+    padding: 7px 16px;
+  }
+
+  .Servicecontainer {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .Serviceh1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .Servicegrid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+
+  .Servicecard {
+    background-color: #222;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
+    padding: 1.5rem;
+    transition: box-shadow 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.5s ease;
+  }
+
+  .Servicecard:hover {
+    box-shadow: 0 4px 6px rgba(255, 255, 255, 0.15);
+    transition: all 0.5s ease;
+  }
+
+  .Servicecard h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #007bff;
+  }
+
+  .Servicecard p {
+    font-size: 0.875rem;
+    color: #6b7280;
+  }
+
+  @media (min-width: 1115px) {
+    .Servicegrid a:nth-child(7) {
+      grid-column-start: 2;
+    }
+  }
+
+  .technologies {
+    padding: 4rem 1rem;
+    background-color: #1a1a1a;
+    text-align: center;
+  }
+
+  .technology-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .technology-grid {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+
+  .technology-card {
+    background-color: #222;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s ease;
+  }
+
+  .technology-card i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: #007bff;
+  }
+
+  .technology-card .icon-text {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 1rem;
+  }
+
+  .technology-card .custom-icon {
+    width: 3rem;
+    height: auto;
+    margin-bottom: 1rem;
+  }
+
+  .technology-card h2 {
+    font-size: 1.2rem;
+    color: #fff;
+  }
+
+  .technology-card:hover {
+    box-shadow: 0 6px 12px rgba(255, 255, 255, 0.15);
+    transition: all 0.5s ease;
+  }
+
+  .technology-card .icon-text {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 1rem;
+  }
+
+  .technology-card .custom-icon {
+    width: 3rem;
+    height: auto;
+    margin-bottom: 1rem;
+  }
+</style>
+
+<!-- Ask For Cookie Consent-->
+<div id="cookie"></div>
+
+
+<body>
+
+  <!-- Move to up button -->
+  <div class="scroll-button">
+    <a href="#about"><i class="fas fa-arrow-up"></i></a>
+  </div>
+
+
+  <aside class="sidebar sidebar-collapsed" id="sidebar">
+    <div class="sidebar-toggle" id="sidebar-toggle">
+      <i class="fas fa-chevron-left"></i>
+    </div>
+    <div class="sidebar-content">
+      <h2>Quick Links</h2>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#technologies">Technologies</a></li>
+        <li><a href="#services">Useful Links</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </div>
+  </aside>
+  <style>
+    .sidebar {
+      position: fixed;
+      right: 0;
+      top: 25%;
+      transform: translateY(-50%);
+      background-color: #333;
+      padding: 1rem;
+      border-radius: 8px 0 0 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      transition: right 0.3s ease;
+      width: 150px;
+    }
+
+    .sidebar-collapsed {
+      right: -150px;
+    }
+
+    .sidebar-toggle {
+      position: absolute;
+      left: -45px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 30px;
+      height: 30px;
+      background: linear-gradient(145deg, #444, #222);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+      transition: all 0.3s ease;
+    }
+
+    .sidebar-toggle:hover {
+      opacity: 0.8;
+      transition: all 0.3s ease;
+
+    }
+
+    .sidebar-toggle i {
+      color: #fff;
+      font-size: 16px;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .sidebar-content h2 {
+      color: #fff;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      font-family: "Ubuntu", sans-serif;
+    }
+
+    .sidebar-content ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .sidebar-content ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    .sidebar-content ul li a {
+      color: #007bff;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 600;
+      font-family: "Poppins", sans-serif;
+    }
+
+    .sidebar-content ul li a:hover {
+      text-decoration: underline;
+      color: #5ba5f5;
+    }
+  </style>
+  <script>
+    const sidebar = document.getElementById("sidebar");
+    const toggleButton = document.getElementById("sidebar-toggle");
+    const toggleIcon = toggleButton.querySelector("i");
+
+    toggleButton.addEventListener("click", () => {
+      sidebar.classList.toggle("sidebar-collapsed");
+
+      if (sidebar.classList.contains("sidebar-collapsed")) {
+        toggleIcon.classList.remove("fa-chevron-right");
+        toggleIcon.classList.add("fa-chevron-left");
+      } else {
+        toggleIcon.classList.remove("fa-chevron-left");
+        toggleIcon.classList.add("fa-chevron-right");
+      }
+    });
+  </script>
+
+
+  <!-- About Section Start -->
+  <section class="about" id="about">
+
+    <div class="content" style="margin: 0px auto;">
+
+      <div class="title"><span>Welcome To MBK Tech Studio</span></div>
+
+      <div class="about-details">
+        <!--
+          <div class="left">
+           <img src="Assets/Images/about9.jpg" alt=""/>
+          </div> 
+          -->
+
+        <div class="center">
+          <div class="topic">About Us:</div>
+
+          <p>
+            MBK Tech Studio, Founded By <a class="links" href="https://github.com/MIbnEKhalid">Muhammad Bin
+              Khalid</a>, Is A Collaborative Development Studio Focusing
+            On Open-Source Contributions And Innovative Technology Solutions. We Empower Creators And
+            Problem-Solvers Through Software Development Services And Hardware Projects, With An Emphasis On
+            Community-Driven Initiatives. Our Goal Is To Create Impactful Digital And Hardware Solutions
+            That Benefit The Global Tech Community, Fostering Growth, Collaboration, And The Advancement Of
+            Open-Source Technologies.
+          </p>
+
+          <div class="topic">Connect With Us:</div>
+          <p>
+            Ready to join the movement? Follow Us On <a class="links" href="https://mbktechstudio.com/#ssmedia">Social Media</a> or Connect with us through the <a class="links newtab" href="Support/">Support
+              Form</a>
+            or <a class="links" title="support@mbktechstudio.com" href="mailto:support@mbktechstudio.com">Email</a>.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="technologies" id="technologies" style="padding-top: 10px !important;">
+    <div class="content">
+      <div class="title"><span>Technologies We Use</span></div>
+      <div class="technology-container">
+        <div class="technology-grid">
+          <div class="technology-card">
+            <i class="fab fa-html5"></i>
+            <h2>HTML5</h2>
+          </div>
+          <div class="technology-card">
+            <i class="fab fa-css3-alt"></i>
+            <h2>CSS3</h2>
+          </div>
+          <div class="technology-card">
+            <i class="fab fa-js"></i>
+            <h2>JavaScript</h2>
+          </div>
+          <div class="technology-card">
+            <i class="fab fa-node-js"></i>
+            <h2>Node.js</h2>
+          </div>
+          <div class="technology-card">
+            <i class="fab fa-python"></i>
+            <h2>Python</h2>
+          </div>
+          <div class="technology-card">
+            <i class="fab fa-react"></i>
+            <h2>React</h2>
+          </div>
+          <div class="technology-card">
+            <i class="fab fa-github"></i>
+            <h2>GitHub</h2>
+          </div>
+          <div class="technology-card">
+            <i class="fab fa-aws"></i>
+            <h2>AWS</h2>
+          </div>
+          <div class="technology-card">
+            <i class="fab fa-linux"></i>
+            <h2>Linux</h2>
+          </div>
+          <div class="technology-card">
+            <span class="icon-text">C++</span>
+            <h2>C++</h2>
+          </div>
+          <div class="technology-card">
+            <span class="icon-text">C#</span>
+            <h2>C#</h2>
+          </div>
+          <div class="technology-card">
+            <img height="80px" weight="80px" src="/Assets/Images/unity.png">
+            <h2>Unity</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- My Services Section Start -->
+  <section class="services" id="services" style="padding-top: 10px !important;">
+
+    <div class="content">
+
+      <div class="title"><span>Usefull Links</span></div>
+
+      <div class="Servicecontainer">
+        <div class="Servicegrid">
+          <a href="https://privacy.mbktechstudio.com" target="_blank" class="links Servicecard">
+            <h2>Privacy</h2>
+            <p>Access the privacy policies and legal notices for our services.</p>
+          </a>
+          <a href="https://docs.mbktechstudio.com" target="_blank" class="links Servicecard">
+            <h2>Projects & Documentations</h2>
+            <p>Explore technical and user documentation for projects and services.</p>
+          </a>
+          <a href="https://blog.mbktechstudio.com" target="_blank" class="links Servicecard">
+            <h2>Blog</h2>
+            <p>Read our latest articles, updates, and insights.</p>
+          </a>
+          <a href="https://portal.mbktechstudio.com" target="_blank" class="links Servicecard">
+            <h2>Web Portal</h2>
+            <p>Centralized portal for private use or team members only.</p>
+          </a>
+          <a href="https://portfolio.mbktechstudio.com" target="_blank" class="links Servicecard">
+            <h2>Portfolio</h2>
+            <p>Showcasing professional projects and personal achievements of our team.</p>
+          </a>
+          <a href="https://unilib.mbktechstudio.com" target="_blank" class="links Servicecard">
+            <h2>Unilib</h2>
+            <p>Resource hub for course materials, quizzes, and assignments.</p>
+          </a>
+          <a href="https://api.mbktechstudio.com" target="_blank" class="links Servicecard">
+            <h2>API Services</h2>
+            <p>Explore and interact with our APIs for integration and development.</p>
+          </a>
+        </div>
+      </div>
+
+    </div>
+    <div style="margin-bottom: 30px;"> </div>
+  </section>
+
+  <section class="contact" id="contact" style="padding-top: 0px !important;">
+    <div class="content" style="max-width: 800px; margin: 0 auto; text-align: center;">
+      <div class="title">
+        <span>Contact Us</span>
+      </div>
+      <div class="text">
+        <div class="topic">
+          <h3>Have a Project in Mind?</h3>
+        </div>
+        <p>
+          We’re thrilled to collaborate with talented individuals and entities! Whether you have a project idea or need support, here’s how you can reach out to us:
+        </p>
+        <div style="text-align: left; margin: 20px auto; padding: 15px; background: #1f1f1f; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);">
+          <ul style="list-style: none; padding: 0;">
+            <li style="margin-bottom: 15px; font-size: 1rem; color: #ccc;">
+              <strong>1.</strong> Visit our
+              <a class="links newtab" href="Support/" style="color: #4dabf7; text-decoration: none;">Support &amp; Contact Page</a>
+              to fill out the contact form.
+            </li>
+            <li style="margin-bottom: 15px; font-size: 1rem; color: #ccc;">
+              <strong>2.</strong> Send an email directly to
+              <a class="links" href="mailto:support@mbktechstudio.com" style="color: #4dabf7; text-decoration: none;">support@mbktechstudio.com</a>.
+            </li>
+            <li style="font-size: 1rem; color: #ccc;">
+              <strong>3.</strong> Connect with us on Social Media.
+            </li>
+          </ul>
+        </div>
+
+      </div>
+      <div class="ssmedis" id="ssmedia"><a href="https://instagram.com/mbktech.studios" target="_blank"><i class="fab fa-instagram" aria-hidden="true"></i></a><a href="https://www.facebook.com/people/MBK-Tech-Studio/61559079077988/" target="_blank"><i class="fab fa-facebook-f" aria-hidden="true"></i></a><a href="https://www.linkedin.com/in/muhammad-bin-khalid-89711b25b" target="_blank"><i class="fab fa-linkedin" aria-hidden="true"></i></a><a href="https://x.com/ibnekhalid28" target="_blank"><i class="fab fa-twitter" aria-hidden="true"></i></a><a href="https://github.com/MIbnEKhalid" target="_blank"><i class="fab fa-github" aria-hidden="true"></i></a><a href="https://youtube.com/@mibnekhalid" target="_blank"><i class="fab fa-youtube" aria-hidden="true"></i></a><a href="https://discord.gg/" target="_blank"><i class="fab fa-discord" aria-hidden="true"></i></a><a href="https://signal.me/#eu/0Bxn3qmtp8gtYNuy6eJ_F3WaHWHrQW3uefaC2y01VCWtduFQCwJHvIFL6N4VOtsv" target="_blank"><i class="fa-brands fa-signal-messenger" aria-hidden="true"></i></a></div>
+    </div>
+  </section>
+
+
+
+
+</body>
+
+<%- include('../templates/footer1.ejs') %>
+
+
+<script src="/Assets/Scripts/cookie.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/js/intlTelInput-jquery.min.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const headerHeight = document.querySelector('header').offsetHeight;
+
+    document.querySelectorAll('aside a').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+
+        if (targetElement) {
+          const targetPosition = targetElement.offsetTop - headerHeight - 28; // Adjust 10px as needed
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  });
+</script>
+
+</html>
