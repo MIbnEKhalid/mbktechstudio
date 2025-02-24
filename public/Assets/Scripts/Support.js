@@ -1,5 +1,4 @@
 // Global Var
-var noteW = document.querySelector(".notereq");
 var supportField = document.querySelector(".supportfield");
 const subjectSelect = document.getElementById("subjectSelect");
 const supportSelect = document.getElementById("supportselect");
@@ -18,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const blogSelect = document.getElementById("blogCatogo");
 
     // Fetch and handle projects JSON
-    fetch('https://raw.githubusercontent.com/MIbnEKhalid/Support/refs/heads/main/projects.json')
+    fetch('https://raw.githubusercontent.com/MIbnEKhalid/Assets/SupportT/refs/heads/main/projects.json')
         .then(response => response.json())
         .then(data => {
             projects = data; // Assign fetched data to the global projects variable
@@ -150,49 +149,8 @@ $("#mobile_code").intlTelInput({
         e.target.setCustomValidity("");
     }
 });
-
-// Check for the hash fragment on page load
-if (window.location.hash === "#requestbook") {
-    loadFormValues_requestbook();
-}
-else if (window.location.hash === "#requestquizass") {
-    loadFormValues_requestquizass();
-}
-else {
-    noteW.style.display = "none";
-}
-
-function loadFormValues_requestbook() {
-    supportField.style.display = "block";
-    document.querySelectorAll('select[name="support"]').forEach(function (input) {
-        input.setAttribute("required", "required");
-    });
-    noteW.style.display = "block";
-
-    subjectSelect.value = "Support";
-    supportSelect.value = "other";
-    messageForm.value = "Book Request\n" +
-        "Book Name:\n" +
-        "Course Name or Code:\n" +
-        "Book Link: (Leave Blank If not available or )\n";
-
-}
-
-function loadFormValues_requestquizass() {
-    supportField.style.display = "block";
-    document.querySelectorAll('select[name="support"]').forEach(function (input) {
-        input.setAttribute("required", "required");
-    });
-    noteW.style.display = "none";
-    subjectSelect.value = "Support";
-    supportSelect.value = "other";
-    messageForm.value = "Request To Add Quiz/Assigment:-\n" +
-        "Subject:\n" +
-        "Quiz/Assigment Number:\n" +
-        "Description:\n" +
-        "Due Date:\n" +
-        "Issue Date:\n";
-}
+ 
+ 
 
 function remove() {
     let i = 0;

@@ -84,7 +84,7 @@ document.getElementById("form").addEventListener("submit", function (e) {
 */
     var formData = new FormData(this);
 
-    fetch("https://api.web3forms.com/submit", {
+    fetch("http://localhost:3000/post/sendmail", {
         method: "POST",
         body: formData
     }).then(function (response) {
@@ -107,7 +107,6 @@ document.getElementById("form").addEventListener("submit", function (e) {
             if (numberField) numberField.style.display = "none";
             if (supportField) supportField.style.display = "none";
             if (projectCatogery) projectCatogery.style.display = "none";
-            if (noteW) noteW.style.display = "none";
             if (window.location.hash) {
                 history.replaceState(null, null, window.location.pathname);
             }
