@@ -17,6 +17,20 @@ const transporter = nodemailer.createTransport({
 });
 
 app.post("/SubmitForm", upload.none(), async (req, res) => {
+  const allowedOrigin = "https://mbktechstudio.com";
+  const referer = req.headers.referer;
+
+  const isLocalEnv = process.env.localenv === "true";
+  const isAllowedReferer =
+    referer &&
+    (referer.startsWith(allowedOrigin) ||
+      referer.endsWith(".mbktechstudio.com") ||
+      (isLocalEnv && referer.startsWith("http://localhost:3000")));
+
+  if (!isAllowedReferer) {
+    return res.status(403).json({ error: "Forbidden. Invalid referer." });
+  }
+
   console.log("Received request to /SubmitForm with body:", req.body);
 
   const {
@@ -58,6 +72,10 @@ app.post("/SubmitForm", upload.none(), async (req, res) => {
 
   // Construct the email table
   const emailContent = `
+          ${generateTableRow(
+            "Page URL",
+            `<a href="${PageUrl}" style="color: #007BFF; text-decoration: none;">${PageUrl}</a>`
+          )}
         <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: auto; border: 1px solid #ddd; border-radius: 8px; padding: 20px; background-color: #f9f9f9;">
     <h2 style="text-align: center; background-color: #d1ecf1; padding: 15px; border-radius: 6px; color: #0c5460;">
         Contact Form Submission
@@ -78,10 +96,7 @@ app.post("/SubmitForm", upload.none(), async (req, res) => {
         )}
         ${generateTableRow("Message", message)}
         ${generateTableRow("Timestamp", Timestamp, true)}
-        ${generateTableRow(
-          "Page URL",
-          `<a href="${PageUrl}" style="color: #007BFF; text-decoration: none;">${PageUrl}</a>`
-        )}
+
     </table>
     ${
       Object.keys(additionalFields).length
