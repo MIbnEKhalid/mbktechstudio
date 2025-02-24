@@ -17,19 +17,22 @@ const transporter = nodemailer.createTransport({
 });
 
 app.post("/SubmitForm", upload.none(), async (req, res) => {
-  const allowedOrigin = "https://mbktechstudio.com";
-  const referer = req.headers.referer;
-
-  const isLocalEnv = process.env.localenv === "true";
-  const isAllowedReferer =
-    referer &&
-    (referer.startsWith(allowedOrigin) ||
-      referer.endsWith(".mbktechstudio.com") ||
-      (isLocalEnv && referer.startsWith("http://localhost:3000")));
-
-  if (!isAllowedReferer) {
-    return res.status(403).json({ error: "Forbidden. Invalid referer." });
-  }
+    const allowedOrigin = "https://mbktechstudio.com";
+    const referer = req.headers.referer;
+  
+    // Determine if the environment is local
+    const isLocalEnv = process.env.localenv === "true";
+  
+    // Validate referer
+    if (
+      !referer ||
+      (!referer.includes(allowedOrigin) &&
+        !referer.includes(".mbktechstudio.com") &&
+        !(isLocalEnv && referer.includes("http://localhost:3000")))
+    ) {
+      console.log("Invalid referer:", referer);
+      return res.status(403).json({ error: "Forbidden. Invalid referer." });
+    }
 
   console.log("Received request to /SubmitForm with body:", req.body);
 
