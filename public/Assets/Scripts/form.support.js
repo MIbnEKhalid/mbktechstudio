@@ -84,7 +84,7 @@ document.getElementById("form").addEventListener("submit", function (e) {
 */
     var formData = new FormData(this);
 
-    fetch("http://localhost:3000/post/sendmail", {
+    fetch("/post/SubmitForm", {
         method: "POST",
         body: formData
     }).then(function (response) {
@@ -104,9 +104,18 @@ document.getElementById("form").addEventListener("submit", function (e) {
             document.getElementById("message").style.display = "none"; // Hide message box
 
             // Hide additional fields if necessary
-            if (numberField) numberField.style.display = "none";
-            if (supportField) supportField.style.display = "none";
-            if (projectCatogery) projectCatogery.style.display = "none";
+            if (numberField) {
+                numberField.style.display = "none";
+                numberField.value = null;
+            }
+            if (supportField) {
+                supportField.style.display = "none";
+                supportField.value = null;
+            }
+            if (projectCatogery) {
+                projectCatogery.style.display = "none";
+                projectCatogery.value = null;
+            }
             if (window.location.hash) {
                 history.replaceState(null, null, window.location.pathname);
             }
