@@ -6,8 +6,10 @@ import postRoutes from "./routes/post.js";
 import minifyHTML from "express-minify-html";
 import minify from "express-minify";
 import compression from "compression";
+import cors from "cors"; // Import the cors package
 
 const app = express();
+app.use(cors()); // Enable CORS for all origins
 app.use(express.json()); // To parse JSON request bodies
 // Enable compression and minification
 app.use(compression());
