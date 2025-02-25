@@ -1,49 +1,51 @@
 function resetMessageBoxStyle() {
-    const messageBox = document.getElementById("message");
-    messageBox.className = "message-box info";
+  const messageBox = document.getElementById("message");
+  messageBox.className = "message-box info";
+}
+
+function showmessage(content, type = "info") {
+  const messageBox = document.getElementById("message");
+  messageBox.textContent = content;
+  messageBox.style.display = "block";
+  messageBox.className = `message-box ${type}`;
+  if (type === "error") {
+    messageBox.innerHTML =
+      content +
+      " Please Try Again Later Or Contact Us Directly At: <a class='links' title='support@mbktechstudio.com' href='mailto:support@mbktechstudio.com'>support@mbktechstudio.com</a> for Contact & Support.";
   }
-  
-  function showMessage(content, type = "info") {
-    const messageBox = document.getElementById("message");
-    messageBox.textContent = content;
-    messageBox.style.display = "block";
-    messageBox.className = `message-box ${type}`;
-    if(type === "error") {
-        messageBox.innerHTML = content + " Please Try Again Later Or Contact Us Directly At: <a class='links' title='support@mbktechstudio.com' href='mailto:support@mbktechstudio.com'>support@mbktechstudio.com</a> for Contact & Support.";
-    }
-  }
+}
 
 function getPageUrl() {
-    return window.location.href;
+  return window.location.href;
 }
 
 document.getElementById("form").addEventListener("submit", function (e) {
-    e.preventDefault();
-    resetMessageBoxStyle();
-    showMessage("Submitting..", "info");
-    messageBox.style.display = "block";
-    document.getElementById("submit-button").disabled = true;
+  e.preventDefault();
+  resetMessageBoxStyle();
+  showmessage("Submitting..", "info");
+  messageBox.style.display = "block";
+  document.getElementById("submit-button").disabled = true;
 
-    var currentDate = new Date();
-    var day = String(currentDate.getDate()).padStart(2, "0");
-    var month = String(currentDate.getMonth() + 1).padStart(2, "0");
-    var year = currentDate.getFullYear();
-    var hours = String(currentDate.getHours()).padStart(2, "0");
-    var minutes = String(currentDate.getMinutes()).padStart(2, "0");
-    var seconds = String(currentDate.getSeconds()).padStart(2, "0");
+  var currentDate = new Date();
+  var day = String(currentDate.getDate()).padStart(2, "0");
+  var month = String(currentDate.getMonth() + 1).padStart(2, "0");
+  var year = currentDate.getFullYear();
+  var hours = String(currentDate.getHours()).padStart(2, "0");
+  var minutes = String(currentDate.getMinutes()).padStart(2, "0");
+  var seconds = String(currentDate.getSeconds()).padStart(2, "0");
 
-    // 12-hour format conversion
-    var hours12 = hours % 12 || 12; // Converts to 12-hour format
-    var period = currentDate.getHours() >= 12 ? "PM" : "AM";
+  // 12-hour format conversion
+  var hours12 = hours % 12 || 12; // Converts to 12-hour format
+  var period = currentDate.getHours() >= 12 ? "PM" : "AM";
 
-    // Retrieve the time zone
-    var region = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  // Retrieve the time zone
+  var region = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
-    var timestamp = `${day}/${month}/${year} ${hours}:${minutes}:${seconds} or ${hours12}:${minutes}:${seconds} ${period} ${region}`;
+  var timestamp = `${day}/${month}/${year} ${hours}:${minutes}:${seconds} or ${hours12}:${minutes}:${seconds} ${period} ${region}`;
 
-    document.querySelector('input[name="Timestamp"]').value = timestamp;
-    document.querySelector('input[name="PageUrl"]').value = getPageUrl();
-/*
+  document.querySelector('input[name="Timestamp"]').value = timestamp;
+  document.querySelector('input[name="PageUrl"]').value = getPageUrl();
+  /*
     // Function to generate a ticket number
     function generateTicketNumber() {
         return 'T' + Math.random().toString(36).substring(2, 11).toUpperCase();
@@ -82,54 +84,59 @@ document.getElementById("form").addEventListener("submit", function (e) {
         })
         .catch(error => console.error('Error loading JSON:', error));
 */
-// Convert form data to a plain object
-const formObj = Object.fromEntries(new FormData(this));
+  // Convert form data to a plain object
+  const formObj = Object.fromEntries(new FormData(this));
 
-// Send JSON data to the server
-fetch("/post/SubmitForm", {
+  // Send JSON data to the server
+  fetch("/post/SubmitForm", {
     method: "POST",
     headers: {
-        "Content-Type": "application/json"
+      "Content-Type": "application/json",
     },
-    body: JSON.stringify(formObj)
-}).then(function (response) {
-        if (response.ok) {
-            return response.json();
-        } else {
-            throw new Error("Failed to submit the form.");
+    body: JSON.stringify(formObj),
+  })
+    .then(function (response) {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error("Failed to submit the form.");
+      }
+    })
+    .then(function (data) {
+      showmessage("Form Submitted Successfully!", "success");
+      showMessage("Form Submitted Successfully!", "Success");
+      document.getElementById("submit-button").disabled = false;
+      document.getElementById("form").reset();
+
+      // showbox('tG-form');
+
+      setTimeout(function () {
+        document.getElementById("message").style.display = "none"; // Hide message box
+
+        // Hide additional fields if necessary
+        if (numberField) {
+          numberField.style.display = "none";
+          numberField.value = null;
         }
-    }).then(function (data) {
-        showMessage("Message Submitted Successfully!", "success");
-        document.getElementById("submit-button").disabled = false;
-        document.getElementById("form").reset();
-
-       // showbox('tG-form'); 
- 
-        setTimeout(function () {
-            document.getElementById("message").style.display = "none"; // Hide message box
-
-            // Hide additional fields if necessary
-            if (numberField) {
-                numberField.style.display = "none";
-                numberField.value = null;
-            }
-            if (supportField) {
-                supportField.style.display = "none";
-                supportField.value = null;
-            }
-            if (projectCatogery) {
-                projectCatogery.style.display = "none";
-                projectCatogery.value = null;
-            }
-            if (window.location.hash) {
-                history.replaceState(null, null, window.location.pathname);
-            }
-            const url = new URL(window.location);
-            url.searchParams.delete('Project');
-            window.history.replaceState({}, document.title, url);
-        }, 2000);
-    }).catch(function (error) {
-        console.error(error);
-        showMessage("An error occurred while submitting the form.", "error");
+        if (supportField) {
+          supportField.style.display = "none";
+          supportField.value = null;
+        }
+        if (projectCatogery) {
+          projectCatogery.style.display = "none";
+          projectCatogery.value = null;
+        }
+        if (window.location.hash) {
+          history.replaceState(null, null, window.location.pathname);
+        }
+        const url = new URL(window.location);
+        url.searchParams.delete("Project");
+        window.history.replaceState({}, document.title, url);
+      }, 2000);
+    })
+    .catch(function (error) {
+      console.error(error);
+      showmessage("An error occurred while submitting the form.", "error");
+      showMessage("An error occurred while submitting the form.", "Error");
     });
 });

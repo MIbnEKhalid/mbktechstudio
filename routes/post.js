@@ -6,6 +6,7 @@ import dotenv from "dotenv";
 const app = express.Router();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
 // Configure Nodemailer
 const transporter = nodemailer.createTransport({
   service: "gmail", // Adjust the service as needed
