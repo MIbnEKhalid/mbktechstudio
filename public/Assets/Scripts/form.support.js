@@ -82,12 +82,17 @@ document.getElementById("form").addEventListener("submit", function (e) {
         })
         .catch(error => console.error('Error loading JSON:', error));
 */
-    var formData = new FormData(this);
+// Convert form data to a plain object
+const formObj = Object.fromEntries(new FormData(this));
 
-    fetch("/post/SubmitForm", {
-        method: "POST",
-        body: formData
-    }).then(function (response) {
+// Send JSON data to the server
+fetch("/post/SubmitForm", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify(formObj)
+}).then(function (response) {
         if (response.ok) {
             return response.json();
         } else {

@@ -1,12 +1,11 @@
 import express from "express";
 import nodemailer from "nodemailer";
 import dotenv from "dotenv";
-import multer from "multer";
-dotenv.config();
+ dotenv.config();
 
 const app = express.Router();
-const upload = multer(); // Multer to parse form-data
-
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 // Configure Nodemailer
 const transporter = nodemailer.createTransport({
   service: "gmail", // Adjust the service as needed
@@ -16,7 +15,7 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-app.post("/SubmitForm", upload.none(), async (req, res) => {
+app.post("/SubmitForm",  async (req, res) => {
     const allowedOrigin = "https://mbktechstudio.com";
     const referer = req.headers.referer;
   

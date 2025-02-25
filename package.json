@@ -19,8 +19,5 @@
     "express-minify": "^1.0.0",
     "express-minify-html": "^0.12.0",
     "mailgen": "^2.0.29",
-    "multer": "^1.4.5-lts.1",
-    "nodemailer": "^6.10.0",
-    "xtend": "^4.0.2"
-  }
+    "nodemailer": "^6.10.0"  }
 }
