@@ -11,6 +11,35 @@ Detailed Documentation of this website will be available soon on: [docs.mbktechs
 ![Deployment Status](https://readme.deploystatus.mbktechstudio.com/?platform=github&user=mibnekhalid&repo=MIbnEKhalid.github.io&background=333333&hide_border=false&border=ff0&width=200&height=50)
 
 
+
+
+
+
+
+
+
+
+## Environment Variables for /post/SubmitForm
+
+To configure the email functionality for the form submission, you need to set the following environment variables:
+
+- `GMAIL_USER`: Enter your Gmail email address (e.g., `abc@gmail.com`).
+- `GMAIL_PASS`: Enter the Gmail App Password. Note that this is not the same as your email password. You need to create an app password by following these steps:
+  1. Enable 2-Factor Authentication (2FA) on your Google account.
+  2. Go to your Google Account settings and search for "App Passwords".
+  3. Create a new app password and copy it.
+  4. Paste the app password here.
+
+Make sure to keep these credentials secure and do not share them publicly.
+
+
+
+
+
+
+
+
+
 ### List Of Main Domains 
 
 |                         | Domains                                        | Purpose                                                                                                 |
