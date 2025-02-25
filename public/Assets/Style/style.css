@@ -227,40 +227,6 @@ nav .menu-btn,
   }
 }
 
-/* Style for select element */
-
-.text .select select {
-  outline: none;
-  padding: 5px 5px;
-  border-radius: 6px;
-  font-size: 25px;
-  font-weight: 400;
-  background: #377a77;
-  width: 180px;
-  color: #fff;
-  cursor: pointer;
-  border: 2px solid transparent;
-  transition: all 0.4s ease;
-  text-align: center;
-}
-
-.text .select select:hover {
-  border-color: #377a77;
-  background-color: #fff;
-  color: #377a77;
-  transition: all 0.3s ease;
-}
-
-.text .select select option.selected {
-  background-color: #fff;
-  color: #5f6061;
-}
-
-.text .select select option {
-  background-color: #fff;
-  color: #377a77;
-}
-
 .ssmedis {
   padding: auto;
   margin-top: 20px;
@@ -522,7 +488,6 @@ section .button button:hover {
 
 /* Contact Me CSS */
 
-
 .contact .content {
   margin: 0 auto;
   padding: 30px 0;
@@ -589,7 +554,7 @@ footer .text span a:hover {
 .about,
 html,
 body {
-  background-color: rgb(19, 19, 19);
+  background-color: #1a1a1a;
   color: #fff;
 }
 
@@ -809,149 +774,17 @@ form select {
   text-shadow: 0 0 5px #59a09c;
 }
 
-.search-bar {
-  display: flex;
-  align-items: center;
-  margin: 0 auto;
-  border-radius: 9px;
-  background-color: #fff;
-  width: auto;
-  max-width: 400px;
-  height: 40px;
-  border: 2px solid #377a77;
-  overflow: hidden;
-}
-
-.search-bar input[type="text"] {
-  border: none;
-  outline: none;
-  padding: 10px;
-  flex: 1;
-}
-
-.search-bar button {
-  background-color: #377a77;
-  border: none;
-  color: white;
-  padding: 19px;
-  cursor: pointer;
-  transition: all 0.5s ease;
-}
-
-.search-bar button:hover {
-  background-color: rgb(217, 217, 217);
-  color: #377a77;
-  transition: all 0.4s ease;
-}
-
-/* Dropdown Container */
-
-.select-dropdown {
-  margin-bottom: 20px;
-  /* Adjust spacing */
-}
-
-/* Label Styling */
-
-.select-dropdown label {
-  font-size: 18px;
-  font-weight: bold;
-  color: #377a77;
-  display: block;
-  margin-bottom: 8px;
-  text-align: center;
-}
-
-/* Select Styling */
-
-.select-dropdown select {
-  appearance: none;
-  /* Remove default appearance */
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  width: 100%;
-  font-weight: 700;
-  max-width: 400px;
-  padding: 10px;
-  font-size: 16px;
-  display: flex;
-  align-items: center;
-  margin: 0 auto;
-  border-radius: 9px;
-  border: 2px solid #377a77;
-  background-color: #fff;
-  color: #377a77;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.select-dropdown select:hover,
-.select-dropdown select:focus {
-  background-color: #377a77;
-  color: #fff;
-  border-color: #377a77;
-}
-
-/* Option Styling */
-
-.select-dropdown option {
-  background-color: #fff;
-  color: #377a77;
-  text-align: center;
-  text-align-last: center;
-}
-
-.select-dropdown option:hover {
-  background-color: #f1f1f1;
-}
-
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-}
-
-.grid-item {
-  background-color: #fff;
-  border: 20px solid #377a77;
-  border-radius: 8px;
-  padding: 20px;
-  text-align: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-}
-
-.grid-item:hover {
-  transform: scale(1.05);
-}
-
-.grid-item img {
-  max-width: 100%;
-  border-radius: 8px;
-}
-
-.grid-item h2 {
-  font-size: 24px;
-  margin: 10px 0;
-  color: #0e2431;
-}
-
-.grid-item p {
-  font-size: 16px;
-  color: #377a77;
-}
-
 .notification {
   padding: 5px 15px;
   border-radius: 8px;
   color: #333;
   font-weight: 500;
   font-size: 14px;
-   font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 .notification.is-form {
-   background-color: #eef8ff;
+  background-color: #eef8ff;
   border: 1px solid #a7d4ff;
   color: #31708f;
   /*  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
@@ -1015,6 +848,7 @@ form select {
   cursor: pointer;
   transition: all 0.4s ease;
   text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .button .buttons.full {
@@ -1032,37 +866,220 @@ form select {
   transition: all 0.3s ease;
 }
 
-
-
-
-
-
-
-
 nav .menu-btn {
   top: 25px;
 }
-@media(max-width: 400px) {
+@media (max-width: 400px) {
   nav .navbar .logo a {
-      font-size: 33px;
+    font-size: 33px;
   }
   .logo img {
-      width: 11.3%;
-      height: 100%;
+    width: 11.3%;
+    height: 100%;
   }
   nav .menu-btn {
-      top: 22px;
+    top: 22px;
   }
 }
-@media(max-width: 350px) {
+@media (max-width: 350px) {
   nav .navbar .logo a {
-      font-size: 27px;
+    font-size: 27px;
   }
   .logo img {
-      width: 11%;
-      height: 100%;
+    width: 11%;
+    height: 100%;
   }
   nav .menu-btn {
-      top: 20px;
+    top: 20px;
   }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 900px;
+  margin-top: 80px;
+}
+
+.container > h1 {
+  font-size: 50px;
+  color: #2d2d2d;
+  text-shadow: #cccc 1px 1px;
+  margin-bottom: 20px;
+}
+
+.filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.filters > button {
+  font-size: 17px;
+  padding: 5px;
+  width: 90px;
+  border: none;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.filters > input,
+.filters > select {
+  padding: 5px;
+  width: 120px;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border: none;
+  outline: none;
+}
+
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.product {
+  border: 2px solid #377a77;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: #333;
+  text-align: center;
+  max-width: 250px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  transition: all 0.3s ease;
+}
+
+.product img {
+  max-width: 230px;
+  height: 120px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+}
+
+.products p {
+  font-size: 12px;
+}
+
+.product:hover {
+  opacity: 0.6;
+  transition: all 0.3s ease;
+}
+
+/* Dropdown Container */
+.select-dropdown {
+  margin-bottom: 20px;
+  /* Adjust spacing */
+}
+
+/* Label Styling */
+.select-dropdown label {
+  font-size: 18px;
+  font-weight: bold;
+  color: #377a77;
+  display: block;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+/* Select Styling */
+.select-dropdown select {
+  appearance: none;
+  /* Remove default appearance */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 100%;
+  font-weight: 700;
+  max-width: 400px;
+  padding: 10px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  border-radius: 9px;
+  border: 2px solid #377a77;
+  background-color: #333;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.select-dropdown select:hover,
+.select-dropdown select:focus {
+  background-color: #377a77;
+  color: #fff;
+  border-color: #377a77;
+}
+
+/* Option Styling */
+.select-dropdown option {
+  background-color: #333;
+  color: #377a77;
+  text-align: center;
+  text-align-last: center;
+}
+
+.select-dropdown option:hover {
+  background-color: #f1f1f1;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  position: relative;
+  /* Needed to position the clear button */
+  margin: 0 auto;
+  border-radius: 9px;
+  background-color: #333;
+  width: auto;
+  max-width: 400px;
+  height: 40px;
+  border: 2px solid #377a77;
+  overflow: hidden;
+}
+
+.search-bar input[type="text"] {
+  border: none;
+  outline: none;
+  padding: 10px;
+  background-color: #333;
+  color: #fff;
+  flex: 1;
+}
+
+.search-bar .submit button {
+  background-color: #377a77;
+  border: none;
+  color: rgb(255, 255, 255);
+  padding: 19px;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+.search-bar .submit button:hover {
+  background-color: rgb(233, 233, 233);
+  color: #377a77;
+  transition: all 0.4s ease;
+} /* Styles for the clear (cross) button */
+.search-bar .clear-btn {
+  position: absolute;
+  right: 60px;
+  /* Adjust based on the size of your other button */
+  background: transparent;
+  border: none;
+  font-size: 16px;
+  color: #377a77;
+  cursor: pointer;
+  display: none;
+  /* Initially hidden */
+}
+
+.search-bar .clear-btn:hover {
+  color: rgb(233, 233, 233);
 }
