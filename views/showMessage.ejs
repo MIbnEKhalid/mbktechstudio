@@ -102,7 +102,6 @@
         text-align: center;
         cursor: pointer;
         transition: all 0.3s ease;
-        margin: 5px;
     }
 
     .messageInputField:hover {
@@ -140,19 +139,32 @@
             transform: scale(0.9);
         }
     }
+
+    .ticketRow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1px;
+        margin: 10px;
+    }
+
+    /* Optional: Adjust input field width in the ticket row */
+    .ticketRow .messageInputField {
+        width: auto;
+        min-width: 150px;
+    }
+
+    .ticketLabel {
+        padding: 7px 10px;
+        border-radius: 5px;
+        font-size: 18px;
+        font-weight: bold;
+        color: #fff;
+        text-align: center;
+    }
 </style>
 
 <script>
-    /*
-    document.addEventListener("DOMContentLoaded", function () {
-        showMessage(
-            `Form Submitted Successfully!<br>
-            <input type="text" class="messageInputField" value="23" readonly onclick="copyValue(this)" />
-            <br> <span class="copyInstructions">Click on the ticket number to copy it.</span>
-            <span class="copyInstructions">You can use this ticket number to track your request.</span>`,
-            "Success"
-        );
-    });*/
 
     function showMessage(message, heading) {
         document.querySelector(".showmessageWindow h1").innerText = heading;

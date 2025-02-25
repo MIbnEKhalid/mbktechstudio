@@ -98,7 +98,7 @@ nav .navbar {
 }
 
 .logo img {
-  width: 100%;
+  width: 12%;
   height: 100%;
   float: left;
 }
@@ -522,9 +522,6 @@ section .button button:hover {
 
 /* Contact Me CSS */
 
-.contact {
-  background: #1a1a1a;
-}
 
 .contact .content {
   margin: 0 auto;
@@ -950,8 +947,7 @@ form select {
   color: #333;
   font-weight: 500;
   font-size: 14px;
-  text-align: center;
-  font-family: 'Open Sans', sans-serif;
+   font-family: 'Open Sans', sans-serif;
 }
 
 .notification.is-form {
@@ -1034,4 +1030,39 @@ form select {
   background-color: transparent;
   color: #377a77;
   transition: all 0.3s ease;
+}
+
+
+
+
+
+
+
+
+nav .menu-btn {
+  top: 25px;
+}
+@media(max-width: 400px) {
+  nav .navbar .logo a {
+      font-size: 33px;
+  }
+  .logo img {
+      width: 11.3%;
+      height: 100%;
+  }
+  nav .menu-btn {
+      top: 22px;
+  }
+}
+@media(max-width: 350px) {
+  nav .navbar .logo a {
+      font-size: 27px;
+  }
+  .logo img {
+      width: 11%;
+      height: 100%;
+  }
+  nav .menu-btn {
+      top: 20px;
+  }
 }

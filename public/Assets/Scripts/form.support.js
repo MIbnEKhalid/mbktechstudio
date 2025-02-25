@@ -5,10 +5,12 @@ function resetMessageBoxStyle() {
 
 function showmessage(content, type = "info") {
   const messageBox = document.getElementById("message");
+  messageBox.style.color = "green";
   messageBox.textContent = content;
   messageBox.style.display = "block";
   messageBox.className = `message-box ${type}`;
   if (type === "error") {
+    messageBox.style.color = "red";
     messageBox.innerHTML =
       content +
       " Please Try Again Later Or Contact Us Directly At: <a class='links' title='support@mbktechstudio.com' href='mailto:support@mbktechstudio.com'>support@mbktechstudio.com</a> for Contact & Support.";
@@ -105,6 +107,20 @@ document.getElementById("form").addEventListener("submit", function (e) {
     .then(function (data) {
       showmessage("Form Submitted Successfully!", "success");
       showMessage("Form Submitted Successfully!", "Success");
+
+      /*
+      const ticketNo = "T000133311034";
+      showMessage(
+        `Form Submitted Successfully!<br>
+  <div class="ticketRow">
+      <span class="ticketLabel">Ticket No:</span>
+      <input type="text" id="ticketInput" class="messageInputField" value="${ticketNo}" readonly onclick="copyValue(this)" />
+  </div> 
+  <span class="copyInstructions">Click on the ticket number to copy it.</span>
+  <span class="copyInstructions">You can use this ticket number to track your request.</span>`,
+        "Success"
+      );*/
+
       document.getElementById("submit-button").disabled = false;
       document.getElementById("form").reset();
 
@@ -138,5 +154,6 @@ document.getElementById("form").addEventListener("submit", function (e) {
       console.error(error);
       showmessage("An error occurred while submitting the form.", "error");
       showMessage("An error occurred while submitting the form.", "Error");
+      document.getElementById("submit-button").disabled = false;
     });
 });
