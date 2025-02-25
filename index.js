@@ -33,17 +33,38 @@ app.use(
   })
 );
 
-// Serve static files
+function DomainRedirect(req, res, next) {
+  const hostname = req.headers.host;
+  console.log(`Incoming request to hostname: ${hostname}`);
+
+  if (hostname === "mbktechstudio.com" || process.env.site === "main") {
+    req.site = "main";
+  } else if (hostname === "docs.mbktechstudio.com" || process.env.site === "docs") {
+    req.site = "docs";
+  } else {
+    req.site = "main";
+  }
+  console.log(`Request site set to: ${req.site}`);
+  next();
+}
+
 app.use("/", express.static(path.join(__dirname, "public/")));
 
-app.get("/", (req, res) => {
-  return res.render("mainPages/index.ejs");
+app.get("/", DomainRedirect, (req, res) => {
+  console.log(`Handling request for site: ${req.site}`);
+  if (req.site === "docs") {
+    console.log("Rendering docs index page");
+    return res.render("mainPages/docDomain/index.ejs");
+  } else {
+    console.log("Rendering main index page");
+    return res.render("mainPages/mainDomain/index.ejs"); // Assuming you want to render the main index page for other sites
+  }
 });
 
 app.get(
   ["/FAQS", "/FAQs", "/faqs", "/FrequentlyAskedQuestions"],
   (req, res) => {
-    return res.render("mainPages/FAQs.ejs");
+    return res.render("mainPages/mainDomain/FAQs.ejs");
   }
 );
 app.get(
@@ -54,7 +75,7 @@ app.get(
     "/FrequentlyAskedQuestions/What-Web-Tools-Do-You-Use-for-Website-hosting-Business-Email-etc",
   ],
   (req, res) => {
-    return res.render("otherPages/faqs1.ejs");
+    return res.render("mainPages/mainDomain/otherPages/faqs1.ejs");
   }
 );
 
@@ -66,7 +87,7 @@ app.get(
     "/terms&conditions",
   ],
   (req, res) => {
-    return res.render("mainPages/Terms&Conditions.ejs");
+    return res.render("mainPages/mainDomain/Terms&Conditions.ejs");
   }
 );
 
@@ -77,13 +98,13 @@ app.use("/api", apiRoutes);
 app.get(
   ["/Support&Contact", "/Support", "/Contact", "/Contact&Support"],
   (req, res) => {
-    return res.render("mainPages/Support&Contact.ejs");
+    return res.render("mainPages/mainDomain/Support&Contact.ejs");
   }
 );
 
 app.use((req, res) => {
   console.log(`Path not found: ${req.url}`);
-  return res.render("mainPages/404.ejs");
+  return res.render("mainPages/mainDomain/404.ejs");
 });
 
 const port = 3000;
