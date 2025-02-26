@@ -16,61 +16,61 @@ const appp = initializeApp(firebaseConfig);
 
 // Initialize analytics only if supported (i.e. in a browser context)
 isSupported().then((supported) => {
-  if (supported) {
-    getAnalytics(appp);
-  }
+    if (supported) {
+        getAnalytics(appp);
+    }
 });
 
 const db = getFirestore(appp);
 
 // Test connection to Firestore
-const testConnection = async () => {
-  try {
-    const testDocRef = doc(db, "testCollection", "testConnection");
-    await setDoc(testDocRef, {
-      timestamp: new Date().toISOString(),
-      message: "Connection successful",
-    });
-    console.log("Successfully connected to Firestore");
-  } catch (error) {
-    console.error("Failed to connect to Firestore:", error);
-  }
+const testConnection = async() => {
+    try {
+        const testDocRef = doc(db, "testCollection", "testConnection");
+        await setDoc(testDocRef, {
+            timestamp: new Date().toISOString(),
+            message: "Connection successful",
+        });
+        console.log("Successfully connected to Firestore");
+    } catch (error) {
+        console.error("Failed to connect to Firestore:", error);
+    }
 };
 
-testConnection();  
+testConnection();
 
 // Update the /test endpoint
-app.post("/test", async (req, res) => {
-  const {   title, name, createdDate, lastUpdated, status, auditTrail } = req.body;
+app.post("/test", async(req, res) => {
+    const { title, name, createdDate, lastUpdated, status, auditTrail } = req.body;
 
-  const id = "yourCollectionName"; 
-  try {
-    // Write data to Firestore
-    const docRef = doc(db, "yourCollectionName", id);
-    await setDoc(docRef, {
-      title,
-      name,
-      createdDate,
-      lastUpdated,
-      status,
-      auditTrail,
-    });
+    const id = "yourCollectionName";
+    try {
+        // Write data to Firestore
+        const docRef = doc(db, "yourCollectionName", id);
+        await setDoc(docRef, {
+            title,
+            name,
+            createdDate,
+            lastUpdated,
+            status,
+            auditTrail,
+        });
 
-    res.status(200).json({ message: "Record added successfully" });
-  } catch (error) {
-    console.error("Failed to add record to Firestore:", error);
-    res.status(500).json({ error: "Failed to add record", details: error.message });
-  }
+        res.status(200).json({ message: "Record added successfully" });
+    } catch (error) {
+        console.error("Failed to add record to Firestore:", error);
+        res.status(500).json({ error: "Failed to add record", details: error.message });
+    }
 });
 
 
 // Configure Nodemailer
 const transporter = nodemailer.createTransport({
-  service: "gmail", // Adjust the service as needed
-  auth: {
-    user: process.env.GMAIL_USER, // Your email
-    pass: process.env.GMAIL_PASS, // Your email password
-  },
+    service: "gmail",
+    auth: {
+        user: process.env.GMAIL_USER,
+        pass: process.env.GMAIL_PASS,
+    },
 });
 
 const generateTableRow = (label, value, isHighlighted = false) => `
@@ -81,19 +81,19 @@ const generateTableRow = (label, value, isHighlighted = false) => `
 `;
 
 const constructEmailContent = (data) => {
-  const {
-    PageUrl,
-    subject,
-    support,
-    projectCato,
-    name,
-    email,
-    message,
-    Timestamp,
-    additionalFields,
-  } = data;
+        const {
+            PageUrl,
+            subject,
+            support,
+            projectCato,
+            name,
+            email,
+            message,
+            Timestamp,
+            additionalFields,
+        } = data;
 
-  return `
+        return `
     ${generateTableRow(
       "Page URL",
       `<a href="${PageUrl}" style="color: #007BFF; text-decoration: none;">${PageUrl}</a>`

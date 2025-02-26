@@ -117,7 +117,7 @@
   font-size: 14px;
   z-index: 1000;
   font-weight: bold;
-  pointer-events: none; 
+  pointer-events: none;
 }
 @media (max-width: 768px) {
   .RedboxInfo {

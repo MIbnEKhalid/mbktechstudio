@@ -1,11 +1,3 @@
-
-
-
-
-
-
-
-
 // Define social media links
 const socialMediaLinks = [
     { href: "https://instagram.com/mbktech.studios", icon: "fab fa-instagram", target: "_blank" },
@@ -33,9 +25,9 @@ function populateIcons(containerId) {
 }
 
 // Wait for DOM to load before executing
-document.addEventListener("DOMContentLoaded", function () {
-    populateIcons("media-icons");  // Populate media icons for "media-icons"
-    populateIcons("media-icons-m");  // Populate media icons for "media-icons-m"
+document.addEventListener("DOMContentLoaded", function() {
+    populateIcons("media-icons"); // Populate media icons for "media-icons"
+    populateIcons("media-icons-m"); // Populate media icons for "media-icons-m"
 
     // Populate icons for "ssmedia" if it exists
     const ssmediaElement = document.getElementById("ssmedia");
@@ -50,4 +42,3 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
-

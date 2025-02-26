@@ -62,4 +62,3 @@ if (navLinks.length > 0) {
 } else {
     console.log("No elements found with class 'menu li a'.");
 }
-

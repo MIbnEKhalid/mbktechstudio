@@ -8,11 +8,11 @@ const isAllowedDomain = (domain) => {
         domain === 'ibnekhalid.me' ||
         domain.endsWith('.mbktechstudio.com') ||
         domain.endsWith('.mbktech.xyz') ||
-        domain.endsWith('.ibnekhalid.me') 
-    /*  
-        || domain === 'localhost' ||
-        domain === '127.0.0.1'
-    */    
+        domain.endsWith('.ibnekhalid.me')
+        /*  
+            || domain === 'localhost' ||
+            domain === '127.0.0.1'
+        */
     );
 };
 
@@ -22,10 +22,7 @@ let apiKey_access_key = 'd2837145-a5b5-49af-b269-cb79e9b57456';
 let restriction_enabled = false;
 if (isAllowedDomain(currentDomain) || !restriction_enabled) {
     apiKey_access_key = Web3Forms_API_KEY_Private;
-} 
-
-else {
+} else {
     console.warn('Unauthorized domain:', currentDomain);
-    apiKey_access_key = null;  
+    apiKey_access_key = null;
 }
- 

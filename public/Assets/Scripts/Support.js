@@ -12,7 +12,7 @@ var messageBox = document.getElementById("message");
 var projects = [];
 var blogs = [];
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function() {
     const projectSelect = document.getElementById("projectCatogo");
     const blogSelect = document.getElementById("blogCatogo");
 
@@ -139,8 +139,8 @@ function showLink(linkID, fieldID) {
 $("#mobile_code").intlTelInput({
     initialCountry: "pk",
     separateDialCode: true
-    // utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.4/js/utils.js"
-}).on("input", function (e) {
+        // utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.4/js/utils.js"
+}).on("input", function(e) {
     var input = e.target.value;
     e.target.value = input.replace(/[^0-9]/g, '').slice(0, 11);
     if (e.target.value.length < 10) {
@@ -149,8 +149,8 @@ $("#mobile_code").intlTelInput({
         e.target.setCustomValidity("");
     }
 });
- 
- 
+
+
 
 function remove() {
     let i = 0;
@@ -160,7 +160,7 @@ function remove() {
     }
 }
 
-document.getElementById("subjectSelect").addEventListener("change", function () {
+document.getElementById("subjectSelect").addEventListener("change", function() {
 
     var selectedOption = this.value;
 
@@ -171,33 +171,31 @@ document.getElementById("subjectSelect").addEventListener("change", function () 
 
         // Hide rating field
         ratingField.style.display = "none";
-        document.querySelectorAll('input[name="stars"]').forEach(function (input) {
+        document.querySelectorAll('input[name="stars"]').forEach(function(input) {
             input.removeAttribute("required");
         });
 
         // Hide support field
         supportField.style.display = "none";
-        document.querySelectorAll('select[name="support"]').forEach(function (input) {
+        document.querySelectorAll('select[name="support"]').forEach(function(input) {
             input.removeAttribute("required");
         });
 
         // Hide project category field
         projectCatogery.style.display = "none";
-        document.querySelectorAll('select[name="projectCato"]').forEach(function (input) {
+        document.querySelectorAll('select[name="projectCato"]').forEach(function(input) {
             input.removeAttribute("required");
         });
 
         // Hide Blog category field
         blogCatogery.style.display = "none";
-        document.querySelectorAll('select[name="blogCatogo"]').forEach(function (input) {
+        document.querySelectorAll('select[name="blogCatogo"]').forEach(function(input) {
             input.removeAttribute("required");
         });
-    }
-
-    else if (selectedOption === "Feedback") {
+    } else if (selectedOption === "Feedback") {
         // Show rating field for feedback
         ratingField.style.display = "block";
-        document.querySelectorAll('input[name="stars"]').forEach(function (input) {
+        document.querySelectorAll('input[name="stars"]').forEach(function(input) {
             input.setAttribute("required", "required");
         });
 
@@ -207,27 +205,25 @@ document.getElementById("subjectSelect").addEventListener("change", function () 
 
         // Hide support field
         supportField.style.display = "none";
-        document.querySelectorAll('select[name="support"]').forEach(function (input) {
+        document.querySelectorAll('select[name="support"]').forEach(function(input) {
             input.removeAttribute("required");
         });
 
         // Hide project category field
         projectCatogery.style.display = "none";
-        document.querySelectorAll('select[name="projectCato"]').forEach(function (input) {
+        document.querySelectorAll('select[name="projectCato"]').forEach(function(input) {
             input.removeAttribute("required");
         });
 
         // Hide Blog category field
         blogCatogery.style.display = "none";
-        document.querySelectorAll('select[name="blogCatogo"]').forEach(function (input) {
+        document.querySelectorAll('select[name="blogCatogo"]').forEach(function(input) {
             input.removeAttribute("required");
         });
-    }
-
-    else if (selectedOption === "Support") {
+    } else if (selectedOption === "Support") {
         // Show support field for support
         supportField.style.display = "block";
-        document.querySelectorAll('select[name="support"]').forEach(function (input) {
+        document.querySelectorAll('select[name="support"]').forEach(function(input) {
             input.setAttribute("required", "required");
         });
 
@@ -237,12 +233,10 @@ document.getElementById("subjectSelect").addEventListener("change", function () 
 
         // Hide rating field
         ratingField.style.display = "none";
-        document.querySelectorAll('input[name="stars"]').forEach(function (input) {
+        document.querySelectorAll('input[name="stars"]').forEach(function(input) {
             input.removeAttribute("required");
         });
-    }
-
-    else if (selectedOption === "General Inquiry") {
+    } else if (selectedOption === "General Inquiry") {
 
 
         // Hide all additional fields for other options
@@ -251,100 +245,98 @@ document.getElementById("subjectSelect").addEventListener("change", function () 
 
         // Hide rating field
         ratingField.style.display = "none";
-        document.querySelectorAll('input[name="stars"]').forEach(function (input) {
+        document.querySelectorAll('input[name="stars"]').forEach(function(input) {
             input.removeAttribute("required");
         });
 
         // Show support field for support
         supportField.style.display = "none";
-        document.querySelectorAll('select[name="support"]').forEach(function (input) {
+        document.querySelectorAll('select[name="support"]').forEach(function(input) {
             input.removeAttribute("required");
         });
 
         // Hide project category field
         projectCatogery.style.display = "none";
-        document.querySelectorAll('select[name="projectCato"]').forEach(function (input) {
+        document.querySelectorAll('select[name="projectCato"]').forEach(function(input) {
             input.removeAttribute("required");
         });
 
         // Hide Blog category field
         blogCatogery.style.display = "none";
-        document.querySelectorAll('select[name="blogCatogo"]').forEach(function (input) {
+        document.querySelectorAll('select[name="blogCatogo"]').forEach(function(input) {
             input.removeAttribute("required");
         });
-    }
-
-    else {
+    } else {
         // Hide all additional fields for other options
         numberField.style.display = "none";
         document.querySelector('input[name="Number"]').removeAttribute("required");
         ratingField.style.display = "none";
-        document.querySelectorAll('input[name="stars"]').forEach(function (input) {
+        document.querySelectorAll('input[name="stars"]').forEach(function(input) {
             input.removeAttribute("required");
         });
         supportField.style.display = "none";
-        document.querySelectorAll('select[name="support"]').forEach(function (input) {
+        document.querySelectorAll('select[name="support"]').forEach(function(input) {
             input.removeAttribute("required");
         });
         projectCatogery.style.display = "none";
-        document.querySelectorAll('select[name="projectCato"]').forEach(function (input) {
+        document.querySelectorAll('select[name="projectCato"]').forEach(function(input) {
             input.removeAttribute("required");
         });
         // Hide Blog category field
         blogCatogery.style.display = "none";
-        document.querySelectorAll('select[name="blogCatogo"]').forEach(function (input) {
+        document.querySelectorAll('select[name="blogCatogo"]').forEach(function(input) {
             input.removeAttribute("required");
         });
     }
 });
 
-document.getElementById("supportselect").addEventListener("change", function () {
+document.getElementById("supportselect").addEventListener("change", function() {
 
     var selectedOption = this.value;
     //selectedOption === "Blogs" || selectedOption === "Docs"
     if (selectedOption === "Technical" || selectedOption === "CopyRightIssue" || selectedOption === "SourceCodeAssistance" || selectedOption === "BugReportingFeatureRequests" || selectedOption === "other") {
         projectCatogery.style.display = "block";
-        document.querySelectorAll('select[name="projectCato"]').forEach(function (input) {
+        document.querySelectorAll('select[name="projectCato"]').forEach(function(input) {
             input.setAttribute("required", "required");
         });
         // Hide Blog category field
         blogCatogery.style.display = "none";
-        document.querySelectorAll('select[name="blogCatogo"]').forEach(function (input) {
+        document.querySelectorAll('select[name="blogCatogo"]').forEach(function(input) {
             input.removeAttribute("required");
         });
-    }
-    else if (selectedOption === "Blogs") {
+    } else if (selectedOption === "Blogs") {
         blogCatogery.style.display = "block";
-        document.querySelectorAll('select[name="blogCatogo"]').forEach(function (input) {
+        document.querySelectorAll('select[name="blogCatogo"]').forEach(function(input) {
             input.setAttribute("required", "required");
-        }); projectCatogery.style.display = "none";
-        document.querySelectorAll('select[name="projectCato"]').forEach(function (input) {
+        });
+        projectCatogery.style.display = "none";
+        document.querySelectorAll('select[name="projectCato"]').forEach(function(input) {
             input.removeAttribute("required");
         });
     } else if (selectedOption === "Docs") {
         blogCatogery.style.display = "none";
-        document.querySelectorAll('select[name="blogCatogo"]').forEach(function (input) {
-            input.removeAttribute("required");
-        }); projectCatogery.style.display = "none";
-        document.querySelectorAll('select[name="projectCato"]').forEach(function (input) {
+        document.querySelectorAll('select[name="blogCatogo"]').forEach(function(input) {
             input.removeAttribute("required");
         });
-    }
-    else {
         projectCatogery.style.display = "none";
-        document.querySelectorAll('select[name="projectCato"]').forEach(function (input) {
+        document.querySelectorAll('select[name="projectCato"]').forEach(function(input) {
+            input.removeAttribute("required");
+        });
+    } else {
+        projectCatogery.style.display = "none";
+        document.querySelectorAll('select[name="projectCato"]').forEach(function(input) {
             input.removeAttribute("required");
         });
 
         blogCatogery.style.display = "none";
-        document.querySelectorAll('select[name="blogCatogo"]').forEach(function (input) {
+        document.querySelectorAll('select[name="blogCatogo"]').forEach(function(input) {
             input.removeAttribute("required");
         });
     }
 });
 
 
- 
+
 
 function copyTicketNumber() {
     const ticketInput = document.getElementById('ticketNumber');
@@ -361,7 +353,7 @@ function showbox(link) {
     document.getElementById(link).classList.add('show');
 }
 
-document.getElementById('ticketStatusForm').addEventListener('submit', function (event) {
+document.getElementById('ticketStatusForm').addEventListener('submit', function(event) {
     event.preventDefault();
 
     let ticketId = document.getElementById('ticketId').value;

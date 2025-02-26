@@ -25,7 +25,7 @@ body.dark-mode .close-btn {
 
 .iti--separate-dial-code .iti__selected-dial-code {
   color: #000000 !important;
-} 
+}
 
 .required-label::after {
   content: "*";
@@ -104,11 +104,6 @@ form .input {
   background-image: url("Assets/Images/Signal-Logo-White.svg");
   background-size: contain;
   background-repeat: no-repeat;
-}
-
-html,
-body {
-  background-color: #f0f8ff;
 }
 
 .links {
