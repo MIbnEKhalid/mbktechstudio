@@ -9,15 +9,6 @@
   <link rel="stylesheet" href="/Assets/Style/doc.css">
   <link rel="stylesheet" href="/Assets/Style/Supportstyle.css">
   <title>Support & Contact</title>
-  <script src="/Assets/Scripts/config.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const input = document.querySelector('input[name="access_key"]');
-      if (input) {
-        input.value = apiKey_access_key;
-      }
-    });
-  </script>
   <style>
     @media(max-width: 600px) {
       section .content {
@@ -38,17 +29,19 @@
 
     .clearbtni {
       position: absolute;
-      right: 5px;
+      right: 10px;
       background: transparent;
       border: none;
       font-size: 16px;
-      color: #377a77;
+      color: rgb(233, 233, 233); 
       cursor: pointer;
       display: none;
+      transition: all 0.3s ease;
     }
 
     .clearbtni:hover {
-      color: rgb(233, 233, 233);
+      opacity: 0.7;
+      transition: all 0.3s ease;
     }
   </style>
 </head>

@@ -57,29 +57,7 @@ a:hover {
     border-radius: 6px;
     box-shadow: rgba(0, 0, 0, 0.15);
     display: none;
-}
-
-
-/* Custom Scroll Bar CSS */
-
-::-webkit-scrollbar {
-    width: 10px;
-}
-
-::-webkit-scrollbar-track {
-    background: #f1f1f1;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #89f1ee;
-    border-radius: 12px;
-    transition: all 0.3s ease;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #4ea19d;
-}
-
+}  
 
 /* navbar styling */
 
@@ -510,48 +488,6 @@ nav .navbar .menu .media-icons-m a {
     .contact .text {
         width: 100%;
     }
-}
-
-
-/* Form */
-
-form select {
-    width: 100%;
-    margin-bottom: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    background-color: #fff;
-}
-
-form {
-    border-radius: 6px;
-    padding: 0px;
-}
-
-form .control {
-    margin-top: 10px;
-}
-
-form .field {
-    margin-bottom: 15px;
-}
-
-form .label {
-    color: #fff;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-form input,
-form textarea,
-form select {
-    width: 100%;
-    margin-bottom: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    background-color: #fff;
 }
 
 .emojji {

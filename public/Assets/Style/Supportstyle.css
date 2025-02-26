@@ -23,10 +23,6 @@ body.dark-mode .close-btn {
     background: url(/Assets/Images/close-icon-white.svg) 0 0 / 23px 23px no-repeat;
 }
 
-.iti--separate-dial-code .iti__selected-dial-code {
-    color: #000000 !important;
-}
-
 .required-label::after {
     content: "*";
     color: red;
@@ -40,39 +36,6 @@ body.dark-mode .close-btn {
     align-items: center;
     width: 90%;
     margin-top: 20px;
-}
-
-form select {
-    width: 100%;
-    margin-bottom: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    background-color: #fff;
-}
-
-form {
-    margin: auto;
-}
-
-form .field {
-    margin-bottom: 5px;
-}
-
-form .label {
-    color: rgb(0, 0, 0);
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-form .input {
-    width: 100%;
-    margin-bottom: 10px;
-    margin-top: 5px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    background-color: #fff;
 }
 
 .ssmedis {

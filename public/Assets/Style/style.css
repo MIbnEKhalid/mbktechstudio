@@ -50,21 +50,23 @@ a:hover {
 /* Custom Scroll Bar CSS */
 
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 7px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    background: #333;
+    transition: all 0.3s ease;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #89f1ee;
+    background: #377a77;
     border-radius: 12px;
     transition: all 0.3s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #4ea19d;
+    background: #326865;
+    transition: all 0.3s ease;
 }
 
 
@@ -188,36 +190,30 @@ nav .menu-btn,
     display: none;
 }
 
+nav .menu-btn {
+    top: 25px;
+}
+
 @media (max-width: 400px) {
     nav .navbar .logo a {
         font-size: 33px;
     }
     .logo img {
-        width: 95%;
-        height: 95%;
-    }
-}
-
-@media (max-width: 376px) {
-    nav .navbar .logo a {
-        font-size: 28px;
-    }
-    .logo img {
-        width: 87%;
-        height: 87%;
+        width: 11.3%;
+        height: 100%;
     }
     nav .menu-btn {
         top: 22px;
     }
 }
 
-@media (max-width: 339px) {
+@media (max-width: 350px) {
     nav .navbar .logo a {
-        font-size: 26px;
+        font-size: 27px;
     }
     .logo img {
-        width: 85%;
-        height: 85%;
+        width: 11%;
+        height: 100%;
     }
     nav .menu-btn {
         top: 20px;
@@ -418,71 +414,6 @@ section .button button:hover {
 }
 
 
-/* My Services CSS */
-
-.boxes {
-    margin-bottom: 20px;
-}
-
-.services .boxes {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-.services .box {
-    margin: 20px 0;
-    width: calc(100% / 3 - 20px);
-    text-align: center;
-    border-radius: 12px;
-    padding: 30px 10px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.12);
-    cursor: default;
-    transition: all 0.4s ease;
-}
-
-.services .box:hover {
-    background: #377a77;
-    color: #fff;
-    transition: all 0.3s ease;
-}
-
-.services .box .icon {
-    height: 50px;
-    width: 50px;
-    background: #377a77;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 50px;
-    font-size: 18px;
-    color: #fff;
-    margin: 0 auto 10px auto;
-    transition: all 0.4s ease;
-}
-
-.services .box:hover .icon {
-    background-color: #fff;
-    color: #377a77;
-    transition: all 0.3s ease;
-}
-
-.services .box:hover .topic,
-.services .box:hover p {
-    color: #0e2431;
-    transition: all 0.4s ease;
-}
-
-.services .box:hover .topic,
-.services .box:hover p {
-    color: #fff;
-    transition: all 0.3s ease;
-}
-
-.services .boxes:hover> :not(:hover) {
-    opacity: 0.6;
-}
-
-
 /* Contact Me CSS */
 
 .contact .content {
@@ -586,10 +517,6 @@ body {
         width: 90%;
         margin: 0px 0;
     }
-    .services .boxes .box {
-        margin: 20px 0;
-        width: calc(100% / 2 - 20px);
-    }
 }
 
 @media (max-width: 900px) {
@@ -649,10 +576,6 @@ nav .navbar .menu .media-icons-m a {
     .navbar .menu .cancel-btn {
         display: block;
     }
-    .services .boxes .box {
-        margin: 20px 0;
-        width: 100%;
-    }
     .contact .text {
         width: 100%;
     }
@@ -660,15 +583,6 @@ nav .navbar .menu .media-icons-m a {
 
 
 /* Form */
-
-form select {
-    width: 100%;
-    margin-bottom: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    background-color: #fff;
-}
 
 form {
     margin: auto;
@@ -691,9 +605,30 @@ form select {
     margin-bottom: 10px;
     margin-top: 5px;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 2px solid #505050;
     border-radius: 6px;
-    background-color: #fff;
+    background-color: #444;
+    color: #DDD !important;
+    font-weight: 500 !important;
+    font-size: 14px !important;
+}
+
+@media (max-width: 466px) {
+    form input,
+    form textarea,
+    form select {
+        font-size: 15px !important;
+    }
+}
+
+.iti--separate-dial-code .iti__selected-dial-code {
+    color: #DDD !important;
+}
+
+form .input:focus {
+    border: 2px solid #808080;
+    outline: none;
+    transition: all 0.3s ease;
 }
 
 
@@ -855,36 +790,6 @@ form select {
     background-color: transparent;
     color: #377a77;
     transition: all 0.3s ease;
-}
-
-nav .menu-btn {
-    top: 25px;
-}
-
-@media (max-width: 400px) {
-    nav .navbar .logo a {
-        font-size: 33px;
-    }
-    .logo img {
-        width: 11.3%;
-        height: 100%;
-    }
-    nav .menu-btn {
-        top: 22px;
-    }
-}
-
-@media (max-width: 350px) {
-    nav .navbar .logo a {
-        font-size: 27px;
-    }
-    .logo img {
-        width: 11%;
-        height: 100%;
-    }
-    nav .menu-btn {
-        top: 20px;
-    }
 }
 
 .container {
@@ -1087,4 +992,133 @@ nav .menu-btn {
 
 .search-bar .clear-btn:hover {
     color: rgb(233, 233, 233);
+}
+
+
+/* Service Section */
+
+.Servicecontainer {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.Serviceh1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.Servicegrid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.Servicecard {
+    background-color: #222;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    transition: box-shadow 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.5s ease;
+}
+
+.Servicecard:hover {
+    transform: scale(1.01);
+    transition: all 0.5s ease;
+}
+
+.Servicecard h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #007bff;
+}
+
+.Servicecard p {
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+
+@media (min-width: 1115px) {
+    .Servicegrid a:nth-child(7) {
+        grid-column-start: 2;
+    }
+}
+
+
+/* Technologies Section */
+
+.technologies {
+    padding: 4rem 1rem;
+    background-color: #131313;
+    text-align: center;
+}
+
+.technology-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.technology-grid {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+.technology-card {
+    background-color: #222;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s ease;
+}
+
+.technology-card i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: #007bff;
+}
+
+.technology-card .icon-text {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.technology-card .custom-icon {
+    width: 3rem;
+    height: auto;
+    margin-bottom: 1rem;
+}
+
+.technology-card h2 {
+    font-size: 1.2rem;
+    color: #fff;
+}
+
+.technology-card:hover {
+    box-shadow: 0 6px 12px rgba(255, 255, 255, 0.15);
+    transition: all 0.5s ease;
+}
+
+.technology-card .icon-text {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 1rem;
+}
+
+.technology-card .custom-icon {
+    width: 3rem;
+    height: auto;
+    margin-bottom: 1rem;
 }
