@@ -104,7 +104,7 @@
     // Function to fetch and use the products data
     async function loadProducts() {
       try {
-        const response = await fetch('/Assets/projects.json'); // Update the path to your products.json file
+        const response = await fetch('/Assets/docs.json'); // Update the path to your products.json file
         products = await response.json(); // Update the global products variable
         filterProducts(); // Call filterProducts to display the initial set of products
       } catch (error) {
