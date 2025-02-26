@@ -39,6 +39,7 @@ const testConnection = async() => {
 
 testConnection();
 
+
 // Update the /test endpoint
 app.post("/test", async(req, res) => {
     const { title, name, createdDate, lastUpdated, status, auditTrail } = req.body;
@@ -64,6 +65,8 @@ app.post("/test", async(req, res) => {
 });
 
 
+
+
 // Configure Nodemailer
 const transporter = nodemailer.createTransport({
     service: "gmail",
@@ -73,12 +76,12 @@ const transporter = nodemailer.createTransport({
     },
 });
 
-const generateTableRow = (label, value, isHighlighted = false) => `
-  <tr style="${isHighlighted ? "background-color: #f9f9f9;" : ""}">
-    <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">${label}</td>
-    <td style="padding: 10px; border: 1px solid #ddd;">${value || "N/A"}</td>
-  </tr>
-`;
+const generateTableRow = (label, value = false) => `
+    <div class="email-section">
+     <span class="email-label">${label}</span>
+    <span class="email-value">${value || "N/A"}</span>
+       </div >
+ `;
 
 const constructEmailContent = (data) => {
         const {
@@ -94,49 +97,118 @@ const constructEmailContent = (data) => {
         } = data;
 
         return `
-    ${generateTableRow(
-      "Page URL",
-      `<a href="${PageUrl}" style="color: #007BFF; text-decoration: none;">${PageUrl}</a>`
-    )}
-    <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: auto; border: 1px solid #ddd; border-radius: 8px; padding: 20px; background-color: #f9f9f9;">
-      <h2 style="text-align: center; background-color: #d1ecf1; padding: 15px; border-radius: 6px; color: #0c5460;">
-        Contact Form Submission
-      </h2>
-      <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
-        ${generateTableRow("Subject", subject, true)}
-        ${support ? generateTableRow("Support", support) : ""}
-        ${
-          projectCato
-            ? generateTableRow("Project Category", projectCato, true)
-            : ""
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Template</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #121212;
+            margin: 0;
+            padding: 0;
+            color: #e0e0e0;
+            line-height: 1.6;
         }
-        ${generateTableRow("Name", name)}
-        ${generateTableRow(
-          "Email",
-          `<a href="mailto:${email}" style="color: #007BFF;">${email}</a>`,
-          true
-        )}
-        ${generateTableRow("Message", message)}
-        ${generateTableRow("Timestamp", Timestamp, true)}
-      </table>
-      ${
-        Object.keys(additionalFields).length
-          ? `
-            <h3 style="margin-top: 30px; color: #555; font-size: 18px; border-top: 1px solid #ddd; padding-top: 10px;">
-              Additional Information
+        .email-container {
+            max-width: 650px;
+            margin: 40px auto;
+            background: #1e1e1e;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+        .email-header {
+            background-color: #212121;
+            color: #ffffff;
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 28px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid #333;
+        }
+        .email-body {
+            padding: 30px;
+        }
+        .email-section {
+            margin-bottom: 25px;
+        }
+        .email-label {
+            font-size: 15px;
+            color: #bdbdbd;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: block;
+        }
+        .email-value {
+            font-size: 17px;
+            color: #ffffff;
+            word-break: break-word;
+        }
+        .email-value a {
+            color: #81d4fa;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .email-value a:hover {
+            color: #4fc3f7;
+        }
+        .divider {
+            border-top: 1px solid #333;
+            margin: 30px 0;
+        }
+        .email-footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 13px;
+            color: #9e9e9e;
+            background-color: #212121;
+            border-top: 1px solid #333;
+        }
+        .email-footer a {
+            color: #81d4fa;
+            text-decoration: none;
+        }
+        .email-footer a:hover {
+            color: #4fc3f7;
+        }
+        @media screen and (max-width: 600px) {
+            .email-container {
+                width: 95%;
+                margin: 20px auto;
+            }
+            .email-header {
+                font-size: 24px;
+                padding: 20px 15px;
+            }
+            .email-body {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <div class="email-header">
+            New Contact Form Submission
+        </div>
+        <div class="email-body">
+            ${generateTableRow("Subject", subject, true)} ${support ? generateTableRow("Support", support) : ""} ${projectCato ? generateTableRow("Project Category", projectCato, true) : ""} ${generateTableRow("Name", name)} ${generateTableRow( "Email", `
+            <a href="mailto:${email}" class="email-link">${email}</a>`, true )} ${generateTableRow("Message", message)} ${generateTableRow("Timestamp", Timestamp, true)} ${generateTableRow( "Page URL", `
+            <a href="${PageUrl}" class="email-link">${PageUrl}</a>` )} ${ Object.keys(additionalFields).length ? `
+            <h3 class="Addi-label">
+                Additional Information
             </h3>
-            <table style="width: 100%; border-collapse: collapse;">
-              ${Object.entries(additionalFields)
-                .map(([key, value]) => generateTableRow(key, value))
-                .join("")}
-            </table>
-          `
-          : ""
-      }
-      <p style="margin-top: 20px; font-size: 0.9em; color: #555; text-align: center;">
-        This message was sent from the contact form on your website.
-      </p>
-    </div>
+            ${Object.entries(additionalFields) .map(([key, value]) => generateTableRow(key, value)) .join("")} ` : "" }
+            <p class="email-footer">
+                This message was sent from the contact form on your website.
+            </p>
+        </div>
+</body>
+</html>
   `;
 };
 
@@ -185,7 +257,7 @@ app.post("/SubmitForm", async (req, res) => {
     });
   }
 
-  const emailContent = constructEmailContent({
+  const contentBody = constructEmailContent({
     PageUrl,
     subject,
     support,
@@ -196,17 +268,17 @@ app.post("/SubmitForm", async (req, res) => {
     Timestamp,
     additionalFields,
   });
-
+ 
   try {
     // Send the email
     const mailOptions = {
       from: `<${email}>`,
       to: "support@mbktechstudio.com",
       subject: "New message from contact form",
-      html: emailContent,
+      html: contentBody,
     };
 
-    console.log("Sending email with options:", mailOptions);
+    console.log("Sending email with options:", contentBody);
     const info = await transporter.sendMail(mailOptions);
     console.log("Email sent successfully:", info);
 
