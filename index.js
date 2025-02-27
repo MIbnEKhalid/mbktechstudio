@@ -102,6 +102,13 @@ app.get(
     }
 );
 
+app.get(
+    ["/TrackTicket", "/Ticket", "/Track", "/trackticket"],
+    (req, res) => {
+        return res.render("mainPages/mainDomain/TrackTicket.ejs");
+    }
+);
+
 app.use((req, res) => {
     console.log(`Path not found: ${req.url}`);
     return res.render("mainPages/mainDomain/404.ejs");

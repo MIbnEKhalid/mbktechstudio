@@ -2,97 +2,72 @@ body {
     font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #eef8ff;
-    color: #333;
-    line-height: 1.6;
     transition: all 0.3s ease;
-
-}
-
-html {
-    background-color: transparent;
 }
 
 body.dark-mode {
-    background-color: #121212;
-    color: #e0e0e0;
+    color: #e0e0e0 !important;
 }
 
-html.dark-mode {
-    background-color: #121212;
+
+/* Start Of Dark Mode */
+
+.card,
+.result-card,
+.result-card ul li {
+    background-color: #1e1e1e !important;
+    color: #eeeeee !important;
+    border-color: #333 !important;
 }
 
-body.dark-mode .card,
-body.dark-mode .result-card,
-body.dark-mode .result-card ul li {
-    background-color: #1e1e1e;
-    color: #eeeeee;
-    border-color: #333;
+.faq-question,
+.faq-answer,
+.faq-item.active .faq-answer,
+.faq-item,
+.faq-question::after {
+    background-color: #1f1e1e !important;
+    color: #ffffff !important;
 }
 
-body.dark-mode .faq-question,
-body.dark-mode .faq-answer,
-body.dark-mode .faq-item.active .faq-answer,
-body.dark-mode .faq-item,
-body.dark-mode .faq-question::after {
-    background-color: #1f1e1e;
-    color: #ffffff;
+.faq-item {
+    border: 1px solid #333 !important;
 }
 
-body.dark-mode .faq-item {
-    border: 1px solid #333;
+.faq-question:hover,
+.faq-question:hover::after {
+    background: #377a77 !important;
+    background-color: #377a77 !important;
+    color: #fff !important;
+    transition: all 0.4s ease !important;
 }
 
-body.dark-mode .faq-question:hover,
-body.dark-mode .faq-question:hover::after {
-    background: #377a77;
-    background-color: #377a77;
-    color: #fff;
-    transition: all 0.4s ease;
+.result-card p strong {
+    color: #b3b3b3 !important;
 }
 
-body.dark-mode .result-card p strong {
-    color: #b3b3b3;
+.card input[type="text"] {
+    background-color: #2c2c2c !important;
+    color: #eeeeee !important;
+    border-color: #555 !important;
 }
 
-body.dark-mode .card input[type="text"] {
-    background-color: #2c2c2c;
-    color: #eeeeee;
-    border-color: #555;
-}
-
-body.dark-mode p {
-    color: #eeeeee;
-}
-
-body.dark-mode .status-badge.Pending {
-    background: linear-gradient(45deg, #f39c12, #f1c40f);
-}
-
-body.dark-mode .status-badge.Resolved {
-    background: linear-gradient(45deg, #27ae60, #2ecc71);
-}
-
-body.dark-mode .status-badge.Open {
-    background: linear-gradient(45deg, #3498db, #5dade2);
-}
-
-body.dark-mode .status-badge.Closed {
-    background: linear-gradient(45deg, #e74c3c, #c0392b);
+p {
+    color: #eeeeee !important;
 } 
+
+
+/* End Of Dark Mode */
 
 .section {
     margin-bottom: 30px;
 }
 
 .card {
-    background: #ffffff;
     border-radius: 12px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
     padding: 20px;
     border: 2px solid #377a77;
-    margin: 20px auto;
-    width: 90%;
+    margin: 15px auto;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -111,7 +86,6 @@ body.dark-mode .status-badge.Closed {
     margin: 10px 0;
     border: 1px solid #ddd;
     border-radius: 6px;
-    background-color: #fafafa;
     transition: border-color 0.3s ease;
 }
 
@@ -149,7 +123,6 @@ body.dark-mode .status-badge.Closed {
     margin-top: 20px;
     padding: 20px;
     margin: 20px auto;
-    width: 90%;
     border: 2px solid #5692ed;
     background: #ffffff;
     border-radius: 8px;
@@ -157,11 +130,12 @@ body.dark-mode .status-badge.Closed {
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
-.result-card h3 {
+.result-card .head {
     color: #5692ed;
     margin-bottom: 15px;
     border-bottom: 2px solid #5692ed;
     padding-bottom: 8px;
+    font-size: 1.5em;    
 }
 
 .result-card p {
@@ -190,7 +164,6 @@ body.dark-mode .status-badge.Closed {
 }
 
 .result-card ul li {
-    background: #f9f9f9;
     margin: 5px 0;
     padding: 10px;
     border: 1px solid #ddd;
@@ -199,39 +172,69 @@ body.dark-mode .status-badge.Closed {
 }
 
 .status-badge {
-    padding: 6px 12px;
-    border-radius: 16px;
     font-weight: bold;
     color: #fff;
     display: inline-block;
-    font-size: 0.9rem;
+    font-size: 1rem;
+    font-weight: bold;
     margin-left: 0px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease-in-out;
 }
 
 .status-badge.Pending {
-    background: linear-gradient(45deg, #f39c12, #f1c40f);
+    color:   #f39c12 ;
 }
 
 .status-badge.Resolved {
-    background: linear-gradient(45deg, #27ae60, #2ecc71);
+    color:   #27ae60 ;
 }
 
 .status-badge.Open {
-    background: linear-gradient(45deg, #3498db, #5dade2);
+    color:   #3498db ;
 }
 
 .status-badge.Closed {
-    background: linear-gradient(45deg, #e74c3c, #c0392b);
+    color:   #e74c3c ;
+}
+
+.status-badge.Progress {
+    color: #663399 ;
+}
+
+.status-icon{
+    color: #b3b3b3 !important;
 }
 
 #auditTrailContainer {
     padding: 15px;
-    background-color: #f7f7f7;
-    border-left: 5px solid #5692ed;
+    background-color: #222;
+    border-left: 5px solid #27ae60;
     margin-top: 10px;
     border-radius: 5px;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.auditTrailHeader {
+    background-color: #1f1e1e;
+    color: #fff;
+    padding: 5px;
+    font-size: 17px;
+    border-radius: 5px;
+    border: 2px solid #333;
+    transition: all 0.4s ease;
+}
+
+.auditTrailHeader:hover {
+    background-color: #377a77;
+    border: 2PX solid #377a77;
+    color: #fff;
+    padding: 5px;
+    font-size: 17px;
+    border-radius: 5px;
+    transition: all 0.4s ease;
 }
 
 #resultAuditTrail {
@@ -274,7 +277,8 @@ body.dark-mode .status-badge.Closed {
 }
 
 #auditTrailToggleIcon {
-    margin-left: 10px;
+    color: #fff;
+    float: right;
     transition: transform 0.3s ease-in-out;
 }
 
@@ -336,7 +340,6 @@ body.dark-mode .status-badge.Closed {
     font-weight: bold;
 }
 
-
 .ticket-images {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -345,7 +348,7 @@ body.dark-mode .status-badge.Closed {
 }
 
 .ticket-image-container {
-    background: #f9f9f9;
+    background: #333;
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -374,80 +377,29 @@ body.dark-mode .status-badge.Closed {
     }
 }
 
-
-
-
-
-
 .result-message-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 90%;
-    margin: 20px auto;
-    background-color: rebeccapurple;
+    display: block;
+    font-weight: 700;
+    color: green;
+    padding: 8px;
+    background-color: beige;
     border-radius: 10px;
-    color: #fff;
-    text-align: center;
-    font-weight: bold;
-    padding: 10px;
-    position: relative; 
+    border-color: #7fffd4;
+    margin-bottom: 10px;
+    border: 2px solid green;
 }
 
 .result-message {
-    flex: 1; /* Take up remaining space */
-    text-align: center; /* Align text to the left */
-}
-
-.info-container {
-    position: relative;
-    display: inline-block;
-    margin-left: auto; /* Push the info icon to the right */
-}
-
-.info-icon {
-    font-size: 24px;
-    cursor: pointer;
-}
-
-.info-text {
-    display: none;
-    position: absolute;
-    bottom: -40px;
-    left: 50%;
-    transform: translateX(-90%);
-    padding: 10px;
-    background-color: #333;
-    color: white;
-    border-radius: 5px;
-    width: 300px;
-    max-width: 90vw;
+    flex: 1;
+    /* Take up remaining space */
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    z-index: 10;
-    word-wrap: break-word;
+    /* Align text to the left */
 }
-
-.info-container:hover .info-text {
-    display: block;
-}
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /* FAQ Item Styles */
+
 .faq-item {
-    background: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
@@ -455,11 +407,12 @@ body.dark-mode .status-badge.Closed {
     transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
+
 /* FAQ Question */
+
 .faq-question {
     font-weight: bold;
     padding: 10px;
-    background: #fff;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -485,13 +438,14 @@ body.dark-mode .status-badge.Closed {
     transition: all 0.4s ease;
 }
 
-
 .faq-item.active .faq-question::after {
     content: "\f077";
     transform: rotate(180deg);
 }
 
+
 /* FAQ Answer */
+
 .faq-answer {
     padding: 0 auto;
     line-height: 1.6;
@@ -503,17 +457,20 @@ body.dark-mode .status-badge.Closed {
     border-top: 1px solid #e9e9e9;
 }
 
+
 /* When the FAQ Item is Active */
+
 .faq-item.active .faq-answer {
     max-height: 1000px;
     opacity: 1;
     visibility: visible;
     padding: 0 auto;
     transition: all 0.8s ease;
-    background-color: #e6f7ff;
 }
 
+
 /* List Style for Answers */
+
 .faq-answer ul {
     padding-left: 20px;
 }
@@ -521,4 +478,41 @@ body.dark-mode .status-badge.Closed {
 .faq-answer ul li {
     margin-bottom: 10px;
     font-weight: 500;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.tooltiptext {
+    visibility: hidden;
+    width: 140px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%; /* Position above the icon */
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+/* Show tooltip on hover */
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* For mobile devices, show tooltip on tap */
+@media (hover: none) {
+    .tooltip:active .tooltiptext {
+        visibility: visible;
+        opacity: 1;
+    }
 }
