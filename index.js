@@ -109,6 +109,13 @@ app.get(
     }
 );
 
+app.get(
+    ["/Update"],
+    (req, res) => {
+        return res.render("mainPages/mainDomain/update.ejs");
+    }
+);
+
 app.use((req, res) => {
     console.log(`Path not found: ${req.url}`);
     return res.render("mainPages/mainDomain/404.ejs");

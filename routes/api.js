@@ -42,20 +42,28 @@ router.post("/add-ticket", async (req, res) => {
         lastUpdated,
         auditTrail,
     } = req.body;
+
+    // Validate fields
     if (!ticketno) {
         return res.status(400).json({ error: "Ticket Number is required." });
-    } else if (!name) {
+    }
+    if (!name) {
         return res.status(400).json({ error: "Name is required." });
-    } else if (!title) {
+    }
+    if (!title) {
         return res.status(400).json({ error: "Title is required." });
-    } else if (!status) {
+    }
+    if (!status) {
         return res.status(400).json({ error: "Status is required." });
-    } else if (!createdDate) {
+    }
+    if (!createdDate) {
         return res.status(400).json({ error: "Created Date is required." });
-    } else if (!lastUpdated) {
+    }
+    if (!lastUpdated) {
         return res.status(400).json({ error: "Last Updated is required." });
-    } else if (!auditTrail) {
-        return res.status(400).json({ error: "Audit Trail is required." });
+    }
+    if (!Array.isArray(auditTrail)) {
+        return res.status(400).json({ error: "Audit Trail must be an array." });
     }
 
     try {
@@ -63,7 +71,7 @@ router.post("/add-ticket", async (req, res) => {
         INSERT INTO "Ticket" (ticketno, name, title, status, "createdDate", "lastUpdated", "auditTrail")
         VALUES ($1, $2, $3, $4, $5, $6, $7)
         RETURNING *;
-      `;
+        `;
         const values = [
             ticketno,
             name,
@@ -71,8 +79,9 @@ router.post("/add-ticket", async (req, res) => {
             status,
             createdDate,
             lastUpdated,
-            auditTrail,
+            JSON.stringify(auditTrail), // Convert array to JSON string for JSONB
         ];
+
         const result = await pool.query(query, values);
 
         res.status(201).json({
@@ -82,6 +91,80 @@ router.post("/add-ticket", async (req, res) => {
     } catch (err) {
         console.error("Error adding ticket:", err);
         res.status(500).json({ error: "Failed to add ticket." });
+    }
+});
+
+/*
+
+curl -X POST http://localhost:3000/api/add-ticket \
+-H "Content-Type: application/json" \
+-d "{
+  \"ticketno\": \"T000111336\", 
+  \"name\": \"John Doe\",
+  \"title\": \"Sample Ticket\",
+  \"status\": \"Open\",
+  \"createdDate\": \"2025-02-27\",
+  \"lastUpdated\": \"2025-02-27\",
+  \"auditTrail\": [
+    {\"type\":\"status\",\"action\":\"Ticket Created\",\"timestamp\":\"2024-11-14T08:45:00Z\"},
+    {\"type\":\"update\",\"action\":\"Status changed to 'In Progress'\",\"timestamp\":\"2024-11-14T09:30:00Z\"},
+    {\"type\":\"update\",\"action\":\"Network Issue Investigated\",\"timestamp\":\"2024-11-14T10:00:00Z\"},
+    {\"type\":\"status\",\"action\":\"Status changed to 'Resolved'\",\"timestamp\":\"2024-11-15T10:00:00Z\"}
+  ]
+}"
+
+
+*/
+router.get("/get-ticket/:ticketno", async (req, res) => {
+    const { ticketno } = req.params;
+
+    try {
+        const query = `
+        SELECT * FROM "Ticket" WHERE ticketno = $1;
+        `;
+        const result = await pool.query(query, [ticketno]);
+
+        if (result.rows.length === 0) {
+            return res.status(404).json({ error: "Ticket not found." });
+        }
+
+        res.json(result.rows[0]);
+    } catch (err) {
+        console.error("Error fetching ticket:", err);
+        res.status(500).json({ error: "Failed to fetch ticket." });
+    }
+});
+router.put("/update-ticket", async (req, res) => {
+    const { ticketno, status, lastUpdated, auditTrail } = req.body;
+
+    if (!ticketno || !status || !lastUpdated || !Array.isArray(auditTrail)) {
+        return res.status(400).json({
+            error: "Invalid request. Fields 'ticketno', 'status', 'lastUpdated', and 'auditTrail' are required.",
+        });
+    }
+
+    try {
+        const query = `
+        UPDATE "Ticket"
+        SET status = $1, "lastUpdated" = $2, "auditTrail" = $3
+        WHERE ticketno = $4
+        RETURNING *;
+        `;
+        const values = [status, lastUpdated, JSON.stringify(auditTrail), ticketno];
+
+        const result = await pool.query(query, values);
+
+        if (result.rows.length === 0) {
+            return res.status(404).json({ error: "Ticket not found." });
+        }
+
+        res.json({
+            message: "Ticket updated successfully!",
+            ticket: result.rows[0],
+        });
+    } catch (err) {
+        console.error("Error updating ticket:", err);
+        res.status(500).json({ error: "Failed to update ticket." });
     }
 });
 
