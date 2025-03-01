@@ -261,10 +261,10 @@ app.post("/SubmitForm", async (req, res) => {
     let TicketNumber = "";
     if (subject === "Support") {
         TicketNumber = generateTicketNumber();
-        let response = await fetch(`http://localhost:3000/api/tickets/${TicketNumber}`);
+        let response = await fetch(`https://mbktechstudio.com/api/tickets/${TicketNumber}`);
         while (response.status !== 404) {
             TicketNumber = generateTicketNumber();
-            response = await fetch(`http://localhost:3000/api/tickets/${TicketNumber}`);
+            response = await fetch(`https://mbktechstudio.com/api/tickets/${TicketNumber}`);
         }
 
         const ticketData = {
