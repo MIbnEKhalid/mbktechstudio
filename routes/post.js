@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import { initializeApp } from "firebase/app";
 import { getAnalytics, isSupported } from "firebase/analytics";
 import { getFirestore, doc, setDoc } from "firebase/firestore";
+import { pool } from "../routes/pool.js"; // Import the pool
 
 dotenv.config();
 
@@ -24,7 +25,7 @@ isSupported().then((supported) => {
 const db = getFirestore(appp);
 
 // Test connection to Firestore
-const testConnection = async() => {
+const testConnection = async () => {
     try {
         const testDocRef = doc(db, "testCollection", "testConnection");
         await setDoc(testDocRef, {
@@ -39,9 +40,8 @@ const testConnection = async() => {
 
 testConnection();
 
-
 // Update the /test endpoint
-app.post("/test", async(req, res) => {
+app.post("/test", async (req, res) => {
     const { title, name, createdDate, lastUpdated, status, auditTrail } = req.body;
 
     const id = "yourCollectionName";
@@ -62,10 +62,7 @@ app.post("/test", async(req, res) => {
         console.error("Failed to add record to Firestore:", error);
         res.status(500).json({ error: "Failed to add record", details: error.message });
     }
-});
-
-
-
+}); 
 
 // Configure Nodemailer
 const transporter = nodemailer.createTransport({
@@ -84,20 +81,20 @@ const generateTableRow = (label, value = false) => `
  `;
 
 const constructEmailContent = (data) => {
-        const {
-            PageUrl,
-            subject,
-            support,
-            projectCato,
-            name,
-            email,
-            message,
-            Timestamp,
-            additionalFields,
-        } = data;
+    const {
+        PageUrl,
+        subject,
+        support,
+        projectCato,
+        name,
+        email,
+        message,
+        Timestamp,
+        additionalFields,
+    } = data;
 
-        return `
-        <!DOCTYPE html>
+    return `
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -196,13 +193,13 @@ const constructEmailContent = (data) => {
             New Contact Form Submission
         </div>
         <div class="email-body">
-            ${generateTableRow("Subject", subject, true)} ${support ? generateTableRow("Support", support) : ""} ${projectCato ? generateTableRow("Project Category", projectCato, true) : ""} ${generateTableRow("Name", name)} ${generateTableRow( "Email", `
-            <a href="mailto:${email}" class="email-link">${email}</a>`, true )} ${generateTableRow("Message", message)} ${generateTableRow("Timestamp", Timestamp, true)} ${generateTableRow( "Page URL", `
-            <a href="${PageUrl}" class="email-link">${PageUrl}</a>` )} ${ Object.keys(additionalFields).length ? `
+            ${generateTableRow("Subject", subject, true)} ${support ? generateTableRow("Support", support) : ""} ${projectCato ? generateTableRow("Project Category", projectCato, true) : ""} ${generateTableRow("Name", name)} ${generateTableRow("Email", `
+            <a href="mailto:${email}" class="email-link">${email}</a>`, true)} ${generateTableRow("Message", message)} ${generateTableRow("Timestamp", Timestamp, true)} ${generateTableRow("Page URL", `
+            <a href="${PageUrl}" class="email-link">${PageUrl}</a>`)} ${Object.keys(additionalFields).length ? `
             <h3 class="Addi-label">
                 Additional Information
             </h3>
-            ${Object.entries(additionalFields) .map(([key, value]) => generateTableRow(key, value)) .join("")} ` : "" }
+            ${Object.entries(additionalFields).map(([key, value]) => generateTableRow(key, value)).join("")} ` : ""}
             <p class="email-footer">
                 This message was sent from the contact form on your website.
             </p>
@@ -212,83 +209,145 @@ const constructEmailContent = (data) => {
   `;
 };
 
+function generateTicketNumber() {
+    return 'T' + Math.floor(Math.random() * 1000000000);
+}
+
 app.post("/SubmitForm", async (req, res) => {
-  const allowedOrigin = "https://mbktechstudio.com";
-  const referer = req.headers.referer;
+    const allowedOrigin = "https://mbktechstudio.com";
+    const referer = req.headers.referer;
 
-  // Determine if the environment is local
-  const isLocalEnv = process.env.localenv === "true";
+    // Determine if the environment is local
+    const isLocalEnv = process.env.localenv === "true";
 
-  // Validate referer
-  if (
-    !referer ||
-    (!referer.includes(allowedOrigin) &&
-      !referer.includes(".mbktechstudio.com") &&
-      !(isLocalEnv && referer.includes("http://localhost:3000")))
-  ) {
-    console.log("Invalid referer:", referer);
-    return res.status(403).json({ error: "Forbidden. Invalid referer." });
-  }
+    // Validate referer
+    if (
+        !referer ||
+        (!referer.includes(allowedOrigin) &&
+            !referer.includes(".mbktechstudio.com") &&
+            !(isLocalEnv && referer.includes("http://localhost:3000")))
+    ) {
+        console.log("Invalid referer:", referer);
+        return res.status(403).json({ error: "Forbidden. Invalid referer." });
+    }
 
-  console.log("Received request to /SubmitForm with body:", req.body);
+    console.log("Received request to /SubmitForm");
 
-  const {
-    UserName: name,
-    Email: email,
-    Subject: subject,
-    Message: message,
-    PageUrl,
-    Timestamp,
-    support,
-    projectCato,
-    ...additionalFields
-  } = req.body;
+    const {
+        UserName: name,
+        Email: email,
+        Subject: subject,
+        Message: message,
+        PageUrl,
+        Timestamp,
+        support,
+        projectCato,
+        ...additionalFields
+    } = req.body;
 
-  // Validate required fields
-  const missingFields = ["UserName", "Email", "Subject", "Message"].filter(
-    (field) => !req.body[field]
-  );
+    // Validate required fields
+    const missingFields = ["UserName", "Email", "Subject", "Message"].filter(
+        (field) => !req.body[field]
+    );
 
-  if (missingFields.length > 0) {
-    console.log("Missing required fields:", missingFields);
-    return res.status(400).json({
-      error: "Invalid request. Missing required fields.",
-      missingFields,
+    if (missingFields.length > 0) {
+        console.log("Missing required fields:", missingFields);
+        return res.status(400).json({
+            error: "Invalid request. Missing required fields.",
+            missingFields,
+        });
+    }
+
+    let TicketNumber = "";
+    if (subject === "Support") {
+        TicketNumber = generateTicketNumber();
+        let response = await fetch(`http://localhost:3000/api/tickets/${TicketNumber}`);
+        while (response.status !== 404) {
+            TicketNumber = generateTicketNumber();
+            response = await fetch(`http://localhost:3000/api/tickets/${TicketNumber}`);
+        }
+
+        const ticketData = {
+            ticketno: TicketNumber,
+            name,
+            title: subject + ' / ' + support + ' / ' + projectCato,
+            status: "Pending",
+            createdDate: new Date().toISOString(),
+            lastUpdated: new Date().toISOString(),
+            auditTrail: [
+                {
+                    type: "status",
+                    action: "Ticket Created",
+                    timestamp: new Date().toISOString(),
+                },
+            ],
+        };
+
+        try {
+            const query = `
+            INSERT INTO "Ticket" (ticketno, name, title, status, "createdDate", "lastUpdated", "auditTrail")
+            VALUES ($1, $2, $3, $4, $5, $6, $7)
+            RETURNING *;
+            `;
+            const values = [
+                ticketData.ticketno,
+                ticketData.name,
+                ticketData.title,
+                ticketData.status,
+                ticketData.createdDate,
+                ticketData.lastUpdated,
+                JSON.stringify(ticketData.auditTrail), // Convert array to JSON string for JSONB
+            ];
+
+            const result = await pool.query(query, values);
+            console.log("Ticket added to database:", result.rows[0]);
+        } catch (err) {
+            console.error("Error adding ticket to database:", err);
+        }
+    }
+
+    if (TicketNumber) {
+        additionalFields.TicketNumber = TicketNumber;
+    }
+
+    const contentBody = constructEmailContent({
+        PageUrl,
+        subject,
+        support,
+        projectCato,
+        name,
+        email,
+        message,
+        Timestamp,
+        additionalFields,
     });
-  }
 
-  const contentBody = constructEmailContent({
-    PageUrl,
-    subject,
-    support,
-    projectCato,
-    name,
-    email,
-    message,
-    Timestamp,
-    additionalFields,
-  });
- 
-  try {
-    // Send the email
-    const mailOptions = {
-      from: `<${email}>`,
-      to: "support@mbktechstudio.com",
-      subject: "New message from contact form",
-      html: contentBody,
-    };
+    try {
+        // Send the email
+        const mailOptions = {
+            from: `<${email}>`,
+            to: "support@mbktechstudio.com",
+            subject: "New message from contact form",
+            html: contentBody,
+        };
 
-    console.log("Sending email with options:", contentBody);
-    const info = await transporter.sendMail(mailOptions);
-    console.log("Email sent successfully:", info);
+        // console.log("Sending email with options:", contentBody);
+        const info = await transporter.sendMail(mailOptions);
+        console.log("Email sent successfully:", info);
 
-    res.status(200).json({ message: "Email sent successfully", info });
-  } catch (error) {
-    console.error("Failed to send email:", error);
-    res
-      .status(500)
-      .json({ error: "Failed to send email", details: error.message });
-  }
+        if (subject === "Support") {
+            res.status(200).json({ message: "Email sent successfully", info, TN: TicketNumber });
+        }
+        else {
+            res.status(200).json({ message: "Email sent successfully", info });
+        }
+
+    } catch (error) {
+        console.error("Failed to send email:", error);
+        res
+            .status(500)
+            .json({ error: "Failed to send email", details: error.message });
+    }
 });
 
 export default app;

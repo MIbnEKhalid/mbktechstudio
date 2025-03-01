@@ -29,6 +29,20 @@ router.get("/tickets/:ticketNumber", async (req, res) => {
     }
 });
 
+router.get("/tickets", async (req, res) => {
+    try {
+        const query = 'SELECT * FROM "Ticket"';
+        const result = await pool.query(query);
+        result.rows.forEach((row) => {
+            row.auditTrail = JSON.stringify(row.auditTrail);
+        });
+        res.json(result.rows);
+    } catch (err) {
+        console.error("Error fetching tickets:", err);
+        res.status(500).json({ error: "Failed to fetch tickets." });
+    }
+});
+
 
 router.post("/add-ticket", async (req, res) => {
     console.log("Incoming request body:", req.body);
@@ -134,6 +148,7 @@ router.get("/get-ticket/:ticketno", async (req, res) => {
         res.status(500).json({ error: "Failed to fetch ticket." });
     }
 });
+
 router.put("/update-ticket", async (req, res) => {
     const { ticketno, status, lastUpdated, auditTrail } = req.body;
 
