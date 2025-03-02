@@ -116,12 +116,17 @@ app.get(
     }
 );
 
+app.get("/TrackTicket", (req, res) => {
+    return res.render("mainPages/mainDomain/TrackTicket.ejs");
+});
+
 app.get(
     ["/TrackTicket", "/Ticket", "/Track", "/trackticket"],
     (req, res) => {
-        return res.render("mainPages/mainDomain/TrackTicket.ejs");
+        return res.redirect("/TrackTicket");
     }
 );
+
 
 app.get(
     ["/Update"],
