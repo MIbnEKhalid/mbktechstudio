@@ -1,9 +1,6 @@
 import express from "express";
 import nodemailer from "nodemailer";
 import dotenv from "dotenv";
-import { initializeApp } from "firebase/app";
-import { getAnalytics, isSupported } from "firebase/analytics";
-import { getFirestore, doc, setDoc } from "firebase/firestore";
 import { pool } from "../routes/pool.js"; // Import the pool
 
 dotenv.config();
@@ -11,59 +8,8 @@ dotenv.config();
 const app = express.Router();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
-const firebaseConfig = JSON.parse(process.env.FIREBASE_CONFIG);
-const appp = initializeApp(firebaseConfig);
-
-// Initialize analytics only if supported (i.e. in a browser context)
-isSupported().then((supported) => {
-    if (supported) {
-        getAnalytics(appp);
-    }
-});
-
-const db = getFirestore(appp);
-
-// Test connection to Firestore
-const testConnection = async () => {
-    try {
-        const testDocRef = doc(db, "testCollection", "testConnection");
-        await setDoc(testDocRef, {
-            timestamp: new Date().toISOString(),
-            message: "Connection successful",
-        });
-        console.log("Successfully connected to Firestore");
-    } catch (error) {
-        console.error("Failed to connect to Firestore:", error);
-    }
-};
-
-testConnection();
-
-// Update the /test endpoint
-app.post("/test", async (req, res) => {
-    const { title, name, createdDate, lastUpdated, status, auditTrail } = req.body;
-
-    const id = "yourCollectionName";
-    try {
-        // Write data to Firestore
-        const docRef = doc(db, "yourCollectionName", id);
-        await setDoc(docRef, {
-            title,
-            name,
-            createdDate,
-            lastUpdated,
-            status,
-            auditTrail,
-        });
-
-        res.status(200).json({ message: "Record added successfully" });
-    } catch (error) {
-        console.error("Failed to add record to Firestore:", error);
-        res.status(500).json({ error: "Failed to add record", details: error.message });
-    }
-}); 
-
+ 
+ 
 // Configure Nodemailer
 const transporter = nodemailer.createTransport({
     service: "gmail",

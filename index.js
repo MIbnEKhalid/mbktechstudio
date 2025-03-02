@@ -35,7 +35,6 @@ app.use("/", express.static(path.join(__dirname, "public/")));
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
-// Domain redirection middleware
 const domainRedirect = (req, res, next) => {
   const hostname = req.headers.host;
   console.log(`Incoming request to hostname: ${hostname}`);
@@ -52,12 +51,18 @@ const domainRedirect = (req, res, next) => {
       "protfolio.mbktechstudio.com": "portfolio",
       "ibnekhalid.me": "portfolio",
       "privacy.mbktechstudio.com": "privacy",
-    }[hostname] || "main";
+    }[hostname] || null; // Set to null if hostname is not recognized
+  }
+
+  if (!req.site) {
+    console.log(`Hostname not recognized: ${hostname}`);
+    return res.render("mainPages/domainNotRecognized.ejs", { hostname });
   }
 
   console.log(`Request site set to: ${req.site}`);
   next();
 };
+
 
 // Routes
 app.get("/", domainRedirect, (req, res) => {
@@ -113,7 +118,7 @@ app.use("/api", apiRoutes);
 // 404 handler
 app.use((req, res) => {
   console.log(`Path not found: ${req.url}`);
-  res.render("mainPages/mainDomain/404.ejs");
+  res.render("mainPages/404.ejs");
 });
 
 // Start the server

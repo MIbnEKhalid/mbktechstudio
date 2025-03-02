@@ -104,40 +104,142 @@ For questions or contributions, please contact Muhammad Bin Khalid at [mbktechst
 
 
 
-<!--
 
-# MIT License
 
-Copyright (c) 2024 Muhammad Bin Khalid & **[mbktechstudio.com](https://mbktechstudio.com)**
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
 
---- 
- 
-## Documentation License
 
-The project documentation is available under the [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-nc-sa/4.0/). You may share and adapt the documentation for non-commercial purposes, as long as you give appropriate credit and distribute your contributions under the same license.
 
----
 
-**Note:** Only The Source Code Of This Website Is Covered Under The MIT License.  
-The Project Documentation Covered Under The Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License **But Some Images, Blog Posts, And Other Content Are NOT  
-Covered Under This License And Remain The Intellectual Property Of The Author**.
 
--->
+
+
+
+```
+
+D:.
+|   .env
+|   .gitignore
+|   index.js
+|   LICENSE
+|   LICENSE.md
+|   package-lock.json
+|   package.json
+|   README.md
+|   SECURITY.md
+|   vercel.json
+|
++---public
+|   |   robots.txt
+|   |   sitemap.xml
+|   |
+|   \---Assets
+|       |   augh.mp3
+|       |   docs.json
+|       |   unilib.js
+|       |
+|       +---Cookie
+|       |       index.html
+|       |
+|       +---FAQs
+|       |       faq.json
+|       |
+|       +---Images
+|       |   |   background.png
+|       |   |   cat.png
+|       |   |   catfixing.png
+|       |   |   catStacks.jpg
+|       |   |   close-icon-white.svg
+|       |   |   close-icon.svg
+|       |   |   cookie-icon.svg
+|       |   |   server.png
+|       |   |   unity.png
+|       |   |   user.png
+|       |   |
+|       |   +---BookCovers
+|       |   |       A-ZOHS.png
+|       |   |       BookCover_Template.png
+|       |   |       FundamentalsofPhysics9thEdition.png
+|       |   |       ThomasCalculus11thEdition.png
+|       |   |       UsingInformationTechnology.png
+|       |   |
+|       |   +---Docs
+|       |   |       cpp.png
+|       |   |       CTMCpp.png
+|       |   |       mainpage.png
+|       |   |       unity.png
+|       |   |
+|       |   \---Icon
+|       |           dg.svg
+|       |           dgicon.svg
+|       |           logo.png
+|       |           MBKSupportIcon.svg
+|       |
+|       +---Scripts
+|       |       config.js
+|       |       cookie.js
+|       |       form.support.js
+|       |       header.js
+|       |       social.js
+|       |       Support.js
+|       |       Ticket.js
+|       |
+|       +---Style
+|       |       404.css
+|       |       cookie.css
+|       |       doc.css
+|       |       FAQs.css
+|       |       main.css
+|       |       style.css
+|       |       Supportstyle.css
+|       |       Ticket.css
+|       |
+|       +---Support
+|       |       projects.json
+|       |
+|       \---Tickett
+|               ticketS.PNG
+|               ticketT.PNG
+|
++---routes
+|       api.js
+|       pool.js
+|       post.js
+|
+\---views
+    |   showMessage.ejs
+    |
+    +---mainPages
+    |   +---docDomain
+    |   |       index.ejs
+    |   |
+    |   +---mainDomain
+    |   |   |   404.ejs
+    |   |   |   FAQs.ejs
+    |   |   |   index.ejs
+    |   |   |   Support&Contact.ejs
+    |   |   |   Terms&Conditions.ejs
+    |   |   |   TrackTicket.ejs
+    |   |   |   update.ejs
+    |   |   |
+    |   |   \---otherPages
+    |   |           faqs1.ejs
+    |   |
+    |   +---portfolioDomain
+    |   |       index.ejs
+    |   |
+    |   +---privacyDomain
+    |   |       index.ejs
+    |   |
+    |   \---uniDomain
+    |           index.ejs
+    |           unilibhistory.ejs
+    |
+    \---templates
+            footer.ejs
+            footer1.ejs
+            header.ejs
+            sfooter.ejs
+```
