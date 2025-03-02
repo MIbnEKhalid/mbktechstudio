@@ -1,12 +1,12 @@
-
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    <%- include('../../templates/header.ejs') %>
+<%- include('../../templates/header.ejs') %>
 
 <head>
-  <meta charset="UTF-8" />
-   <title>Assigments & Quizes History Page</title>
- </head>
+  <meta name="description" content="Unilib MBK Tech Studio, Historical Assignments, Archived Quizzes">
+  <meta name="keywords" content="Unilib MBK Tech Studio, Historical Assignments, Archived Quizzes">
+  <title>Assigments & Quizes History Page</title>
+</head>
 <!-- Ask For Cookie Consent-->
 <div id="cookie"></div>
 
@@ -14,11 +14,12 @@
   .details {
     margin-bottom: 15px;
   }
+
   .about {
     height: auto !important;
   }
 </style>
- 
+
 
 <body>
   <div class="scroll-button">
@@ -33,10 +34,10 @@
       </div>
     </div>
   </section>
-  
+
   <%- include('../../templates/footer.ejs') %>
 
-   <script>
+  <script>
     fetch('https://api.mbktechstudio.com/api/Unilib/QuizAss') // Fetch the JSON file
       .then(response => response.json()) // Fetch the JSON data
       .then(data => {

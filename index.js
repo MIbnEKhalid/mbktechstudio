@@ -36,7 +36,8 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
 const domainRedirect = (req, res, next) => {
-  const hostname = req.headers.host;
+  let hostname = req.headers['x-forwarded-host'] || req.headers.host; // Allow overriding via x-forwarded-host
+  
   console.log(`Incoming request to hostname: ${hostname}`);
 
   if (process.env.localenv === "true") {
@@ -51,18 +52,12 @@ const domainRedirect = (req, res, next) => {
       "protfolio.mbktechstudio.com": "portfolio",
       "ibnekhalid.me": "portfolio",
       "privacy.mbktechstudio.com": "privacy",
-    }[hostname] || null; // Set to null if hostname is not recognized
-  }
-
-  if (!req.site) {
-    console.log(`Hostname not recognized: ${hostname}`);
-    return res.render("mainPages/domainNotRecognized.ejs", { hostname });
+    }[hostname] || "main";
   }
 
   console.log(`Request site set to: ${req.site}`);
   next();
 };
-
 
 // Routes
 app.get("/", domainRedirect, (req, res) => {
@@ -82,6 +77,7 @@ app.get("/history", domainRedirect, (req, res) => {
   }
   res.render("mainPages/mainDomain/404.ejs");
 });
+
 
 const renderStaticRoutes = [
   { paths: ["/FAQS", "/FAQs", "/faqs", "/FrequentlyAskedQuestions"], view: "mainPages/mainDomain/FAQs.ejs" },
@@ -121,8 +117,11 @@ app.use((req, res) => {
   res.render("mainPages/404.ejs");
 });
 
-// Start the server
+// app.js
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-});
+if (process.env.NODE_ENV !== "test") {
+  app.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}`);
+  });
+}
+export default app;
