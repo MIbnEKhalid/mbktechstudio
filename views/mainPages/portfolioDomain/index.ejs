@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<%- include('../../templates/header.ejs') %>
+
+
+<head>
+      <title>Portfolio</title> 
+</head> 
+
+<style>
+    .about {
+        font-family: 'Roboto', sans-serif;
+    }
+
+    p {
+        font-size: 25px;
+        padding: 10px;
+        text-align: center;
+        max-width: 600px;
+
+    }
+
+    .container {
+        text-align: center;
+    }
+
+    .container i {
+        font-size: 70px;
+        margin-bottom: 20px;
+        animation: bounce 2s infinite;
+        color: #377a77;
+    }
+
+    #nothing-button {
+        width: 300px;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.4s ease;
+    }
+</style>
+
+<body class="body">
+
+    <!-- Preload audio -->
+    <audio id="preload-audio" src="Assets/augh.mp3" preload="auto" style="display:none;"></audio>
+
+
+    <div class="scroll-button">
+        <a href="#about"><i class="fas fa-arrow-up"></i></a>
+    </div>
+
+    <section class="about" id="about">
+
+        <div class="container">
+            <i class="fas fa-tools"></i>
+            <p>This Site Is Under Construction.</p>
+            <br>
+            <div class="button">
+                <button id="nothing-button">Click this button to do nothing</button>
+            </div>
+        </div>
+
+    </section>
+
+    <script>
+        const button = document.getElementById('nothing-button');
+        let index = 0;
+        button.addEventListener('click', function () {
+            index++;
+            setButtonText();
+            playAnnoyingAudioIfAppropriate();
+            resetCounterIfEndOfList();
+        });
+        function setButtonText() {
+            button.textContent = listOfQuips[index];
+        }
+        function resetCounterIfEndOfList() {
+            if (index === listOfQuips.length - 1) {
+                index = 0;
+            }
+        }
+        function playAnnoyingAudioIfAppropriate() {
+            if (index === 3) {
+                const audio = document.getElementById('preload-audio');
+                audio.play();
+            }
+        }
+        const listOfQuips = [
+            "Click this button to do nothing",
+            "bro 🗿",
+            "you're a naughty boy",
+            "AUUGHHH! (sound on) 🔊",
+            "If I had a dollar for every brain you don't have, I'd have one dollar.",
+            "Don't you have to go be stupid somewhere else?",
+            "Roses are red",
+            "Violets are blue",
+            "My code won't compile",
+            "On line 32"
+        ];
+    </script>
+
+</body>
+
+<%- include('../../templates/footer.ejs') %>
+
+
+ 
+</html>

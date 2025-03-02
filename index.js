@@ -37,12 +37,14 @@ function DomainRedirect(req, res, next) {
     const hostname = req.headers.host;
     console.log(`Incoming request to hostname: ${hostname}`);
 
-    if (hostname === "mbktechstudio.com" || process.env.site === "main") {
+    if (hostname === "mbktechstudio.com") {
         req.site = "main";
     } else if (hostname === "docs.mbktechstudio.com" || hostname === "project.mbktechstudio.com") {
         req.site = "docs";
-    } else if (hostname === "unilib.mbktechstudio.com" || process.env.site === "docs") {
+    } else if (hostname === "unilib.mbktechstudio.com") {
         req.site = "unilib";
+    } else if (hostname === "portfolio.mbktechstudio.com") {
+        req.site = "portfolio";
     } else {
         req.site = "main";
     }
@@ -57,13 +59,12 @@ app.use("/", express.static(path.join(__dirname, "public/")));
 app.get("/", DomainRedirect, (req, res) => {
     console.log(`Handling request for site: ${req.site}`);
     if (req.site === "docs") {
-        console.log("Rendering docs index page");
         return res.render("mainPages/docDomain/index.ejs");
     } else if (req.site === "unilib") {
-        console.log("Rendering docs index page");
         return res.render("mainPages/uniDomain/index.ejs");
+    } else if (req.site === "portfolio") {
+        return res.render("mainPages/portfolioDomain/index.ejs");
     } else {
-        console.log("Rendering main index page");
         return res.render("mainPages/mainDomain/index.ejs"); // Assuming you want to render the main index page for other sites
     }
 });
