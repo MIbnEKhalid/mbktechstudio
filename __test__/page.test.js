@@ -25,6 +25,37 @@ testMetaKeywords(
     "MBK Tech Studio, Open-Source, Software Development, Technology Solutions"
 );
 
+
+testMetaKeywords(
+    "mbktechstudio.com",
+    "/404PageTest",
+    "404, Page Not Found, MBK Tech Studio, Error Page"
+); 
+
+testMetaKeywords(
+    "mbktechstudio.com",
+    "/TrackTicket",
+    "support ticket system, track ticket, resolve queries, MBK Tech Studio, customer support, ticket status, help desk, issue tracking"
+); 
+
+testMetaKeywords(
+    "mbktechstudio.com",
+    "/Terms&Conditions",
+    "MBK Tech Studio, Web-Portal, Terms & Conditions, Privacy Policy, User Agreement"
+); 
+
+testMetaKeywords(
+    "mbktechstudio.com",
+    "/Support",
+    "Support, Contact, MBK Tech Studio, Feedback, Collaboration, General Inquiry, Technical Support, Bug Reporting, Feature Requests"
+); 
+
+testMetaKeywords(
+    "mbktechstudio.com",
+    "/FAQs",
+    "FAQs, Frequently Asked Questions, MBK Tech Studio, Help Center"
+); 
+
 testMetaKeywords(
     "unilib.mbktechstudio.com",
     "/",
