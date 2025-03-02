@@ -102,24 +102,24 @@ const constructEmailContent = (data) => {
     <title>Email Template</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #121212;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            color: #e0e0e0;
             line-height: 1.6;
         }
+
         .email-container {
             max-width: 650px;
             margin: 40px auto;
-            background: #1e1e1e;
+            background: rgb(55, 58, 61) !important;
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
         }
+
         .email-header {
-            background-color: #212121;
-            color: #ffffff;
+            background-color: rgb(51, 53, 56) !important;
+            color: #ffffff !important;
             text-align: center;
             padding: 30px 20px;
             font-size: 28px;
@@ -127,60 +127,81 @@ const constructEmailContent = (data) => {
             letter-spacing: 0.5px;
             border-bottom: 1px solid #333;
         }
+
         .email-body {
             padding: 30px;
         }
+
         .email-section {
             margin-bottom: 25px;
         }
+
         .email-label {
             font-size: 15px;
-            color: #bdbdbd;
+            color: #bdbdbd !important;
             font-weight: 600;
             margin-bottom: 8px;
             display: block;
         }
+
         .email-value {
             font-size: 17px;
-            color: #ffffff;
+            color:#ffffff !important;
             word-break: break-word;
         }
+
         .email-value a {
             color: #81d4fa;
             text-decoration: none;
             transition: color 0.3s ease;
         }
+
         .email-value a:hover {
             color: #4fc3f7;
         }
+
         .divider {
             border-top: 1px solid #333;
             margin: 30px 0;
         }
+
         .email-footer {
             text-align: center;
             padding: 20px;
             font-size: 13px;
-            color: #9e9e9e;
-            background-color: #212121;
-            border-top: 1px solid #333;
+            color: #9e9e9e !important;
+            background-color: rgb(55, 58, 61) !important;
+            border-top: 2px solid #222222;
         }
+
         .email-footer a {
             color: #81d4fa;
             text-decoration: none;
         }
+
         .email-footer a:hover {
             color: #4fc3f7;
         }
+
+        .Addi-label {
+            font-size: 25px;
+            color: #ffffff !important;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: block;
+        }
+
         @media screen and (max-width: 600px) {
             .email-container {
                 width: 95%;
                 margin: 20px auto;
             }
+
             .email-header {
                 font-size: 24px;
                 padding: 20px 15px;
             }
+
             .email-body {
                 padding: 20px;
             }
@@ -321,7 +342,7 @@ app.post("/SubmitForm", async (req, res) => {
         Timestamp,
         additionalFields,
     });
-
+    
     try {
         // Send the email
         const mailOptions = {

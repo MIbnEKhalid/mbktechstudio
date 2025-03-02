@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <%- include('../../templates/header.ejs') %>
+
+<head>
+  <meta charset="UTF-8" />
+   <title>Assigments & Quizes History Page</title>
+ </head>
+<!-- Ask For Cookie Consent-->
+<div id="cookie"></div>
+
+<style>
+  .details {
+    margin-bottom: 15px;
+  }
+  .about {
+    height: auto !important;
+  }
+</style>
+ 
+
+<body>
+  <div class="scroll-button">
+    <a href="#about"><i class="fas fa-arrow-up"></i></a>
+  </div>
+  <section class="about" id="about">
+    <div class="content">
+      <div class="not"></div>
+      <div class="title section-title"><span>Assigments & Quizes History</span></div>
+      <div id="detailsContainer" class=" ">
+        <!-- Assigments And Quiz will be dynamically inserted here -->
+      </div>
+    </div>
+  </section>
+  
+  <%- include('../../templates/footer.ejs') %>
+
+   <script>
+    fetch('https://api.mbktechstudio.com/api/Unilib/QuizAss') // Fetch the JSON file
+      .then(response => response.json()) // Fetch the JSON data
+      .then(data => {
+        const detailsContainer = document.getElementById('detailsContainer');
+        detailsContainer.innerHTML = ''; // Clear any existing content 
+
+        data.forEach(item => {
+          const detailsDiv = document.createElement('div');
+          detailsDiv.classList.add('details');
+          detailsDiv.id = `${item.id}`;
+          detailsDiv.style.minWidth = '100%';
+          detailsDiv.style.width = '100%';
+
+          detailsDiv.innerHTML = `
+              <div class="date-box">
+                <span id="issueDate">${item.issueDate}</span>
+                <span id="dueDate">${item.dueDate}</span>
+              </div>
+              <div class="assignment-info">
+                <span><strong>${item.subject}:</strong> ${item.description} </span>
+              </div>
+            `;
+          detailsContainer.appendChild(detailsDiv);
+        });
+      })
+      .catch(error => console.error('Error fetching data:', error));
+  </script>
+</body>
+
+</html>

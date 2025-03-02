@@ -39,11 +39,15 @@ function DomainRedirect(req, res, next) {
 
     if (hostname === "mbktechstudio.com" || process.env.site === "main") {
         req.site = "main";
-    } else if (hostname === "docs.mbktechstudio.com" || process.env.site === "docs") {
+    } else if (hostname === "docs.mbktechstudio.com" || hostname === "project.mbktechstudio.com") {
         req.site = "docs";
+    } else if (hostname === "unilib.mbktechstudio.com" || process.env.site === "docs") {
+        req.site = "unilib";
     } else {
         req.site = "main";
     }
+    if (process.env.localenv === "true")
+        req.site = process.env.site;
     console.log(`Request site set to: ${req.site}`);
     next();
 }
@@ -55,10 +59,20 @@ app.get("/", DomainRedirect, (req, res) => {
     if (req.site === "docs") {
         console.log("Rendering docs index page");
         return res.render("mainPages/docDomain/index.ejs");
+    } else if (req.site === "unilib") {
+        console.log("Rendering docs index page");
+        return res.render("mainPages/uniDomain/index.ejs");
     } else {
         console.log("Rendering main index page");
         return res.render("mainPages/mainDomain/index.ejs"); // Assuming you want to render the main index page for other sites
     }
+});
+
+app.get("/history", DomainRedirect, (req, res) => {
+    if (req.site === "unilib") {
+        return res.render("mainPages/uniDomain/unilibhistory.ejs");
+    }
+    return res.render("mainPages/mainDomain/404.ejs");
 });
 
 app.get(

@@ -20,47 +20,6 @@
 
 <div id="cookie"></div>
 
-<!-- navgaition menu -->
-<header>
-
-  <nav>
-
-    <div class="navbar">
-
-      <div class="logo">
-
-        <div class="image">
-          <img src="https://mbktechstudio.com/Assets/Images/Icon/dg.svg" alt="" />
-        </div>
-
-        <div class="text">
-          <a href="#">MBK Tech Studio</a>
-        </div>
-
-      </div>
-
-      <ul class="menu">
-
-        <div class="media-icons-m" id="media-icons-m"></div>
-
-        <div class="cancel-btn">
-          <i class="fas fa-times"></i>
-        </div>
-
-      </ul>
-
-      <div class="media-icons" id="media-icons"></div>
-
-    </div>
-
-    <div class="menu-btn">
-      <i class="fas fa-bars"></i>
-    </div>
-
-  </nav>
-
-</header>
-
 <body>
   <div class="scroll-button">
     <a href="#about"><i class="fas fa-arrow-up"></i></a>
@@ -86,14 +45,12 @@
       </div>
 
       <div class="products">
-        <!-- Products will be dynamically inserted here -->
       </div>
     </div>
   </section>
   <%- include('../../templates/footer.ejs') %>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/js/intlTelInput-jquery.min.js"></script>
+
   <script>
     let products = []; // Define products as a global variable
 
@@ -119,8 +76,8 @@
         return;
       }
       productsArray.forEach(product => {
-        const productElement = document.createElement('div');
-        productElement.classList.add('product');
+        const productElement = document.createElement('a');
+        productElement.classList.add("product", "linked");
         productElement.innerHTML = `
             <img src="${product.imageURL}" alt="${product.name}">
             <h3>${product.name}</h3>
@@ -190,4 +147,4 @@
   </script>
 </body>
 
-</html>
+</html> 
