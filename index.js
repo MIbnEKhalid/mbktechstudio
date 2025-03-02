@@ -50,6 +50,8 @@ const domainRedirect = (req, res, next) => {
       "unilib.mbktechstudio.com": "unilib",
       "portfolio.mbktechstudio.com": "portfolio",
       "protfolio.mbktechstudio.com": "portfolio",
+      "ibnekhalid.me": "portfolio",
+      "privacy.mbktechstudio.com": "privacy",
     }[hostname] || "main";
   }
 
@@ -64,6 +66,7 @@ app.get("/", domainRedirect, (req, res) => {
     unilib: "mainPages/uniDomain/index.ejs",
     portfolio: "mainPages/portfolioDomain/index.ejs",
     main: "mainPages/mainDomain/index.ejs",
+    privacy: "mainPages/privacyDomain/index.ejs",
   };
   res.render(siteViews[req.site] || siteViews.main);
 });
