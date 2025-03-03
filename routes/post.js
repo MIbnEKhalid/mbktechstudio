@@ -1,6 +1,7 @@
 import express from "express";
 import nodemailer from "nodemailer";
 import dotenv from "dotenv";
+import { authenticate } from "./auth.js"; // Import authenticate here
 import { pool } from "../routes/pool.js"; // Import the pool
 
 dotenv.config();
@@ -8,8 +9,8 @@ dotenv.config();
 const app = express.Router();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
- 
- 
+
+
 // Configure Nodemailer
 const transporter = nodemailer.createTransport({
     service: "gmail",
@@ -27,19 +28,19 @@ const generateTableRow = (label, value = false) => `
  `;
 
 const constructEmailContent = (data) => {
-    const {
-        PageUrl,
-        subject,
-        support,
-        projectCato,
-        name,
-        email,
-        message,
-        Timestamp,
-        additionalFields,
-    } = data;
+        const {
+            PageUrl,
+            subject,
+            support,
+            projectCato,
+            name,
+            email,
+            message,
+            Timestamp,
+            additionalFields,
+        } = data;
 
-    return `
+        return `
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -381,6 +382,10 @@ app.post("/add-ticket", async (req, res) => {
     }
 });
 
+app.post("/Test", authenticate(process.env.Main_SECRET_TOKEN), (req, res) => {
+    console.log("Post 'Test' Request processed successfully");
+    res.status(200).send("Post 'Test' Request processed successfully");
+  });
 /*
 
 curl -X POST http://localhost:3000/post/add-ticket \

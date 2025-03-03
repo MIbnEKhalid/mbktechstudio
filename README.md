@@ -164,6 +164,9 @@ DATABASE_URL=postgresql://username:password@server.domain/db_name
 localenv=true
 
 site=main
+
+Main_SECRET_TOKEN=password
+
 ```
 
 For detailed information about each environment variable, see the [`env.md`](env.md) file.

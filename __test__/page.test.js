@@ -94,7 +94,7 @@ testMetaKeywords(
 );
 
 testMetaKeywords(
-    "docs.mbktechstudio.com",
+    "api.mbktechstudio.com",
     "/",
-    "MBK Tech Studio, Documentation, Projects, Cpp Projects, Game Development, Unity Assets, Web Development, Python Projects"
+    "API, MBK Tech Studio, endpoints, data processing, real-time analytics, cross-platform support, guides, examples"
 );

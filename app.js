@@ -53,6 +53,7 @@ const domainRedirect = (req, res, next) => {
       "protfolio.mbktechstudio.com": "portfolio",
       "ibnekhalid.me": "portfolio",
       "privacy.mbktechstudio.com": "privacy",
+      "api.mbktechstudio.com": "api",
     }[hostname] || "main";
   }
 
@@ -68,6 +69,7 @@ app.get("/", domainRedirect, (req, res) => {
     portfolio: "mainPages/portfolioDomain/index.ejs",
     main: "mainPages/mainDomain/index.ejs",
     privacy: "mainPages/privacyDomain/index.ejs",
+    api: "mainPages/apiDomain/index.ejs",
   };
   res.render(siteViews[req.site] || siteViews.main);
 });
@@ -78,8 +80,7 @@ app.get("/history", domainRedirect, (req, res) => {
   }
   res.render("mainPages/404.ejs");
 });
-
-
+ 
 const renderStaticRoutes = [
   { paths: ["/FAQS", "/FAQs", "/faqs", "/FrequentlyAskedQuestions"], view: "mainPages/mainDomain/FAQs.ejs" },
   { paths: ["/Terms&Conditions", "/PrivacyPolicy", "/privacypolicy", "/terms&conditions"], view: "mainPages/mainDomain/Terms&Conditions.ejs" },

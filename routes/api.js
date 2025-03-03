@@ -1,5 +1,7 @@
 import express from "express";
-import { pool } from "../routes/pool.js"; // Import the pool
+import { pool } from "../routes/pool.js";
+import { pool1 } from "../routes/pool1.js";
+import { authenticate } from "./auth.js";
 
 const router = express.Router();
 const FormAPI_ = process.env.FORM_API_KEY;
@@ -19,7 +21,7 @@ async function getTicketByNumber(ticketNumber) {
     }
 }
 
-router.get("/tickets/:ticketNumber", async (req, res) => {
+router.get("/tickets/:ticketNumber", async(req, res) => {
     const ticket = await getTicketByNumber(req.params.ticketNumber);
     if (ticket) {
         res.json(ticket);
@@ -28,7 +30,7 @@ router.get("/tickets/:ticketNumber", async (req, res) => {
     }
 });
 
-router.get("/tickets", async (req, res) => {
+router.get("/tickets", async(req, res) => {
     try {
         const query = 'SELECT * FROM "Ticket"';
         const result = await pool.query(query);
@@ -41,8 +43,8 @@ router.get("/tickets", async (req, res) => {
         res.status(500).json({ error: "Failed to fetch tickets." });
     }
 });
- 
-router.get("/get-ticket/:ticketno", async (req, res) => {
+
+router.get("/get-ticket/:ticketno", async(req, res) => {
     const { ticketno } = req.params;
 
     try {
@@ -62,7 +64,7 @@ router.get("/get-ticket/:ticketno", async (req, res) => {
     }
 });
 
-router.put("/update-ticket", async (req, res) => {
+router.put("/update-ticket", async(req, res) => {
     const { ticketno, status, lastUpdated, auditTrail } = req.body;
 
     if (!ticketno || !status || !lastUpdated || !Array.isArray(auditTrail)) {
@@ -96,4 +98,97 @@ router.put("/update-ticket", async (req, res) => {
     }
 });
 
-export default router; 
+
+
+/* Api */
+
+router.get("/script/setup.sh",
+    authenticate(process.env.SetupScript_SECRET_TOKEN),
+    (req, res) => {
+        res.sendFile(path.join(__dirname, "public/Assets/setup.sh"));
+    }
+);
+
+async function getAllQuizAss() {
+    try {
+        const query = 'SELECT * FROM "quizass"'; // Ensure the table name matches the exact case
+        const result = await pool1.query(query);
+        console.log(result.rows);
+        return result.rows;
+    } catch (err) {
+        console.error("Database connection error:", err);
+    }
+}
+
+async function getAllBooks() {
+    try {
+        const query = 'SELECT * FROM "unilibbook"'; // Ensure the table name matches the exact case
+        const result = await pool1.query(query);
+        console.log(result.rows);
+        return result.rows;
+    } catch (err) {
+        console.error("Database connection error:", err);
+    }
+}
+
+router.get("/Unilib/Book", async(req, res) => {
+    try {
+        const result = await getAllBooks();
+        res.json(result);
+    } catch (err) {
+        res.status(500).send("Internal Server Error: " + err);
+    }
+});
+
+router.get("/Unilib/QuizAss", async(req, res) => {
+    try {
+        const result = await getAllQuizAss();
+        res.json(result);
+    } catch (err) {
+        res.status(500).send("Internal Server Error: " + err);
+    }
+});
+
+router.get("/poratlAppVersion", (req, res) => {
+    const response = {
+        VersionNumber: process.env.Portal_App_Version,
+        Url: process.env.Portal_App_Download_Link,
+        PortaLive: process.env.portalive
+    };
+    res.status(200).json(response);
+});
+
+router.get("/poratlAppUrl", (req, res) => {
+    const response = {
+        PortalWebUrl: process.env.PortalWebUrl
+    };
+    console.log(response);
+    res.status(200).json(response);
+});
+
+router.get("/Test", authenticate(process.env.Main_SECRET_TOKEN), (req, res) => {
+    console.log("API 'Test' Request processed successfully");
+    res.send("API 'Test' Request processed successfully");
+});
+
+//Invoke-RestMethod -Uri http://localhost:3020/api/terminateAllSessions -Method POST
+// Terminate all sessions route
+router.post(
+    "/terminateAllSessions",
+    authenticate(process.env.Main_SECRET_TOKEN),
+    async(req, res) => {
+        // Update all users' SessionId to null
+        await pool1.query('UPDATE "Users" SET "SessionId" = NULL');
+
+        // Clear the session table
+        await pool1.query('DELETE FROM "session"');
+
+        // Destroy all sessions on the server
+
+        res.send("All sessions have been terminated");
+    }
+);
+
+
+
+export default router;
