@@ -30,6 +30,7 @@ app.use(
   })
 );
 app.use("/", express.static(path.join(__dirname, "public/")));
+app.use('/static', express.static(path.join(__dirname, 'node_modules')));
 
 // Set up views
 app.set("view engine", "ejs");

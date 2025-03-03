@@ -317,4 +317,87 @@ app.post("/SubmitForm", async (req, res) => {
     }
 });
 
+app.post("/add-ticket", async (req, res) => {
+    console.log("Incoming request body:", req.body);
+
+    const {
+        ticketno,
+        name,
+        title,
+        status,
+        createdDate,
+        lastUpdated,
+        auditTrail,
+    } = req.body;
+
+    // Validate fields
+    if (!ticketno) {
+        return res.status(400).json({ error: "Ticket Number is required." });
+    }
+    if (!name) {
+        return res.status(400).json({ error: "Name is required." });
+    }
+    if (!title) {
+        return res.status(400).json({ error: "Title is required." });
+    }
+    if (!status) {
+        return res.status(400).json({ error: "Status is required." });
+    }
+    if (!createdDate) {
+        return res.status(400).json({ error: "Created Date is required." });
+    }
+    if (!lastUpdated) {
+        return res.status(400).json({ error: "Last Updated is required." });
+    }
+    if (!Array.isArray(auditTrail)) {
+        return res.status(400).json({ error: "Audit Trail must be an array." });
+    }
+
+    try {
+        const query = `
+        INSERT INTO "Ticket" (ticketno, name, title, status, "createdDate", "lastUpdated", "auditTrail")
+        VALUES ($1, $2, $3, $4, $5, $6, $7)
+        RETURNING *;
+        `;
+        const values = [
+            ticketno,
+            name,
+            title,
+            status,
+            createdDate,
+            lastUpdated,
+            JSON.stringify(auditTrail), // Convert array to JSON string for JSONB
+        ];
+
+        const result = await pool.query(query, values);
+
+        res.status(201).json({
+            message: "Ticket added successfully!",
+            ticket: result.rows[0],
+        });
+    } catch (err) {
+        console.error("Error adding ticket:", err);
+        res.status(500).json({ error: "Failed to add ticket." });
+    }
+});
+
+/*
+
+curl -X POST http://localhost:3000/post/add-ticket \
+-H "Content-Type: application/json" \
+-d "{
+  \"ticketno\": \"T000111336\", 
+  \"name\": \"John Doe\",
+  \"title\": \"Sample Ticket\",
+  \"status\": \"Open\",
+  \"createdDate\": \"2025-02-27\",
+  \"lastUpdated\": \"2025-02-27\",
+  \"auditTrail\": [
+    {\"type\":\"status\",\"action\":\"Ticket Created\",\"timestamp\":\"2024-11-14T08:45:00Z\"},
+    {\"type\":\"update\",\"action\":\"Status changed to 'In Progress'\",\"timestamp\":\"2024-11-14T09:30:00Z\"},
+    {\"type\":\"update\",\"action\":\"Network Issue Investigated\",\"timestamp\":\"2024-11-14T10:00:00Z\"},
+    {\"type\":\"status\",\"action\":\"Status changed to 'Resolved'\",\"timestamp\":\"2024-11-15T10:00:00Z\"}
+  ]
+}" 
+*/
 export default app;

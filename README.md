@@ -5,13 +5,9 @@
 ### Portfolio Sites
 - [ibnekhalid.me](https://ibnekhalid.me/)
 - [portfolio.mbktechstudio.com](https://portfolio.mbktechstudio.com/)
-- [protfolio.mbktechstudio.com](https://protfolio.mbktechstudio.com/)
-
-### Main Sites
+- [protfolio.mbktechstudio.com](https://protfolio.mbktechstudio.com/) 
 - [mbktechstudio.com](https://mbktechstudio.com/)
-- [www.mbktechstudio.com](https://www.mbktechstudio.com/)(www redirect to main)
-
-### Specialized Sites
+- [www.mbktechstudio.com](https://www.mbktechstudio.com/)(www redirect to main) 
 - [unilib.mbktechstudio.com](https://unilib.mbktechstudio.com/)
 - [privacy.mbktechstudio.com](https://privacy.mbktechstudio.com/)
 
@@ -67,14 +63,87 @@ This Node.js application is hosted on Vercel and handles multiple domains throug
 - `unilib.mbktechstudio.com`
 → Served from `views/mainPages/uniDomain/`
 
+## Installation and Setup
+
+1. Clone the repository:
+```bash
+git clone https://github.com/MIbnEKhalid/MIbnEKhalid.github.io.git
+cd MIbnEKhalid.github.io
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Create a `.env` file in the root directory and add the required environment variables:
+```env
+GMAIL_USER=username@gmail.com
+
+GMAIL_PASS=your-app-password (not regular password)
+
+DATABASE_URL=postgresql://username:password@server.domain/db_name
+
+localenv=true
+
+site=main
+```
+
+For detailed information about each environment variable, see the [`env.md`](env.md) file.
+
+## Running the Application
+
+Development mode:
+```bash
+npm run dev
+```
+
+Production mode:
+```bash
+npm start
+```
+
+The application will be available at [`http://localhost:3000`](http://localhost:3000)
+
+## Testing
+
+### Production Test
+First, start the application in production mode:
+```bash
+npm run start
+```
+This will set `process.env.localenv=false` and run the build.
+
+### Run Tests
+Then execute the test suite:
+```bash
+npm run test
+```
+The tests will validate API endpoints and page rendering functionality.
+
+Note: Make sure all environment variables are properly configured before running tests.
+
+## License
+
+**Note:** Only The Source Code Of This Website Is Covered Under The **[MIT License](https://opensource.org/license/mit)**.  
+The Project Documentation Covered Under The **[Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-nc-sa/4.0/)** But Some **Images, Blog Posts, And Other Content Are NOT  
+Covered Under This License And Remain The Intellectual Property Of The Author**.
+
+See the [LICENSE](LICENSE) file for details.
+ 
+## Contact
+
+For questions or contributions, please contact Muhammad Bin Khalid at [mbktechstudio.com/Support](https://mbktechstudio.com/Support/?Project=MIbnEKhalidWeb), [support@mbktechstudio.com](mailto:support@mbktechstudio.com) or [chmuhammadbinkhalid28.com](mailto:chmuhammadbinkhalid28.com). 
+
+
 ## File Structure
 
 ```
-Repo
+Repo 
 │   .env
 │   .gitignore
 │   app.js
-│   env.info
+│   env.md
 │   jsconfig.json
 │   LICENSE
 │   package-lock.json
@@ -83,7 +152,6 @@ Repo
 │   SECURITY.md
 │   vercel.json
 │
-├───private
 ├───public
 │   │   robots.txt
 │   │   sitemap.xml
@@ -201,80 +269,9 @@ Repo
 └───__test__
         api.test.js
         page.test.js
+
 ```
 
-
-## Installation and Setup
-
-1. Clone the repository:
-```bash
-git clone https://github.com/MIbnEKhalid/MIbnEKhalid.github.io.git
-cd MIbnEKhalid.github.io
-```
-
-2. Install dependencies:
-```bash
-npm install
-```
-
-3. Create a `.env` file in the root directory and add the required environment variables:
-```env
-GMAIL_USER=username@gmail.com
-
-GMAIL_PASS=your-app-password (not regular password)
-
-DATABASE_URL=postgresql://username:password@server.domain/db_name
-
-localenv=true
-
-site=main
-```
-
-For detailed information about each environment variable, see the [`env.md`](env.md) file.
-
-## Running the Application
-
-Development mode:
-```bash
-npm run dev
-```
-
-Production mode:
-```bash
-npm start
-```
-
-The application will be available at `http://localhost:3000`
-
-## Testing
-
-### Production Test
-First, start the application in production mode:
-```bash
-npm run start
-```
-This will set `process.env.localenv=false` and run the build.
-
-### Run Tests
-Then execute the test suite:
-```bash
-npm run test
-```
-The tests will validate API endpoints and page rendering functionality.
-
-Note: Make sure all environment variables are properly configured before running tests.
-
-## License
-
-**Note:** Only The Source Code Of This Website Is Covered Under The **[MIT License](https://opensource.org/license/mit)**.  
-The Project Documentation Covered Under The **[Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-nc-sa/4.0/)** But Some **Images, Blog Posts, And Other Content Are NOT  
-Covered Under This License And Remain The Intellectual Property Of The Author**.
-
-See the [LICENSE](LICENSE) file for details.
- 
-## Contact
-
-For questions or contributions, please contact Muhammad Bin Khalid at [mbktechstudio.com/Support](https://mbktechstudio.com/Support/?Project=MIbnEKhalidWeb), [support@mbktechstudio.com](mailto:support@mbktechstudio.com) or [chmuhammadbinkhalid28.com](mailto:chmuhammadbinkhalid28.com). 
 
 <!-- 
 ## Documentation License
