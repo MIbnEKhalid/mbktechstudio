@@ -4,15 +4,13 @@
     "main": "app.js",
     "type": "module",
     "scripts": {
-        "build-assets": "copyfiles -u 2 node_modules/@fortawesome/fontawesome-free/css/all.min.css public/static/@fortawesome/fontawesome-free/css/",
-        "start": "npm run build-assets && set localenv=f && nodemon app.js",
+        "start": "set localenv=f && nodemon app.js",
         "dev": "nodemon app.js",
         "test": "jest --watchAll --verbose"
     },
     "author": "Muhammad Bin Khalid",
     "license": "MIT",
     "dependencies": {
-        "@fortawesome/fontawesome-free": "^6.7.2",
         "clean-css-cli": "^5.6.3",
         "compression": "^1.8.0",
         "cors": "^2.8.5",
