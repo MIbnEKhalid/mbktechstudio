@@ -203,6 +203,67 @@ Repo
         page.test.js
 ```
 
+
+## Installation and Setup
+
+1. Clone the repository:
+```bash
+git clone https://github.com/MIbnEKhalid/MIbnEKhalid.github.io.git
+cd MIbnEKhalid.github.io
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Create a `.env` file in the root directory and add the required environment variables:
+```env
+GMAIL_USER=username@gmail.com
+
+GMAIL_PASS=your-app-password (not regular password)
+
+DATABASE_URL=postgresql://username:password@server.domain/db_name
+
+localenv=true
+
+site=main
+```
+
+For detailed information about each environment variable, see the [`env.md`](env.md) file.
+
+## Running the Application
+
+Development mode:
+```bash
+npm run dev
+```
+
+Production mode:
+```bash
+npm start
+```
+
+The application will be available at `http://localhost:3000`
+
+## Testing
+
+### Production Test
+First, start the application in production mode:
+```bash
+npm run start
+```
+This will set `process.env.localenv=false` and run the build.
+
+### Run Tests
+Then execute the test suite:
+```bash
+npm run test
+```
+The tests will validate API endpoints and page rendering functionality.
+
+Note: Make sure all environment variables are properly configured before running tests.
+
 ## License
 
 **Note:** Only The Source Code Of This Website Is Covered Under The **[MIT License](https://opensource.org/license/mit)**.  

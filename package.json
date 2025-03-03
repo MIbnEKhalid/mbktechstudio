@@ -4,9 +4,8 @@
     "main": "app.js",
     "type": "module",
     "scripts": {
-        "start": "nodemon app.js",
-        "build": "node app.js",
-        "tbuild": "set localenv=test && nodemon app.js",
+        "start": "set localenv=f && nodemon app.js",
+        "dev": "nodemon app.js",
         "test": "jest --watchAll --verbose"
     },
     "author": "Muhammad Bin Khalid",
