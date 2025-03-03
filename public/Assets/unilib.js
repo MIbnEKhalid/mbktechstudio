@@ -2,6 +2,7 @@ let products = [];
 const productsContainer = document.querySelector(".products");
 const searchInput = document.getElementById("searchProduct");
 const categoryFilter = document.getElementById("categoryFilter");
+const semesterFilter = document.getElementById("semesterFilter");
 const spinner = document.getElementById('spinner');
 
 async function loadProducts() {
@@ -9,18 +10,35 @@ async function loadProducts() {
     const response = await fetch('https://api.mbktechstudio.com/api/Unilib/Book');
     products = await response.json(); // Parse the JSON response directly
     spinner.style.display = 'none';
-    filterProducts();
+    filterProducts(); // Trigger initial filtering
   } catch (error) {
     console.error("Error loading products:", error);
   }
 }
 
+function filterProducts() {
+  const searchTerm = searchInput.value.toLowerCase();
+  const selectedCategory = categoryFilter.value;
+  const selectedSemester = semesterFilter.value;
+
+  const filteredProducts = products.filter(product => {
+    const matchesSearch = product.name.toLowerCase().includes(searchTerm);
+    const matchesCategory = selectedCategory === "all" || product.category === selectedCategory;
+    const matchesSemester = !selectedSemester || product.semester === selectedSemester; // Updated to match the correct structure
+    return matchesSearch && matchesCategory && matchesSemester;
+  });
+
+  displayProducts(filteredProducts);
+}
+
+
 function displayProducts(productsArray) {
-  productsContainer.innerHTML = "";
+  productsContainer.innerHTML = ''; // Clear previous products
   if (productsArray.length === 0) {
-    productsContainer.innerHTML = '<p class="nmessage">Material not found</p>';
+    productsContainer.innerHTML = '<p>No products found</p>';
     return;
   }
+
   productsArray.forEach((product) => {
     const productElement = document.createElement("a");
     productElement.classList.add("product", "linked");
@@ -30,34 +48,21 @@ function displayProducts(productsArray) {
            <img src="Assets/Images/BookCovers/${product.imageURL}" alt="${product.name}">
            <h3>${product.name}</h3>
            <p>${product.description}</p>
-        `;
+    `    ;
     productsContainer.appendChild(productElement);
   });
 }
 
-function filterProducts() {
-  const selectedCategory = categoryFilter.value;
-  let filteredProducts = products;
-  if (selectedCategory !== "all") {
-    filteredProducts = products.filter((product) =>
-      product.category.includes(selectedCategory)
-    );
-  }
-  filteredProducts = searchProducts(filteredProducts);
-  displayProducts(filteredProducts);
-}
+// Attach event listeners
+document.addEventListener("DOMContentLoaded", () => {
+  loadProducts();
 
-function searchProducts(productsArray) {
-  const searchText = searchInput.value.toLowerCase();
-  return productsArray.filter((product) =>
-    product.name.toLowerCase().includes(searchText)
-  );
-}
+  // Filter when dropdowns or search input change
+  searchInput.addEventListener("input", filterProducts);
+  categoryFilter.addEventListener("change", filterProducts);
+  semesterFilter.addEventListener("change", filterProducts);
+});
 
-categoryFilter.addEventListener("change", filterProducts);
-searchInput.addEventListener("input", filterProducts);
-
-loadProducts();
 
 fetch("https://api.mbktechstudio.com/api/Unilib/QuizAss")
   .then((response) => response.json()) // Fetch the JSON data

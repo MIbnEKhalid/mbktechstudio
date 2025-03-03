@@ -6,7 +6,12 @@ GMAIL_USER=username@gmail.com
 GMAIL_PASS=abcdefghijklmnop
 ```
 > **Note:** GMAIL_PASS is an app password, not your Gmail account password.  
-> Generate it from Google Account > Security > App Passwords
+
+> 1: Enable 2-Factor Authentication (2FA) on your Google account.
+
+> 2: Go to your Google Account settings and search for "App Passwords".
+
+> 3: Create a new app password, copy and paste it.
 
 ## Database Settings
 ```properties

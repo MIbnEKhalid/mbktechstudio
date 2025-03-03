@@ -80,26 +80,131 @@
 <body>
   <div class="scroll-button">
     <a href="#about"><i class="fas fa-arrow-up"></i></a>
-  </div>
-  <!--
-    <section class="hero">
-        <div class="content">
-            <div class="title">Welcome to Uni Books</div>
-            <div class="description">Get all your course materials and assignments here</div>
-        </div>
-    </section>
--->
+  </div> 
 
-  <section class="about" id="about">
+  <aside class="sidebar sidebar-collapsed" id="sidebar">
+    <div class="sidebar-toggle" id="sidebar-toggle">
+      <i class="fas fa-chevron-left"></i>
+    </div>
+    <div class="sidebar-content">
+      <h2>Quick Links</h2>
+      <ul>
+        <li><a href="#books">Books</a></li>
+        <li><a href="#assignments">Assigments & Quiz</a></li> 
+      </ul>
+    </div>
+  </aside>
+  <style>
+    .sidebar {
+      position: fixed;
+      right: 0;
+      top: 25%;
+      transform: translateY(-50%);
+      background-color: #333;
+      padding: 1rem;
+      border-radius: 8px 0 0 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      transition: right 0.3s ease;
+      width: 150px;
+    }
+
+    .sidebar-collapsed {
+      right: -150px;
+    }
+
+    .sidebar-toggle {
+      position: absolute;
+      left: -45px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 30px;
+      height: 30px;
+      background: linear-gradient(145deg, #444, #222);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+      transition: all 0.3s ease;
+    }
+
+    .sidebar-toggle:hover {
+      opacity: 0.8;
+      transition: all 0.3s ease;
+
+    }
+
+    .sidebar-toggle i {
+      color: #fff;
+      font-size: 16px;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .sidebar-content h2 {
+      color: #fff;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      font-family: "Ubuntu", sans-serif;
+    }
+
+    .sidebar-content ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .sidebar-content ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    .sidebar-content ul li a {
+      color: #007bff;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 600;
+      font-family: "Poppins", sans-serif;
+    }
+
+    .sidebar-content ul li a:hover {
+      text-decoration: underline;
+      color: #5ba5f5;
+    }
+  </style>
+  <script>
+    const sidebar = document.getElementById("sidebar");
+    const pagetoggleButton = document.getElementById("sidebar-toggle");
+    const toggleIcon = pagetoggleButton.querySelector("i");
+
+    pagetoggleButton.addEventListener("click", () => {
+      sidebar.classList.toggle("sidebar-collapsed");
+
+      if (sidebar.classList.contains("sidebar-collapsed")) {
+        toggleIcon.classList.remove("fa-chevron-right");
+        toggleIcon.classList.add("fa-chevron-left");
+      } else {
+        toggleIcon.classList.remove("fa-chevron-left");
+        toggleIcon.classList.add("fa-chevron-right");
+      }
+    });
+  </script>
+
+  <section class="about" id="books">
     <div class="content">
       <div class="not"></div>
       <div class="title section-title"><span>Uni Course Materials</span></div>
+      <div class="select-dropdown">
+        <select id="semesterFilter" name="topics">
+          <option value="Semester1">Semester 1</option>
+          <option value="Semester2" selected>Semester 2</option>
+        </select>
+      </div>
       <div class="select-dropdown">
         <select id="categoryFilter" name="topics">
           <option value="all">All</option>
           <option value="CourseBooks">Course Books</option>
           <option value="LabManuals">Lab Manuals</option>
-          <option value="CompletedAssigments">Assigments</option>
           <option value="other">Other</option>
         </select>
       </div>
@@ -164,13 +269,7 @@
     <div class="notification is-info">
       <p>
         The <strong>Unilib Project</strong> is open-source, and we welcome contributions! You can explore
-        and contribute on our <a class="links" href="https://github.com/MIbnEKhalid/Unilib.MIbnEKhalid.github.io/" target="_blank">Project</a>.
-      </p>
-    </div>
-    <div class="notification is-info">
-      <p>
-        We are also developing an Android version. Contributions are welcome, and we'll announce its
-        completion here. Visit the <a class="links" href="https://github.com/MIbnEKhalid/UnilibUnity" target="_blank">GitHub repository</a> to explore and contribute.
+        and contribute on our <a class="links" href="https://github.com/MIbnEKhalid/MIbnEKhalid.github.io/" target="_blank">Project</a>.
       </p>
     </div>
   </section>
@@ -224,29 +323,27 @@
       } else {
         toggleButton.textContent = 'Show More';
       }
-    });
-
-    document.addEventListener('DOMContentLoaded', function() {
-      const headerHeight = document.querySelector('header').offsetHeight;
-
-      document.querySelectorAll('nav .menu li a').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-          e.preventDefault();
-          const targetId = this.getAttribute('href').substring(1);
-          const targetElement = document.getElementById(targetId);
-
-          if (targetElement) {
-            const targetPosition = targetElement.offsetTop - headerHeight - 70; // Adjust 10px as needed
-            window.scrollTo({
-              top: targetPosition,
-              behavior: 'smooth'
-            });
-          }
-        });
+    }); 
+  </script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const headerHeight = document.querySelector('header').offsetHeight;
+    document.querySelectorAll('aside a').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+          const targetPosition = targetElement.offsetTop - headerHeight - 28; // Adjust 10px as needed
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+        }
       });
     });
-  </script>
-
+  });
+</script>
 </body>
 
 </html>
