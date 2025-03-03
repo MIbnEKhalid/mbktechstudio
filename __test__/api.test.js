@@ -1,5 +1,4 @@
-
-function testMetaKeywords(path) {
+function apiTest(path) {
     describe(`Get ${path}`, () => {
         it("should return status 200", async () => {
             const response = await fetch(`http://localhost:3000${path}`, {
@@ -9,10 +8,5 @@ function testMetaKeywords(path) {
     });
 }
 
-
-testMetaKeywords(
-    "/api/tickets/T000111333"
-);
-testMetaKeywords(
-    "/api/get-ticket/T000111333"
-);
+apiTest("/api/tickets/T000111333");
+apiTest("/api/get-ticket/T000111333");

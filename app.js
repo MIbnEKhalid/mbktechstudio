@@ -75,7 +75,7 @@ app.get("/history", domainRedirect, (req, res) => {
   if (req.site === "unilib") {
     return res.render("mainPages/uniDomain/unilibhistory.ejs");
   }
-  res.render("mainPages/mainDomain/404.ejs");
+  res.render("mainPages/404.ejs");
 });
 
 

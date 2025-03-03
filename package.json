@@ -1,11 +1,12 @@
 {
     "name": "www.mbktechstudio.com",
     "version": "1.0.0",
-    "main": "index.js",
+    "main": "app.js",
     "type": "module",
     "scripts": {
-        "start": "nodemon index.js",
-        "build": "node index.js",
+        "start": "nodemon app.js",
+        "build": "node app.js",
+        "tbuild": "set localenv=test && nodemon app.js",
         "test": "jest --watchAll --verbose"
     },
     "author": "Muhammad Bin Khalid",

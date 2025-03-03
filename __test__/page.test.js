@@ -1,7 +1,7 @@
 const { JSDOM } = require("jsdom");
-
+ 
 function testMetaKeywords(domain, path, expectedKeywords) {
-    describe(`${domain}${path} main page landing`, () => {
+    describe(`${domain}${path} page landing`, () => {
         it("should have specific meta data", async () => {
             const response = await fetch(`http://localhost:3000${path}`, {
                 headers: {
