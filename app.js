@@ -80,6 +80,8 @@ app.get("/history", domainRedirect, (req, res) => {
   }
   res.render("mainPages/404.ejs");
 });
+
+
  
 const renderStaticRoutes = [
   { paths: ["/FAQS", "/FAQs", "/faqs", "/FrequentlyAskedQuestions"], view: "mainPages/mainDomain/FAQs.ejs" },
@@ -112,6 +114,10 @@ app.get(["/TrackTicket", "/Ticket", "/Track", "/trackticket"], (req, res) => {
 // API and Post routes
 app.use("/post", postRoutes);
 app.use("/api", apiRoutes);
+
+app.get(["/api*","/post*"], (req, res) => {
+  res.render("mainPages/apiDomain/notfound.ejs");
+});
 
 // 404 handler
 app.use((req, res) => {
