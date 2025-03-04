@@ -6,14 +6,12 @@ import path from "path";
 import { fileURLToPath } from "url";
 import fs from 'fs';
 
-const router = express.Router();
-const FormAPI_ = process.env.FORM_API_KEY;
-
+const app = express.Router(); 
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-router.use(express.json());
+app.use(express.json());
 
 async function getTicketByNumber(ticketNumber) {
     try {
@@ -28,7 +26,7 @@ async function getTicketByNumber(ticketNumber) {
     }
 }
 
-router.get("/tickets/:ticketNumber", async (req, res) => {
+app.get("/tickets/:ticketNumber", async (req, res) => {
     const ticket = await getTicketByNumber(req.params.ticketNumber);
     if (ticket) {
         res.json(ticket);
@@ -37,7 +35,7 @@ router.get("/tickets/:ticketNumber", async (req, res) => {
     }
 });
 
-router.get("/tickets", async (req, res) => {
+app.get("/tickets", async (req, res) => {
     try {
         const query = 'SELECT * FROM "Ticket"';
         const result = await pool.query(query);
@@ -51,7 +49,7 @@ router.get("/tickets", async (req, res) => {
     }
 });
 
-router.get("/get-ticket/:ticketno", async (req, res) => {
+app.get("/get-ticket/:ticketno", async (req, res) => {
     const { ticketno } = req.params;
 
     try {
@@ -71,7 +69,7 @@ router.get("/get-ticket/:ticketno", async (req, res) => {
     }
 });
 
-router.put("/update-ticket", async (req, res) => {
+app.put("/update-ticket", async (req, res) => {
     const { ticketno, status, lastUpdated, auditTrail } = req.body;
 
     if (!ticketno || !status || !lastUpdated || !Array.isArray(auditTrail)) {
@@ -103,13 +101,11 @@ router.put("/update-ticket", async (req, res) => {
         console.error("Error updating ticket:", err);
         res.status(500).json({ error: "Failed to update ticket." });
     }
-});
-
-
+}); 
 
 /* Api */
 
-router.get("/script/setup.sh", (req, res) => {
+app.get("/script/setup.sh", authenticate(process.env.SetupScript_SECRET_TOKEN), (req, res) => {
     const scriptPath = path.join(__dirname, '../public/Assets/setup.sh');
     fs.readFile(scriptPath, 'utf8', (err, data) => {
         if (err) {
@@ -118,8 +114,8 @@ router.get("/script/setup.sh", (req, res) => {
         }
 
         const scriptContent = data
-            .replace(/\${APACHE_LOG_DIR}/g, process.env.APACHE_LOG_DIR)
-            .replace(/\${process.env.MY_ENV_VAR}/g, process.env.MY_ENV_VAR);
+            .replace(/\${APACHE_LOG_DIR}/g, "${APACHE_LOG_DIR}")
+            .replace(/\${process.env.ScriptGithubToken}/g, process.env.ScriptGithubToken);
 
         res.setHeader('Content-Type', 'application/x-sh');
         res.send(scriptContent);
@@ -128,9 +124,9 @@ router.get("/script/setup.sh", (req, res) => {
 
 async function getAllQuizAss() {
     try {
-        const query = 'SELECT * FROM "quizass"'; // Ensure the table name matches the exact case
+        const query = 'SELECT * FROM "quizass"';
         const result = await pool1.query(query);
-        console.log(result.rows);
+        console.log("QuizAss Api Request processed successfully");
         return result.rows;
     } catch (err) {
         console.error("Database connection error:", err);
@@ -141,14 +137,14 @@ async function getAllBooks() {
     try {
         const query = 'SELECT * FROM "unilibbook"'; // Ensure the table name matches the exact case
         const result = await pool1.query(query);
-        console.log(result.rows);
+        console.log("Book Api Request processed successfully");
         return result.rows;
     } catch (err) {
         console.error("Database connection error:", err);
     }
 }
 
-router.get("/Unilib/Book", async (req, res) => {
+app.get("/Unilib/Book", async (req, res) => {
     try {
         const result = await getAllBooks();
         res.json(result);
@@ -157,7 +153,7 @@ router.get("/Unilib/Book", async (req, res) => {
     }
 });
 
-router.get("/Unilib/QuizAss", async (req, res) => {
+app.get("/Unilib/QuizAss", async (req, res) => {
     try {
         const result = await getAllQuizAss();
         res.json(result);
@@ -166,42 +162,23 @@ router.get("/Unilib/QuizAss", async (req, res) => {
     }
 });
 
-router.get("/poratlAppVersion", (req, res) => {
+app.get("/poratlAppVersion", (req, res) => {
     const response = JSON.parse(process.env.PortalVersonControlJson);
+    console.log("PortalVersonControlJson Api Request processed successfully");
     res.status(200).json(response);
 });
 
-router.get("/poratlAppUrl", (req, res) => {
+app.get("/poratlAppUrl", (req, res) => {
     const response = {
         PortalWebUrl: process.env.PortalWebUrl
     };
-    console.log(response);
+    console.log("PortalWebUrl Api Request processed successfully");
     res.status(200).json(response);
 });
 
-router.get("/Test", authenticate(process.env.Main_SECRET_TOKEN), (req, res) => {
+app.get("/Test", authenticate(process.env.Main_SECRET_TOKEN), (req, res) => {
     console.log("API 'Test' Request processed successfully");
     res.send("API 'Test' Request processed successfully");
-});
+}); 
 
-//Invoke-RestMethod -Uri http://localhost:3020/api/terminateAllSessions -Method POST
-// Terminate all sessions route
-router.post(
-    "/terminateAllSessions",
-    authenticate(process.env.Main_SECRET_TOKEN),
-    async (req, res) => {
-        // Update all users' SessionId to null
-        await pool1.query('UPDATE "Users" SET "SessionId" = NULL');
-
-        // Clear the session table
-        await pool1.query('DELETE FROM "session"');
-
-        // Destroy all sessions on the server
-
-        res.send("All sessions have been terminated");
-    }
-);
-
-
-
-export default router;
+export default app;

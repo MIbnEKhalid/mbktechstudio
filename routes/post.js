@@ -382,6 +382,24 @@ app.post("/add-ticket", async (req, res) => {
     }
 });
 
+//Invoke-RestMethod -Uri http://localhost:3020/api/terminateAllSessions -Method POST
+// Terminate all sessions route
+app.post(
+    "/terminateAllSessions",
+    authenticate(process.env.Main_SECRET_TOKEN),
+    async (req, res) => {
+        // Update all users' SessionId to null
+        await pool1.query('UPDATE "Users" SET "SessionId" = NULL');
+
+        // Clear the session table
+        await pool1.query('DELETE FROM "session"');
+
+        // Destroy all sessions on the server
+
+        res.send("All sessions have been terminated");
+    }
+);
+
 app.post("/Test", authenticate(process.env.Main_SECRET_TOKEN), (req, res) => {
     console.log("Post 'Test' Request processed successfully");
     res.status(200).send("Post 'Test' Request processed successfully");
