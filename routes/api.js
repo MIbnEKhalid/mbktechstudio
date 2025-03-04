@@ -150,11 +150,7 @@ router.get("/Unilib/QuizAss", async(req, res) => {
 });
 
 router.get("/poratlAppVersion", (req, res) => {
-    const response = {
-        VersionNumber: process.env.Portal_App_Version,
-        Url: process.env.Portal_App_Download_Link,
-        PortaLive: process.env.portalive
-    };
+    const response = JSON.parse(process.env.PortalVersonControlJson);
     res.status(200).json(response);
 });
 
