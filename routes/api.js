@@ -2,9 +2,16 @@ import express from "express";
 import { pool } from "../routes/pool.js";
 import { pool1 } from "../routes/pool1.js";
 import { authenticate } from "./auth.js";
+import path from "path";
+import { fileURLToPath } from "url";
+import fs from 'fs';
 
 const router = express.Router();
 const FormAPI_ = process.env.FORM_API_KEY;
+
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 router.use(express.json());
 
@@ -21,7 +28,7 @@ async function getTicketByNumber(ticketNumber) {
     }
 }
 
-router.get("/tickets/:ticketNumber", async(req, res) => {
+router.get("/tickets/:ticketNumber", async (req, res) => {
     const ticket = await getTicketByNumber(req.params.ticketNumber);
     if (ticket) {
         res.json(ticket);
@@ -30,7 +37,7 @@ router.get("/tickets/:ticketNumber", async(req, res) => {
     }
 });
 
-router.get("/tickets", async(req, res) => {
+router.get("/tickets", async (req, res) => {
     try {
         const query = 'SELECT * FROM "Ticket"';
         const result = await pool.query(query);
@@ -44,7 +51,7 @@ router.get("/tickets", async(req, res) => {
     }
 });
 
-router.get("/get-ticket/:ticketno", async(req, res) => {
+router.get("/get-ticket/:ticketno", async (req, res) => {
     const { ticketno } = req.params;
 
     try {
@@ -64,7 +71,7 @@ router.get("/get-ticket/:ticketno", async(req, res) => {
     }
 });
 
-router.put("/update-ticket", async(req, res) => {
+router.put("/update-ticket", async (req, res) => {
     const { ticketno, status, lastUpdated, auditTrail } = req.body;
 
     if (!ticketno || !status || !lastUpdated || !Array.isArray(auditTrail)) {
@@ -102,12 +109,22 @@ router.put("/update-ticket", async(req, res) => {
 
 /* Api */
 
-router.get("/script/setup.sh",
-    authenticate(process.env.SetupScript_SECRET_TOKEN),
-    (req, res) => {
-        res.sendFile(path.join(__dirname, "public/Assets/setup.sh"));
-    }
-);
+router.get("/script/setup.sh", (req, res) => {
+    const scriptPath = path.join(__dirname, '../public/Assets/setup.sh');
+    fs.readFile(scriptPath, 'utf8', (err, data) => {
+        if (err) {
+            console.error("Error reading script file:", err);
+            return res.status(500).send("Internal Server Error");
+        }
+
+        const scriptContent = data
+            .replace(/\${APACHE_LOG_DIR}/g, process.env.APACHE_LOG_DIR)
+            .replace(/\${process.env.MY_ENV_VAR}/g, process.env.MY_ENV_VAR);
+
+        res.setHeader('Content-Type', 'application/x-sh');
+        res.send(scriptContent);
+    });
+});
 
 async function getAllQuizAss() {
     try {
@@ -131,7 +148,7 @@ async function getAllBooks() {
     }
 }
 
-router.get("/Unilib/Book", async(req, res) => {
+router.get("/Unilib/Book", async (req, res) => {
     try {
         const result = await getAllBooks();
         res.json(result);
@@ -140,7 +157,7 @@ router.get("/Unilib/Book", async(req, res) => {
     }
 });
 
-router.get("/Unilib/QuizAss", async(req, res) => {
+router.get("/Unilib/QuizAss", async (req, res) => {
     try {
         const result = await getAllQuizAss();
         res.json(result);
@@ -172,7 +189,7 @@ router.get("/Test", authenticate(process.env.Main_SECRET_TOKEN), (req, res) => {
 router.post(
     "/terminateAllSessions",
     authenticate(process.env.Main_SECRET_TOKEN),
-    async(req, res) => {
+    async (req, res) => {
         // Update all users' SessionId to null
         await pool1.query('UPDATE "Users" SET "SessionId" = NULL');
 

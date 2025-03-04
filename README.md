@@ -1,5 +1,11 @@
 # MBK Tech Studio Website 
 
+Welcome to the MBK Tech Studio Website repository. This repository contains the source code and documentation for the MBK Tech Studio website, which showcases the portfolio, projects, and services offered by Muhammad Bin Khalid. The website is built using Node.js and is hosted on Vercel, providing a seamless and efficient platform for managing multiple domains and delivering content to users.
+
+The repository includes detailed information about the website's structure, database schema, hosting architecture, and setup instructions. It also provides examples of the data models used for books, assignments, quizzes, and tickets, ensuring a comprehensive understanding of the project's backend.
+
+Feel free to explore the code, contribute to the project, or reach out for support through the provided contact information.
+
 ## Website URLs
 
 ### Portfolio Sites

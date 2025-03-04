@@ -24,7 +24,7 @@ cd /home
 
 # Clone the repository
 echo -e "\e[32mCloning the repository...\e[0m"
-sudo git clone https://username:token@github.com/MIbnEKhalid/Portal.MIbnEKhalid.github.io.git
+sudo git clone https://username:${process.env.MY_ENV_VAR}@github.com/MIbnEKhalid/Portal.MIbnEKhalid.github.io.git
 sudo mv Portal.MIbnEKhalid.github.io PortalApp
 cd PortalApp
 

@@ -13,3 +13,4 @@ apiTest("/api/Unilib/Book");
 apiTest("/api/Unilib/QuizAss");
 apiTest("/api/poratlAppVersion");
 apiTest("/api/poratlAppUrl");
+apiTest("/script/setup.sh");
