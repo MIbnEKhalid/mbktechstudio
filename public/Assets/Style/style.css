@@ -1209,7 +1209,7 @@ form .input:focus {
 
 .details {
     font-size: 18px;
-    background-color: #333;
+    background-color: #2a2a2a;
     padding: 10px;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);

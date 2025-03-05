@@ -24,13 +24,19 @@ function filterProducts() {
   const filteredProducts = products.filter(product => {
     const matchesSearch = product.name.toLowerCase().includes(searchTerm);
     const matchesCategory = selectedCategory === "all" || product.category === selectedCategory;
-    const matchesSemester = !selectedSemester || product.semester === selectedSemester; // Updated to match the correct structure
+    const matchesSemester = !selectedSemester || product.semester === selectedSemester;
     return matchesSearch && matchesCategory && matchesSemester;
+  });
+
+  // Sort the filtered products to show "All" first
+  filteredProducts.sort((a, b) => {
+    if (a.name === "All") return -1;
+    if (b.name === "All") return 1;
+    return 0;
   });
 
   displayProducts(filteredProducts);
 }
-
 
 function displayProducts(productsArray) {
   productsContainer.innerHTML = ''; // Clear previous products
