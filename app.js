@@ -55,6 +55,8 @@ const domainRedirect = (req, res, next) => {
       "privacy.mbktechstudio.com": "privacy",
       "api.mbktechstudio.com": "api",
       "portalapp.mbktechstudio.com": "portalapp",
+      "download.portal.mbktechstudio.com": "downloadportalapp",
+      "download.mbktechstudio.com": "downloadportalapp",
     }[hostname] || "main";
   }
 
@@ -72,6 +74,7 @@ app.get("/", domainRedirect, (req, res) => {
     privacy: "mainPages/privacyDomain/index.ejs",
     api: "mainPages/apiDomain/index.ejs",
     portalapp: "mainPages/portalappDomain/index.ejs",
+    downloadportalapp: "mainPages/portalappDomain/download.ejs",
   };
   console.log(`Rendering view: ${siteViews[req.site] || siteViews.main}`);
   res.render(siteViews[req.site] || siteViews.main);

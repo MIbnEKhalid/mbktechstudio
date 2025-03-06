@@ -16,9 +16,9 @@ export const pool = new Pool({
 (async () => {
     try {
         const client = await pool.connect();
-        console.log("Connected to Neon PostgreSQL database!");
+        console.log("Connected to Old Neon PostgreSQL database!");
         client.release();
     } catch (err) {
-        console.error("Database connection error:", err);
+        console.error("Old Database connection error:", err);
     }
 })();
