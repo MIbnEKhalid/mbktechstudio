@@ -22,12 +22,13 @@
       "description": "MBK Tech Studio: Empowering Technology Through Innovation. Explore our projects, services, and passion for cutting-edge solutions."
     }
   </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <title>MBK Tech Studio | Open-Source and Innovation</title>
 </head>
 
 <style>
   .contact {
-    background: #131313 !important;
+    background: #1a1a1a!important;
   }
 
   .services {
@@ -37,6 +38,53 @@
   section form .button button {
     font-size: 20px;
     padding: 7px 16px;
+  }
+
+  .collaborators {
+    background-color: #131313 !important;
+    padding: 40px 0;
+  } 
+
+  .collaborator-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    max-width: 1100px;
+    width: 100%;
+    padding: 0 20px;
+  }
+
+  .collaborator-card {
+    background: #222;
+    border-radius: 8px;
+    text-align: center;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .collaborator-card:hover {
+    transform: scale(1.01);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .collaborator-card img {
+    max-width: 80px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+  }
+
+  .collaborator-card h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: .5rem;
+    color: #007bff;
+  }
+
+  .collaborator-card p {
+    font-size: .875rem;
+    color: #6b7280;    
+    font-weight: 600;
   }
 </style>
 
@@ -60,6 +108,7 @@
         <li><a href="#about">About Us</a></li>
         <li><a href="#technologies">Technologies</a></li>
         <li><a href="#services">Useful Links</a></li>
+        <li><a href="#collaborators">Collaborators</a></li>
         <li><a href="#contact">Contact Us</a></li>
       </ul>
     </div>
@@ -198,51 +247,59 @@
       <div class="technology-container">
         <div class="technology-grid">
           <div class="technology-card">
-            <i class="fab fa-html5"></i>
+            <img src="https://skillicons.dev/icons?i=html" alt="html" >
             <h2>HTML5</h2>
           </div>
           <div class="technology-card">
-            <i class="fab fa-css3-alt"></i>
+            <img src="https://skillicons.dev/icons?i=css" alt="css" >
             <h2>CSS3</h2>
           </div>
           <div class="technology-card">
-            <i class="fab fa-js"></i>
+            <img src="https://skillicons.dev/icons?i=js" alt="js" >
             <h2>JavaScript</h2>
           </div>
           <div class="technology-card">
-            <i class="fab fa-node-js"></i>
+            <img src="https://skillicons.dev/icons?i=nodejs" alt="nodejs" >
             <h2>Node.js</h2>
           </div>
           <div class="technology-card">
-            <i class="fab fa-python"></i>
+            <img src="https://skillicons.dev/icons?i=postgres" alt="Postgres" >
+            <h2>Postgres</h2>
+          </div>
+          <div class="technology-card">
+            <img src="https://skillicons.dev/icons?i=python" alt="python" >
             <h2>Python</h2>
           </div>
           <div class="technology-card">
-            <i class="fab fa-react"></i>
-            <h2>React</h2>
+            <img src="https://skillicons.dev/icons?i=react" alt="react.js" >
+            <h2>React.js</h2>
           </div>
           <div class="technology-card">
-            <i class="fab fa-github"></i>
+            <img src="https://skillicons.dev/icons?i=github" alt="github" >
             <h2>GitHub</h2>
           </div>
           <div class="technology-card">
-            <i class="fab fa-aws"></i>
+            <img src="https://skillicons.dev/icons?i=aws" alt="aws" >
             <h2>AWS</h2>
           </div>
           <div class="technology-card">
-            <i class="fab fa-linux"></i>
+            <img src="https://skillicons.dev/icons?i=vercel" alt="Vercel" >
+            <h2>Vercel</h2>
+          </div>
+          <div class="technology-card">
+            <img src="https://skillicons.dev/icons?i=linux" alt="linux" >
             <h2>Linux</h2>
           </div>
           <div class="technology-card">
-            <span class="icon-text">C++</span>
+            <img src="https://skillicons.dev/icons?i=cpp" alt="c++" >
             <h2>C++</h2>
           </div>
           <div class="technology-card">
-            <span class="icon-text">C#</span>
+            <img src="https://skillicons.dev/icons?i=c#" alt="c#" >
             <h2>C#</h2>
           </div>
           <div class="technology-card">
-            <img height="80px" weight="80px" src="/Assets/Images/unity.png">
+            <img src="https://skillicons.dev/icons?i=unity" alt="unity" >
             <h2>Unity</h2>
           </div>
         </div>
@@ -289,6 +346,21 @@
     </div>
     <div style="margin-bottom: 30px;"> </div>
   </section>
+
+  <!-- Collaborators Section Start -->
+  <section class="collaborators" id="collaborators" style="padding-top: 10px !important;">
+    <div class="content">
+      <div class="title"><span>Our Collaborators</span></div>
+      <div class="collaborator-grid">
+        <a href="https://m-dev-theta.vercel.app/" class="collaborator-card">
+          <img src="/Assets/Images/Icon/M-Dev.png" alt="Collaborator 1" style="max-width: 100px;">
+          <h2>Maaz Dev</h2>
+          <p>Maaz Dev is our partner specializing in AI and Data Science, contributing significantly to our Python and other projects.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+  <!-- Collaborators Section End -->
 
   <section class="contact" id="contact" style="padding-top: 0px !important;">
     <div class="content" style="max-width: 800px; margin: 0 auto; text-align: center;">
