@@ -51,10 +51,13 @@ body.dark-mode {
     border-color: #555 !important;
 }
 
-p {
-    color: #eeeeee !important;
+.trackTicketP {
+    color: #ddd !important;
 } 
 
+.section .result-card p{ 
+    color: #eeeeee; 
+}
 
 /* End Of Dark Mode */
 
@@ -74,11 +77,7 @@ p {
 .card h2 {
     margin-bottom: 15px;
     color: #377a77;
-}
-
-.card p {
-    color: #555;
-}
+} 
 
 .card input[type="text"] {
     width: 100%;

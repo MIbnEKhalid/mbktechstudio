@@ -22,22 +22,28 @@
       <!-- Introduction Section -->
       <div class="section card">
         <h2>Welcome to the Support Ticket System</h2>
-        <p>Our Ticketing System is Here To Help You Track & Resolve Your Queries Efficiently. If You’ve Submitted A Ticket, Use The Search Feature Below To Check Its Status.</p>
+        <p class="trackTicketP">Our Ticketing System is Here To Help You Track & Resolve Your Queries Efficiently. If You’ve Submitted A Ticket, Use The Search Feature Below To Check Its Status.</p>
       </div>
 
       <!-- Ticket Search Section -->
       <div class="section card">
         <h2>Search Your Ticket</h2>
-        <p>Enter Your Ticket Number Below To Check The Status of Your Request:</p>
+        <p class="trackTicketP">Enter Your Ticket Number Below To Check The Status of Your Request:</p>
         <form id="form">
           <input type="text" id="ticketNumber" placeholder="Enter Ticket ID eg. T000111333" required minlength="10" maxlength="10" pattern=".{10}" />
           <div class="button" style="margin-top:-15px;margin-bottom:-15px; display: flex; justify-content: space-between;">
             <button class="button" type="submit" id="submit">Search</button>
             <a class="button" onclick="clearSearchTicket()">Clear</a>
           </div>
-        </form>
-        <p>Submit New Ticket By Visiting <a class="links" href="/Support">Support &
-            Contact</a> Page.</p>
+        </form> 
+        <div class="notification is-info" style="margin-top:-5px">
+          <p>
+            Need to submit a new ticket? Visit our
+            <a class="links" href="/Support">Support & Contact</a> page
+            and select "Support" as your subject. You'll receive a tracking
+            number to monitor your request.
+          </p>
+        </div>
       </div>
 
       <div id="RedultMessgeCont" class="result-message-container" style="display: none;">
@@ -147,8 +153,9 @@
           <div class="faq-item">
             <div class="faq-question" id="2"> Where Can I Retrieve My Ticket Number?</div>
             <div class="faq-answer">
-              <div style="padding: 15px;">The Ticket Number Is Generated And Provided To You When You Submit A Form On The <a class="links" href="https://mbktechstudio.com/Support">Support &amp;
-                  Contact</a> Page.</div>
+              <div style="padding: 15px;">
+                The Ticket Number is generated and provided to you only when you submit a form with "Support" selected as the subject on the <a class="links" href="https://mbktechstudio.com/Support">Support & Contact</a> page. Other form submissions will not generate a ticket number.
+              </div>
             </div>
           </div>
           <div class="faq-item">
