@@ -107,6 +107,7 @@ app.get("/history", domainRedirect, (req, res) => {
 
 app.get("/d", (req, res) => {
   return res.sendFile(path.join(__dirname, "public/i.html"));
+  console.log("D Page is requested");
 });
 
  
