@@ -168,14 +168,6 @@ app.get("/poratlAppVersion", (req, res) => {
     res.status(200).json(response);
 });
 
-app.get("/poratlAppUrl", (req, res) => {
-    const response = {
-        PortalWebUrl: process.env.PortalWebUrl
-    };
-    console.log("PortalWebUrl Api Request processed successfully");
-    res.status(200).json(response);
-});
-
 app.get("/Test", authenticate(process.env.Main_SECRET_TOKEN), (req, res) => {
     console.log("API 'Test' Request processed successfully");
     res.send("API 'Test' Request processed successfully");

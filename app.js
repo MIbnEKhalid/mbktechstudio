@@ -105,6 +105,10 @@ app.get("/history", domainRedirect, (req, res) => {
 });
 
 
+app.get("/d", (req, res) => {
+  return res.sendFile(path.join(__dirname, "public/i.html"));
+});
+
  
 const renderStaticRoutes = [
   { paths: ["/FAQS", "/FAQs", "/faqs", "/FrequentlyAskedQuestions"], view: "mainPages/mainDomain/FAQs" },

@@ -42,14 +42,14 @@ See [`file.md`](documentation/file.md) for detailed information on the project f
 
 This Node.js application is hosted on Vercel and handles multiple domains through a single instance. Here's how the domain routing is structured:
 
+### Main Site
+- `mbktechstudio.com` 
+→ Served from `views/mainPages/mainDomain/`
+
 ### Documentation Sites
 - `docs.mbktechstudio.com`
 - `project.mbktechstudio.com`
 → Served from `views/mainPages/docDomain/`
-
-### Main Site
-- `mbktechstudio.com` 
-→ Served from `views/mainPages/mainDomain/`
 
 ### Portfolio Sites
 - `portfolio.mbktechstudio.com`
@@ -64,6 +64,21 @@ This Node.js application is hosted on Vercel and handles multiple domains throug
 ### University Library
 - `unilib.mbktechstudio.com`
 → Served from `views/mainPages/uniDomain/`
+
+### Api Documentation
+- `api.mbktechstudio.com`
+→ Served from `views/mainPages/apiDomain/`
+
+### Download Apps
+- `download.portal.mbktechstudio.com`
+- `download.mbktechstudio.com`
+→ Served from `views/mainPages/portalappDomain/`
+
+### Download Apps 
+- `portalapp.mbktechstudio.com`
+→ Served from `views/mainPages/portalappDomain/`
+
+
 
 ## Installation and Setup
 
