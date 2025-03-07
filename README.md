@@ -28,7 +28,7 @@ Detailed Documentation of this website will be available soon on: [docs.mbktechs
 ## Code FOrmattor
 ### .js JS-CSS-Html Formator
 ### .css JS-CSS-Html Formator
-### .ejs EJS Beautify
+###  EJS Beautify
 
 ## Database Structure
 

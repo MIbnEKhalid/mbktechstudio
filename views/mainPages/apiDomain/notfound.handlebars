@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-<%- include('../templates/header.ejs') %>
+{{> header homePath="/"}}
 
 <head>
   <meta charset="UTF-8" />
   <title>404 - Page Not Found</title>
-  <meta name="description" content="Oops! The page you're looking for doesn't exist. Return to MBK Tech Studio's home page or contact support for
-        assistance." />
-  <meta name="keywords" content="404, Page Not Found, MBK Tech Studio, Error Page" />
+  <meta name="description" content="Oops! The api you're looking for doesn't exist." />
+  <meta name="keywords" content="404, API Not Found, MBK Tech Studio, Error Page" />
   <meta property="og:title" content="404 - Page Not Found | MBK Tech Studio" />
   <meta property="og:description" content="Oops! The page you're looking for doesn't exist. Return to MBK Tech Studio's home page or contact support for
         assistance." />
@@ -46,11 +45,11 @@
     <div class="content">
       <img style="left: 50%; transform: translate(-50%, 0%); position: relative;" height="120px" width="140px" src="/Assets/Images/cat.png">
       <div class="title">
-        <span>Error 404 - Domain Not Found
+        <span>Error 404 - API Not Found
         </span>
       </div>
       <p style="text-align: center;">
-        The Domain You Are Looking For Might Have Been Removed Or Temporarily UnAvailable.
+        The API You Are Looking For Might Have Been Removed Or Temporarily UnAvailable.
       </p> 
       <div class="button">
         <a class="buttons" style="font-size: medium;" onclick="loadPage('home')">Go Home</a>
@@ -59,7 +58,7 @@
     </div>
   </section>
 </body>
-<%- include('../templates/footer.ejs') %>
+    {{> footer }}
 
 <script>
   function loadPage(url) {

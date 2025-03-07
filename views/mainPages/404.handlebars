@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-<%- include('../templates/header.ejs') %>
+{{> header homePath="/"}}
 
 <head>
   <meta charset="UTF-8" />
@@ -62,8 +62,7 @@
     </div>
   </section>
 </body>
-<%- include('../templates/footer.ejs') %>
-
+  {{> footer }} 
 <script>
   function loadPage(url) {
     if (url === "home") {

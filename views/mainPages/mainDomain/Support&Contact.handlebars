@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html class="dark-mode" lang="en" dir="ltr">
-<%- include('../../templates/header.ejs') %>
+{{> header homePath="/"}}
 
 <head>
   <meta charset="UTF-8" />
@@ -273,7 +273,7 @@
     </div>
   </section>
 </body>
-<%- include('../../templates/sfooter.ejs') %>
+  {{> sfooter }}
 <script src="/Assets/Scripts/Support.js"></script>
 <script src="/Assets/Scripts/form.support.js"></script>
 <script>

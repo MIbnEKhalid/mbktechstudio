@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-<%- include('../../templates/header.ejs') %>
+{{> header homePath="/"}}
 
 <head>
   <title>Privacy Policy | Terms & Conditions | MBK Tech Studio Portal</title>
@@ -485,7 +485,7 @@
   </div>
 </body>
 
-<%- include('../../templates/footer.ejs') %>
+    {{> footer }}
 
 <script>
   function SuperAdminsinfo() {

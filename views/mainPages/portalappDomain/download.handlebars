@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-<%- include('../../templates/header.ejs') %>
+{{> header homePath="/"}}
 <head>
   <meta charset="UTF-8" />
   <title>Download MBK Tech Studio App</title>
@@ -140,7 +140,7 @@
       window.open(link);
     }
   </script>
-  <%- include('../../templates/footer.ejs') %>
+    {{> footer }}
 
 </body>
 

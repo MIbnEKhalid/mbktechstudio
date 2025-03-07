@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-<%- include('../../templates/header.ejs') %>
+{{> header homePath="/"}}
 
 <head>
   <meta name="description" content="Get all your course materials and quiz / assignments here.">
@@ -72,6 +72,18 @@
   .about {
     height: auto !important;
   }
+          .filter {
+          margin: 0 auto;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+        }
+        .filter .select-dropdown select{
+          position: relative;
+          max-width: 150px !important;
+          width: 150px !important;
+        }
 </style>
 
 <!-- Ask For Cookie Consent-->
@@ -290,7 +302,7 @@
     </div>
   </section>
 
-  <%- include('../../templates/footer.ejs') %>
+    {{> footer }}
 
 
   <script src="/Assets/unilib.js"></script>

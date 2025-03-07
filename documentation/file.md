@@ -5,7 +5,6 @@ Repo
 │   .env
 │   .gitignore
 │   app.js
-│   env.md
 │   jsconfig.json
 │   LICENSE
 │   package-lock.json
@@ -14,6 +13,11 @@ Repo
 │   SECURITY.md
 │   vercel.json
 │
+├───documentation
+│       db.md
+│       env.md
+│       file.md
+│
 ├───public
 │   │   robots.txt
 │   │   sitemap.xml
@@ -21,6 +25,7 @@ Repo
 │   └───Assets
 │       │   augh.mp3
 │       │   docs.json
+│       │   setup.sh
 │       │   unilib.js
 │       │
 │       ├───Cookie
@@ -43,8 +48,11 @@ Repo
 │       │   │
 │       │   ├───BookCovers
 │       │   │       A-ZOHS.png
+│       │   │       basic-engineering-circuit-analysis-10th.png
 │       │   │       BookCover_Template.png
+│       │   │       Elementary-Linear-Algebra-Applications-Version-Howard-Anton-Chris-Rorres-Edisi.png
 │       │   │       FundamentalsofPhysics9thEdition.png
+│       │   │       Linear-Algebra-and-Its-Applications.png
 │       │   │       ThomasCalculus11thEdition.png
 │       │   │       UsingInformationTechnology.png
 │       │   │
@@ -58,6 +66,7 @@ Repo
 │       │           dg.svg
 │       │           dgicon.svg
 │       │           logo.png
+│       │           M-Dev.png
 │       │           MBKSupportIcon.svg
 │       │
 │       ├───Scripts
@@ -88,48 +97,59 @@ Repo
 │
 ├───routes
 │       api.js
+│       auth.js
 │       pool.js
+│       pool1.js
 │       post.js
 │
 ├───views
-│   │   showMessage.ejs
-│   │
 │   ├───mainPages
-│   │   │   404.ejs
-│   │   │   domainNotRecognized.ejs
+│   │   │   404.handlebars
+│   │   │   domainNotRecognized.handlebars
+│   │   │
+│   │   ├───apiDomain
+│   │   │       index.handlebars
+│   │   │       notfound.handlebars
 │   │   │
 │   │   ├───docDomain
-│   │   │       index.ejs
+│   │   │       index.handlebars
 │   │   │
 │   │   ├───mainDomain
-│   │   │   │   FAQs.ejs
-│   │   │   │   index.ejs
-│   │   │   │   Support&Contact.ejs
-│   │   │   │   Terms&Conditions.ejs
-│   │   │   │   TrackTicket.ejs
-│   │   │   │   update.ejs
+│   │   │   │   FAQs.handlebars
+│   │   │   │   index.handlebars
+│   │   │   │   Support&Contact.handlebars
+│   │   │   │   Terms&Conditions.handlebars
+│   │   │   │   TrackTicket.handlebars
+│   │   │   │   update.handlebars
 │   │   │   │
 │   │   │   └───otherPages
-│   │   │           faqs1.ejs
+│   │   │           faqs1.handlebars
+│   │   │
+│   │   ├───portalappDomain
+│   │   │       index.handlebars
 │   │   │
 │   │   ├───portfolioDomain
-│   │   │       index.ejs
+│   │   │       index.handlebars
 │   │   │
 │   │   ├───privacyDomain
-│   │   │       index.ejs
+│   │   │       index.handlebars
 │   │   │
 │   │   └───uniDomain
-│   │           index.ejs
-│   │           unilibhistory.ejs
+│   │           index.handlebars
+│   │           unilibhistory.handlebars
+│   │
+│   ├───script
+│   │       showmessage.handlebars
 │   │
 │   └───templates
-│           footer.ejs
-│           footer1.ejs
-│           header.ejs
-│           sfooter.ejs
+│           footer.handlebars
+│           footer1.handlebars
+│           header.handlebars
+│           sfooter.handlebars
 │
 └───__test__
         api.test.js
         page.test.js
-
+        prod.api.test.js
+        prod.page.test.js
 ```

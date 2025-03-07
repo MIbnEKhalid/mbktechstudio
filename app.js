@@ -7,7 +7,8 @@ import minifyHTML from "express-minify-html";
 import minify from "express-minify";
 import compression from "compression";
 import cors from "cors";
-
+import { engine } from "express-handlebars";
+import Handlebars from "handlebars"; 
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -32,9 +33,25 @@ app.use(
 app.use("/", express.static(path.join(__dirname, "public/")));
 app.use('/static', express.static(path.join(__dirname, 'node_modules')));
 
-// Set up views
-app.set("view engine", "ejs");
+Handlebars.registerHelper('eq', function (a, b) {
+  return a === b;
+});
+Handlebars.registerHelper('encodeURIComponent', function (str) {
+  return encodeURIComponent(str);
+});
+// Configure Handlebars
+app.engine("handlebars", engine({
+  defaultLayout: false,
+  partialsDir: [
+    path.join(__dirname, "views/templates"),
+    path.join(__dirname, "views/notice"),
+    path.join(__dirname, "views")
+  ],  cache: false // Disable cache for development
+
+}));
+app.set("view engine", "handlebars");
 app.set("views", path.join(__dirname, "views"));
+
 
 const domainRedirect = (req, res, next) => {
   let hostname = req.headers['x-forwarded-host'] || req.headers.host; // Allow overriding via x-forwarded-host
@@ -67,14 +84,14 @@ const domainRedirect = (req, res, next) => {
 // Routes
 app.get("/", domainRedirect, (req, res) => {
   const siteViews = {
-    docs: "mainPages/docDomain/index.ejs",
-    unilib: "mainPages/uniDomain/index.ejs",
-    portfolio: "mainPages/portfolioDomain/index.ejs",
-    main: "mainPages/mainDomain/index.ejs",
-    privacy: "mainPages/privacyDomain/index.ejs",
-    api: "mainPages/apiDomain/index.ejs",
-    portalapp: "mainPages/portalappDomain/index.ejs",
-    downloadportalapp: "mainPages/portalappDomain/download.ejs",
+    docs: "mainPages/docDomain/index",
+    unilib: "mainPages/uniDomain/index",
+    portfolio: "mainPages/portfolioDomain/index",
+    main: "mainPages/mainDomain/index",
+    privacy: "mainPages/privacyDomain/index",
+    api: "mainPages/apiDomain/index",
+    portalapp: "mainPages/portalappDomain/index",
+    downloadportalapp: "mainPages/portalappDomain/download",
   };
   console.log(`Rendering view: ${siteViews[req.site] || siteViews.main}`);
   res.render(siteViews[req.site] || siteViews.main);
@@ -82,19 +99,19 @@ app.get("/", domainRedirect, (req, res) => {
 
 app.get("/history", domainRedirect, (req, res) => {
   if (req.site === "unilib") {
-    return res.render("mainPages/uniDomain/unilibhistory.ejs");
+    return res.render("mainPages/uniDomain/unilibhistory");
   }
-  res.render("mainPages/404.ejs");
+  res.render("mainPages/404");
 });
 
 
  
 const renderStaticRoutes = [
-  { paths: ["/FAQS", "/FAQs", "/faqs", "/FrequentlyAskedQuestions"], view: "mainPages/mainDomain/FAQs.ejs" },
-  { paths: ["/Terms&Conditions", "/PrivacyPolicy", "/privacypolicy", "/terms&conditions"], view: "mainPages/mainDomain/Terms&Conditions.ejs" },
-  { paths: ["/Support&Contact", "/Support", "/Contact", "/Contact&Support"], view: "mainPages/mainDomain/Support&Contact.ejs" },
-  { paths: ["/TrackTicket"], view: "mainPages/mainDomain/TrackTicket.ejs" },
-  { paths: ["/Update"], view: "mainPages/mainDomain/update.ejs" },
+  { paths: ["/FAQS", "/FAQs", "/faqs", "/FrequentlyAskedQuestions"], view: "mainPages/mainDomain/FAQs" },
+  { paths: ["/Terms&Conditions", "/PrivacyPolicy", "/privacypolicy", "/terms&conditions"], view: "mainPages/mainDomain/Terms&Conditions" },
+  { paths: ["/Support&Contact", "/Support", "/Contact", "/Contact&Support"], view: "mainPages/mainDomain/Support&Contact" },
+  { paths: ["/TrackTicket"], view: "mainPages/mainDomain/TrackTicket" },
+  { paths: ["/Update"], view: "mainPages/mainDomain/update" },
 ];
 
 renderStaticRoutes.forEach(({ paths, view }) => {
@@ -109,7 +126,7 @@ app.get(
     "/faqs/What-Web-Tools-Do-You-Use-for-Website-hosting-Business-Email-etc",
     "/FrequentlyAskedQuestions/What-Web-Tools-Do-You-Use-for-Website-hosting-Business-Email-etc",
   ],
-  (req, res) => res.render("mainPages/mainDomain/otherPages/faqs1.ejs")
+  (req, res) => res.render("mainPages/mainDomain/otherPages/faqs1")
 );
 
 // Redirect routes
@@ -122,13 +139,13 @@ app.use("/post", postRoutes);
 app.use("/api", apiRoutes);
 
 app.get(["/api*","/post*"], (req, res) => {
-  res.render("mainPages/apiDomain/notfound.ejs");
+  res.render("mainPages/apiDomain/notfound");
 });
 
 // 404 handler
 app.use((req, res) => {
   console.log(`Path not found: ${req.url}`);
-  res.render("mainPages/404.ejs");
+  res.render("mainPages/404");
 });
 
 // app.js
