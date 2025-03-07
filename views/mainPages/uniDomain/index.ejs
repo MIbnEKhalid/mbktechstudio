@@ -80,7 +80,7 @@
 <body>
   <div class="scroll-button">
     <a href="#about"><i class="fas fa-arrow-up"></i></a>
-  </div> 
+  </div>
 
   <aside class="sidebar sidebar-collapsed" id="sidebar">
     <div class="sidebar-toggle" id="sidebar-toggle">
@@ -90,7 +90,7 @@
       <h2>Quick Links</h2>
       <ul>
         <li><a href="#books">Books</a></li>
-        <li><a href="#assignments">Assigments & Quiz</a></li> 
+        <li><a href="#assignments">Assigments & Quiz</a></li>
       </ul>
     </div>
   </aside>
@@ -194,19 +194,35 @@
     <div class="content">
       <div class="not"></div>
       <div class="title section-title"><span>Uni Course Materials</span></div>
-      <div class="select-dropdown">
-        <select id="semesterFilter" name="topics">
-          <option value="Semester1">Semester 1</option>
-          <option value="Semester2" selected>Semester 2</option>
-        </select>
-      </div>
-      <div class="select-dropdown">
-        <select id="categoryFilter" name="topics">
-          <option value="all">All</option>
-          <option value="CourseBooks">Course Books</option>
-          <option value="LabManuals">Lab Manuals</option>
-          <option value="other">Other</option>
-        </select>
+      <style>
+        .filter {
+          margin: 0 auto;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+        }
+        .filter .select-dropdown select{
+          position: relative;
+          max-width: 150px !important;
+          width: 150px !important;
+        }
+      </style>
+      <div class="filter">
+        <div class="select-dropdown">
+          <select id="semesterFilter" name="topics">
+            <option value="Semester1">Semester 1</option>
+            <option value="Semester2" selected>Semester 2</option>
+          </select>
+        </div>
+        <div class="select-dropdown">
+          <select id="categoryFilter" name="topics">
+            <option value="all">All</option>
+            <option value="CourseBooks">Course Books</option>
+            <option value="LabManuals">Lab Manuals</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
       </div>
       <div class="search-bar">
         <input type="text" id="searchProduct" placeholder="Search Book Name...">
@@ -323,27 +339,27 @@
       } else {
         toggleButton.textContent = 'Show More';
       }
-    }); 
+    });
   </script>
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const headerHeight = document.querySelector('header').offsetHeight;
-    document.querySelectorAll('aside a').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href').substring(1);
-        const targetElement = document.getElementById(targetId);
-        if (targetElement) {
-          const targetPosition = targetElement.offsetTop - headerHeight - 28; // Adjust 10px as needed
-          window.scrollTo({
-            top: targetPosition,
-            behavior: 'smooth'
-          });
-        }
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const headerHeight = document.querySelector('header').offsetHeight;
+      document.querySelectorAll('aside a').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href').substring(1);
+          const targetElement = document.getElementById(targetId);
+          if (targetElement) {
+            const targetPosition = targetElement.offsetTop - headerHeight - 28; // Adjust 10px as needed
+            window.scrollTo({
+              top: targetPosition,
+              behavior: 'smooth'
+            });
+          }
+        });
       });
     });
-  });
-</script>
+  </script>
 </body>
 
 </html>
