@@ -68,7 +68,10 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   }
 
-  .collaborator-card img {
+  .Servicegrid img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     max-width: 80px;
     border-radius: 50%;
     margin-bottom: 15px;
@@ -86,6 +89,10 @@
     color: #6b7280;    
     font-weight: 600;
   }
+  .collaborators .Servicecontainer h2,
+  .collaborators .Servicecontainer p{
+    text-align: center;
+  } 
 </style>
 
 <!-- Ask For Cookie Consent-->
@@ -355,12 +362,14 @@
   <section class="collaborators" id="collaborators" style="padding-top: 10px !important;">
     <div class="content">
       <div class="title"><span>Our Collaborators</span></div>
-      <div class="collaborator-grid">
-        <a href="https://m-dev-theta.vercel.app/" class="collaborator-card">
-          <img src="/Assets/Images/Icon/M-Dev.png" alt="Collaborator 1" style="max-width: 100px;">
-          <h2>Maaz Dev</h2>
-          <p>Maaz Dev is our partner specializing in AI and Data Science, contributing significantly to our Python and other projects.</p>
-        </a>
+      <div class="Servicecontainer">
+        <div class="Servicegrid">
+          <a href="https://privacy.mbktechstudio.com" target="_blank" class="links Servicecard">
+            <img src="/Assets/Images/Icon/M-Dev.png" alt="MBK Tech Studio" />
+            <h2>Maaz Dev</h2>
+            <p>Maaz Dev is our partner specializing in AI and Data Science, contributing significantly to our Python and other projects.</p>
+          </a> 
+        </div>
       </div>
     </div>
   </section>

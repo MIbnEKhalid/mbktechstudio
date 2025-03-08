@@ -1071,8 +1071,7 @@ form .input:focus {
     text-align: center;
 }
 
-.technology-container {
-    max-width: 1200px;
+.technology-container { 
     margin: 0 auto;
 }
 
