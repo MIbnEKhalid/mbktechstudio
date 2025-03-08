@@ -91,10 +91,23 @@ app.get("/", domainRedirect, (req, res) => {
     privacy: "mainPages/privacyDomain/index",
     api: "mainPages/apiDomain/index",
     portalapp: "mainPages/portalappDomain/index",
-    downloadportalapp: "mainPages/portalappDomain/download",
+    downloadportalapp: {
+      view: "mainPages/portalappDomain/download",
+      mainAppLink: process.env.PortalVersonControlJson 
+          ? JSON.parse(process.env.PortalVersonControlJson) 
+          : null,
+    },  
   };
-  console.log(`Rendering view: ${siteViews[req.site] || siteViews.main}`);
-  res.render(siteViews[req.site] || siteViews.main);
+  
+  let viewEntry = siteViews[req.site] || siteViews.main;
+  console.log(`Rendering view: ${JSON.stringify(viewEntry)}`);
+
+  if (typeof viewEntry === "object") {
+      const { view, ...locals } = viewEntry;
+      res.render(view, locals);
+  } else {
+      res.render(viewEntry);
+  }
 });
 
 app.get("/history", domainRedirect, (req, res) => {
@@ -103,13 +116,6 @@ app.get("/history", domainRedirect, (req, res) => {
   }
   res.render("mainPages/404");
 });
-
-
-app.get("/d", (req, res) => {
-  return res.sendFile(path.join(__dirname, "public/i.html"));
-  console.log("D Page is requested");
-});
-
  
 const renderStaticRoutes = [
   { paths: ["/FAQS", "/FAQs", "/faqs", "/FrequentlyAskedQuestions"], view: "mainPages/mainDomain/FAQs" },

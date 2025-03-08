@@ -1063,7 +1063,6 @@ form .input:focus {
     }
 }
 
-
 /* Technologies Section */
 
 .technologies {
@@ -1089,13 +1088,14 @@ form .input:focus {
     box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
     padding: 1.0rem;
     display: flex;
+    max-width: 500px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     transition: all 0.5s ease;
 }
 
-.technology-card img{
+.technology-card img {
     width: 60px;
     height: 60px;
     margin-bottom: 15px;
@@ -1141,6 +1141,12 @@ form .input:focus {
     width: 3rem;
     height: auto;
     margin-bottom: 1rem;
+}
+
+@media (max-width: 750px) {
+    .technology-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
 }
 
 
