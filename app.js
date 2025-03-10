@@ -74,6 +74,7 @@ const domainRedirect = (req, res, next) => {
       "portalapp.mbktechstudio.com": "portalapp",
       "download.portal.mbktechstudio.com": "downloadportalapp",
       "download.mbktechstudio.com": "downloadportalapp",
+      "events.mbktechstudio.com": "events",
     }[hostname] || "main";
   }
 
@@ -91,6 +92,7 @@ app.get("/", domainRedirect, (req, res) => {
     privacy: "mainPages/privacyDomain/index",
     api: "mainPages/apiDomain/index",
     portalapp: "mainPages/portalappDomain/index",
+    events: "mainPages/portfolioDomain/index",
     downloadportalapp: {
       view: "mainPages/portalappDomain/download",
       mainAppLink: process.env.PortalVersonControlJson 

@@ -1059,7 +1059,7 @@ form .input:focus {
 
 @media (min-width: 1115px) {
     .Servicegrid a:nth-child(7) {
-        grid-column-start: 2;
+        grid-column-start: 1;
     }
 }
 
