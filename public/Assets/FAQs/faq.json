@@ -61,7 +61,7 @@
   },
   {
     "question": "What Web Tools Do You Use for Website hosting, Business Email, etc?",
-    "answer": "We use GitHub Pages, Netlify, and Vercel for web hosting. For domain registration, we use Namecheap. Our business email is managed through Zoho Mail.<br><a class='links' href='/FAQs/What-Web-Tools-Do-You-Use-for-Website-hosting-Business-Email-etc/'>See More Detail</a>",
+    "answer": "We use Vercel for web hosting. For domain registration, we use Namecheap. Our business email is managed through Zoho Mail.<br><a class='links' href='/FAQs/What-Web-Tools-Do-You-Use-for-Website-hosting-Business-Email-etc/'>See More Detail</a>",
     "id": "12",
     "display": "true"
   },

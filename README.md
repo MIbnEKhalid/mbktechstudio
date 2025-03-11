@@ -1,5 +1,5 @@
 # MBK Tech Studio Website 
-<img height=48px src="https://img.icons8.com/?size=48&id=Pxe6MGswB8pX&format=png"/>   <img src="https://skillicons.dev/icons?i=html,css,js,nodejs,vercel,postgres"/>  <img height=48px src="https://console.neon.tech/favicon/favicon.svg"/>  
+<img height=48px src="https://handlebarsjs.com/images/handlebars_logo.png"/>   <img src="https://skillicons.dev/icons?i=html,css,js,nodejs,vercel,postgres"/>  <img height=48px src="https://console.neon.tech/favicon/favicon.svg"/>  
 
 Welcome to the MBK Tech Studio Website repository. This repository contains the source code and documentation for the MBK Tech Studio website, which showcases the portfolio, projects, and services offered by Muhammad Bin Khalid. The website is built using Node.js and is hosted on Vercel, providing a seamless and efficient platform for managing multiple domains and delivering content to users.
 
@@ -8,8 +8,11 @@ The repository includes detailed information about the website's structure, data
 Feel free to explore the code, contribute to the project, or reach out for support through the provided contact information.
 
 ## Website URLs
+### Redirect
 
-### Portfolio Sites
+The `index.html` file in the root directory is configured to redirect `mibnekhalid.github.io` to `mbktechstudio.com`.
+
+### Sites
 - [ibnekhalid.me](https://ibnekhalid.me/)
 - [portfolio.mbktechstudio.com](https://portfolio.mbktechstudio.com/)
 - [protfolio.mbktechstudio.com](https://protfolio.mbktechstudio.com/) 
@@ -23,12 +26,7 @@ Feel free to explore the code, contribute to the project, or reach out for suppo
 
 Detailed Documentation of this website will be available soon on: [docs.mbktechstudio.com/mbktechstudio.com](https://docs.mbktechstudio.com/mbktechstudio.com)
 
-![Deployment Status](https://readme.deploystatus.mbktechstudio.com/?platform=github&user=mibnekhalid&repo=MIbnEKhalid.github.io&background=333333&hide_border=false&border=ff0&width=200&height=50)
-
-## Code FOrmattor
-### .js JS-CSS-Html Formator
-### .css JS-CSS-Html Formator
-###  EJS Beautify
+![Deployment Status](https://readme.deploystatus.mbktechstudio.com/?platform=github&user=mibnekhalid&repo=MIbnEKhalid.github.io&background=333333&hide_border=false&border=ff0&width=200&height=50) 
 
 ## Database Structure
 
@@ -155,6 +153,7 @@ See the [LICENSE](LICENSE) file for details.
 
 For questions or contributions, please contact Muhammad Bin Khalid at [mbktechstudio.com/Support](https://mbktechstudio.com/Support/?Project=MIbnEKhalidWeb), [support@mbktechstudio.com](mailto:support@mbktechstudio.com) or [chmuhammadbinkhalid28.com](mailto:chmuhammadbinkhalid28.com). 
 
+**Developed by [Muhammad Bin Khalid](https://github.com/MIbnEKhalid)**
 
 
 

@@ -1,10 +1,11 @@
 # File Structure
 
 ```
-Repo 
+Repo
 │   .env
 │   .gitignore
 │   app.js
+│   index.html
 │   jsconfig.json
 │   LICENSE
 │   package-lock.json
@@ -51,6 +52,7 @@ Repo
 │       │   │       basic-engineering-circuit-analysis-10th.png
 │       │   │       BookCover_Template.png
 │       │   │       Elementary-Linear-Algebra-Applications-Version-Howard-Anton-Chris-Rorres-Edisi.png
+│       │   │       Engineering-Circuit-Analysis-9th-edition.png
 │       │   │       FundamentalsofPhysics9thEdition.png
 │       │   │       Linear-Algebra-and-Its-Applications.png
 │       │   │       ThomasCalculus11thEdition.png
@@ -111,9 +113,6 @@ Repo
 │   │   │       index.handlebars
 │   │   │       notfound.handlebars
 │   │   │
-│   │   ├───docDomain
-│   │   │       index.handlebars
-│   │   │
 │   │   ├───mainDomain
 │   │   │   │   FAQs.handlebars
 │   │   │   │   index.handlebars
@@ -125,14 +124,12 @@ Repo
 │   │   │   └───otherPages
 │   │   │           faqs1.handlebars
 │   │   │
-│   │   ├───portalappDomain
-│   │   │       index.handlebars
-│   │   │
-│   │   ├───portfolioDomain
-│   │   │       index.handlebars
-│   │   │
-│   │   ├───privacyDomain
-│   │   │       index.handlebars
+│   │   ├───otherDomain
+│   │   │       docs.handlebars
+│   │   │       download.handlebars
+│   │   │       portalapp.handlebars
+│   │   │       portfolio.handlebars
+│   │   │       privacy.handlebars
 │   │   │
 │   │   └───uniDomain
 │   │           index.handlebars

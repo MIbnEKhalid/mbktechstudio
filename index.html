@@ -2,7 +2,7 @@
 <html lang=en dir=ltr>
 <head>
   <meta name=viewport content="width=device-width,initial-scale=1">
-  <meta http-equiv="refresh" content="0;url=https://mbktechstudio.com/">
+  <meta http-equiv="refresh" content="0;url=https://mbktechstudio.com{{ currentPath }}">
   <link rel=icon type=image/x-icon href=https://mbktechstudio.com/Assets/Images/Icon/dgicon.svg>
   <link rel=stylesheet href=https://mbktechstudio.com/Assets/Style/style.css>
   <link rel=stylesheet href=https://mbktechstudio.com/Assets/Style/doc.css>
@@ -16,6 +16,11 @@
   <script src=https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/js/intlTelInput-jquery.min.js></script>
   <script src=https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js></script>
   <script src=https://kit.fontawesome.com/0934e8e9d3.js crossorigin=anonymous defer></script>
+  <script>
+    // Dynamically append the current path to the new domain
+    const currentPath = window.location.pathname + window.location.search + window.location.hash;
+    window.location.href = `https://mbktechstudio.com${currentPath}`;
+  </script>
 </head>
 <header>
   <nav>
