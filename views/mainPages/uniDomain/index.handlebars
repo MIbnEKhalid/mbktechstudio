@@ -254,7 +254,7 @@
 
   <section class="about" id="assignments" style="padding-top: 0px;">
     <div class="content" style="margin: 30px 0;">
-      <h1 class="section-title">Assignments & Quiz</h1>
+      <div class="title"><span>Assignments & Quiz</span></div>
       <div id="detailsContainer" class="details-container">
         <div id="spinner" class="spinner" style="display: none;"></div>
 
@@ -290,7 +290,7 @@
     <div class="button" style="display: flex; justify-content: center; flex-wrap: wrap; gap:5px;">
       <a class="buttons" class="button is-primary" onclick="openSupport('requestbook')">Request To Add
         Book</a>
-      <a class="buttons" onclick="openAdminPanel()">Admin Panel</a>
+      <a class="buttons" href="https://old.portal.mbktechstudio.com/dashboard/Unilib">Admin Panel</a>
       <a class="buttons" class="button is-info" onclick="openSupport('requestquizass')">Request To Add
         Assignments or Quiz</a>
     </div>
@@ -331,11 +331,7 @@
 
     function openSupport(id) {
       window.open(`https://www.mbktechstudio.com/Support/#${id}`, '_blank');
-    }
-
-    function openAdminPanel() {
-      window.open(`https://old.portal.mbktechstudio.com/dashboard/Unilib`, '_blank');
-    }
+    } 
   </script>
   <script>
     // JavaScript to handle collapse/expand functionality

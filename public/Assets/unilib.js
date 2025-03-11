@@ -41,7 +41,7 @@ function filterProducts() {
 function displayProducts(productsArray) {
   productsContainer.innerHTML = ''; // Clear previous products
   if (productsArray.length === 0) {
-    productsContainer.innerHTML = '<p>No products found</p>';
+    productsContainer.innerHTML = '<p>No material found</p>';
     return;
   }
 
