@@ -85,16 +85,16 @@ const domainRedirect = (req, res, next) => {
 // Routes
 app.get("/", domainRedirect, (req, res) => {
   const siteViews = {
-    docs: "mainPages/docDomain/index",
-    unilib: "mainPages/uniDomain/index",
-    portfolio: "mainPages/portfolioDomain/index",
     main: "mainPages/mainDomain/index",
-    privacy: "mainPages/privacyDomain/index",
+    docs: "mainPages/otherDomain/docs",
+    unilib: "mainPages/uniDomain/index",
+    portfolio: "mainPages/otherDomain/portfolio",
+    privacy: "mainPages/otherDomain/index",
     api: "mainPages/apiDomain/index",
-    portalapp: "mainPages/portalappDomain/index",
-    events: "mainPages/portfolioDomain/index",
+    portalapp: "mainPages/otherDomain/portalapp",
+    events: "mainPages/otherDomain/portfolio",
     downloadportalapp: {
-      view: "mainPages/portalappDomain/download",
+      view: "mainPages/otherDomain/download",
       mainAppLink: process.env.PortalVersonControlJson 
           ? JSON.parse(process.env.PortalVersonControlJson) 
           : null,
