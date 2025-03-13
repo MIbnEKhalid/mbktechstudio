@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TST - TCP-shot-Tunnel</title>
+    <style>
+        /* --- CSS Variables (Custom Properties) --- */
+        :root {
+            /* Color Palette */
+            --primary-color: #ff00b3;          /* Main pink/magenta color */
+            --primary-color-hover: #e0009a;    /* Slightly darker pink for hover */
+            --secondary-color: #6c54a3c4;     /* Secondary purple color */
+            --secondary-color-hover: #584589;   /* Darker purple for hover */
+            --text-color-light: #f0f0f0;       /* Light text color */
+            --text-color-lighter: #ececec;     /* Slightly lighter text color */
+            --background-dark: #1a1a1a;        /* Dark background color */
+            --modal-background: #00000033;     /* Semi-transparent modal background */
+            --modal-border: #ffc0ec;           /* Modal border color */
+            --close-button-color: #ff0000;      /* Close button color (red) */
+            --spinner-border-color: rgba(255, 27, 236, 0.589); /* Spinner border, semi-transparent pink */
+
+            /* Spacing and Sizes */
+            --padding-body: 20px;
+            --margin-bottom-h1: 0.5em;
+            --margin-bottom-subtitle: 1.5em;
+            --button-padding-vertical: 14px;
+            --button-padding-horizontal: 28px;
+            --button-border-radius: 8px;
+            --button-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            --button-hover-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            --header-buttons-gap: 20px;
+            --modal-margin-top-bottom: 10%;
+            --modal-padding: 25px;
+            --modal-border-radius: 8px;
+            --modal-max-width: 800px;
+            --close-button-top: 15px;
+            --close-button-right: 20px;
+            --close-button-font-size: 30px;
+        }
+
+        /* --- Base Body Styles --- */
+        body {
+            background-color: var(--background-dark); /* Fallback background color */
+            margin: 0;
+            font-family: sans-serif;
+            color: var(--text-color-light);
+            min-height: 100vh;              /* Ensure body takes full viewport height */
+            display: flex;                  /* Use flexbox for centering content */
+            flex-direction: column;         /* Stack content vertically */
+            align-items: center;            /* Center content horizontally */
+            justify-content: center;        /* Center content vertically */
+            text-align: center;             /* Center text within body */
+            padding: var(--padding-body);    /* Consistent padding around body */
+            overflow: hidden;               /* Prevent scrollbars during loading if spinner is large (adjust if needed) */
+        }
+
+        body.loaded {
+            background-image: url('./Assets/Images/tst-tool1.jpg');
+            background-size: cover;         /* Cover the entire body */
+            background-repeat: no-repeat;   /* Prevent image repetition */
+            background-position: center center; /* Center the background image */
+        }
+
+        /* --- Loading Spinner Styles --- */
+        .loading-spinner {
+            border: 8px solid var(--spinner-border-color); /* Semi-transparent pink border */
+            border-top: 8px solid var(--primary-color);   /* Pink loading indicator */
+            border-right: 8px solid #00ffb3;             /* Green loading indicator */
+            border-bottom: 8px solid #00b3ff;            /* Blue loading indicator */
+            border-left: 8px solid #b300ff;              /* Purple loading indicator */
+            border-radius: 50%;                         /* Make it a circle */
+            width: 80px;                               /* Fixed width */
+            height: 80px;                              /* Fixed height (for circle) */
+            animation: spin 1s linear infinite;        /* Spin animation */
+            position: absolute;                         /* Positioned relative to the nearest positioned ancestor (body) */
+            top: 50%;                                  /* Center vertically */
+            left: 50%;                                 /* Center horizontally */
+            transform: translate(-50%, -50%);          /* Adjust for exact centering */
+            z-index: 10;                               /* Ensure it's on top of other content */
+        }
+
+        @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* --- Content Visibility during Loading --- */
+        .content {
+            opacity: 0;                     /* Initially hidden */
+            transition: opacity 0.5s ease-in-out; /* Smooth fade-in transition */
+        }
+
+        body.loaded .content {
+            opacity: 1;                     /* Make content visible when body.loaded */
+        }
+
+        body.loaded .loading-spinner {
+            opacity: 0;                     /* Fade out spinner */
+            transition: opacity 0.5s ease-in-out; /* Smooth fade-out transition */
+            pointer-events: none;           /* Make spinner non-interactive after loading */
+        }
+
+        /* --- Typography Styles --- */
+        h1 {
+            color: var(--text-color-light);
+            text-shadow: 2px 2px 10px var(--primary-color); /* Pink text shadow */
+            font-size: 2.5em;
+            margin-bottom: var(--margin-bottom-h1);
+        }
+
+        .subtitle {
+            color: var(--text-color-lighter);
+            margin-bottom: var(--margin-bottom-subtitle);
+            font-size: 1em;
+        }
+
+        /* --- Header Buttons Container --- */
+        .header-buttons {
+            display: flex;                  /* Arrange buttons horizontally */
+            gap: var(--header-buttons-gap); /* Spacing between buttons */
+            justify-content: center;        /* Center buttons horizontally if needed */
+        }
+
+        /* --- Base Button Styles --- */
+        .button {
+            display: inline-block;           /* Allows setting width/height, but stays inline */
+            padding: var(--button-padding-vertical) var(--button-padding-horizontal); /* Vertical and horizontal padding */
+            text-decoration: none;          /* Remove default link underline */
+            color: var(--text-color-light); /* Button text color */
+            border-radius: var(--button-border-radius); /* Rounded corners */
+            font-weight: 600;               /* Semi-bold font weight */
+            transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions for hover effects */
+            border: none;                   /* Remove default button border */
+            box-shadow: var(--button-box-shadow);      /* Subtle shadow for depth */
+            cursor: pointer;                /* Indicate interactivity on hover */
+        }
+
+        /* --- Primary Button Style --- */
+        .primary-button {
+            
+            background-color: var(--primary-color); /* Pink background */
+        }
+
+        .primary-button:hover {
+
+            background-color: var(--primary-color-hover); /* Darker pink on hover */
+            transform: scale(1.05);         /* Slightly scale up on hover for visual feedback */
+            box-shadow: var(--button-hover-box-shadow); /* Slightly larger shadow on hover */
+        }
+
+        /* --- Secondary Button Style --- */
+        .secondary-button {
+            margin-top: auto;
+            background-color: var(--secondary-color); /* Purple background */
+        }
+
+        .secondary-button:hover {
+            
+            background-color: var(--secondary-color-hover); /* Darker purple on hover */
+            transform: scale(1.05);         /* Slightly scale up on hover */
+            box-shadow: var(--button-hover-box-shadow); /* Larger shadow on hover */
+        }
+
+        /* --- Download Button (Specific Style if needed, currently shares base button styles) --- */
+        .download-button {
+            margin-top: 1em;                /* Add some top margin */
+        }
+
+        /* --- Download Browser Modal Styles --- */
+        .download-browser-modal {
+            display: none;                  /* Initially hidden */
+            position: fixed;                /* Fixed position relative to viewport */
+            left: 0;
+            top: 0;
+            width: 100%;                    /* Full width of viewport */
+            height: 100%;                   /* Full height of viewport */
+            overflow: auto;                 /* Enable scroll if content overflows modal */
+            background-color: rgba(0, 0, 0, 0.473); /* Semi-transparent black background */
+            z-index: 20;                     /* Ensure modal is on top of everything else */
+        }
+
+        .download-browser-content {
+            background-color: var(--modal-background); /* Modal content background (slightly transparent black) */
+            margin: var(--modal-margin-top-bottom) auto; /* Top/bottom margin, auto left/right for centering */
+            padding: var(--modal-padding);    /* Padding inside modal content */
+            border: 1px solid var(--modal-border); /* Pink border */
+            border-radius: var(--modal-border-radius); /* Rounded corners for modal */
+            width: 80%;                     /* Modal width 80% of viewport */
+            max-width: var(--modal-max-width);   /* Maximum width for larger screens */
+            position: relative;             /* For positioning close button relative to content */
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4); /* Shadow for modal content */
+            text-align: left;               /* Align text to the left inside the modal content */
+        }
+
+        /* --- Close Button in Modal --- */
+        .close-button {
+            color: var(--close-button-color); /* Red close button */
+            position: absolute;             /* Positioned relative to .download-browser-content */
+            top: var(--close-button-top);       /* Position from top */
+            right: var(--close-button-right);      /* Position from right */
+            font-size: var(--close-button-font-size); /* Larger font size */
+            font-weight: bold;               /* Bold "X" */
+            opacity: 0.8;                   /* Slightly transparent initially */
+            transition: opacity 0.3s ease, color 0.3s ease; /* Smooth transition for hover */
+            cursor: pointer;                /* Indicate it's clickable */
+            line-height: 1;                 /* Adjust line height to better align the "X" */
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: var(--text-color-light); /* Light text color on hover */
+            text-decoration: none;          /* Remove any text decoration on hover */
+            opacity: 1;                     /* Fully opaque on hover */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="loading-spinner"></div> <!-- Loading spinner element -->
+
+    <div class="content"> <!-- Wrap your main content -->
+        <h1>Welcome to MBK Tech Studio Api Service</h1>
+        <p class="subtitle">Your simple command-line tool to bridge TCP to HTTP.</p>
+
+
+        <div id="downloadBrowserModal" class="download-browser-modal">
+            <div class="download-browser-content">
+            <span class="close-button" id="closedownloadBrowser">×</span>
+            <h2>Download TST</h2>
+            <p>Download the latest version of TST for your platform.</p>
+            <a href="tst-tool.zip" class="button primary-button download-button">Download TST v1.2.24</a>
+            <a href="tst-tool.zip" class="button secondary-button download-button">Download TST v0.5.25</a>
+            <p>For installation instructions, please refer to the <a href="Documentation/#installation-doc">installation documentation</a>.</p>
+            </div>
+        </div>
+
+        <div class="header-buttons">
+            <button type="button" id="opendownloadBrowser" class="button primary-button ">Download Now</button>
+            <a href="Documentation" class="button secondary-button documentation-button">Documentation</a>
+        </div>
+    </div> <!-- End of content wrapper -->
+
+    <script>
+        const opendownloadBrowserButton = document.getElementById('opendownloadBrowser');
+        const downloadBrowserModal = document.getElementById('downloadBrowserModal');
+        const closedownloadBrowserButton = document.getElementById('closedownloadBrowser');
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const body = document.body;
+            const backgroundImg = new Image();
+
+            backgroundImg.onload = function() {
+                body.classList.add('loaded'); // Add 'loaded' class when image is loaded
+            };
+
+            backgroundImg.onerror = function() {
+                console.error("Error loading background image");
+                body.classList.add('loaded'); // Still load content even if image fails
+            };
+
+            backgroundImg.src = '/Assets/Images/tst-tool1.jpg';
+        });
+
+        opendownloadBrowserButton.addEventListener('click', () => {
+            downloadBrowserModal.style.display = "block";
+        });
+
+        closedownloadBrowserButton.addEventListener('click', () => {
+            downloadBrowserModal.style.display = "none";
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target == downloadBrowserModal) {
+                downloadBrowserModal.style.display = "none";
+            }
+        });
+    </script>
+</body>
+</html>

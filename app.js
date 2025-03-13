@@ -118,6 +118,13 @@ app.get("/history", domainRedirect, (req, res) => {
   }
   res.render("mainPages/404");
 });
+
+app.get("/Documentation", domainRedirect, (req, res) => {
+  if (req.site === "api") {
+    return res.render("mainPages/apiDomain/Documentation");
+  }
+  res.render("mainPages/404");
+});
  
 const renderStaticRoutes = [
   { paths: ["/FAQS", "/FAQs", "/faqs", "/FrequentlyAskedQuestions"], view: "mainPages/mainDomain/FAQs" },
