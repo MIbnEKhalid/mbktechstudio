@@ -39,6 +39,9 @@ Handlebars.registerHelper('eq', function (a, b) {
 Handlebars.registerHelper('encodeURIComponent', function (str) {
   return encodeURIComponent(str);
 });
+Handlebars.registerHelper('conditionalEnv', function (trueResult, falseResult) {
+  return process.env.localenv ? trueResult : falseResult;
+});
 // Configure Handlebars
 app.engine("handlebars", engine({
   defaultLayout: false,
