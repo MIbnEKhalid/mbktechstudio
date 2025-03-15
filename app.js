@@ -40,6 +40,7 @@ Handlebars.registerHelper('encodeURIComponent', function (str) {
   return encodeURIComponent(str);
 });
 Handlebars.registerHelper('conditionalEnv', function (trueResult, falseResult) {
+  console.log(`Checking conditionalEnv: ${process.env.localenv}`);
   return process.env.localenv ? trueResult : falseResult;
 });
 // Configure Handlebars
