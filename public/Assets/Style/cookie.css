@@ -89,46 +89,13 @@
 
 #cookieNotice .btn-wrap button {
     flex-grow: 1;
-    padding: 0 7px;
-    margin: 0 5px 10px 5px;
-    border-radius: 20px;
-    cursor: pointer;
-    white-space: nowrap;
-    min-width: 130px;
-    line-height: 36px;
-    outline: none;
-    padding: 0px 7px;
-    border-radius: 6px;
-    border: 2px solid transparent;
-    cursor: pointer;
-    transition: all 0.4s ease;
-}
-
-#cookieNotice button {
-    outline: 0;
-    border: none;
-    appearance: none;
-    -webkit-appearance: none;
-    appearance: none;
-}
-
-#cookieNotice .btn-wrap button:hover {
-    border-color: #377a77;
-    color: #377a77;
-}
-
-.btn-primary {
-    outline: none;
-    padding: 8px 16px;
-    border-radius: 4px;
+    white-space: nowrap; 
+    line-height: 36px;    
     font-size: 18px;
-    font-weight: 600;
-    background: #377a77;
-    color: #fff;
-    border: 2px solid transparent;
-    cursor: pointer;
+    border-radius: 6px;
     transition: all 0.4s ease;
 }
+
 
 #cookieNotice a {
     color: #115cfa;
