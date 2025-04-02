@@ -14,9 +14,9 @@ body.dark-mode {
 .card,
 .result-card,
 .result-card ul li {
-    background-color: #1e1e1e !important;
+    background-color: transparent;
     color: #eeeeee !important;
-    border-color: #333 !important;
+    border-color: var(--main-border-color) !important;
 }
 
 .faq-question,
@@ -66,9 +66,8 @@ body.dark-mode {
 
 .card {
     border-radius: 12px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    border: 2px solid #377a77;
+    border: .1rem solid #377a77;
     margin: 15px auto;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }

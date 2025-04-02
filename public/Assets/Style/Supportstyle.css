@@ -8,9 +8,9 @@ html.dark-mode {
 }
 
 body.dark-mode .notification.is-form {
-    background-color: #1e1e1e;
+    background-color: transparent;
     color: #ffffff;
-    border-color: #333;
+    border-color: var(--main-border-color);
     padding: 20px;
     border-radius: 12px !important;
 }
@@ -151,25 +151,6 @@ body.dark-mode .close-btn {
     font-weight: 550;
     font-size: 14px;
     color: #007bff;
-}
-
-.Trackbutton {
-    outline: none;
-    padding: 6px 12px;
-    border-radius: 4px;
-    font-size: 15px;
-    font-weight: 600;
-    background: #377a77;
-    color: #fff;
-    border: 2px solid transparent;
-    cursor: pointer;
-    transition: all 0.4s ease;
-}
-
-.Trackbutton:hover {
-    border-color: #377a77;
-    background-color: transparent;
-    color: #377a77;
 }
 
 .checkbox {

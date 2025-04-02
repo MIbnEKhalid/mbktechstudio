@@ -103,84 +103,6 @@
       </ul>
     </div>
   </aside>
-  <style>
-    .sidebar {
-      position: fixed;
-      right: 0;
-      top: 25%;
-      transform: translateY(-50%);
-      background-color: #333;
-      padding: 1rem;
-      border-radius: 8px 0 0 8px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      z-index: 1000;
-      transition: right 0.3s ease;
-      width: 150px;
-    }
-
-    .sidebar-collapsed {
-      right: -150px;
-    }
-
-    .sidebar-toggle {
-      position: absolute;
-      left: -45px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 30px;
-      height: 30px;
-      background: linear-gradient(145deg, #444, #222);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-      transition: all 0.3s ease;
-    }
-
-    .sidebar-toggle:hover {
-      opacity: 0.8;
-      transition: all 0.3s ease;
-
-    }
-
-    .sidebar-toggle i {
-      color: #fff;
-      font-size: 16px;
-      transition: color 0.3s ease, transform 0.3s ease;
-    }
-
-    .sidebar-content h2 {
-      color: #fff;
-      font-size: 1.2rem;
-      margin-bottom: 1rem;
-      font-family: "Ubuntu", sans-serif;
-    }
-
-    .sidebar-content ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .sidebar-content ul li {
-      margin-bottom: 0.5rem;
-    }
-
-    .sidebar-content ul li a {
-      color: #007bff;
-      text-decoration: none;
-      font-size: 1rem;
-      font-weight: 600;
-      font-family: "Poppins", sans-serif;
-    }
-
-    .sidebar-content ul li a:hover {
-      text-decoration: underline;
-      color: #5ba5f5;
-    }
-  </style>
   <script>
     const sidebar = document.getElementById("sidebar");
     const pagetoggleButton = document.getElementById("sidebar-toggle");
@@ -269,7 +191,7 @@
       </div>
       <div style="display: flex; flex-direction: column; align-items: center;">
         <div class="button">
-          <a class="buttons" id="toggleButton">Show More</a>
+          <a class="buttons githeme" id="toggleButton">Show More</a>
         </div>
         <a class="links" style="font-weight: bold;" href="history/" target="_blank">See Assignments & Quizes
           History</a>
@@ -285,10 +207,10 @@
   </style>
   <section id="info">
     <div class="button" style="display: flex; justify-content: center; flex-wrap: wrap; gap:5px;">
-      <a class="buttons" class="button is-primary" onclick="openSupport('requestbook')">Request To Add
+      <a class="buttons githeme" class="button is-primary" onclick="openSupport('requestbook')">Request To Add
         Book</a>
-      <a class="buttons" href="https://old.portal.mbktechstudio.com/dashboard/Unilib">Admin Panel</a>
-      <a class="buttons" class="button is-info" onclick="openSupport('requestquizass')">Request To Add
+      <a class="buttons githeme" href="https://old.portal.mbktechstudio.com/dashboard/Unilib">Admin Panel</a>
+      <a class="buttons .filter .select-dropdown selectgitheme" class="button is-info" onclick="openSupport('requestquizass')">Request To Add
         Assignments or Quiz</a>
     </div>
     <div class="notification is-info">

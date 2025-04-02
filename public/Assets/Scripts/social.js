@@ -1,6 +1,6 @@
 // Define social media links
 const socialMediaLinks = [
-    { href: "https://instagram.com/mbktech.studios", icon: "fab fa-instagram", target: "_blank" },
+    { href: "https://instagram.com/mbktechstudio", icon: "fab fa-instagram", target: "_blank" },
     { href: "https://www.facebook.com/people/MBK-Tech-Studio/61559079077988/", icon: "fab fa-facebook-f", target: "_blank" },
     { href: "https://www.linkedin.com/in/muhammad-bin-khalid-89711b25b", icon: "fab fa-linkedin", target: "_blank" },
     { href: "https://x.com/ibnekhalid28", icon: "fab fa-twitter", target: "_blank" },

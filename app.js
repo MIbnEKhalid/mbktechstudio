@@ -93,7 +93,7 @@ app.get("/", domainRedirect, (req, res) => {
     docs: "mainPages/otherDomain/docs",
     unilib: "mainPages/uniDomain/index",
     portfolio: "mainPages/otherDomain/portfolio",
-    privacy: "mainPages/otherDomain/index",
+    privacy: "mainPages/otherDomain/privacy.handlebars",
     api: "mainPages/apiDomain/index",
     portalapp: "mainPages/otherDomain/portalapp",
     events: "mainPages/otherDomain/portfolio",

@@ -26,14 +26,7 @@
   <title>MBK Tech Studio | Open-Source and Innovation</title>
 </head>
 
-<style>
-  .contact {
-    background: #1a1a1a!important;
-  }
-
-  .services {
-    background-color: #1a1a1a !important;
-  }
+<style> 
 
   section form .button button {
     font-size: 20px;
@@ -41,8 +34,7 @@
   }
 
   .collaborators {
-    background-color: #131313 !important;
-    padding: 40px 0;
+     padding: 40px 0;
   } 
 
   .collaborator-grid {
@@ -67,32 +59,10 @@
     transform: scale(1.01);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   }
-
-  .Servicegrid img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 80px;
-    border-radius: 50%;
-    margin-bottom: 15px;
+  .icon img{
+    width: 40px;
+    height: 40px;
   }
-
-  .collaborator-card h2 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: .5rem;
-    color: #007bff;
-  }
-
-  .collaborator-card p {
-    font-size: .875rem;
-    color: #6b7280;    
-    font-weight: 600;
-  }
-  .collaborators .Servicecontainer h2,
-  .collaborators .Servicecontainer p{
-    text-align: center;
-  } 
 </style>
 
 <!-- Ask For Cookie Consent-->
@@ -120,84 +90,6 @@
       </ul>
     </div>
   </aside>
-  <style>
-    .sidebar {
-      position: fixed;
-      right: 0;
-      top: 25%;
-      transform: translateY(-50%);
-      background-color: #333;
-      padding: 1rem;
-      border-radius: 8px 0 0 8px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      z-index: 1000;
-      transition: right 0.3s ease;
-      width: 150px;
-    }
-
-    .sidebar-collapsed {
-      right: -150px;
-    }
-
-    .sidebar-toggle {
-      position: absolute;
-      left: -45px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 30px;
-      height: 30px;
-      background: linear-gradient(145deg, #444, #222);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-      transition: all 0.3s ease;
-    }
-
-    .sidebar-toggle:hover {
-      opacity: 0.8;
-      transition: all 0.3s ease;
-
-    }
-
-    .sidebar-toggle i {
-      color: #fff;
-      font-size: 16px;
-      transition: color 0.3s ease, transform 0.3s ease;
-    }
-
-    .sidebar-content h2 {
-      color: #fff;
-      font-size: 1.2rem;
-      margin-bottom: 1rem;
-      font-family: "Ubuntu", sans-serif;
-    }
-
-    .sidebar-content ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .sidebar-content ul li {
-      margin-bottom: 0.5rem;
-    }
-
-    .sidebar-content ul li a {
-      color: #007bff;
-      text-decoration: none;
-      font-size: 1rem;
-      font-weight: 600;
-      font-family: "Poppins", sans-serif;
-    }
-
-    .sidebar-content ul li a:hover {
-      text-decoration: underline;
-      color: #5ba5f5;
-    }
-  </style>
   <script>
     const sidebar = document.getElementById("sidebar");
     const toggleButton = document.getElementById("sidebar-toggle");
@@ -320,38 +212,47 @@
       <div class="Servicecontainer">
         <div class="Servicegrid">
           <a href="https://privacy.mbktechstudio.com" target="_blank" class="links Servicecard">
+            <div class="icon"><i class="fas fa-user-shield"></i></div>
             <h2>Privacy Policy</h2>
             <p>Access the privacy policies and legal notices for our services.</p>
           </a>
           <a href="https://docs.mbktechstudio.com" target="_blank" class="links Servicecard">
+            <div class="icon"><i class="fas fa-book"></i></div>
             <h2>Projects & Documentations</h2>
             <p>Explore technical and user documentation for projects and services.</p>
           </a>
           <a href="https://blog.mbktechstudio.com" target="_blank" class="links Servicecard">
+            <div class="icon"><i class="fas fa-blog"></i></div>
             <h2>Blog</h2>
             <p>Read our latest articles, updates, and insights.</p>
           </a>
           <a href="https://portal.mbktechstudio.com" target="_blank" class="links Servicecard">
+            <div class="icon"><i class="fas fa-door-open"></i></div>
             <h2>Web Portal</h2>
             <p>Centralized portal for private use or team members only.</p>
           </a>
           <a href="https://portfolio.mbktechstudio.com" target="_blank" class="links Servicecard">
+            <div class="icon"><i class="fas fa-briefcase"></i></div>
             <h2>Portfolio</h2>
             <p>Showcasing professional projects and personal achievements of our team.</p>
           </a>
           <a href="https://unilib.mbktechstudio.com" target="_blank" class="links Servicecard">
+            <div class="icon"><i class="fas fa-university"></i></div>
             <h2>Unilib</h2>
             <p>Resource hub for course materials, quizzes, and assignments.</p>
           </a>
           <a href="https://api.mbktechstudio.com" target="_blank" class="links Servicecard">
+            <div class="icon"><i class="fas fa-code"></i></div>
             <h2>API Services</h2>
             <p>Explore and interact with our APIs for integration and development.</p>
           </a>
           <a href="https://download.mbktechstudio.com" target="_blank" class="links Servicecard">
+            <div class="icon"><i class="fas fa-download"></i></div>
             <h2>Download Apps</h2>
             <p>Download our latest apps for seamless integration and enhanced productivity.</p>
           </a> 
           <a href="https://events.mbktechstudio.com" target="_blank" class="links Servicecard">
+            <div class="icon"><i class="fas fa-calendar-alt"></i></div>
             <h2>Events</h2>
             <p>Stay updated with our upcoming events, webinars, and workshops.</p>
           </a>
@@ -368,7 +269,7 @@
       <div class="Servicecontainer">
         <div class="Servicegrid">
           <a href="https://m-dev-theta.vercel.app/" target="_blank" class="links Servicecard">
-            <img src="/Assets/Images/Icon/M-Dev.png" alt="MBK Tech Studio" />
+            <div class="icon"><img src="/Assets/Images/Icon/M-Dev.png" alt="MBK Tech Studio" /></div>
             <h2>Maaz Dev</h2>
             <p>Maaz Dev is our partner specializing in AI and Data Science, contributing significantly to our Python and other projects.</p>
           </a> 
@@ -391,7 +292,7 @@
           We’re thrilled to collaborate with talented individuals and entities! Whether you have a project idea or
           need support, here’s how you can reach out to us:
         </p>
-        <div style="text-align: left; margin: 20px auto; padding: 15px; background: #1f1f1f; border-radius: 10px;">
+        <div style="text-align: left; margin: 20px auto; padding: 15px; border: solid .1rem var(--main-border-color); background: transparent; border-radius: 10px;">
           <ul style="list-style: none; padding: 0;">
             <li style="margin-bottom: 15px; font-size: 1rem; color: #ccc;">
               <strong>1.</strong> Visit our
@@ -409,7 +310,7 @@
           </ul>
         </div>
       </div>
-      <div class="ssmedis" id="ssmedia"><a href="https://instagram.com/mbktech.studios" target="_blank"><i class="fab fa-instagram" aria-hidden="true"></i></a><a href="https://www.facebook.com/people/MBK-Tech-Studio/61559079077988/" target="_blank"><i class="fab fa-facebook-f" aria-hidden="true"></i></a><a href="https://www.linkedin.com/in/muhammad-bin-khalid-89711b25b" target="_blank"><i class="fab fa-linkedin" aria-hidden="true"></i></a><a href="https://x.com/ibnekhalid28" target="_blank"><i class="fab fa-twitter" aria-hidden="true"></i></a><a href="https://github.com/MIbnEKhalid" target="_blank"><i class="fab fa-github" aria-hidden="true"></i></a><a href="https://youtube.com/@mibnekhalid" target="_blank"><i class="fab fa-youtube" aria-hidden="true"></i></a><a href="https://discord.gg/" target="_blank"><i class="fab fa-discord" aria-hidden="true"></i></a><a href="https://signal.me/#eu/0Bxn3qmtp8gtYNuy6eJ_F3WaHWHrQW3uefaC2y01VCWtduFQCwJHvIFL6N4VOtsv" target="_blank"><i class="fa-brands fa-signal-messenger" aria-hidden="true"></i></a></div>
+      <div class="ssmedis" id="ssmedia"><a href="https://instagram.com/mbktechstudio" target="_blank"><i class="fab fa-instagram" aria-hidden="true"></i></a><a href="https://www.facebook.com/people/MBK-Tech-Studio/61559079077988/" target="_blank"><i class="fab fa-facebook-f" aria-hidden="true"></i></a><a href="https://www.linkedin.com/in/muhammad-bin-khalid-89711b25b" target="_blank"><i class="fab fa-linkedin" aria-hidden="true"></i></a><a href="https://x.com/ibnekhalid28" target="_blank"><i class="fab fa-twitter" aria-hidden="true"></i></a><a href="https://github.com/MIbnEKhalid" target="_blank"><i class="fab fa-github" aria-hidden="true"></i></a><a href="https://youtube.com/@mibnekhalid" target="_blank"><i class="fab fa-youtube" aria-hidden="true"></i></a><a href="https://discord.gg/" target="_blank"><i class="fab fa-discord" aria-hidden="true"></i></a><a href="https://signal.me/#eu/0Bxn3qmtp8gtYNuy6eJ_F3WaHWHrQW3uefaC2y01VCWtduFQCwJHvIFL6N4VOtsv" target="_blank"><i class="fa-brands fa-signal-messenger" aria-hidden="true"></i></a></div>
     </div>
   </section>
 
