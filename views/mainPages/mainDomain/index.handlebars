@@ -63,6 +63,9 @@
     width: 40px;
     height: 40px;
   }
+  .contact .content{
+    padding: 0;
+  }
 </style>
 
 <!-- Ask For Cookie Consent-->
@@ -90,27 +93,12 @@
       </ul>
     </div>
   </aside>
-  <script>
-    const sidebar = document.getElementById("sidebar");
-    const toggleButton = document.getElementById("sidebar-toggle");
-    const toggleIcon = toggleButton.querySelector("i");
 
-    toggleButton.addEventListener("click", () => {
-      sidebar.classList.toggle("sidebar-collapsed");
-
-      if (sidebar.classList.contains("sidebar-collapsed")) {
-        toggleIcon.classList.remove("fa-chevron-right");
-        toggleIcon.classList.add("fa-chevron-left");
-      } else {
-        toggleIcon.classList.remove("fa-chevron-left");
-        toggleIcon.classList.add("fa-chevron-right");
-      }
-    });
-  </script>
 
   <!-- About Section Start -->
   <section class="about" id="about">
     <div class="content" style="margin: 0px auto;">
+      <br>
       <div class="title"><span>Welcome To MBK Tech Studio</span></div>
       <div class="about-details">
         <!--

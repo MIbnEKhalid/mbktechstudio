@@ -309,23 +309,7 @@
       color: #5ba5f5;
     }
   </style>
-  <script>
-    const sidebar = document.getElementById("sidebar");
-    const toggleButton = document.getElementById("sidebar-toggle");
-    const toggleIcon = toggleButton.querySelector("i");
 
-    toggleButton.addEventListener("click", () => {
-      sidebar.classList.toggle("sidebar-collapsed");
-
-      if (sidebar.classList.contains("sidebar-collapsed")) {
-        toggleIcon.classList.remove("fa-chevron-right");
-        toggleIcon.classList.add("fa-chevron-left");
-      } else {
-        toggleIcon.classList.remove("fa-chevron-left");
-        toggleIcon.classList.add("fa-chevron-right");
-      }
-    });
-  </script>
 
 
   <section class="about">

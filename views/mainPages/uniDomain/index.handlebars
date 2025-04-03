@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  {{> header path=(conditionalEnv "/" "https://mbktechstudio.com/")}}<head>  <meta name="description" content="Get all your course materials and quiz / assignments here.">
+{{> header path=(conditionalEnv "/" "https://mbktechstudio.com/")}}
+
+<head>
+  <meta name="description" content="Get all your course materials and quiz / assignments here.">
   <meta name="keywords" content="Unilib MBK Tech Studio, Open-Source, Course Materials, Assignments, Quiz">
   <title>Uni Books Home Page</title>
 </head>
@@ -9,7 +12,7 @@
 <style>
   .section-separator {
     margin-top: 0px;
-    border-top: 2px solid #ccc;
+    border-top: .125rem solid var(--main-border-color);
   }
 
   .section-title {
@@ -34,7 +37,7 @@
   .section-separator1 {
     margin-top: 10px;
     margin-bottom: 10px;
-    border-top: 2px solid #ccc;
+    border-top: .125rem solid var(--main-border-color);
   }
 
   .notification.is-info {
@@ -69,18 +72,20 @@
   .about {
     height: auto !important;
   }
-          .filter {
-          margin: 0 auto;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 10px;
-        }
-        .filter .select-dropdown select{
-          position: relative;
-          max-width: 150px !important;
-          width: 150px !important;
-        }
+
+  .filter {
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .filter .select-dropdown select {
+    position: relative;
+    max-width: 150px !important;
+    width: 150px !important;
+  }
 </style>
 
 <!-- Ask For Cookie Consent-->
@@ -103,23 +108,7 @@
       </ul>
     </div>
   </aside>
-  <script>
-    const sidebar = document.getElementById("sidebar");
-    const pagetoggleButton = document.getElementById("sidebar-toggle");
-    const toggleIcon = pagetoggleButton.querySelector("i");
 
-    pagetoggleButton.addEventListener("click", () => {
-      sidebar.classList.toggle("sidebar-collapsed");
-
-      if (sidebar.classList.contains("sidebar-collapsed")) {
-        toggleIcon.classList.remove("fa-chevron-right");
-        toggleIcon.classList.add("fa-chevron-left");
-      } else {
-        toggleIcon.classList.remove("fa-chevron-left");
-        toggleIcon.classList.add("fa-chevron-right");
-      }
-    });
-  </script>
 
   <section class="about" id="books">
     <div class="content">
@@ -133,7 +122,8 @@
           justify-content: center;
           gap: 10px;
         }
-        .filter .select-dropdown select{
+
+        .filter .select-dropdown select {
           position: relative;
           max-width: 150px !important;
           width: 150px !important;
@@ -207,33 +197,33 @@
   </style>
   <section id="info">
     <div class="button" style="display: flex; justify-content: center; flex-wrap: wrap; gap:5px;">
-      <a class="buttons githeme" class="button is-primary" onclick="openSupport('requestbook')">Request To Add
-        Book</a>
-      <a class="buttons githeme" href="https://old.portal.mbktechstudio.com/dashboard/Unilib">Admin Panel</a>
-      <a class="buttons .filter .select-dropdown selectgitheme" class="button is-info" onclick="openSupport('requestquizass')">Request To Add
-        Assignments or Quiz</a>
+      <a class="buttons githeme" href="https://www.mbktechstudio.com/Support/#requestbook">Request To Add Book</a>
+      <a class="buttons githeme" href="https://portal.mbktechstudio.com/dashboard/admin/Unilib">Admin Panel</a>
+      <a class="buttons githeme" href="https://www.mbktechstudio.com/Support/#requestquizass">Request To Add Assignments
+        or Quiz</a>
     </div>
     <div class="notification is-info">
       <p>
         The <strong>Unilib Project</strong> is open-source, and we welcome contributions! You can explore
-        and contribute on our <a class="links" href="https://github.com/MIbnEKhalid/MIbnEKhalid.github.io/" target="_blank">Project</a>.
+        and contribute on our <a class="links" href="https://github.com/MIbnEKhalid/MIbnEKhalid.github.io/"
+          target="_blank">Project</a>.
       </p>
     </div>
   </section>
 
-    {{> footer }}
+  {{> footer }}
 
 
   <script src="/Assets/unilib.js"></script>
   <script>
-    document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", function () {
       const categoryFilter = document.getElementById('categoryFilter');
       // Always trigger filtering based on the current dropdown value
       filterProducts();
       const searchInput = document.getElementById('searchProduct');
       const clearBtn = document.getElementById('clearSearch');
       // Show clear button when there is input
-      searchInput.addEventListener('input', function() {
+      searchInput.addEventListener('input', function () {
         if (this.value.length > 0) {
           clearBtn.style.display = 'block';
         } else {
@@ -241,7 +231,7 @@
         }
       });
       // Clear input when clear button is clicked
-      clearBtn.addEventListener('click', function() {
+      clearBtn.addEventListener('click', function () {
         searchInput.value = '';
         clearBtn.style.display = 'none';
         filterProducts(); // Optionally trigger the filter function to show all products again
@@ -256,7 +246,7 @@
     // JavaScript to handle collapse/expand functionality
     const detailsContainer = document.getElementById('detailsContainer');
     const toggleButton = document.getElementById('toggleButton');
-    toggleButton.addEventListener('click', function() {
+    toggleButton.addEventListener('click', function () {
       // Toggle the expanded class
       detailsContainer.classList.toggle('expanded');
 
@@ -269,10 +259,10 @@
     });
   </script>
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       const headerHeight = document.querySelector('header').offsetHeight;
       document.querySelectorAll('aside a').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
+        anchor.addEventListener('click', function (e) {
           e.preventDefault();
           const targetId = this.getAttribute('href').substring(1);
           const targetElement = document.getElementById(targetId);

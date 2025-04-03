@@ -910,7 +910,7 @@ form .input:focus {
 }
 
 .product img {
-	max-width: 230px;
+	max-width: 180px;
 	height: 120px;
 	margin-bottom: 10px;
 	border-radius: 6px;
@@ -1123,7 +1123,7 @@ form .input:focus {
 /* Technologies Section */
 
 .technologies {
-	padding: 4rem 1rem;
+	padding: 1rem 1rem;
 	background-color: transparent;
 	text-align: center;
 }
@@ -1134,8 +1134,8 @@ form .input:focus {
 
 .technology-grid {
 	display: grid;
-	gap: 2rem;
-	grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+	gap: 1rem;
+	grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
 }
 
 .technology-card {
@@ -1144,7 +1144,7 @@ form .input:focus {
 	border: solid .1rem var(--main-border-color);
 	padding: 1.0rem;
 	display: flex;
-	max-width: 500px;
+	max-width: 150px;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
@@ -1202,14 +1202,6 @@ form .input:focus {
 	.technology-grid {
 		grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
 	}
-}
-
-.product img {
-	max-width: 230px;
-	height: 120px;
-	margin-bottom: 10px;
-	pointer-events: none;
-	border-radius: 6px;
 }
 
 .toggle-button {
@@ -1395,7 +1387,7 @@ form .input:focus {
 	transform: translateY(-50%);
 	width: 30px;
 	height: 30px;
-	background: linear-gradient(145deg, #444, #222);
+	background: linear-gradient(145deg, #3d444d, #0d1117);
 	border-radius: 50%;
 	display: flex;
 	align-items: center;
