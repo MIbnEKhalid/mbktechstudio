@@ -634,6 +634,15 @@ form select {
 	font-size: 14px !important;
 }
 
+form ::placeholder {
+	color: #3d444d;
+	opacity: 1; /* Firefox */
+}
+  
+form ::-ms-input-placeholder { /* Edge 12-18 */
+	color: #3d444d;
+}
+
 @media (max-width: 466px) {
 
 	form input,
