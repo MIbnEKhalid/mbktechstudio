@@ -636,10 +636,12 @@ form select {
 
 form ::placeholder {
 	color: #3d444d;
-	opacity: 1; /* Firefox */
+	opacity: 1;
+	/* Firefox */
 }
-  
-form ::-ms-input-placeholder { /* Edge 12-18 */
+
+form ::-ms-input-placeholder {
+	/* Edge 12-18 */
 	color: #3d444d;
 }
 
@@ -904,10 +906,69 @@ form .input:focus {
 	background-color: transparent;
 	color: #fff !important;
 	text-align: center;
-	max-width: 200px;
+	max-width: 150px;
 	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 	transition: all 0.3s ease;
 }
+
+.product.main {
+	border-color: #8a6d3b;
+}
+
+.product {
+	position: relative;
+	/* Ensure the span is positioned relative to the product */
+}
+
+.product span {
+	position: absolute;
+	background-color: #377a77;
+	color: #fff;
+	padding: 5px 5px;
+	border-top-left-radius: 8px;
+	border-radius: 5px;
+	font-size: 10px;
+	font-weight: bold;
+	z-index: 10;
+	/* Ensures it appears above other elements */
+}
+
+
+.view-link {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	background-color: #377a77;
+	color: #fff;
+	padding: 5px 5px;
+	border-top-left-radius: 8px;
+	border-radius: 5px;
+	font-size: 10px;
+	font-weight: bold;
+	z-index: 10;
+	/* Ensures it appears above other elements */
+}
+
+.download-link {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	background-color: #377a77;
+	color: #fff;
+	padding: 5px 5px;
+	border-top-left-radius: 8px;
+	border-radius: 5px;
+	font-size: 10px;
+	font-weight: bold;
+	z-index: 10;
+	/* Ensures it appears above other elements */
+}
+
+.download-link:visited,
+.view-link:visited {
+	color: #fff;
+}
+
 
 .product img {
 	max-width: 180px;
@@ -922,12 +983,6 @@ form .input:focus {
 
 .products p {
 	font-size: 10px;
-}
-
-.product:hover {
-	border-color: #007bff;
-	color: #fff !important;
-	transition: all 0.5s ease;
 }
 
 /* Dropdown Container */
@@ -1068,8 +1123,8 @@ form .input:focus {
 /* Service Section */
 
 .Servicecontainer {
-    max-width: 1200px;
-    margin: 0 auto;
+	max-width: 1200px;
+	margin: 0 auto;
 }
 
 .Servicegrid {
@@ -1152,7 +1207,7 @@ form .input:focus {
 }
 
 .technology-card:hover {
-    border-color: #377a77
+	border-color: #377a77
 }
 
 .technology-card img {

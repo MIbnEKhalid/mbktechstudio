@@ -46,17 +46,34 @@ function displayProducts(productsArray) {
   }
 
   productsArray.forEach((product) => {
-    const productElement = document.createElement("a");
+    const productElement = document.createElement("div");
     productElement.classList.add("product", "linked");
     productElement.id = product.id;
     productElement.href = product.link;
+    if (true) { productElement.classList.add("main"); }
     productElement.innerHTML = `
-           <img src="Assets/Images/BookCovers/${product.imageURL}" alt="${product.name}">
-           <h3>${product.name}</h3>
-           <p>${product.description}</p>
-    `    ;
+       ${true ? '<span class="main">main</span>' : ''}
+       <img src="Assets/Images/BookCovers/${product.imageURL}" alt="${product.name}">
+       <h3>${product.name}</h3>
+       <p>${product.description}</p>
+       <a href="${product.link}" target="_blank" class="view-link">
+       <i class="fas fa-eye"></i>
+       </a>
+       <div onclick="getDownloadLink('${product.link}')" download class="download-link">
+       <i class="fas fa-download"></i>
+       </div>
+    `;
     productsContainer.appendChild(productElement);
   });
+}
+
+function getDownloadLink(driveLink) {
+  const fileIdMatch = driveLink.match(/\/d\/([a-zA-Z0-9_-]+)/) || driveLink.match(/id=([a-zA-Z0-9_-]+)/);
+  const fileId = fileIdMatch ? fileIdMatch[1] : null;
+  if (fileId) {
+    window.location.href = `https://drive.usercontent.google.com/uc?id=${fileId}&export=download`;
+  }
+  console.error("Invalid Google Drive link:", driveLink);
 }
 
 // Attach event listeners
