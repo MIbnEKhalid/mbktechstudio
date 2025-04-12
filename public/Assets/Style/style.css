@@ -917,51 +917,35 @@ form .input:focus {
 
 .product {
 	position: relative;
-	/* Ensure the span is positioned relative to the product */
 }
 
+.view-link,
+.download-link,
 .product span {
 	position: absolute;
 	background-color: #377a77;
 	color: #fff;
-	padding: 5px 5px;
+	padding: 5px 8px;
 	border-top-left-radius: 8px;
 	border-radius: 5px;
 	font-size: 10px;
 	font-weight: bold;
 	z-index: 10;
-	/* Ensures it appears above other elements */
 }
 
+.product span {
+	padding: 5px 5px;
+	font-weight: bold;
+}
 
 .view-link {
-	position: absolute;
 	bottom: 0;
-	left: 0;
-	background-color: #377a77;
-	color: #fff;
-	padding: 5px 5px;
-	border-top-left-radius: 8px;
-	border-radius: 5px;
-	font-size: 10px;
-	font-weight: bold;
-	z-index: 10;
-	/* Ensures it appears above other elements */
+	left: 5px;
 }
 
 .download-link {
-	position: absolute;
 	bottom: 0;
-	right: 0;
-	background-color: #377a77;
-	color: #fff;
-	padding: 5px 5px;
-	border-top-left-radius: 8px;
-	border-radius: 5px;
-	font-size: 10px;
-	font-weight: bold;
-	z-index: 10;
-	/* Ensures it appears above other elements */
+	right: 5px;
 }
 
 .download-link:visited,
@@ -1016,7 +1000,7 @@ form .input:focus {
 	font-weight: 700;
 	max-width: 400px;
 	padding: 10px;
-	font-size: 16px;
+	font-size: 1em;
 	display: flex;
 	align-items: center;
 	margin: 0 auto;
@@ -1075,6 +1059,7 @@ form .input:focus {
 	border: none;
 	outline: none;
 	padding: 10px;
+	font-size: 1em;
 	background-color: #151b23;
 	color: #fff;
 	flex: 1;
@@ -1107,7 +1092,7 @@ form .input:focus {
 	right: 60px;
 	background: transparent;
 	border: none;
-	font-size: 16px;
+	font-size: 1em;
 	color: #377a77;
 	cursor: pointer;
 	display: none;
@@ -1492,4 +1477,79 @@ form .input:focus {
 .sidebar-content ul li a:hover {
 	text-decoration: underline;
 	color: #5ba5f5;
+}
+
+
+
+.btn {
+	outline: 0;
+	padding: 8px 16px;
+	border-radius: 5px;
+	font-size: .92em;
+	font-weight: 600;
+	color: #fff;
+	border: 2px solid transparent;
+	cursor: pointer;
+	background: 0 0;
+	text-align: center;
+	transition: all .3s ease
+}
+
+@media (max-width:600px) {
+	.btn {
+		width: 100%;
+		padding: 10px
+	}
+}
+
+.btn:visited {
+	color: #fff
+}
+
+.btn-edit {
+	background: #007bff;
+	transition: all .3s ease
+}
+
+.btn-edit:hover {
+	color: #007bff;
+	border-color: #007bff;
+	background: 0 0;
+	transition: all .3s ease
+}
+
+.btn-save {
+	background: #28a745;
+	transition: all .3s ease
+}
+
+.btn-cancel {
+	background: #6c757d;
+	transition: all .3s ease
+}
+
+.btn-cancel:hover {
+	color: #6c757d;
+	border-color: #6c757d;
+	background: 0 0;
+	transition: all .3s ease
+}
+
+.btn-save:hover {
+	color: #28a745;
+	border-color: #28a745;
+	background: 0 0;
+	transition: all .3s ease
+}
+
+.btn-danger {
+	background: #dc3545;
+	transition: all .3s ease
+}
+
+.btn-danger:hover {
+	color: #dc3545;
+	border-color: #dc3545;
+	background: 0 0;
+	transition: all .3s ease
 }

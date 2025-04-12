@@ -44,24 +44,24 @@ function displayProducts(productsArray) {
     productsContainer.innerHTML = '<p>No material found</p>';
     return;
   }
-
   productsArray.forEach((product) => {
     const productElement = document.createElement("div");
-    productElement.classList.add("product", "linked");
+    productElement.classList.add("book-card", "linked");
     productElement.id = product.id;
     productElement.href = product.link;
-    if (true) { productElement.classList.add("main"); }
-    productElement.innerHTML = `
-       ${true ? '<span class="main">main</span>' : ''}
-       <img src="Assets/Images/BookCovers/${product.imageURL}" alt="${product.name}">
-       <h3>${product.name}</h3>
-       <p>${product.description}</p>
-       <a href="${product.link}" target="_blank" class="view-link">
-       <i class="fas fa-eye"></i>
-       </a>
-       <div onclick="getDownloadLink('${product.link}')" download class="download-link">
-       <i class="fas fa-download"></i>
-       </div>
+    if (product.main) { productElement.innerHTML += `<div class="badge">Main</div>`; }
+    productElement.innerHTML += `
+      <a href="${product.link}"> 
+        <img src="Assets/Images/BookCovers/${product.imageURL}" alt="${product.name}">
+      </a>
+      <div class="Bdetails">
+        <h2>${product.name}</h2>
+        <p>${product.description}</p>
+      </div>
+      <div class="actions">
+        <a id="viewButton" href="${product.link}" class="btn btn-save"><i class="fas fa-eye" aria-hidden="true"></i> View</a>
+        <button id="downloadButton" onclick="getDownloadLink('${product.link}')" class="btn btn-save"><i class="fas fa-download" aria-hidden="true"></i> Download</button>
+      </div>
     `;
     productsContainer.appendChild(productElement);
   });
