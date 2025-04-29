@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MBK Tech Studio</title>
+  
+  <link rel="icon" type="image/x-icon" href="/Assets/Images/Icon/dgicon.svg">
+  <link rel="stylesheet" href="/Assets/Style/newStyle.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/css/intlTelInput.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/js/intlTelInput-jquery.min.js"></script>
+  <script src="https://kit.fontawesome.com/0934e8e9d3.js" crossorigin="anonymous" defer></script>
+  <script src="/Assets/Scripts/sidetooglebar.js" defer></script>
+  <script src="https://kit.fontawesome.com/0934e8e9d3.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/js/intlTelInput-jquery.min.js" defer></script>
+  <script src="https://kit.fontawesome.com/0934e8e9d3.js" crossorigin="anonymous"></script>
+</head>
+
+<header id="mainHeader">
+  <div class="header-content">
+    <div class="logo-container">
+      <img src="https://mbktechstudio.com/Assets/Images/Icon/dg.svg" alt="Logo" class="logo">
+      <span class="website-name">MBK Tech Studio</span>
+    </div>
+
+    <div class="right-section">
+      <div class="social-icons desktop">
+        <a href="https://instagram.com/mbktechstudio" target="_blank"><i class="fab fa-instagram" aria-hidden="true"></i> </a>
+        <a href="https://www.facebook.com/people/MBK-Tech-Studio/61559079077988/" target="_blank"><i class="fab fa-facebook-f" aria-hidden="true"></i> </a>
+        <a href="https://www.linkedin.com/in/muhammad-bin-khalid-89711b25b" target="_blank"><i class="fab fa-linkedin" aria-hidden="true"></i> </a>
+        <a href="https://x.com/ibnekhalid28" target="_blank"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+        <a href="https://github.com/MIbnEKhalid" target="_blank"><i class="fab fa-github" aria-hidden="true"></i></a>
+        <a href="https://youtube.com/@mibnekhalid" target="_blank"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+        <a href="https://discord.gg/" target="_blank"><i class="fab fa-discord" aria-hidden="true"></i></a>
+        <a href="https://signal.me/#eu/0Bxn3qmtp8gtYNuy6eJ_F3WaHWHrQW3uefaC2y01VCWtduFQCwJHvIFL6N4VOtsv" target="_blank"><i class="fa-brands fa-signal-messenger" aria-hidden="true"></i></a>
+      </div>
+
+      <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </div>
+  <div class="side-panel" id="sidePanel">
+    <button class="close-btn" id="closePanelBtn">
+      <i class="fas fa-times"></i>
+    </button>
+    <div class="social-icons">
+      <a href="https://instagram.com/mbktechstudio" target="_blank"><i class="fab fa-instagram" aria-hidden="true"></i> </a>
+      <a href="https://www.facebook.com/people/MBK-Tech-Studio/61559079077988/" target="_blank"><i class="fab fa-facebook-f" aria-hidden="true"></i> </a>
+      <a href="https://www.linkedin.com/in/muhammad-bin-khalid-89711b25b" target="_blank"><i class="fab fa-linkedin" aria-hidden="true"></i> </a>
+      <a href="https://x.com/ibnekhalid28" target="_blank"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+      <a href="https://github.com/MIbnEKhalid" target="_blank"><i class="fab fa-github" aria-hidden="true"></i></a>
+      <a href="https://youtube.com/@mibnekhalid" target="_blank"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+      <a href="https://discord.gg/" target="_blank"><i class="fab fa-discord" aria-hidden="true"></i></a>
+      <a href="https://signal.me/#eu/0Bxn3qmtp8gtYNuy6eJ_F3WaHWHrQW3uefaC2y01VCWtduFQCwJHvIFL6N4VOtsv" target="_blank"><i class="fa-brands fa-signal-messenger" aria-hidden="true"></i></a>
+    </div>
+  </div>
+  <div class="overlay" id="overlay"></div>
+</header>
+
+<script>
+  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+  const sidePanel = document.getElementById('sidePanel');
+  const closePanelBtn = document.getElementById('closePanelBtn');
+  const overlay = document.getElementById('overlay');
+  const header = document.getElementById('mainHeader');
+
+  // Sticky header effect
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      header.classList.add('sticky');
+    } else {
+      header.classList.remove('sticky');
+    }
+  });
+
+  // Mobile menu functionality
+  mobileMenuBtn.addEventListener('click', () => {
+    sidePanel.classList.add('active');
+    overlay.classList.add('active');
+  });
+
+  closePanelBtn.addEventListener('click', () => {
+    sidePanel.classList.remove('active');
+    overlay.classList.remove('active');
+  });
+
+  overlay.addEventListener('click', () => {
+    sidePanel.classList.remove('active');
+    overlay.classList.remove('active');
+  });
+</script>
