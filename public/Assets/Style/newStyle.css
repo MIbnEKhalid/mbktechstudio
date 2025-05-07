@@ -952,8 +952,8 @@ form .input:focus {
 	border: .1rem solid var(--main-border-color);
 	padding: 10px;
 	border-radius: 8px;
-	max-width: 400px;
-	min-width: 300px;
+	min-width: 100%;
+	width: 100%;
 	margin-bottom: 5px;
 }
 

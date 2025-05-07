@@ -60,7 +60,7 @@ app.set("views", path.join(__dirname, "views"));
 const domainRedirect = (req, res, next) => {
   let hostname = req.headers['x-forwarded-host'] || req.headers.host; // Allow overriding via x-forwarded-host
   
-  console.log(`Incoming request to hostname: ${hostname}`);
+  console.log(`Incoming request to hostname: http://${hostname}`);
 
   if (process.env.localenv === "true") {
     req.site = process.env.site;

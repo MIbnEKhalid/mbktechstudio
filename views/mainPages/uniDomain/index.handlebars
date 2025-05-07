@@ -8,8 +8,16 @@
   <title>Uni Books Home Page</title>
 </head>
 
-
 <style>
+  :root {
+    --primary-accent: #377a77;
+    --secondary-accent: #ff5722;
+    --text-primary: #fff;
+    --text-secondary: #bbb;
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --card-hover-border: var(--primary-accent);
+  }
+
   .section-separator {
     margin-top: 0px;
     border-top: .125rem solid var(--main-border-color);
@@ -89,137 +97,125 @@
 </style>
 <style>
   .cards-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem 0;
   }
 
+  /* Book card styles */
   .book-card {
+    position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    width: 250px;
-    background: transparent;
+    background: var(--card-bg);
     border: .125rem solid var(--main-border-color);
     border-radius: 15px;
     overflow: hidden;
     transition: all 0.3s ease;
-  }
-
-  .book-card:hover {
-    border-color: #377a77;
+    height: 100%;
   }
 
   .book-card img {
     width: 100%;
     height: 270px;
-    object-fit: cover;
-    border-bottom: 2px solid #333;
-    border-radius: 15px 15px 0 0;
+    object-fit: contain;
+    background: #fff;
+    padding: 1rem;
   }
 
   .book-card .Bdetails {
-    padding: 0px;
+    padding: 1rem;
     text-align: center;
+    flex-grow: 1;
   }
 
   .book-card .Bdetails h2 {
-    margin: 10px 0 5px;
-    font-size: 1em;
-    color: #ffffff;
+    margin: 0.5rem 0;
+    font-size: 1.1rem;
+    color: var(--text-primary);
   }
 
   .book-card .Bdetails p {
     margin: 0;
-    font-size: 0.8em;
-    color: #bbbbbb;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
   }
 
   .book-card .actions {
     display: flex;
     justify-content: space-between;
-    padding: 8px;
-    background: transparent;
+    gap: 5px;
+    padding: 0.75rem;
+    background: rgba(0, 0, 0, 0.2);
     border-top: 1px solid var(--main-border-color);
   }
 
-  .book-card .actions .view-btn {
-    background: linear-gradient(135deg, #ff5722, #e64a19);
-    color: #fff;
-  }
-
-  .book-card .actions .view-btn:hover {
-    transform: scale(1.05);
-  }
-
   .book-card .btn {
-    padding: 4px 12px;
-    font-size: .8em;
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
   }
 
-  @media (max-width: 768px) {
-    .book-card {
-      width: 90%;
-      margin: 0 auto;
-    }
-
-    .book-card img {
-      height: 230px;
-      object-fit: contain;
-    }
-
-    .book-card .Bdetails h2 {
-      font-size: 1em;
-    }
-
-    .book-card .Bdetails p {
-      font-size: 0.7em;
-    }
-
-    .book-card .btn {
-      font-size: 0.6em;
-    }
-
-    .book-card .actions {
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .book-card .actions .view-btn {
-      width: 100%;
-      text-align: center;
-    }
-
-    section .content {
-      width: 90% !important;
-    }
+  .book-card .view-btn {
+    background: linear-gradient(135deg, var(--secondary-accent), #e64a19);
+    color: #fff;
+    border: none;
   }
 
+  .book-card .view-btn:hover {
+    border: solid .1rem linear-gradient(135deg, #e64a19, var(--secondary-accent));
+    background: transparent;
+    color: linear-gradient(135deg, #e64a19, var(--secondary-accent));
+  }
+
+  /* Badge for featured books */
   .badge {
     position: absolute;
     top: 10px;
     left: 10px;
-    background: #ff5722;
+    background: var(--secondary-accent);
     color: #fff;
-    padding: 5px 10px;
-    font-size: 0.9em;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.8rem;
     font-weight: bold;
-    border-radius: 5px;
-  }
-
-  .book-card {
-    position: relative;
+    border-radius: 4px;
+    z-index: 1;
   }
 
   section .content {
-    width: 99%;
+    width: 95%;
+  }
+
+  .about .content {
+    margin: 40px auto !important;
+  }
+
+  .filter {
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .filter .select-dropdown select {
+    position: relative;
+    max-width: 150px !important;
+    width: 150px !important;
+  }
+
+  #info {
+    padding-top: 0px;
   }
 </style>
-<!-- Ask For Cookie Consent-->
+
 <div id="cookie"></div>
 
 <body>
+
   <div class="scroll-button">
     <a href="#books"><i class="fas fa-arrow-up"></i></a>
   </div>
@@ -242,21 +238,6 @@
     <div class="content">
       <div class="not"></div>
       <div class="title section-title"><span>Uni Course Materials</span></div>
-      <style>
-        .filter {
-          margin: 0 auto;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 10px;
-        }
-
-        .filter .select-dropdown select {
-          position: relative;
-          max-width: 150px !important;
-          width: 150px !important;
-        }
-      </style>
       <div class="filter">
         <div class="select-dropdown">
           <select id="semesterFilter" name="topics">
@@ -286,7 +267,6 @@
     </div>
   </section>
 
-  <!-- Separator for visual distinction -->
   <div class="section-separator"></div>
 
   <section class="about" id="assignments" style="padding-top: 0px;">
@@ -318,11 +298,7 @@
   </section>
 
   <div class="section-separator1"></div>
-  <style>
-    #info {
-      padding-top: 0px;
-    }
-  </style>
+
   <section id="info">
     <div class="button" style="display: flex; justify-content: center; flex-wrap: wrap; gap:5px;">
       <a class="buttons githeme" href="https://www.mbktechstudio.com/Support/#requestbook">Request To Add Book</a>
@@ -341,70 +317,8 @@
 
   {{> footer }}
 
-
   <script src="/Assets/unilib.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const categoryFilter = document.getElementById('categoryFilter');
-      // Always trigger filtering based on the current dropdown value
-      filterProducts();
-      const searchInput = document.getElementById('searchProduct');
-      const clearBtn = document.getElementById('clearSearch');
-      // Show clear button when there is input
-      searchInput.addEventListener('input', function () {
-        if (this.value.length > 0) {
-          clearBtn.style.display = 'block';
-        } else {
-          clearBtn.style.display = 'none';
-        }
-      });
-      // Clear input when clear button is clicked
-      clearBtn.addEventListener('click', function () {
-        searchInput.value = '';
-        clearBtn.style.display = 'none';
-        filterProducts(); // Optionally trigger the filter function to show all products again
-      });
-    });
-
-    function openSupport(id) {
-      window.open(`https://www.mbktechstudio.com/Support/#${id}`, '_blank');
-    } 
-  </script>
-  <script>
-    // JavaScript to handle collapse/expand functionality
-    const detailsContainer = document.getElementById('detailsContainer');
-    const toggleButton = document.getElementById('toggleButton');
-    toggleButton.addEventListener('click', function () {
-      // Toggle the expanded class
-      detailsContainer.classList.toggle('expanded');
-
-      // Update the button text based on the state
-      if (detailsContainer.classList.contains('expanded')) {
-        toggleButton.textContent = 'Show Less';
-      } else {
-        toggleButton.textContent = 'Show More';
-      }
-    });
-  </script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const headerHeight = document.querySelector('header').offsetHeight;
-      document.querySelectorAll('aside a').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-          e.preventDefault();
-          const targetId = this.getAttribute('href').substring(1);
-          const targetElement = document.getElementById(targetId);
-          if (targetElement) {
-            const targetPosition = targetElement.offsetTop - headerHeight - 28; // Adjust 10px as needed
-            window.scrollTo({
-              top: targetPosition,
-              behavior: 'smooth'
-            });
-          }
-        });
-      });
-    });
-  </script>
+  
 </body>
 
 </html>
