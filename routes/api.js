@@ -5,8 +5,9 @@ import { authenticate } from "./auth.js";
 import path from "path";
 import { fileURLToPath } from "url";
 import fs from 'fs';
+import { console } from "inspector";
 
-const app = express.Router(); 
+const app = express.Router();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -101,7 +102,7 @@ app.put("/update-ticket", async (req, res) => {
         console.error("Error updating ticket:", err);
         res.status(500).json({ error: "Failed to update ticket." });
     }
-}); 
+});
 
 /* Api */
 
@@ -122,37 +123,63 @@ app.get("/script/setup.sh", authenticate(process.env.SetupScript_SECRET_TOKEN), 
     });
 });
 
-async function getAllQuizAss() {
-    try {
-        const query = 'SELECT * FROM "quizass"';
-        const result = await pool1.query(query);
-        console.log("QuizAss Api Request processed successfully");
-        return result.rows;
-    } catch (err) {
-        console.error("Database connection error:", err);
-    }
-}
-
-async function getAllBooks() {
-    try {
-        const query = 'SELECT * FROM "unilibbook"'; // Ensure the table name matches the exact case
-        const result = await pool1.query(query);
-        console.log("Book Api Request processed successfully");
-        return result.rows;
-    } catch (err) {
-        console.error("Database connection error:", err);
-    }
-}
-
 app.get("/Unilib/Book", async (req, res) => {
-    try {
-        const result = await getAllBooks();
-        res.json(result);
-    } catch (err) {
-        res.status(500).send("Internal Server Error: " + err);
+    console.log("UnilibBook Api Request processed successfully");
+  try {
+    const { page = 1, limit = 10, semester, category, search } = req.query;
+    const offset = (page - 1) * limit;
+    
+    let query = 'SELECT * FROM unilibbook';
+    let conditions = [];
+    let params = [];
+    
+    if (semester) {
+      conditions.push(`semester = $${params.length + 1}`);
+      params.push(semester);
     }
+    
+    if (category && category !== 'all') {
+      conditions.push(`category = $${params.length + 1}`);
+      params.push(category);
+    }
+    
+    if (search) {
+      conditions.push(`name ILIKE $${params.length + 1}`);
+      params.push(`%${search}%`);
+    }
+    
+    if (conditions.length) {
+      query += ' WHERE ' + conditions.join(' AND ');
+    }
+    
+    // Add sorting (main books first, then by name)
+    query += ' ORDER BY main DESC, name ASC';
+    
+    // Add pagination
+    const countQuery = `SELECT COUNT(*) FROM (${query}) as total`;
+    query += ` LIMIT $${params.length + 1} OFFSET $${params.length + 2}`;
+    params.push(limit, offset);
+    
+    const result = await pool1.query(query, params);
+    const countResult = await pool1.query(countQuery, params.slice(0, -2));
+    const total = parseInt(countResult.rows[0].count);
+    const pages = Math.ceil(total / limit);
+    
+    res.json({
+      data: result.rows,
+      pagination: {
+        page: parseInt(page),
+        limit: parseInt(limit),
+        total,
+        pages
+      }
+    });
+  } catch (err) {
+    console.error("Error fetching books:", err);
+    res.status(500).send("Internal Server Error: " + err);
+  }
 });
-
+ 
 app.get("/Unilib/QuizAss", async (req, res) => {
     try {
         const result = await getAllQuizAss();
@@ -171,6 +198,6 @@ app.get("/poratlAppVersion", (req, res) => {
 app.get("/Test", authenticate(process.env.Main_SECRET_TOKEN), (req, res) => {
     console.log("API 'Test' Request processed successfully");
     res.send("API 'Test' Request processed successfully");
-}); 
+});
 
 export default app;

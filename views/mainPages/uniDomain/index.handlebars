@@ -210,6 +210,53 @@
   #info {
     padding-top: 0px;
   }
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 5px;
+  }
+
+  .pagination button {
+    padding: 8px 12px;
+    border: 1px solid var(--main-border-color);
+    background: var(--card-bg);
+    color: var(--text-primary);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .pagination button:hover {
+    background: var(--primary-accent);
+    border-color: var(--primary-accent);
+  }
+
+  .pagination button.active {
+    background: var(--primary-accent);
+    border-color: var(--primary-accent);
+    font-weight: bold;
+  }
+
+  .pagination button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .pagination-info {
+    text-align: center;
+    margin-top: 10px;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+  }
+
+  .no-results {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+  }
 </style>
 
 <div id="cookie"></div>
@@ -232,7 +279,6 @@
       </ul>
     </div>
   </aside>
-
 
   <section class="about" id="books">
     <div class="content">
@@ -264,36 +310,9 @@
       <div class="cards-container products">
       </div>
 
-    </div>
-  </section>
+      <div class="pagination" id="pagination"></div>
+      <div class="pagination-info" id="paginationInfo"></div>
 
-  <div class="section-separator"></div>
-
-  <section class="about" id="assignments" style="padding-top: 0px;">
-    <div class="content" style="margin: 30px 0;">
-      <div class="title"><span>Assignments & Quiz</span></div>
-      <div id="detailsContainer" class="details-container">
-        <div id="spinner" class="spinner" style="display: none;"></div>
-
-        <!-- Assigments And Quiz will be dynamically inserted here -->
-      </div>
-      <div id="noAss">
-        <div class="details" style="min-width: 100%; width: 100%;">
-          <div class="assignment-info">
-            <span>
-              <strong style="text-align: center; display: block;">No Current Active Assigments or
-                Quiz</strong>
-            </span>
-          </div>
-        </div>
-      </div>
-      <div style="display: flex; flex-direction: column; align-items: center;">
-        <div class="button">
-          <a class="buttons githeme" id="toggleButton">Show More</a>
-        </div>
-        <a class="links" style="font-weight: bold;" href="history/" target="_blank">See Assignments & Quizes
-          History</a>
-      </div>
     </div>
   </section>
 
@@ -318,7 +337,7 @@
   {{> footer }}
 
   <script src="/Assets/unilib.js"></script>
-  
+
 </body>
 
 </html>
