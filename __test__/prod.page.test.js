@@ -23,7 +23,6 @@ testMetaKeywords(
     "MBK Tech Studio, Open-Source, Software Development, Technology Solutions"
 );
 
-
 testMetaKeywords(
     "mbktechstudio.com",
     "/404PageTest",
@@ -55,23 +54,10 @@ testMetaKeywords(
 );
 
 testMetaKeywords(
-    "unilib.mbktechstudio.com",
-    "/",
-    "Unilib MBK Tech Studio, Open-Source, Course Materials, Assignments, Quiz"
-);
-
-testMetaKeywords(
-    "unilib.mbktechstudio.com",
-    "/history",
-    "Unilib MBK Tech Studio, Historical Assignments, Archived Quizzes"
-);
-
-testMetaKeywords(
     "privacy.mbktechstudio.com",
     "/",
     "MBK Tech Studio, Web-Portal, Terms & Conditions, Privacy Policy, User Agreement"
 );
-
 
 testMetaKeywords(
     "portfolio.mbktechstudio.com",

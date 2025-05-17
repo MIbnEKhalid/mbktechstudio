@@ -11,8 +11,6 @@ function apiTest(path) {
 
 apiTest("/api/tickets/T000111333");
 apiTest("/api/get-ticket/T000111333");
-apiTest("/api/Unilib/Book");
-apiTest("/api/Unilib/QuizAss");
 apiTest("/api/poratlAppVersion");
 apiTest("/api/poratlAppUrl");
 apiTest("/script/setup.sh");

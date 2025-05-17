@@ -69,7 +69,6 @@ const domainRedirect = (req, res, next) => {
       "mbktechstudio.com": "main",
       "docs.mbktechstudio.com": "docs",
       "project.mbktechstudio.com": "docs",
-      "unilib.mbktechstudio.com": "unilib",
       "portfolio.mbktechstudio.com": "portfolio",
       "protfolio.mbktechstudio.com": "portfolio",
       "ibnekhalid.me": "portfolio",
@@ -91,7 +90,6 @@ app.get("/", domainRedirect, (req, res) => {
   const siteViews = {
     main: "mainPages/mainDomain/index",
     docs: "mainPages/otherDomain/docs",
-    unilib: "mainPages/uniDomain/index",
     portfolio: "mainPages/otherDomain/portfolio",
     privacy: "mainPages/otherDomain/privacy.handlebars",
     api: "mainPages/apiDomain/index",
@@ -114,13 +112,6 @@ app.get("/", domainRedirect, (req, res) => {
   } else {
       res.render(viewEntry);
   }
-});
-
-app.get("/history", domainRedirect, (req, res) => {
-  if (req.site === "unilib") {
-    return res.render("mainPages/uniDomain/unilibhistory");
-  }
-  res.render("mainPages/404");
 });
 
 app.get("/Documentation", domainRedirect, (req, res) => {
