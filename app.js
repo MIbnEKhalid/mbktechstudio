@@ -145,6 +145,10 @@ app.get(
 );
 
 // Redirect routes
+app.get(["/new"], (req, res) => {
+  res.render("mainPages/mainDomain/new");
+});
+
 app.get(["/TrackTicket", "/Ticket", "/Track", "/trackticket"], (req, res) => {
   res.redirect("/TrackTicket");
 });
