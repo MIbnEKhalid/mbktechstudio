@@ -26,22 +26,22 @@
   <style>
     /* Base Styles */
     :root {
-      --primary: #6c5ce7;
-      --primary-dark: #5649c0;
-      --secondary: #a29bfe;
-      --accent: #74b9ff;
-      --dark: #121212;
-      --darker: #0a0a0a;
-      --light: #f8f9fa;
-      --text: #e0e0e0;
-      --text-light: #b0b0b0;
-      --text-dark: #333;
-      --success: #00b894;
-      --warning: #fdcb6e;
-      --danger: #ff7675;
+      --primary: #2196f3;         /* Blue */
+      --primary-dark: #1769aa;    /* Darker Blue */
+      --secondary: #43e97b;       /* Green (mid-light) */
+      --accent: #00b894;          /* Green accent */
+      --dark: #101c1c;            /* Deep blue-green */
+      --darker: #0a1414;          /* Even deeper blue-green */
+      --light: #eaf6fb;           /* Very light blue */
+      --text: #e0f7fa;            /* Light blue-green for text */
+      --text-light: #b2dfdb;      /* Muted light blue-green */
+      --text-dark: #1a2a2a;       /* Dark blue-green for text */
+      --success: #43e97b;         /* Green */
+      --warning: #ffd166;         /* Soft yellow */
+      --danger: #ff7675;          /* Red */
       --border-radius: 8px;
-      --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-      --transition: all 0.3s ease;
+      --box-shadow: 0 4px 20px rgba(33, 150, 243, 0.15); /* Blue shadow */
+      --transition: all 0.3s cubic-bezier(.4,0,.2,1);
     }
 
     * {
@@ -74,8 +74,7 @@
     }
 
     .btn-primary:hover {
-      background-color: #5d9cec;
-      transform: translateY(-2px);
+      background-color: var(--secondary);
     }
 
     .btn-outline {
@@ -123,14 +122,10 @@
       background-color: var(--darker);
       box-shadow: var(--box-shadow);
       position: fixed;
-      width: calc(100% - 40px);
-      top: 20px;
-      left: 20px;
-      right: 20px;
+      width: 100%;
       z-index: 1000;
       transition: var(--transition);
-      border: .125rem solid rgba(255, 255, 255, 0.1);
-      border-radius: var(--border-radius);
+      border-bottom: .125rem solid rgba(255, 255, 255, 0.1);
       margin: 0 auto;
     }
 
@@ -214,7 +209,7 @@
       position: fixed;
       top: 100px;
       left: 4%;
-      width: 90%;      
+      width: 90%;
       margin: 0 auto;
       background: var(--darker);
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
@@ -244,6 +239,10 @@
       font-size: 1.1rem;
       display: block;
       padding: 0.5rem 0;
+    }
+
+    .mobile-menu a:hover{
+      color: var(--accent);
     }
 
     /* Hero Section */
@@ -401,6 +400,7 @@
       transition: var(--transition);
       border: 1px solid rgba(255, 255, 255, 0.1);
       backdrop-filter: blur(5px);
+
     }
 
     .service-card:hover {
@@ -412,7 +412,7 @@
     .service-icon {
       background: linear-gradient(135deg, var(--primary), var(--secondary));
       color: white;
-      padding: 2rem;
+      padding: 1rem;
       text-align: center;
       font-size: 2.5rem;
     }
@@ -753,13 +753,6 @@
         padding: 1rem;
       }
 
-      header {
-        width: calc(100% - 20px);
-        top: 10px;
-        left: 10px;
-        right: 10px;
-      }
-
       nav {
         display: none;
       }
@@ -939,7 +932,7 @@
           <div class="service-content">
             <h3>Privacy Policy</h3>
             <p>Access the privacy policies and legal notices for our services.</p>
-            <a href="https://privacy.mbktechstudio.com" target="_blank" class="service-link">
+            <a href="/Terms&Conditions" target="_blank" class="service-link">
               View Policy <i class="fas fa-arrow-right"></i>
             </a>
           </div>
@@ -1001,6 +994,31 @@
             <p>Showcasing professional projects and personal achievements.</p>
             <a href="https://portfolio.mbktechstudio.com" target="_blank" class="service-link">
               View Portfolio <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-university"></i>
+          </div>
+          <div class="service-content">
+            <h3>Unilib</h3>
+            <p>Resource hub for course materials, quizzes, and assignments.</p>
+            <a href="https://unilib.mbktechstudio.com" target="_blank" class="service-link">
+              View Unilib <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-download"></i>
+          </div>
+          <div class="service-content">
+            <h3>Download Apps</h3>
+            <p>Download our latest apps for seamless integration and enhanced productivity..</p>
+            <a href="https://download.mbktechstudio.com" target="_blank" class="service-link">
+              View Download <i class="fas fa-arrow-right"></i>
             </a>
           </div>
         </div>
@@ -1101,93 +1119,112 @@
 
       <div class="footer-links">
         <h3>Quick Links</h3>
-       
-          <ul>
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#technologies">Technologies</a></li>
-            <li><a href="#services">Resources</a></li>
-            <li><a href="#collaborators">Collaborators</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
 
-        <div class="footer-links">
-          <h3>Resources</h3>
-          <ul>
-            <li><a href="https://docs.mbktechstudio.com" target="_blank">Documentation</a></li>
-            <li><a href="https://blog.mbktechstudio.com" target="_blank">Blog</a></li>
-            <li><a href="https://privacy.mbktechstudio.com" target="_blank">Privacy Policy</a></li>
-            <li><a href="https://portal.mbktechstudio.com" target="_blank">Web Portal</a></li>
-            <li><a href="https://portfolio.mbktechstudio.com" target="_blank">Portfolio</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-contact">
-          <h3>Contact Info</h3>
-          <p><i class="fas fa-envelope"></i> support@mbktechstudio.com</p>
-          <p><i class="fas fa-globe"></i> https://mbktechstudio.com</p>
-          <p><i class="fas fa-map-marker-alt"></i> Open-source community worldwide</p>
-        </div>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#technologies">Technologies</a></li>
+          <li><a href="#services">Resources</a></li>
+          <li><a href="#collaborators">Collaborators</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
       </div>
 
-      <div class="footer-bottom">
-        <p>&copy;
-          <script>document.write(new Date().getFullYear())</script> MBK Tech Studio. All rights reserved. | <a
-            href="https://privacy.mbktechstudio.com" target="_blank">Privacy Policy</a>
-        </p>
+      <div class="footer-links">
+        <h3>Resources</h3>
+        <ul>
+          <li><a href="https://docs.mbktechstudio.com" target="_blank">Documentation</a></li>
+          <li><a href="https://blog.mbktechstudio.com" target="_blank">Blog</a></li>
+          <li><a href="https://privacy.mbktechstudio.com" target="_blank">Privacy Policy</a></li>
+          <li><a href="https://portal.mbktechstudio.com" target="_blank">Web Portal</a></li>
+          <li><a href="https://portfolio.mbktechstudio.com" target="_blank">Portfolio</a></li>
+        </ul>
       </div>
-    </footer>
 
-    <script>
-      // Mobile Menu Toggle
-      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-      const mobileMenu = document.getElementById('mobileMenu');
+      <div class="footer-contact">
+        <h3>Contact Info</h3>
+        <p><i class="fas fa-envelope"></i> support@mbktechstudio.com</p>
+        <p><i class="fas fa-globe"></i> https://mbktechstudio.com</p>
+        <p><i class="fas fa-map-marker-alt"></i> Open-source community worldwide</p>
+      </div>
+    </div>
 
-      mobileMenuBtn.addEventListener('click', () => {
-        mobileMenu.classList.toggle('active');
-        mobileMenuBtn.innerHTML = mobileMenu.classList.contains('active') ?
-          '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+    <div class="footer-bottom">
+      <p>&copy;
+        <script>document.write(new Date().getFullYear())</script> MBK Tech Studio. All rights reserved. | <a
+          href="https://privacy.mbktechstudio.com" target="_blank">Privacy Policy</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('active');
+      mobileMenuBtn.innerHTML = mobileMenu.classList.contains('active') ?
+        '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+    });
+
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
       });
+    });
 
-      // Close mobile menu when clicking a link
-      document.querySelectorAll('.mobile-menu a').forEach(link => {
-        link.addEventListener('click', () => {
-          mobileMenu.classList.remove('active');
-          mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-        });
-      });
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      if (window.scrollY > 50) {
+        header.style.boxShadow = '0 4px 10px rgba(0, 0, 0, 0.3)';
+      } else {
+        header.style.boxShadow = 'var(--box-shadow)';
+      }
+    });
 
-      // Header scroll effect
-      window.addEventListener('scroll', () => {
-        const header = document.querySelector('header');
-        if (window.scrollY > 50) {
-          header.style.boxShadow = '0 4px 10px rgba(0, 0, 0, 0.3)';
-        } else {
-          header.style.boxShadow = 'var(--box-shadow)';
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+
+        if (targetElement) {
+          const headerHeight = document.querySelector('header').offsetHeight;
+          const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
         }
       });
+    });
 
-      // Smooth scrolling for anchor links
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-          e.preventDefault();
-
-          const targetId = this.getAttribute('href');
-          const targetElement = document.querySelector(targetId);
-
-          if (targetElement) {
-            const headerHeight = document.querySelector('header').offsetHeight;
-            const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-
-            window.scrollTo({
-              top: targetPosition,
-              behavior: 'smooth'
-            });
-          }
-        });
+    // Animation on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+        }
       });
+    }, {
+      threshold: 0.1
+    });
 
-      // Animation on scroll
+    document.querySelectorAll('.tech-card, .service-card, .collab-card, .contact-method').forEach((el, index) => {
+      el.style.opacity = '0';
+      observer.observe(el);
+    });
+  </script>
+
+  <script>
+    // Simple animation trigger on scroll
+    document.addEventListener('DOMContentLoaded', function () {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -1202,27 +1239,8 @@
         el.style.opacity = '0';
         observer.observe(el);
       });
-    </script>
-
-    <script>
-      // Simple animation trigger on scroll
-      document.addEventListener('DOMContentLoaded', function () {
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('fade-in');
-            }
-          });
-        }, {
-          threshold: 0.1
-        });
-
-        document.querySelectorAll('.tech-card, .service-card, .collab-card, .contact-method').forEach((el, index) => {
-          el.style.opacity = '0';
-          observer.observe(el);
-        });
-      });
-    </script>
-  </body>
+    });
+  </script>
+</body>
 
 </html>
