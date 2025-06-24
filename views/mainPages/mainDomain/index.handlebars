@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-
 <html lang="en" dir="ltr">
-{{> header }}
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="At MBK Tech Studio, We're A Team Of Passionate Tech Innovators">
+  <meta name="description" content="MBK Tech Studio - Open-source innovation and technology solutions">
   <meta name="keywords" content="MBK Tech Studio, Open-Source, Software Development, Technology Solutions">
-  <meta property="og:title" content="Home | MBK Tech STudio" />
-  <meta property="og:description" content="At MBK Tech Studio, We're A Team Of Passionate Tech Innovators" />
+  <meta property="og:title" content="MBK Tech Studio | Open-Source and Innovation" />
+  <meta property="og:description"
+    content="Empowering technology through open-source innovation and collaborative development" />
   <meta property="og:image" content="https://www.mbktechstudio.com/Assets/Images/Icon/logo.png" />
   <meta property="og:url" content="https://mbktechstudio.com/">
   <script type="application/ld+json">
@@ -22,310 +21,1199 @@
       "description": "MBK Tech Studio: Empowering Technology Through Innovation. Explore our projects, services, and passion for cutting-edge solutions."
     }
   </script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="icon" type="image/x-icon" href="/Assets/Images/Icon/dgicon.svg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <title>MBK Tech Studio | Open-Source and Innovation</title>
+  <style>
+    /* Base Styles */
+    :root {
+      --primary: #2196f3;
+      /* Blue */
+      --primary-dark: #1769aa;
+      /* Darker Blue */
+      --secondary: #43e97b;
+      /* Green (mid-light) */
+      --accent: #00b894;
+      /* Green accent */
+      --dark: #101c1c;
+      /* Deep blue-green */
+      --darker: #0a1414;
+      /* Even deeper blue-green */
+      --light: #eaf6fb;
+      /* Very light blue */
+      --text: #e0f7fa;
+      /* Light blue-green for text */
+      --text-light: #b2dfdb;
+      /* Muted light blue-green */
+      --text-dark: #1a2a2a;
+      /* Dark blue-green for text */
+      --success: #43e97b;
+      /* Green */
+      --warning: #ffd166;
+      /* Soft yellow */
+      --danger: #ff7675;
+      /* Red */
+      --border-radius: 8px;
+      --box-shadow: 0 4px 20px rgba(33, 150, 243, 0.15);
+      /* Blue shadow */
+      --transition: all 0.3s cubic-bezier(.4, 0, .2, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: var(--dark);
+      color: var(--text);
+    }
+
+    /* Utility Classes */
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--border-radius);
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background-color: var(--accent);
+      color: var(--dark);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--secondary);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      color: white;
+      border: 2px solid white;
+    }
+
+    .btn-outline:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .section-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-title h2 {
+      font-size: 2.5rem;
+      color: var(--light);
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background-color: var(--accent);
+      border-radius: 2px;
+    }
+
+    /* Header Styles */
+    header {
+      background-color: var(--darker);
+      box-shadow: var(--box-shadow);
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+      transition: var(--transition);
+      border-bottom: .125rem solid rgba(255, 255, 255, 0.1);
+      margin: 0 auto;
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+    }
+
+    .logo img {
+      height: 40px;
+      width: auto;
+    }
+
+    .logo-text {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--light);
+    }
+
+    .logo-text span {
+      color: var(--accent);
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+      font-size: 1rem;
+      transition: var(--transition);
+      position: relative;
+      padding: 0.5rem 0;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--accent);
+      transition: var(--transition);
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--text);
+      cursor: pointer;
+    }
+
+    /* Mobile Menu */
+    .mobile-menu {
+      position: fixed;
+      top: 100px;
+      left: 4%;
+      width: 90%;
+      margin: 0 auto;
+      background: var(--darker);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      padding: 2rem;
+      transform: translateY(-150%);
+      transition: var(--transition);
+      z-index: 999;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--border-radius);
+    }
+
+    .mobile-menu.active {
+      transform: translateY(0);
+    }
+
+    .mobile-menu ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .mobile-menu a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+      font-size: 1.1rem;
+      display: block;
+      padding: 0.5rem 0;
+    }
+
+    .mobile-menu a:hover {
+      color: var(--accent);
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, var(--darker), var(--primary-dark));
+      color: white;
+      padding: 8rem 2rem 6rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
+      opacity: 0.1;
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* About Section */
+    .about-section {
+      padding: 5rem 2rem;
+      background-color: var(--dark);
+      color: var(--text);
+    }
+
+    .about-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .about-text {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .about-text h3 {
+      font-size: 1.5rem;
+      color: var(--light);
+      margin-bottom: 1rem;
+    }
+
+    .about-text p {
+      color: var(--text-light);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-image {
+      flex: 1;
+      min-width: 300px;
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--box-shadow);
+    }
+
+    .about-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Technologies Section */
+    .tech-section {
+      padding: 5rem 2rem;
+      background-color: var(--darker);
+    }
+
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .tech-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: var(--border-radius);
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: var(--box-shadow);
+      transition: var(--transition);
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .tech-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .tech-card img {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 1rem;
+    }
+
+    .tech-card h3 {
+      font-size: 1rem;
+      color: var(--light);
+    }
+
+    /* Services Section */
+    .services-section {
+      padding: 5rem 2rem;
+      background-color: var(--dark);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .service-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--box-shadow);
+      transition: var(--transition);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(5px);
+
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .service-icon {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      font-size: 2.5rem;
+    }
+
+    .service-content {
+      padding: 1.5rem;
+    }
+
+    .service-content h3 {
+      color: var(--light);
+      margin-bottom: 0.75rem;
+      font-size: 1.25rem;
+    }
+
+    .service-content p {
+      color: var(--text-light);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .service-link {
+      display: inline-flex;
+      align-items: center;
+      color: var(--accent);
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .service-link i {
+      margin-left: 0.5rem;
+      transition: var(--transition);
+    }
+
+    .service-link:hover {
+      color: var(--secondary);
+    }
+
+    .service-link:hover i {
+      transform: translateX(3px);
+    }
+
+    /* Collaborators Section */
+    .collab-section {
+      padding: 5rem 2rem;
+      background-color: var(--darker);
+    }
+
+    .collab-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: var(--border-radius);
+      padding: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      box-shadow: var(--box-shadow);
+      max-width: 800px;
+      margin: 0 auto;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(5px);
+    }
+
+    .collab-logo {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .collab-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .collab-info h3 {
+      color: var(--light);
+      margin-bottom: 0.5rem;
+      font-size: 1.5rem;
+    }
+
+    .collab-info p {
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    /* Contact Section */
+    .contact-section {
+      padding: 5rem 2rem;
+      background: linear-gradient(135deg, var(--darker), var(--primary-dark));
+      color: white;
+    }
+
+    .contact-container {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .contact-container h2 {
+      color: white;
+    }
+
+    .contact-container h2::after {
+      background-color: var(--accent);
+    }
+
+    .contact-methods {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .contact-method {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: var(--border-radius);
+      padding: 2rem;
+      transition: var(--transition);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .contact-method:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .contact-method i {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+
+    .contact-method h3 {
+      margin-bottom: 1rem;
+    }
+
+    .contact-method a {
+      color: white;
+      text-decoration: none;
+      transition: var(--transition);
+      display: inline-block;
+      margin-top: 1rem;
+      font-weight: 600;
+    }
+
+    .contact-method a:hover {
+      color: var(--accent);
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .social-link {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.25rem;
+      transition: var(--transition);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .social-link:hover {
+      background: var(--accent);
+      transform: translateY(-3px);
+      color: var(--dark);
+    }
+
+    /* Footer Styles */
+    footer {
+      background-color: var(--darker);
+      color: white;
+      padding: 4rem 2rem 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-logo img {
+      height: 40px;
+      width: auto;
+    }
+
+    .footer-logo-text {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: white;
+    }
+
+    .footer-logo-text span {
+      color: var(--accent);
+    }
+
+    .footer-about p {
+      color: var(--text-light);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .footer-social a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      transition: var(--transition);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-social a:hover {
+      background: var(--accent);
+      transform: translateY(-3px);
+      color: var(--dark);
+    }
+
+    .footer-links h3 {
+      font-size: 1.25rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-bottom: 0.75rem;
+      color: var(--light);
+    }
+
+    .footer-links h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 2px;
+      background: var(--accent);
+    }
+
+    .footer-links ul {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-links a {
+      color: var(--text-light);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
+      padding-left: 5px;
+    }
+
+    .footer-contact p {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--text-light);
+      margin-bottom: 1rem;
+    }
+
+    .footer-contact i {
+      color: var(--accent);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 3rem;
+      margin-top: 3rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-light);
+      font-size: 0.9rem;
+    }
+
+    .footer-bottom a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    /* Animation */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in {
+      animation: fadeIn 0.8s ease forwards;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 992px) {
+      nav ul {
+        gap: 1.5rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header-container {
+        padding: 1rem;
+      }
+
+      nav {
+        display: none;
+      }
+
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      .hero {
+        padding: 6rem 1rem 4rem;
+      }
+
+      .hero h1 {
+        font-size: 2.25rem;
+      }
+
+      .about-content {
+        flex-direction: column;
+      }
+
+      .collab-card {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .footer-container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 
-<style> 
-
-  section form .button button {
-    font-size: 20px;
-    padding: 7px 16px;
-  }
-
-  .collaborators {
-     padding: 40px 0;
-  } 
-
-  .collaborator-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    max-width: 1100px;
-    width: 100%;
-    padding: 0 20px;
-  }
-
-  .collaborator-card {
-    background: #222;
-    border-radius: 8px;
-    text-align: center;
-    padding: 20px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .collaborator-card:hover {
-    transform: scale(1.01);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  }
-  .icon img{
-    width: 40px;
-    height: 40px;
-  }
-  .contact .content{
-    padding: 0;
-  }
-</style>
-
-<!-- Ask For Cookie Consent-->
-<div id="cookie"></div>
-
 <body>
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <a href="/" class="logo">
+        <img src="/Assets/Images/Icon/dg.svg" alt="MBK Tech Studio Logo">
+        <span class="logo-text">MBK <span>Tech Studio</span></span>
+      </a>
 
-  <!-- Move to up button -->
-  <div class="scroll-button">
-    <a href="#about"><i class="fas fa-arrow-up"></i></a>
-  </div>
+      <nav>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#technologies">Technologies</a></li>
+          <li><a href="#services">Resources</a></li>
+          <li><a href="#collaborators">Collaborators</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
 
-  <aside class="sidebar sidebar-collapsed" id="sidebar">
-    <div class="sidebar-toggle" id="sidebar-toggle">
-      <i class="fas fa-chevron-left"></i>
+      <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <i class="fas fa-bars"></i>
+      </button>
     </div>
-    <div class="sidebar-content">
-      <h2>Quick Links</h2>
+
+    <div class="mobile-menu" id="mobileMenu">
       <ul>
-        <li><a href="#about">About Us</a></li>
+        <li><a href="#about">About</a></li>
         <li><a href="#technologies">Technologies</a></li>
-        <li><a href="#services">Useful Links</a></li>
+        <li><a href="#services">Resources</a></li>
         <li><a href="#collaborators">Collaborators</a></li>
-        <li><a href="#contact">Contact Us</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
-  </aside>
+  </header>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1 class="fade-in">Innovating Through Open-Source</h1>
+      <p class="fade-in delay-1">At MBK Tech Studio, we're passionate about creating impactful technology solutions
+        and fostering collaborative development.</p>
+      <div class="cta-buttons fade-in delay-2">
+        <a href="#about" class="btn btn-primary">Learn More</a>
+        <a href="#contact" class="btn btn-outline">Get In Touch</a>
+      </div>
+    </div>
+  </section>
 
-
-  <!-- About Section Start -->
-  <section class="about" id="about">
-    <div class="content" style="margin: 0px auto;">
-      <br>
-      <div class="title"><span>Welcome To MBK Tech Studio</span></div>
-      <div class="about-details">
-        <!--
-          <div class="left">
-           <img src="Assets/Images/about9.jpg" alt=""/>
-          </div> 
-          -->
-        <div class="center">
-          <div class="topic">About Us:</div>
-          <p>
-            MBK Tech Studio, Founded By <a class="links" href="https://github.com/MIbnEKhalid">Muhammad Bin
-              Khalid</a>, Is A Collaborative Development Studio Focusing
-            On Open-Source Contributions And Innovative Technology Solutions. We Empower Creators And
-            Problem-Solvers Through Software Development Services And Hardware Projects, With An Emphasis On
-            Community-Driven Initiatives. Our Goal Is To Create Impactful Digital And Hardware Solutions
-            That Benefit The Global Tech Community, Fostering Growth, Collaboration, And The Advancement Of
-            Open-Source Technologies.
-          </p>
-          <div class="topic">Connect With Us:</div>
-          <p>
-            Ready to be part of the movement? Connect with us on <a class="links" href="https://mbktechstudio.com/#ssmedia">Social Media</a>, send us an <a class="links" title="Email us at support@mbktechstudio.com" href="mailto:support@mbktechstudio.com">email</a>, or
-            visit our <a class="links newtab" href="https://mbktechstudio.com/Support">Support & Contact Page</a> to fill out
-            the contact form. We'd love to hear from you!
-          </p>
+  <!-- About Section -->
+  <section class="about-section" id="about">
+    <div class="section-container">
+      <div class="section-title">
+        <h2>About MBK Tech Studio</h2>
+      </div>
+      <div class="about-content">
+        <div class="about-text">
+          <h3>Who We Are</h3>
+          <p>MBK Tech Studio, founded by <a href="https://github.com/MIbnEKhalid"
+              style="color: var(--accent); text-decoration: none;">Muhammad Bin Khalid</a>, is a collaborative
+            development studio focusing on open-source contributions and innovative technology solutions.</p>
+          <p>We empower creators and problem-solvers through software development services and hardware projects, with
+            an emphasis on community-driven initiatives.</p>
+          <h3>Our Mission</h3>
+          <p>Our goal is to create impactful digital and hardware solutions that benefit the global tech community,
+            fostering growth, collaboration, and the advancement of open-source technologies.</p>
+        </div>
+        <div class="about-image">
+          <img
+            src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80"
+            alt="Team collaboration at MBK Tech Studio">
         </div>
       </div>
     </div>
   </section>
 
-  <section class="technologies" id="technologies" style="padding-top: 10px !important;">
-    <div class="content">
-      <div class="title"><span>Technologies We Use</span></div>
-      <div class="technology-container">
-        <div class="technology-grid">
-          <div class="technology-card">
-            <img src="https://skillicons.dev/icons?i=html" alt="html" >
-            <h2>HTML5</h2>
-          </div>
-          <div class="technology-card">
-            <img src="https://skillicons.dev/icons?i=css" alt="css" >
-            <h2>CSS3</h2>
-          </div>
-          <div class="technology-card">
-            <img src="https://skillicons.dev/icons?i=js" alt="js" >
-            <h2>JavaScript</h2>
-          </div>
-          <div class="technology-card">
-            <img src="https://skillicons.dev/icons?i=nodejs" alt="nodejs" >
-            <h2>Node.js</h2>
-          </div>
-          <div class="technology-card">
-            <img src="https://skillicons.dev/icons?i=postgres" alt="Postgres" >
-            <h2>Postgres</h2>
-          </div>
-          <div class="technology-card">
-            <img src="https://skillicons.dev/icons?i=python" alt="python" >
-            <h2>Python</h2>
-          </div>
-          <div class="technology-card">
-            <img src="https://skillicons.dev/icons?i=react" alt="react.js" >
-            <h2>React.js</h2>
-          </div>
-          <div class="technology-card">
-            <img src="https://skillicons.dev/icons?i=github" alt="github" >
-            <h2>GitHub</h2>
-          </div>
-          <div class="technology-card">
-            <img src="https://skillicons.dev/icons?i=aws" alt="aws" >
-            <h2>AWS</h2>
-          </div>
-          <div class="technology-card">
-            <img src="https://skillicons.dev/icons?i=vercel" alt="Vercel" >
-            <h2>Vercel</h2>
-          </div>
-          <div class="technology-card">
-            <img src="https://skillicons.dev/icons?i=linux" alt="linux" >
-            <h2>Linux</h2>
-          </div>
-          <div class="technology-card">
-            <img src="https://skillicons.dev/icons?i=cpp" alt="c++" >
-            <h2>C++</h2>
-          </div>
-          <div class="technology-card">
-            <img src="https://skillicons.dev/icons?i=cs" alt="c#" >
-            <h2>C#</h2>
-          </div>
-          <div class="technology-card">
-            <img src="https://skillicons.dev/icons?i=unity" alt="unity" >
-            <h2>Unity</h2>
-          </div>
+  <!-- Technologies Section -->
+  <section class="tech-section" id="technologies">
+    <div class="section-container">
+      <div class="section-title">
+        <h2>Technologies We Use</h2>
+      </div>
+      <div class="tech-grid">
+        <div class="tech-card">
+          <img src="https://skillicons.dev/icons?i=html" alt="HTML5">
+          <h3>HTML5</h3>
+        </div>
+        <div class="tech-card">
+          <img src="https://skillicons.dev/icons?i=css" alt="CSS3">
+          <h3>CSS3</h3>
+        </div>
+        <div class="tech-card">
+          <img src="https://skillicons.dev/icons?i=js" alt="JavaScript">
+          <h3>JavaScript</h3>
+        </div>
+        <div class="tech-card">
+          <img src="https://skillicons.dev/icons?i=nodejs" alt="Node.js">
+          <h3>Node.js</h3>
+        </div>
+        <div class="tech-card">
+          <img src="https://skillicons.dev/icons?i=postgres" alt="Postgres">
+          <h3>PostgreSQL</h3>
+        </div>
+        <div class="tech-card">
+          <img src="https://skillicons.dev/icons?i=python" alt="Python">
+          <h3>Python</h3>
+        </div>
+        <div class="tech-card">
+          <img src="https://skillicons.dev/icons?i=react" alt="React">
+          <h3>React</h3>
+        </div>
+        <div class="tech-card">
+          <img src="https://skillicons.dev/icons?i=github" alt="GitHub">
+          <h3>GitHub</h3>
+        </div>
+        <div class="tech-card">
+          <img src="https://skillicons.dev/icons?i=aws" alt="AWS">
+          <h3>AWS</h3>
+        </div>
+        <div class="tech-card">
+          <img src="https://skillicons.dev/icons?i=vercel" alt="Vercel">
+          <h3>Vercel</h3>
+        </div>
+        <div class="tech-card">
+          <img src="https://skillicons.dev/icons?i=linux" alt="Linux">
+          <h3>Linux</h3>
+        </div>
+        <div class="tech-card">
+          <img src="https://skillicons.dev/icons?i=cpp" alt="C++">
+          <h3>C++</h3>
         </div>
       </div>
     </div>
   </section>
-  <!-- My Services Section Start -->
-  <section class="services" id="services" style="padding-top: 10px !important;">
-    <div class="content">
-      <div class="title"><span>Useful Links</span></div>
-      <div class="Servicecontainer">
-        <div class="Servicegrid">
-          <a href="https://privacy.mbktechstudio.com" target="_blank" class="links Servicecard">
-            <div class="icon"><i class="fas fa-user-shield"></i></div>
-            <h2>Privacy Policy</h2>
+
+  <!-- Services Section -->
+  <section class="services-section" id="services">
+    <div class="section-container">
+      <div class="section-title">
+        <h2>Our Resources</h2>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-user-shield"></i>
+          </div>
+          <div class="service-content">
+            <h3>Privacy Policy</h3>
             <p>Access the privacy policies and legal notices for our services.</p>
-          </a>
-          <a href="https://docs.mbktechstudio.com" target="_blank" class="links Servicecard">
-            <div class="icon"><i class="fas fa-book"></i></div>
-            <h2>Projects & Documentations</h2>
+            <a href="/Terms&Conditions" target="_blank" class="service-link">
+              View Policy <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-book"></i>
+          </div>
+          <div class="service-content">
+            <h3>Projects & Documentation</h3>
             <p>Explore technical and user documentation for projects and services.</p>
-          </a>
-          <a href="https://blog.mbktechstudio.com" target="_blank" class="links Servicecard">
-            <div class="icon"><i class="fas fa-blog"></i></div>
-            <h2>Blog</h2>
+            <a href="https://docs.mbktechstudio.com" target="_blank" class="service-link">
+              View Docs <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-blog"></i>
+          </div>
+          <div class="service-content">
+            <h3>Blog</h3>
             <p>Read our latest articles, updates, and insights.</p>
-          </a>
-          <a href="https://portal.mbktechstudio.com" target="_blank" class="links Servicecard">
-            <div class="icon"><i class="fas fa-door-open"></i></div>
-            <h2>Web Portal</h2>
+            <a href="https://blog.mbktechstudio.com" target="_blank" class="service-link">
+              Visit Blog <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-door-open"></i>
+          </div>
+          <div class="service-content">
+            <h3>Web Portal</h3>
             <p>Centralized portal for private use or team members only.</p>
-          </a>
-          <a href="https://chat.mbktechstudio.com" target="_blank" class="links Servicecard">
-            <div class="icon"><i class="fas fa-robot" aria-hidden="true"></i></div>
-            <h2>Chat Bot</h2>
-            <p>Private Chatbot For Mbk Tech Studio members</p>
-          </a>
-          <a href="https://portfolio.mbktechstudio.com" target="_blank" class="links Servicecard">
-            <div class="icon"><i class="fas fa-briefcase"></i></div>
-            <h2>Portfolio</h2>
-            <p>Showcasing professional projects and personal achievements of our team.</p>
-          </a>
-          <a href="https://unilib.mbktechstudio.com" target="_blank" class="links Servicecard">
-            <div class="icon"><i class="fas fa-university"></i></div>
-            <h2>Unilib</h2>
+            <a href="https://portal.mbktechstudio.com" target="_blank" class="service-link">
+              Access Portal <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-robot"></i>
+          </div>
+          <div class="service-content">
+            <h3>Chat Bot</h3>
+            <p>Private Chatbot For MBK Tech Studio members.</p>
+            <a href="https://chat.mbktechstudio.com" target="_blank" class="service-link">
+              Try Chatbot <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-briefcase"></i>
+          </div>
+          <div class="service-content">
+            <h3>Portfolio</h3>
+            <p>Showcasing professional projects and personal achievements.</p>
+            <a href="https://portfolio.mbktechstudio.com" target="_blank" class="service-link">
+              View Portfolio <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-university"></i>
+          </div>
+          <div class="service-content">
+            <h3>Unilib</h3>
             <p>Resource hub for course materials, quizzes, and assignments.</p>
-          </a>
-          <a href="https://api.mbktechstudio.com" target="_blank" class="links Servicecard">
-            <div class="icon"><i class="fas fa-code"></i></div>
-            <h2>API Services</h2>
-            <p>Explore and interact with our APIs for integration and development.</p>
-          </a>
-          <a href="https://download.mbktechstudio.com" target="_blank" class="links Servicecard">
-            <div class="icon"><i class="fas fa-download"></i></div>
-            <h2>Download Apps</h2>
-            <p>Download our latest apps for seamless integration and enhanced productivity.</p>
-          </a> 
-          <a href="https://events.mbktechstudio.com" target="_blank" class="links Servicecard">
-            <div class="icon"><i class="fas fa-calendar-alt"></i></div>
-            <h2>Events</h2>
-            <p>Stay updated with our upcoming events, webinars, and workshops.</p>
-          </a>
+            <a href="https://unilib.mbktechstudio.com" target="_blank" class="service-link">
+              View Unilib <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
         </div>
-      </div>
-    </div>
-    <div style="margin-bottom: 30px;"> </div>
-  </section>
 
-  <!-- Collaborators Section Start -->
-  <section class="collaborators" id="collaborators" style="padding-top: 10px !important;">
-    <div class="content">
-      <div class="title"><span>Our Collaborators</span></div>
-      <div class="Servicecontainer">
-        <div class="Servicegrid">
-          <a href="https://m-dev-theta.vercel.app/" target="_blank" class="links Servicecard">
-            <div class="icon"><img src="/Assets/Images/Icon/M-Dev.png" alt="MBK Tech Studio" /></div>
-            <h2>Maaz Dev</h2>
-            <p>Maaz Dev is our partner specializing in AI and Data Science, contributing significantly to our Python and other projects.</p>
-          </a> 
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-download"></i>
+          </div>
+          <div class="service-content">
+            <h3>Download Apps</h3>
+            <p>Download our latest apps for seamless integration and enhanced productivity..</p>
+            <a href="https://download.mbktechstudio.com" target="_blank" class="service-link">
+              View Download <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
         </div>
       </div>
     </div>
   </section>
-  <!-- Collaborators Section End -->
 
-  <section class="contact" id="contact" style="padding-top: 0px !important;">
-    <div class="content" style="max-width: 800px; margin: 0 auto; text-align: center;">
-      <div class="title">
-        <span>Contact Us</span>
+  <!-- Collaborators Section -->
+  <section class="collab-section" id="collaborators">
+    <div class="section-container">
+      <div class="section-title">
+        <h2>Our Collaborators</h2>
       </div>
-      <div class="text">
-        <div class="topic">
-          <h3>Have a Project in Mind?</h3>
+      <div class="collab-card">
+        <div class="collab-logo">
+          <img src="/Assets/Images/Icon/M-Dev.png" alt="Maaz Dev">
         </div>
-        <p>
-          We’re thrilled to collaborate with talented individuals and entities! Whether you have a project idea or
-          need support, here’s how you can reach out to us:
-        </p>
-        <div style="text-align: left; margin: 20px auto; padding: 15px; border: solid .1rem var(--main-border-color); background: transparent; border-radius: 10px;">
-          <ul style="list-style: none; padding: 0;">
-            <li style="margin-bottom: 15px; font-size: 1rem; color: #ccc;">
-              <strong>1.</strong> Visit our
-              <a class="links newtab" href="Support/" style="color: #4dabf7; text-decoration: none;">Support &amp;
-                Contact Page</a>
-              to fill out the contact form.
-            </li>
-            <li style="margin-bottom: 15px; font-size: 1rem; color: #ccc;">
-              <strong>2.</strong> Send an email directly to
-              <a class="links" href="mailto:support@mbktechstudio.com" style="color: #4dabf7; text-decoration: none;">support@mbktechstudio.com</a>.
-            </li>
-            <li style="font-size: 1rem; color: #ccc;">
-              <strong>3.</strong> Connect with us on Social Media.
-            </li>
-          </ul>
+        <div class="collab-info">
+          <h3>Maaz Dev</h3>
+          <p>Maaz Dev is our partner specializing in AI and Data Science, contributing significantly to our Python and
+            other projects.</p>
+          <a href="https://m-dev-theta.vercel.app/" target="_blank"
+            style="color: var(--accent); text-decoration: none; font-weight: 600;">
+            Visit Website <i class="fas fa-arrow-right"></i>
+          </a>
         </div>
       </div>
-      <div class="ssmedis" id="ssmedia"><a href="https://instagram.com/mbktechstudio" target="_blank"><i class="fab fa-instagram" aria-hidden="true"></i></a><a href="https://www.facebook.com/people/MBK-Tech-Studio/61559079077988/" target="_blank"><i class="fab fa-facebook-f" aria-hidden="true"></i></a><a href="https://www.linkedin.com/in/muhammad-bin-khalid-89711b25b" target="_blank"><i class="fab fa-linkedin" aria-hidden="true"></i></a><a href="https://x.com/ibnekhalid28" target="_blank"><i class="fab fa-twitter" aria-hidden="true"></i></a><a href="https://github.com/MIbnEKhalid" target="_blank"><i class="fab fa-github" aria-hidden="true"></i></a><a href="https://youtube.com/@mibnekhalid" target="_blank"><i class="fab fa-youtube" aria-hidden="true"></i></a><a href="https://discord.gg/" target="_blank"><i class="fab fa-discord" aria-hidden="true"></i></a><a href="https://signal.me/#eu/0Bxn3qmtp8gtYNuy6eJ_F3WaHWHrQW3uefaC2y01VCWtduFQCwJHvIFL6N4VOtsv" target="_blank"><i class="fa-brands fa-signal-messenger" aria-hidden="true"></i></a></div>
     </div>
   </section>
 
-</body>
+  <!-- Contact Section -->
+  <section class="contact-section" id="contact">
+    <div class="contact-container">
+      <div class="section-title">
+        <h2>Get In Touch</h2>
+      </div>
+      <p>Ready to collaborate or have questions? We'd love to hear from you!</p>
 
-    {{> footer }}
+      <div class="contact-methods">
+        <div class="contact-method">
+          <i class="fas fa-envelope"></i>
+          <h3>Email Us</h3>
+          <a href="mailto:support@mbktechstudio.com">support@mbktechstudio.com</a>
+        </div>
+        <div class="contact-method">
+          <i class="fas fa-paper-plane"></i>
+          <h3>Contact Form</h3>
+          <a href="https://mbktechstudio.com/Support">Support & Contact Page</a>
+        </div>
+        <div class="contact-method">
+          <i class="fas fa-comments"></i>
+          <h3>Social Media</h3>
+          <a href="#social">Connect with us below</a>
+        </div>
+      </div>
+
+      <div class="social-links" id="social">
+        <a href="https://instagram.com/mbktechstudio" target="_blank" class="social-link">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.facebook.com/people/MBK-Tech-Studio/61559079077988/" target="_blank" class="social-link">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/muhammad-bin-khalid-89711b25b" target="_blank" class="social-link">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="https://x.com/ibnekhalid28" target="_blank" class="social-link">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://github.com/MIbnEKhalid" target="_blank" class="social-link">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://youtube.com/@mibnekhalid" target="_blank" class="social-link">
+          <i class="fab fa-youtube"></i>
+        </a>
+      </div>
+    </div>
+  </section>
 
 
-<script src="/Assets/Scripts/cookie.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/js/intlTelInput-jquery.min.js"></script>
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-about">
+        <div class="footer-logo">
+          <img src="/Assets/Images/Icon/dg.svg" alt="MBK Tech Studio Logo">
+          <span class="footer-logo-text">MBK <span>Tech Studio</span></span>
+        </div>
+        <p>Empowering technology through open-source innovation and collaborative development.</p>
+        <div class="footer-social">
+          <a href="https://github.com/MIbnEKhalid" target="_blank"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/muhammad-bin-khalid-89711b25b" target="_blank"><i
+              class="fab fa-linkedin-in"></i></a>
+          <a href="https://x.com/ibnekhalid28" target="_blank"><i class="fab fa-twitter"></i></a>
+          <a href="https://youtube.com/@mibnekhalid" target="_blank"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
 
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const headerHeight = document.querySelector('header').offsetHeight;
-    document.querySelectorAll('aside a').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
+      <div class="footer-links">
+        <h3>Quick Links</h3>
+
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#technologies">Technologies</a></li>
+          <li><a href="#services">Resources</a></li>
+          <li><a href="#collaborators">Collaborators</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h3>Resources</h3>
+        <ul>
+          <li><a href="https://docs.mbktechstudio.com" target="_blank">Documentation</a></li>
+          <li><a href="https://blog.mbktechstudio.com" target="_blank">Blog</a></li>
+          <li><a href="https://privacy.mbktechstudio.com" target="_blank">Privacy Policy</a></li>
+          <li><a href="https://portal.mbktechstudio.com" target="_blank">Web Portal</a></li>
+          <li><a href="https://portfolio.mbktechstudio.com" target="_blank">Portfolio</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h3>Contact Info</h3>
+        <ul>
+          <li><i class="fas fa-envelope"></i> <a href="mailto:support@mbktechstudio.com">support@mbktechstudio.com</a></li>
+          <li><i class="fas fa-globe"></i> <a href="https://mbktechstudio.com/Support"
+              target="_blank">https://mbktechstudio.com/Support</a></li>
+          <li><i class="fas fa-map-marker-alt"></i> Open-source community worldwide</li>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy;
+        <script>document.write(new Date().getFullYear()) + (' ')</script> MBK Tech Studio. All rights reserved. | <a
+          href="https://privacy.mbktechstudio.com" target="_blank">Privacy Policy</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('active');
+      mobileMenuBtn.innerHTML = mobileMenu.classList.contains('active') ?
+        '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+    });
+
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+      });
+    });
+
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      if (window.scrollY > 50) {
+        header.style.boxShadow = '0 4px 10px rgba(0, 0, 0, 0.3)';
+      } else {
+        header.style.boxShadow = 'var(--box-shadow)';
+      }
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        const targetId = this.getAttribute('href').substring(1);
-        const targetElement = document.getElementById(targetId);
+
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+
         if (targetElement) {
-          const targetPosition = targetElement.offsetTop - headerHeight - 28; // Adjust 10px as needed
+          const headerHeight = document.querySelector('header').offsetHeight;
+          const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+
           window.scrollTo({
             top: targetPosition,
             behavior: 'smooth'
@@ -333,7 +1221,43 @@
         }
       });
     });
-  });
-</script>
+
+    // Animation on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    document.querySelectorAll('.tech-card, .service-card, .collab-card, .contact-method').forEach((el, index) => {
+      el.style.opacity = '0';
+      observer.observe(el);
+    });
+  </script>
+
+  <script>
+    // Simple animation trigger on scroll
+    document.addEventListener('DOMContentLoaded', function () {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('fade-in');
+          }
+        });
+      }, {
+        threshold: 0.1
+      });
+
+      document.querySelectorAll('.tech-card, .service-card, .collab-card, .contact-method').forEach((el, index) => {
+        el.style.opacity = '0';
+        observer.observe(el);
+      });
+    });
+  </script>
+</body>
 
 </html>
