@@ -1,123 +1,52 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-{{> header path=(conditionalEnv "/" "https://mbktechstudio.com/")}}
+
 <head>
   <meta charset="UTF-8" />
   <title>Download MBK Tech Studio App</title>
 </head>
 
-<style>
-  .card {
-    max-width: 350px;
-    width: 100%;
-    background: transparent;
-    border-radius: 1rem;
-    border: .1rem solid var(--main-border-color);
-    overflow: hidden;
-  }
-
-  .card img {
-    width: auto;
-    height: 200px;
-    object-fit: fill;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .card-content {
-    padding: 1.5rem;
-  }
-
-  .card-title {
-    font-size: 1.25rem;
-    font-weight: bold;
-    color: #edf2f7;
-    margin-bottom: 0.5rem;
-  }
-
-  .card-description {
-    font-size: 0.875rem;
-    color: #a0aec0;
-    margin-bottom: 1rem;
-  }
-
-  .card-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-
-  .file-size,
-  .file-version,
-  .os-type {
-    font-size: 0.875rem;
-    color: #718096;
-  }
-
-  .download-btn {
-    padding: 0.5rem 1rem;
-    background-color: #4299e1;
-    color: #ffffff;
-    text-decoration: none;
-    border-radius: 0.5rem;
-    transition: background-color 0.3s;
-    margin-top: 0.5rem;
-  }
-
-  .download-btn:hover {
-    background-color: #3182ce;
-  }
-
-  .about {
-    height: auto;
-  }
-
-  .card-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin: 0;
-    font-family: Arial, sans-serif;
-    color: #e2e8f0;
-  }
-</style>
-
 <body>
   <div class="scroll-button">
     <a href="#about"><i class="fas fa-arrow-up"></i></a>
   </div>
-  <section class="about" id="about">
-    <div class="content">
-
-      <div class="title">
-        <span>Download Apps</span>
-      </div>
-
-      <div class="card-container">
-        <div class="card">
-          <img src="https://code.visualstudio.com/assets/images/linux-logo.png" alt="File preview">
-          <div class="card-content">
-            <h2 class="card-title">MBK Tech Studio App</h2>
-            <p class="card-description">A simple app that uses a web view to display Website content.</p>
-            <div class="card-footer">
-              <span class="file-version">Version: {{mainAppLink.VersionNumber}}</span>
-              <span class="file-size">Size: 4.2 MB</span>
-            </div>
-            <div class="button" style="text-align: center;">
-              <a class="buttons" href="{{mainAppLink.Url}}" download class="download-btn">Download APK</a>
-            </div>
+  <section class="section-container" style="padding-top: 7rem; padding-bottom: 4rem; min-height: 80vh;">
+    <div class="section-title">
+      <h2>Download Apps</h2>
+    </div>
+    <div style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 2rem;">
+      <div class="service-card" style="max-width: 350px; min-width: 300px;">
+        <div style="padding: 2rem 2rem 1rem 2rem; text-align: center;">
+          <img src="https://code.visualstudio.com/assets/images/linux-logo.png" alt="App Icon"
+            style="height: 120px; margin-bottom: 1.5rem; border-radius: 1rem; background: #fff; padding: 0.5rem;">
+          <h3 style="color: var(--light); margin-bottom: 0.5rem;">MBK Tech Studio App</h3>
+          <p style="color: var(--text-light); margin-bottom: 1.25rem;">A simple app that uses a web view to display
+            Website content.</p>
+          <div
+            style="display: flex; justify-content: space-between; color: var(--text-light); font-size: 0.95rem; margin-bottom: 1rem;">
+            <span>Version: {{mainAppLink.VersionNumber}}</span>
+            <span>Size: 4.2 MB</span>
           </div>
+          <a href="{{mainAppLink.Url}}" download class="btn btn-primary" style="width: 100%;">Download APK</a>
         </div>
       </div>
-
+      <div class="service-card" style="max-width: 350px; min-width: 300px;">
+        <div style="padding: 2rem 2rem 1rem 2rem; text-align: center;">
+          <img src="https://code.visualstudio.com/assets/images/linux-logo.png" alt="App Icon"
+            style="height: 120px; margin-bottom: 1.5rem; border-radius: 1rem; background: #fff; padding: 0.5rem;">
+          <h3 style="color: var(--light); margin-bottom: 0.5rem;">MBK Tech Studio App</h3>
+          <p style="color: var(--text-light); margin-bottom: 1.25rem;">A simple app that uses a web view to display
+            Website content.</p>
+          <div
+            style="display: flex; justify-content: space-between; color: var(--text-light); font-size: 0.95rem; margin-bottom: 1rem;">
+            <span>Version: {{mainAppLink.VersionNumber}}</span>
+            <span>Size: 4.2 MB</span>
+          </div>
+          <a href="{{mainAppLink.Url}}" download class="btn btn-primary" style="width: 100%;">Download APK</a>
+        </div>
+      </div>
     </div>
   </section>
-  {{> footer }}
-
 </body>
 
 </html>

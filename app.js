@@ -8,7 +8,7 @@ import minify from "express-minify";
 import compression from "compression";
 import cors from "cors";
 import { engine } from "express-handlebars";
-import Handlebars from "handlebars"; 
+import Handlebars from "handlebars";
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -50,7 +50,7 @@ app.engine("handlebars", engine({
     path.join(__dirname, "views/templates"),
     path.join(__dirname, "views/notice"),
     path.join(__dirname, "views")
-  ],  cache: false // Disable cache for development
+  ], cache: false // Disable cache for development
 
 }));
 app.set("view engine", "handlebars");
@@ -59,7 +59,7 @@ app.set("views", path.join(__dirname, "views"));
 
 const domainRedirect = (req, res, next) => {
   let hostname = req.headers['x-forwarded-host'] || req.headers.host; // Allow overriding via x-forwarded-host
-  
+
   console.log(`Incoming request to hostname: http://${hostname}`);
 
   if (process.env.localenv === "true") {
@@ -70,14 +70,9 @@ const domainRedirect = (req, res, next) => {
       "docs.mbktechstudio.com": "docs",
       "project.mbktechstudio.com": "docs",
       "portfolio.mbktechstudio.com": "portfolio",
-      "protfolio.mbktechstudio.com": "portfolio",
       "ibnekhalid.me": "portfolio",
-      "privacy.mbktechstudio.com": "privacy",
       "api.mbktechstudio.com": "api",
-      "portalapp.mbktechstudio.com": "portalapp",
-      "download.portal.mbktechstudio.com": "downloadportalapp",
       "download.mbktechstudio.com": "downloadportalapp",
-      "events.mbktechstudio.com": "events",
     }[hostname] || "main";
   }
 
@@ -89,28 +84,28 @@ const domainRedirect = (req, res, next) => {
 app.get("/", domainRedirect, (req, res) => {
   const siteViews = {
     main: "mainPages/mainDomain/index",
-    docs: "mainPages/otherDomain/docs",
+    docs: {
+      view: "mainPages/otherDomain/docs",
+    },
     portfolio: "mainPages/otherDomain/portfolio",
-    privacy: "mainPages/otherDomain/privacy.handlebars",
     api: "mainPages/apiDomain/index",
-    portalapp: "mainPages/otherDomain/portalapp",
-    events: "mainPages/otherDomain/portfolio",
     downloadportalapp: {
       view: "mainPages/otherDomain/download",
-      mainAppLink: process.env.PortalVersonControlJson 
-          ? JSON.parse(process.env.PortalVersonControlJson) 
-          : null,
-    },  
+      layout: "main",
+      mainAppLink: process.env.PortalVersonControlJson
+        ? JSON.parse(process.env.PortalVersonControlJson)
+        : null,
+    },
   };
-  
+
   let viewEntry = siteViews[req.site] || siteViews.main;
   console.log(`Rendering view: ${JSON.stringify(viewEntry)}`);
 
   if (typeof viewEntry === "object") {
-      const { view, ...locals } = viewEntry;
-      res.render(view, locals);
+    const { view, ...locals } = viewEntry;
+    res.render(view, locals);
   } else {
-      res.render(viewEntry);
+    res.render(viewEntry);
   }
 });
 
@@ -120,13 +115,12 @@ app.get("/Documentation", domainRedirect, (req, res) => {
   }
   res.render("mainPages/404");
 });
- 
+
 const renderStaticRoutes = [
   { paths: ["/FAQS", "/FAQs", "/faqs", "/FrequentlyAskedQuestions"], view: "mainPages/mainDomain/FAQs" },
   { paths: ["/Terms&Conditions", "/PrivacyPolicy", "/privacypolicy", "/terms&conditions"], view: "mainPages/mainDomain/Terms&Conditions" },
   { paths: ["/Support&Contact", "/Support", "/Contact", "/Contact&Support"], view: "mainPages/mainDomain/Support&Contact" },
   { paths: ["/TrackTicket"], view: "mainPages/mainDomain/TrackTicket" },
-  { paths: ["/Update"], view: "mainPages/mainDomain/update" },
 ];
 
 renderStaticRoutes.forEach(({ paths, view }) => {
@@ -157,7 +151,7 @@ app.get(["/TrackTicket", "/Ticket", "/Track", "/trackticket"], (req, res) => {
 app.use("/post", postRoutes);
 app.use("/api", apiRoutes);
 
-app.get(["/api*","/post*"], (req, res) => {
+app.get(["/api*", "/post*"], (req, res) => {
   res.render("mainPages/apiDomain/notfound");
 });
 
