@@ -29,7 +29,7 @@ const domainRoutes = {
   ]
 };
 
-const generateSitemap = async (domain) => {
+const generateSitemap = async (domain, siteType = null) => {
   try {
     const smStream = new SitemapStream({
       hostname: `https://${domain}`,
@@ -38,8 +38,17 @@ const generateSitemap = async (domain) => {
 
     const pipeline = smStream.pipe(createGzip());
     
-    // Use default routes for localhost or unknown domains
-    const routes = domain.includes('localhost') ? defaultRoutes : (domainRoutes[domain] || defaultRoutes);
+    let routes;
+    if (domain.includes('localhost')) {
+      // Use routes based on site type for localhost
+      if (siteType && domainRoutes[`${siteType}.mbktechstudio.com`]) {
+        routes = domainRoutes[`${siteType}.mbktechstudio.com`];
+      } else {
+        routes = defaultRoutes;
+      }
+    } else {
+      routes = domainRoutes[domain] || defaultRoutes;
+    }
     
     // Add routes
     for (const route of routes) {
@@ -54,4 +63,22 @@ const generateSitemap = async (domain) => {
   }
 };
 
-export { generateSitemap, domainRoutes };
+const getAllSitemaps = async (domain) => {
+  const results = {};
+  const baseHostname = domain.includes('localhost') ? domain : 'mbktechstudio.com';
+  
+  // Generate default sitemap
+  results['main'] = await generateSitemap(baseHostname);
+  
+  // Generate sitemaps for each subdomain
+  for (const [key, _] of Object.entries(domainRoutes)) {
+    if (key !== 'mbktechstudio.com') {
+      const subdomainBase = domain.includes('localhost') ? domain : key;
+      results[key.split('.')[0]] = await generateSitemap(subdomainBase);
+    }
+  }
+  
+  return results;
+};
+
+export { generateSitemap, domainRoutes, getAllSitemaps };

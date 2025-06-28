@@ -30,7 +30,7 @@ localenv=true
 ```properties
 site=main
 ```
-> **Options:** `main`, `docs`, `unilib`, `portfolio`, `privacy`, `api`, `portalapp` `downloadportalapp`
+> **Options:** `main`, `docs`, `unilib`, `portfolio`, `privacy`, `api`, `portalapp` `download`
 
 > Active only when `localenv=true`  
 > Select based on target domain host

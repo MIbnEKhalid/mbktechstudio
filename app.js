@@ -9,7 +9,7 @@ import compression from "compression";
 import cors from "cors";
 import { engine } from "express-handlebars";
 import Handlebars from "handlebars";
-import { generateSitemap } from './utils/sitemapGenerator.js';
+import { generateSitemap, getAllSitemaps, domainRoutes } from './utils/sitemapGenerator.js';
 
 
 const app = express();
@@ -77,7 +77,7 @@ const domainRedirect = (req, res, next) => {
       "portfolio.mbktechstudio.com": "portfolio",
       "ibnekhalid.me": "portfolio",
       "api.mbktechstudio.com": "api",
-      "download.mbktechstudio.com": "downloadportalapp",
+      "download.mbktechstudio.com": "download",
     }[hostname] || "main";
   }
 
@@ -94,7 +94,7 @@ app.get("/", domainRedirect, (req, res) => {
     },
     portfolio: "mainPages/otherDomain/portfolio",
     api: "mainPages/apiDomain/index",
-    downloadportalapp: {
+    download: {
       view: "mainPages/otherDomain/download",
       layout: "main",
       mainAppLink: process.env.PortalVersonControlJson
@@ -162,12 +162,9 @@ app.get(["/api*", "/post*"], (req, res) => {
 
 app.get('/sitemap.xml', domainRedirect, async (req, res) => {
   try {
-    // Get the actual domain from headers
-    const hostname = req.headers['x-forwarded-host'] || req.headers.host;
-    const domain = hostname.replace(/:\d+$/, ''); // Remove port if present
-
-    // Generate fresh sitemap for this domain
-    const sitemap = await generateSitemap(domain);
+    const domain = req.hostname;
+    // Generate fresh sitemap for this domain, passing the site type for localhost
+    const sitemap = await generateSitemap(domain, domain.includes('localhost') ? req.site : null);
 
     res.header('Content-Type', 'application/xml');
     res.header('Content-Encoding', 'gzip');
@@ -177,6 +174,35 @@ app.get('/sitemap.xml', domainRedirect, async (req, res) => {
     res.status(500).send('Error generating sitemap');
   }
 });
+
+// New endpoint to view all sitemaps
+app.get('/sitemaps', domainRedirect, async (req, res) => {
+  try {
+    const domain = req.hostname;
+    const sitemaps = await getAllSitemaps(domain);
+    res.json(sitemaps);
+  } catch (error) {
+    console.error('Error getting sitemaps:', error);
+    res.status(500).send('Error getting sitemaps');
+  }
+});
+
+// Individual sitemap view endpoint
+app.get('/sitemap/:type', domainRedirect, async (req, res) => {
+  try {
+    const domain = req.hostname;
+    const siteType = req.params.type;
+    const sitemap = await generateSitemap(domain, siteType);
+
+    res.header('Content-Type', 'application/xml');
+    res.header('Content-Encoding', 'gzip');
+    res.send(sitemap);
+  } catch (error) {
+    console.error('Error generating sitemap:', error);
+    res.status(500).send('Error generating sitemap');
+  }
+});
+
 
 app.get('/robots.txt', domainRedirect, (req, res) => {
   const hostname = req.headers['x-forwarded-host'] || req.headers.host;
