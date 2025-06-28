@@ -9,6 +9,9 @@ import compression from "compression";
 import cors from "cors";
 import { engine } from "express-handlebars";
 import Handlebars from "handlebars";
+import { generateSitemap } from './utils/sitemapGenerator.js';
+
+
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -58,7 +61,8 @@ app.set("views", path.join(__dirname, "views"));
 
 
 const domainRedirect = (req, res, next) => {
-  let hostname = req.headers['x-forwarded-host'] || req.headers.host; // Allow overriding via x-forwarded-host
+  let hostname = req.headers['x-forwarded-host'] || req.headers.host;
+  hostname = hostname.replace(/:\d+$/, ''); // Remove port if present
 
   console.log(`Incoming request to hostname: http://${hostname}`);
 
@@ -67,6 +71,7 @@ const domainRedirect = (req, res, next) => {
   } else {
     req.site = {
       "mbktechstudio.com": "main",
+      "www.mbktechstudio.com": "main",
       "docs.mbktechstudio.com": "docs",
       "project.mbktechstudio.com": "docs",
       "portfolio.mbktechstudio.com": "portfolio",
@@ -153,6 +158,37 @@ app.use("/api", apiRoutes);
 
 app.get(["/api*", "/post*"], (req, res) => {
   res.render("mainPages/apiDomain/notfound");
+});
+
+app.get('/sitemap.xml', domainRedirect, async (req, res) => {
+  try {
+    // Get the actual domain from headers
+    const hostname = req.headers['x-forwarded-host'] || req.headers.host;
+    const domain = hostname.replace(/:\d+$/, ''); // Remove port if present
+
+    // Generate fresh sitemap for this domain
+    const sitemap = await generateSitemap(domain);
+
+    res.header('Content-Type', 'application/xml');
+    res.header('Content-Encoding', 'gzip');
+    res.send(sitemap);
+  } catch (error) {
+    console.error('Error generating sitemap:', error);
+    res.status(500).send('Error generating sitemap');
+  }
+});
+
+app.get('/robots.txt', domainRedirect, (req, res) => {
+  const hostname = req.headers['x-forwarded-host'] || req.headers.host;
+  const domain = hostname.replace(/:\d+$/, '');
+
+  const robotsContent = `User-agent: *
+Allow: /
+
+Sitemap: https://${domain}/sitemap.xml`;
+
+  res.type('text/plain');
+  res.send(robotsContent);
 });
 
 // 404 handler
