@@ -86,7 +86,7 @@ app.get("/tickets/:ticketNumber", ticketSearchRateLimit, cacheMiddleware(120), a
 
 /* Api */
 
-app.get("/script/setup.sh", authenticate(process.env.SetupScript_SECRET_TOKEN), (req, res) => {
+app.get("/script/setup.sh", (req, res) => {
     const scriptPath = path.join(__dirname, '../public/Assets/setup.sh');
     fs.readFile(scriptPath, 'utf8', (err, data) => {
         if (err) {
@@ -109,7 +109,7 @@ app.get("/poratlAppVersion", cacheMiddleware(3600), (req, res) => {
     res.status(200).json(response);
 });
 
-app.get("/Test", authenticate(process.env.Main_SECRET_TOKEN), (req, res) => {
+app.get("/Test", (req, res) => {
     console.log("API 'Test' Request processed successfully");
     res.send("API 'Test' Request processed successfully");
 });
