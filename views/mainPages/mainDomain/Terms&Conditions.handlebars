@@ -1,32 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-{{> header }}
 
 <head>
   <title>Privacy Policy | Terms & Conditions | MBK Tech Studio Portal</title>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/x-icon" href="/Assets/Images/dgicon.svg">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Read the Terms & Conditions for portal.mbktechstudio.com to understand the rules, policies, and guidelines for
-            using our services securely and responsibly.">
-  <meta name="keywords" content="MBK Tech Studio, Web-Portal, Terms & Conditions, Privacy Policy, User Agreement" />
-  <meta property="og:title" content="Terms & Conditions | MBK Tech STudio" />
-  <meta property="og:image" content="https://www.mbktechstudio.com/Assets/Images/Icon/logo.png" />
-  <meta property="og:url" content="https://portal.mbktechstudio.com/Terms&Conditions">
   <style>
-
-    /* Base Styles */
-    * {
-      box-sizing: border-box;
+    section {
+      padding: 1rem;
     }
 
-    .a {
+    .content {
+      margin-top: 75px;
+    }
+
+    .links {
       color: #27ae60;
       text-decoration: none;
       transition: color 0.3s ease;
     }
 
-    .a:hover {
+    .links:hover {
       color: rgb(33, 131, 72);
       text-decoration: none;
     }
@@ -37,10 +29,10 @@
       padding: 1.5rem;
       background: transparent;
       border-radius: 8px;
-      border-left: 4px solid #27ae60;
-      border-right: .1rem solid var(--main-border-color);
-      border-bottom: .1rem solid var(--main-border-color);
-      border-top: .1rem solid var(--main-border-color);
+      border-left: 4px solid var(--secondary);
+      border-right: .1rem solid var(--accent);
+      border-bottom: .1rem solid var(--accent);
+      border-top: .1rem solid var(--accent);
     }
 
     .Section h3 {
@@ -62,23 +54,23 @@
     }
 
     /* Lists */
-    ul {
+    .Section ul {
       padding-left: 2rem;
       margin: 1rem 0;
     }
 
-    ul li {
+    .Section ul li {
       margin-bottom: 0.8rem;
       color: rgb(103, 127, 150);
     }
 
-    ul ul {
+    .Section ul ul {
       padding-left: 1.5rem;
       margin-top: 0.5rem;
     }
 
     /* Special Notices */
-    strong {
+    .Section strong {
       color: #377a77;
       font-weight: 600;
     }
@@ -110,7 +102,7 @@
         font-size: 1.3rem;
       }
 
-      ul {
+      .Section ul {
         padding-left: 1.5rem;
       }
     }
@@ -160,161 +152,16 @@
     .Section.highlight strong {
       color: rebeccapurple;
     }
-
-    .about {
-      height: auto !important;
-    }
-
-    .Section {
-      margin-bottom: 2rem !important;
-    }
   </style>
 </head>
 
 
 <body>
-  <div class="scroll-button">
-    <a href="#" style="display: none;">
-      <i class="fas fa-arrow-up" aria-hidden="true"></i>
-    </a>
-  </div>
-
-
-  <aside class="sidebar sidebar-collapsed" id="sidebar">
-    <div class="sidebar-toggle" id="sidebar-toggle">
-      <i class="fas fa-chevron-left"></i>
-    </div>
-    <h2>Quick Links</h2>
-
-    <div class="sidebar-content">
-      <ul>
-        <li><a href="#Section1">Introduction</a></li>
-        <li><a href="#Section2">Information We Collect</a></li>
-        <li><a href="#Section3">How We Use Your Information </a></li>
-        <li><a href="#Section4">Information Sharing and Disclosure </a></li>
-        <li><a href="#Section5">Data Security </a></li>
-        <li><a href="#Section6">Third-Party Links</a></li>
-        <li><a href="#Section7">Use of Our Services</a></li>
-        <li><a href="#Section8">Intellectual Property</a></li>
-        <li><a href="#Section9">Disclaimers</a></li>
-        <li><a href="#Section10">Limitation of Liability</a></li>
-        <li><a href="#Section11">Termination</a></li>
-        <li><a href="#Section12">Changes to These Terms</a></li>
-        <li><a href="#Section13">Governing Law</a></li>
-        <li><a href="#Section14">Contact Us</a></li>
-      </ul>
-    </div>
-  </aside>
-  <style>
-    .sidebar {
-      position: fixed;
-      right: 0;
-      top: 35%;
-      transform: translateY(-50%);
-      background-color: #0d1117;
-      padding: 1rem;
-      border-radius: 8px 0 0 8px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      z-index: 1000;
-      transition: right 0.3s ease;
-      width: 150px;
-      max-height: 400px;
-    }
-
-    .sidebar-collapsed {
-      right: -150px;
-    }
-
-    .sidebar-toggle {
-      position: absolute;
-      left: -45px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 30px;
-      height: 30px;
-      background: linear-gradient(145deg, #444, #222);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-      transition: all 0.3s ease;
-    }
-
-    .sidebar-toggle:hover {
-      opacity: 0.8;
-      transition: all 0.3s ease;
-
-    }
-
-    .sidebar-toggle i {
-      color: #fff;
-      font-size: 16px;
-      transition: color 0.3s ease, transform 0.3s ease;
-    }
-
-    .sidebar-content {
-      overflow-y: auto;
-      max-height: 80vh;
-      padding-right: 8px;
-      max-height: 340px;
-    }
-
-    .sidebar-content::-webkit-scrollbar {
-      width: 10px;
-    }
-
-    .sidebar-content::-webkit-scrollbar-track {
-      background: #333;
-    }
-
-    .sidebar-content::-webkit-scrollbar-thumb {
-      background: #4e4e4e;
-      border-radius: 12px;
-      transition: all 0.3s ease;
-    }
-
-    .sidebar-content::-webkit-scrollbar-thumb:hover {
-      background: #5a5a5a;
-    }
-
-    .sidebar h2 {
-      color: #fff;
-      font-size: 1.2rem;
-      margin-bottom: 1rem;
-      font-family: "Ubuntu", sans-serif;
-    }
-
-    .sidebar-content ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .sidebar-content ul li {
-      margin-bottom: 0.5rem;
-    }
-
-    .sidebar-content ul li a {
-      color: #007bff;
-      text-decoration: none;
-      font-size: 1rem;
-      font-weight: 600;
-      font-family: "Poppins", sans-serif;
-    }
-
-    .sidebar-content ul li a:hover {
-      text-decoration: underline;
-      color: #5ba5f5;
-    }
-  </style>
-
-
-
-  <section class="about">
-    <div class="content">
-      <div class="title"><span>Terms, Conditions, Privacy Policy & Use of Our Services</span></div>
+  <section class="about-section">
+    <div class="section-container">
+      <div class="section-title">
+        <h2>Terms, Conditions, Privacy Policy & Use of Our Services</h2>
+      </div>
       <div class="Section" id="Section1">
         <h4>Introduction</h4>
         <p>Welcome to MBK Tech Studio ("we," "our," or "us"). This Privacy Policy outlines how we collect, use,
@@ -391,7 +238,8 @@
             You agree not to misuse our services, including engaging in illegal activities, spreading
             malicious software, or violating intellectual property rights. </li>
           <li><strong>Open-Source Contributions:</strong>
-            Contributions to open-source projects hosted by <a class="links" href="#">MBK Tech Studio</a>, <a class="links" href="#">Muhammad Bin khalid</a> or any other member must comply with the
+            Contributions to open-source projects hosted by <a class="links" href="#">MBK Tech Studio</a>, <a
+              class="links" href="#">Muhammad Bin khalid</a> or any other member must comply with the
             applicable
             licenses and guidelines.
           </li>
@@ -427,7 +275,8 @@
       <div class="Section" id="Section12">
         <h4>Changes to These Terms</h4>
         <p>We may update these Terms periodically. Changes will be posted on this page with the updated effective date.
-          Minor changes will not be detailed, but significant policy introductions will be highlighted. When terms are changed or updated, the website will prompt you to accept the new terms upon version change.</p>
+          Minor changes will not be detailed, but significant policy introductions will be highlighted. When terms are
+          changed or updated, the website will prompt you to accept the new terms upon version change.</p>
       </div>
       <div class="Section" id="Section13">
         <h4>Governing Law</h4>
@@ -438,85 +287,33 @@
         <h4>Contact Us</h4>
         <p>If you have any questions about these Terms and Conditions, please contact us by:</p>
         <ul>
-          <li>Visiting our <a class="links newtab" href="/support-contact">Support & Contact Page</a> to fill out the contact form.</li>
-          <li>Sending an email directly to <a class="links" href="mailto:support@mbktechstudio.com">support@mbktechstudio.com</a>.</li>
+          <li>Visiting our <a class="links newtab" href="/Support">Support & Contact Page</a> to fill out the
+            contact form.</li>
+          <li>Sending an email directly to <a class="links"
+              href="mailto:support@mbktechstudio.com">support@mbktechstudio.com</a>.</li>
           <li>Connecting with us on Social Media.</li>
         </ul>
-        <div class="ssmedis" id="ssmedia" style="margin-bottom: -10px;"><a href="https://instagram.com/mbktechstudio" target="_blank"><i class="fab fa-instagram" aria-hidden="true"></i></a><a href="https://www.facebook.com/people/MBK-Tech-Studio/61559079077988/" target="_blank"><i class="fab fa-facebook-f" aria-hidden="true"></i></a><a href="https://www.linkedin.com/in/muhammad-bin-khalid-89711b25b" target="_blank"><i class="fab fa-linkedin" aria-hidden="true"></i></a><a href="https://x.com/ibnekhalid28" target="_blank"><i class="fab fa-twitter" aria-hidden="true"></i></a><a href="https://github.com/MIbnEKhalid" target="_blank"><i class="fab fa-github" aria-hidden="true"></i></a><a href="https://youtube.com/@mibnekhalid" target="_blank"><i class="fab fa-youtube" aria-hidden="true"></i></a><a href="https://discord.gg/" target="_blank"><i class="fab fa-discord" aria-hidden="true"></i></a><a href="https://signal.me/#eu/0Bxn3qmtp8gtYNuy6eJ_F3WaHWHrQW3uefaC2y01VCWtduFQCwJHvIFL6N4VOtsv" target="_blank"><i class="fa-brands fa-signal-messenger" aria-hidden="true"></i></a></div>
+        <div class="ssmedis" id="ssmedia" style="margin-bottom: -10px;"><a href="https://instagram.com/mbktechstudio"
+            target="_blank"><i class="fab fa-instagram" aria-hidden="true"></i></a><a
+            href="https://www.facebook.com/people/MBK-Tech-Studio/61559079077988/" target="_blank"><i
+              class="fab fa-facebook-f" aria-hidden="true"></i></a><a
+            href="https://www.linkedin.com/in/muhammad-bin-khalid-89711b25b" target="_blank"><i class="fab fa-linkedin"
+              aria-hidden="true"></i></a><a href="https://x.com/ibnekhalid28" target="_blank"><i class="fab fa-twitter"
+              aria-hidden="true"></i></a><a href="https://github.com/MIbnEKhalid" target="_blank"><i
+              class="fab fa-github" aria-hidden="true"></i></a><a href="https://youtube.com/@mibnekhalid"
+            target="_blank"><i class="fab fa-youtube" aria-hidden="true"></i></a><a href="https://discord.gg/"
+            target="_blank"><i class="fab fa-discord" aria-hidden="true"></i></a><a
+            href="https://signal.me/#eu/0Bxn3qmtp8gtYNuy6eJ_F3WaHWHrQW3uefaC2y01VCWtduFQCwJHvIFL6N4VOtsv"
+            target="_blank"><i class="fa-brands fa-signal-messenger" aria-hidden="true"></i></a></div>
+      </div>
+      <div class="button-container">
+        <p class="DateTimePara"> <span id="termVersionPrivacy">Version: 0.5</span> | <span>Last Updated On
+            14/10/2024</span>
+        </p>
       </div>
     </div>
   </section>
-  <div class="button-container">
-    <p class="DateTimePara"> <span id="termVersionPrivacy">Version: 0.5</span> | <span>Last Updated On 14/10/2024</span></p>
-  </div>
+
 </body>
-
-    {{> footer }}
-
-<script>
-  function SuperAdminsinfo() {
-    showMessage(
-      " SuperAdmins, Muhammad Bin Khalid (<a class='links'>ibnekhalid@mbktechstudio.com</a>) and Maaz Waheed (<a class='links'>" +
-      "maaz.waheed@mbktechstudio.com</a>), oversee portal operations and ensure user data security. They are bound by confident" +
-      "iality agreements and access data only for administrative purposes. Contact MBK Tech Studios for any concerns.",
-      "SuperAdmins Information"
-    );
-  }
-  document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM fully loaded and parsed');
-    const headerHeight = document.querySelector('header').offsetHeight;
-    console.log('Header height:', headerHeight);
-
-    document.querySelectorAll('aside a').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href').substring(1);
-        console.log('Anchor clicked, target ID:', targetId);
-        scrollToSection(targetId, headerHeight);
-      });
-    });
-
-
-    // Check if there's a hash in the URL and scroll to the corresponding section
-    const hash = window.location.hash.substring(1);
-    if (hash) {
-      console.log('Hash found in URL:', hash);
-      scrollToSection(hash, headerHeight);
-    }
-
-
-  });
-
-  function scrollToSection(targetId, headerHeight) {
-    const targetElement = document.getElementById(targetId);
-
-    if (targetElement) {
-      const targetPosition = targetElement.offsetTop - headerHeight - 80; // Adjust 80px as needed
-      console.log('Scrolling to position:', targetPosition);
-      window.scrollTo({
-        top: targetPosition,
-        behavior: 'smooth'
-      });
-      // Update the URL with the target ID
-      history.pushState(null, null, `#${targetId}`);
-      highlightSection(targetId);
-    } else {
-      console.log('Target element not found for ID:', targetId);
-    }
-  }
-
-  function highlightSection(targetId) {
-    const targetElement = document.getElementById(targetId);
-    if (targetElement) {
-      targetElement.style.transition = "background-color 0.5s ease, box-shadow 0.5s ease";
-      targetElement.style.backgroundColor = "#2c3e50"; // Highlight color
-      targetElement.style.boxShadow = "0 0 10px rgba(0, 0, 0, 0.5)"; // Add shadow effect
-      setTimeout(() => {
-        targetElement.style.backgroundColor = ""; // Revert to original color
-        targetElement.style.boxShadow = ""; // Remove shadow effect
-      }, 2000);
-    }
-  }
-</script>
 
 </html>

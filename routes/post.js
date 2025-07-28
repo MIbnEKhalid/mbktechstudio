@@ -1,202 +1,36 @@
 import express from "express";
-import nodemailer from "nodemailer";
 import dotenv from "dotenv";
-import { authenticate } from "./auth.js"; // Import authenticate here
 import { pool } from "../routes/pool.js"; // Import the pool
+import { formRateLimit } from '../middleware/security.js';
 
 dotenv.config();
 
 const app = express.Router();
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-
-// Configure Nodemailer
-const transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-        user: process.env.GMAIL_USER,
-        pass: process.env.GMAIL_PASS,
-    },
-});
-
-const generateTableRow = (label, value = false) => `
-    <div class="email-section">
-     <span class="email-label">${label}</span>
-    <span class="email-value">${value || "N/A"}</span>
-       </div >
- `;
-
-const constructEmailContent = (data) => {
-        const {
-            PageUrl,
-            subject,
-            support,
-            projectCato,
-            name,
-            email,
-            message,
-            Timestamp,
-            additionalFields,
-        } = data;
-
-        return `
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Email Template</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
-
-        .email-container {
-            max-width: 650px;
-            margin: 40px auto;
-            background: rgb(55, 58, 61) !important;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-        }
-
-        .email-header {
-            background-color: rgb(51, 53, 56) !important;
-            color: #ffffff !important;
-            text-align: center;
-            padding: 30px 20px;
-            font-size: 28px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            border-bottom: 1px solid #333;
-        }
-
-        .email-body {
-            padding: 30px;
-        }
-
-        .email-section {
-            margin-bottom: 25px;
-        }
-
-        .email-label {
-            font-size: 15px;
-            color: #bdbdbd !important;
-            font-weight: 600;
-            margin-bottom: 8px;
-            display: block;
-        }
-
-        .email-value {
-            font-size: 17px;
-            color:#ffffff !important;
-            word-break: break-word;
-        }
-
-        .email-value a {
-            color: #81d4fa;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .email-value a:hover {
-            color: #4fc3f7;
-        }
-
-        .divider {
-            border-top: 1px solid #333;
-            margin: 30px 0;
-        }
-
-        .email-footer {
-            text-align: center;
-            padding: 20px;
-            font-size: 13px;
-            color: #9e9e9e !important;
-            background-color: rgb(55, 58, 61) !important;
-            border-top: 2px solid #222222;
-        }
-
-        .email-footer a {
-            color: #81d4fa;
-            text-decoration: none;
-        }
-
-        .email-footer a:hover {
-            color: #4fc3f7;
-        }
-
-        .Addi-label {
-            font-size: 25px;
-            color: #ffffff !important;
-            font-weight: 600;
-            margin-bottom: 8px;
-            display: block;
-        }
-
-        @media screen and (max-width: 600px) {
-            .email-container {
-                width: 95%;
-                margin: 20px auto;
-            }
-
-            .email-header {
-                font-size: 24px;
-                padding: 20px 15px;
-            }
-
-            .email-body {
-                padding: 20px;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="email-container">
-        <div class="email-header">
-            New Contact Form Submission
-        </div>
-        <div class="email-body">
-            ${generateTableRow("Subject", subject, true)} ${support ? generateTableRow("Support", support) : ""} ${projectCato ? generateTableRow("Project Category", projectCato, true) : ""} ${generateTableRow("Name", name)} ${generateTableRow("Email", `
-            <a href="mailto:${email}" class="email-link">${email}</a>`, true)} ${generateTableRow("Message", message)} ${generateTableRow("Timestamp", Timestamp, true)} ${generateTableRow("Page URL", `
-            <a href="${PageUrl}" class="email-link">${PageUrl}</a>`)} ${Object.keys(additionalFields).length ? `
-            <h3 class="Addi-label">
-                Additional Information
-            </h3>
-            ${Object.entries(additionalFields).map(([key, value]) => generateTableRow(key, value)).join("")} ` : ""}
-            <p class="email-footer">
-                This message was sent from the contact form on your website.
-            </p>
-        </div>
-</body>
-</html>
-  `;
-};
 
 function generateTicketNumber() {
     return 'T' + Math.floor(Math.random() * 1000000000);
 }
 
-app.post("/SubmitForm", async (req, res) => {
+app.post("/SubmitForm", formRateLimit, async (req, res) => {
+    console.log("Received request to /SubmitForm with body:", req.body);
     const allowedOrigin = "https://mbktechstudio.com";
     const referer = req.headers.referer;
 
     // Determine if the environment is local
-    const isLocalEnv = process.env.localenv === "true";
+    const isLocalEnv = process.env.localenv === "true" || process.env.NODE_ENV === "development";
 
-    // Validate referer
-    if (
-        !referer ||
-        (!referer.includes(allowedOrigin) &&
-            !referer.includes(".mbktechstudio.com") &&
-            !(isLocalEnv && referer.includes("http://localhost:3000")))
-    ) {
-        console.log("Invalid referer:", referer);
-        return res.status(403).json({ error: "Forbidden. Invalid referer." });
+    // For testing, allow submissions without referer check in local environment
+    if (!isLocalEnv) {
+        // Validate referer only in production
+        if (
+            !referer ||
+            (!referer.includes(allowedOrigin) &&
+                !referer.includes(".mbktechstudio.com") &&
+                !referer.includes("http://localhost:3000"))
+        ) {
+            console.log("Invalid referer:", referer);
+            return res.status(403).json({ error: "Forbidden. Invalid referer." });
+        }
     }
 
     console.log("Received request to /SubmitForm");
@@ -210,6 +44,9 @@ app.post("/SubmitForm", async (req, res) => {
         Timestamp,
         support,
         projectCato,
+        blogCato,
+        Number: phoneNumber,
+        stars: rating,
         ...additionalFields
     } = req.body;
 
@@ -226,201 +63,142 @@ app.post("/SubmitForm", async (req, res) => {
         });
     }
 
-    let TicketNumber = "";
+    let ticketNumber = null;
+
+    // Generate ticket number for support requests
     if (subject === "Support") {
-        TicketNumber = generateTicketNumber();
-        let response = await fetch(`https://mbktechstudio.com/api/tickets/${TicketNumber}`);
-        while (response.status !== 404) {
-            TicketNumber = generateTicketNumber();
-            response = await fetch(`https://mbktechstudio.com/api/tickets/${TicketNumber}`);
-        }
+        ticketNumber = generateTicketNumber();
 
-        const ticketData = {
-            ticketno: TicketNumber,
-            name,
-            title: subject + ' / ' + support + ' / ' + projectCato,
-            status: "Pending",
-            createdDate: new Date().toISOString(),
-            lastUpdated: new Date().toISOString(),
-            auditTrail: [
-                {
-                    type: "status",
-                    action: "Ticket Created",
-                    timestamp: new Date().toISOString(),
-                },
-            ],
-        };
-
-        try {
-            const query = `
-            INSERT INTO "Ticket" (ticketno, name, title, status, "createdDate", "lastUpdated", "auditTrail")
-            VALUES ($1, $2, $3, $4, $5, $6, $7)
-            RETURNING *;
-            `;
-            const values = [
-                ticketData.ticketno,
-                ticketData.name,
-                ticketData.title,
-                ticketData.status,
-                ticketData.createdDate,
-                ticketData.lastUpdated,
-                JSON.stringify(ticketData.auditTrail), // Convert array to JSON string for JSONB
-            ];
-
-            const result = await pool.query(query, values);
-            console.log("Ticket added to database:", result.rows[0]);
-        } catch (err) {
-            console.error("Error adding ticket to database:", err);
+        // Ensure ticket number is unique in new table
+        let isUnique = false;
+        while (!isUnique) {
+            try {
+                const checkQuery = "SELECT id FROM support_submissions WHERE ticket_number = $1";
+                const checkResult = await pool.query(checkQuery, [ticketNumber]);
+                if (checkResult.rows.length === 0) {
+                    isUnique = true;
+                } else {
+                    ticketNumber = generateTicketNumber();
+                }
+            } catch (err) {
+                console.error("Error checking ticket uniqueness:", err);
+                break;
+            }
         }
     }
 
-    if (TicketNumber) {
-        additionalFields.TicketNumber = TicketNumber;
-    }
+    // Create audit trail entry
+    const auditTrail = [{
+        type: "status",
+        action: "Submission Created",
+        timestamp: new Date().toISOString(),
+        by: "system"
+    }];
 
-    const contentBody = constructEmailContent({
-        PageUrl,
-        subject,
-        support,
-        projectCato,
-        name,
-        email,
-        message,
-        Timestamp,
-        additionalFields,
-    });
-    
     try {
-        // Send the email
-        const mailOptions = {
-            from: `<${email}>`,
-            to: "support@mbktechstudio.com",
-            subject: "New message from contact form",
-            html: contentBody,
-        };
+        // Insert into new support_submissions table
+        const insertQuery = `
+            INSERT INTO support_submissions (
+                ticket_number, subject, support_type, project_category, blog_category,
+                name, email, phone_number, message, rating, status, priority,
+                page_url, audit_trail, additional_fields
+            ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15)
+            RETURNING id, ticket_number
+        `;
 
-        // console.log("Sending email with options:", contentBody);
-        const info = await transporter.sendMail(mailOptions);
-        console.log("Email sent successfully:", info);
+        const values = [
+            ticketNumber,
+            subject,
+            support || null,
+            projectCato || null,
+            blogCato || null,
+            name,
+            email,
+            phoneNumber || null,
+            message,
+            rating ? parseInt(rating) : null,
+            'pending',
+            'normal', // default priority
+            PageUrl || null,
+            JSON.stringify(auditTrail),
+            JSON.stringify(additionalFields)
+        ];
 
-        if (subject === "Support") {
-            res.status(200).json({ message: "Email sent successfully", info, TN: TicketNumber });
+        const result = await pool.query(insertQuery, values);
+        const submissionId = result.rows[0].id;
+
+        console.log("Submission saved to database:", {
+            id: submissionId,
+            ticketNumber: ticketNumber,
+            subject: subject,
+            name: name,
+            email: email
+        });
+
+        // Also save to old Ticket table for backward compatibility if it's a support request
+        if (subject === "Support" && ticketNumber) {
+            try {
+                const ticketData = {
+                    ticketno: ticketNumber,
+                    name,
+                    title: subject + ' / ' + support + ' / ' + projectCato,
+                    status: "Pending",
+                    createdDate: new Date().toISOString(),
+                    lastUpdated: new Date().toISOString(),
+                    auditTrail: [
+                        {
+                            type: "status",
+                            action: "Ticket Created",
+                            timestamp: new Date().toISOString(),
+                        },
+                    ],
+                };
+
+                const legacyQuery = `
+                INSERT INTO "Ticket" (ticketno, name, title, status, "createdDate", "lastUpdated", "auditTrail")
+                VALUES ($1, $2, $3, $4, $5, $6, $7)
+                RETURNING *;
+                `;
+                const legacyValues = [
+                    ticketData.ticketno,
+                    ticketData.name,
+                    ticketData.title,
+                    ticketData.status,
+                    ticketData.createdDate,
+                    ticketData.lastUpdated,
+                    JSON.stringify(ticketData.auditTrail),
+                ];
+
+                await pool.query(legacyQuery, legacyValues);
+                console.log("Legacy ticket entry created for backward compatibility");
+            } catch (err) {
+                console.error("Error adding legacy ticket (non-critical):", err);
+            }
         }
-        else {
-            res.status(200).json({ message: "Email sent successfully", info });
+
+        // Send response based on submission type
+        if (ticketNumber) {
+            res.status(200).json({
+                message: "Support request submitted successfully",
+                ticketNumber: ticketNumber,
+                submissionId: submissionId,
+                status: "pending"
+            });
+        } else {
+            res.status(200).json({
+                message: "Submission received successfully",
+                submissionId: submissionId,
+                status: "pending"
+            });
         }
 
     } catch (error) {
-        console.error("Failed to send email:", error);
-        res
-            .status(500)
-            .json({ error: "Failed to send email", details: error.message });
-    }
-});
-
-app.post("/add-ticket", async (req, res) => {
-    console.log("Incoming request body:", req.body);
-
-    const {
-        ticketno,
-        name,
-        title,
-        status,
-        createdDate,
-        lastUpdated,
-        auditTrail,
-    } = req.body;
-
-    // Validate fields
-    if (!ticketno) {
-        return res.status(400).json({ error: "Ticket Number is required." });
-    }
-    if (!name) {
-        return res.status(400).json({ error: "Name is required." });
-    }
-    if (!title) {
-        return res.status(400).json({ error: "Title is required." });
-    }
-    if (!status) {
-        return res.status(400).json({ error: "Status is required." });
-    }
-    if (!createdDate) {
-        return res.status(400).json({ error: "Created Date is required." });
-    }
-    if (!lastUpdated) {
-        return res.status(400).json({ error: "Last Updated is required." });
-    }
-    if (!Array.isArray(auditTrail)) {
-        return res.status(400).json({ error: "Audit Trail must be an array." });
-    }
-
-    try {
-        const query = `
-        INSERT INTO "Ticket" (ticketno, name, title, status, "createdDate", "lastUpdated", "auditTrail")
-        VALUES ($1, $2, $3, $4, $5, $6, $7)
-        RETURNING *;
-        `;
-        const values = [
-            ticketno,
-            name,
-            title,
-            status,
-            createdDate,
-            lastUpdated,
-            JSON.stringify(auditTrail), // Convert array to JSON string for JSONB
-        ];
-
-        const result = await pool.query(query, values);
-
-        res.status(201).json({
-            message: "Ticket added successfully!",
-            ticket: result.rows[0],
+        console.error("Failed to save submission:", error);
+        res.status(500).json({
+            error: "Failed to save submission",
+            details: error.message
         });
-    } catch (err) {
-        console.error("Error adding ticket:", err);
-        res.status(500).json({ error: "Failed to add ticket." });
     }
 });
 
-//Invoke-RestMethod -Uri http://localhost:3020/api/terminateAllSessions -Method POST
-// Terminate all sessions route
-app.post(
-    "/terminateAllSessions",
-    authenticate(process.env.Main_SECRET_TOKEN),
-    async (req, res) => {
-        // Update all users' SessionId to null
-        await pool1.query('UPDATE "Users" SET "SessionId" = NULL');
-
-        // Clear the session table
-        await pool1.query('DELETE FROM "session"');
-
-        // Destroy all sessions on the server
-
-        res.send("All sessions have been terminated");
-    }
-);
-
-app.post("/Test", authenticate(process.env.Main_SECRET_TOKEN), (req, res) => {
-    console.log("Post 'Test' Request processed successfully");
-    res.status(200).send("Post 'Test' Request processed successfully");
-  });
-/*
-
-curl -X POST http://localhost:3000/post/add-ticket \
--H "Content-Type: application/json" \
--d "{
-  \"ticketno\": \"T000111336\", 
-  \"name\": \"John Doe\",
-  \"title\": \"Sample Ticket\",
-  \"status\": \"Open\",
-  \"createdDate\": \"2025-02-27\",
-  \"lastUpdated\": \"2025-02-27\",
-  \"auditTrail\": [
-    {\"type\":\"status\",\"action\":\"Ticket Created\",\"timestamp\":\"2024-11-14T08:45:00Z\"},
-    {\"type\":\"update\",\"action\":\"Status changed to 'In Progress'\",\"timestamp\":\"2024-11-14T09:30:00Z\"},
-    {\"type\":\"update\",\"action\":\"Network Issue Investigated\",\"timestamp\":\"2024-11-14T10:00:00Z\"},
-    {\"type\":\"status\",\"action\":\"Status changed to 'Resolved'\",\"timestamp\":\"2024-11-15T10:00:00Z\"}
-  ]
-}" 
-*/
 export default app;

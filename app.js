@@ -3,22 +3,42 @@ import path from "path";
 import { fileURLToPath } from "url";
 import apiRoutes from "./routes/api.js";
 import postRoutes from "./routes/post.js";
+import adminRoutes from "./routes/admin.js";
 import minifyHTML from "express-minify-html";
 import minify from "express-minify";
 import compression from "compression";
 import cors from "cors";
 import { engine } from "express-handlebars";
 import Handlebars from "handlebars";
-import { generateSitemap, getAllSitemaps, domainRoutes } from './utils/sitemapGenerator.js';
+import { generateSitemap } from './utils/sitemapGenerator.js';
+import mbkauthe from 'mbkauthe';
+import { validateSessionAndRole } from 'mbkauthe';
+
+// Import security middleware
+import { securityHeaders, apiRateLimit, apiSecurityHeaders, requestLogger } from './middleware/security.js';
 
 
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ extended: true, limit: '10mb' }));
+
+// Trust proxy for rate limiting
+app.set('trust proxy', 1);
+
+// Security middleware (applied globally)
+app.use(securityHeaders);
+app.use(requestLogger);
+app.use(apiSecurityHeaders);
+
+// Rate limiting and speed control
+app.use(apiRateLimit);
+app.use(mbkauthe);
+
 // Middleware
 app.use(cors());
-app.use(express.json());
 app.use(compression());
 app.use(minify());
 app.use(
@@ -34,7 +54,6 @@ app.use(
   })
 );
 app.use("/", express.static(path.join(__dirname, "public/")));
-app.use('/static', express.static(path.join(__dirname, 'node_modules')));
 
 Handlebars.registerHelper('eq', function (a, b) {
   return a === b;
@@ -51,14 +70,17 @@ app.engine("handlebars", engine({
   defaultLayout: false,
   partialsDir: [
     path.join(__dirname, "views/templates"),
+    path.join(__dirname, "node_modules/mbkauthe/views"),
     path.join(__dirname, "views/notice"),
     path.join(__dirname, "views")
-  ], cache: false // Disable cache for development
+  ], cache: process.env.localenv === "production"
 
 }));
 app.set("view engine", "handlebars");
-app.set("views", path.join(__dirname, "views"));
-
+app.set("views", [
+  path.join(__dirname, "views"),
+  path.join(__dirname, "node_modules/mbkauthe/views")
+]);
 
 const domainRedirect = (req, res, next) => {
   let hostname = req.headers['x-forwarded-host'] || req.headers.host;
@@ -74,9 +96,7 @@ const domainRedirect = (req, res, next) => {
       "www.mbktechstudio.com": "main",
       "docs.mbktechstudio.com": "docs",
       "project.mbktechstudio.com": "docs",
-      "portfolio.mbktechstudio.com": "portfolio",
-      "ibnekhalid.me": "portfolio",
-      "api.mbktechstudio.com": "api",
+      "ibnekhalid.me": "main",
       "download.mbktechstudio.com": "download",
     }[hostname] || "main";
   }
@@ -88,14 +108,15 @@ const domainRedirect = (req, res, next) => {
 // Routes
 app.get("/", domainRedirect, (req, res) => {
   const siteViews = {
-    main: "mainPages/mainDomain/index",
-    docs: {
-      view: "mainPages/otherDomain/docs",
+    main: {
+      view: "mainPages/mainDomain/index.handlebars",
+      layout: "main",
     },
-    portfolio: "mainPages/otherDomain/portfolio",
-    api: "mainPages/apiDomain/index",
+    docs: {
+      view: "mainPages/otherDomain/docs.handlebars",
+    },
     download: {
-      view: "mainPages/otherDomain/download",
+      view: "mainPages/otherDomain/download.handlebars",
       layout: "main",
       mainAppLink: process.env.PortalVersonControlJson
         ? JSON.parse(process.env.PortalVersonControlJson)
@@ -114,51 +135,54 @@ app.get("/", domainRedirect, (req, res) => {
   }
 });
 
-app.get("/Documentation", domainRedirect, (req, res) => {
-  if (req.site === "api") {
-    return res.render("mainPages/apiDomain/Documentation");
-  }
-  res.render("mainPages/404");
+app.get(["/FAQS", "/FAQs", "/faqs", "/FrequentlyAskedQuestions"], (req, res) => {
+  res.render("mainPages/mainDomain/FAQs.handlebars", {
+    layout: "main",
+    title: "Frequently Asked Questions - MBK Tech Studio",
+  });
 });
 
-const renderStaticRoutes = [
-  { paths: ["/FAQS", "/FAQs", "/faqs", "/FrequentlyAskedQuestions"], view: "mainPages/mainDomain/FAQs" },
-  { paths: ["/Terms&Conditions", "/PrivacyPolicy", "/privacypolicy", "/terms&conditions"], view: "mainPages/mainDomain/Terms&Conditions" },
-  { paths: ["/Support&Contact", "/Support", "/Contact", "/Contact&Support"], view: "mainPages/mainDomain/Support&Contact" },
-  { paths: ["/TrackTicket"], view: "mainPages/mainDomain/TrackTicket" },
-];
-
-renderStaticRoutes.forEach(({ paths, view }) => {
-  app.get(paths, (req, res) => res.render(view));
+// TrackTicket route with main layout
+app.get(["/Support&Contact", "/Support", "/Contact", "/Contact&Support"], (req, res) => {
+  res.render("mainPages/mainDomain/Support&Contact.handlebars", {
+    layout: "main",
+    title: "Support Ticket System - MBK Tech StudioSupport & Contact"
+  });
 });
 
-// FAQs specific route
-app.get(
-  [
-    "/FAQS/What-Web-Tools-Do-You-Use-for-Website-hosting-Business-Email-etc",
-    "/FAQs/What-Web-Tools-Do-You-Use-for-Website-hosting-Business-Email-etc",
-    "/faqs/What-Web-Tools-Do-You-Use-for-Website-hosting-Business-Email-etc",
-    "/FrequentlyAskedQuestions/What-Web-Tools-Do-You-Use-for-Website-hosting-Business-Email-etc",
-  ],
-  (req, res) => res.render("mainPages/mainDomain/otherPages/faqs1")
-);
+// TrackTicket route with main layout
+app.get(["/Terms&Conditions", "/PrivacyPolicy", "/privacypolicy", "/terms&conditions"], (req, res) => {
+  res.render("mainPages/mainDomain/Terms&Conditions.handlebars", {
+    layout: "main",
+    title: "Terms & Conditions - MBK Tech Studio"
+  });
+});
 
-// Redirect routes
-app.get(["/new"], (req, res) => {
-  res.render("mainPages/mainDomain/new");
+// TrackTicket route with main layout
+app.get(["/TrackTicket"], (req, res) => {
+  res.render("mainPages/mainDomain/TrackTicket.handlebars", {
+    layout: "main",
+    title: "Support Ticket System - MBK Tech Studio"
+  });
 });
 
 app.get(["/TrackTicket", "/Ticket", "/Track", "/trackticket"], (req, res) => {
   res.redirect("/TrackTicket");
 });
 
+// Admin panel route
+app.get("/admin", validateSessionAndRole("SuperAdmin"), (req, res) => {
+  res.render("mainPages/admin/index.handlebars", {
+    layout: false, // No layout for admin panel
+    title: "Admin Panel - Support Management",
+    adminToken: process.env.ADMIN_SECRET_TOKEN || process.env.Main_SECRET_TOKEN || ''
+  });
+});
+
 // API and Post routes
 app.use("/post", postRoutes);
 app.use("/api", apiRoutes);
-
-app.get(["/api*", "/post*"], (req, res) => {
-  res.render("mainPages/apiDomain/notfound");
-});
+app.use("/admin", validateSessionAndRole("SuperAdmin"), adminRoutes); // Use admin routes
 
 app.get('/sitemap.xml', domainRedirect, async (req, res) => {
   try {
@@ -172,18 +196,6 @@ app.get('/sitemap.xml', domainRedirect, async (req, res) => {
   } catch (error) {
     console.error('Error generating sitemap:', error);
     res.status(500).send('Error generating sitemap');
-  }
-});
-
-// New endpoint to view all sitemaps
-app.get('/sitemaps', domainRedirect, async (req, res) => {
-  try {
-    const domain = req.hostname;
-    const sitemaps = await getAllSitemaps(domain);
-    res.json(sitemaps);
-  } catch (error) {
-    console.error('Error getting sitemaps:', error);
-    res.status(500).send('Error getting sitemaps');
   }
 });
 
@@ -212,7 +224,6 @@ app.get('/robots.txt', domainRedirect, (req, res) => {
 Allow: /
 
 Sitemap: https://${domain}/sitemap.xml`;
-
   res.type('text/plain');
   res.send(robotsContent);
 });
@@ -220,14 +231,15 @@ Sitemap: https://${domain}/sitemap.xml`;
 // 404 handler
 app.use((req, res) => {
   console.log(`Path not found: ${req.url}`);
-  res.render("mainPages/404");
+  res.status(404).render("mainPages/404.handlebars", {
+    layout: "main"
+  });
 });
 
 // app.js
-const PORT = process.env.PORT || 3000;
-if (process.env.NODE_ENV !== "test") {
-  app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
-  });
-}
+const PORT = process.env.PORT || 4133;
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
+});
+
 export default app;

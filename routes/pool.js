@@ -22,3 +22,22 @@ export const pool = new Pool({
         console.error("Old Database connection error:", err);
     }
 })();
+
+// PostgreSQL connection pool
+export const pool1 = new Pool({
+    connectionString: process.env.DATABASE_URL1,
+    ssl: {
+        rejectUnauthorized: false, // Required for Neon
+    },
+});
+
+// Test connection
+(async () => {
+    try {
+        const client = await pool1.connect();
+        console.log("Connected to New Neon PostgreSQL database!");
+        client.release();
+    } catch (err) {
+        console.error("New Database connection error:", err);
+    }
+})();

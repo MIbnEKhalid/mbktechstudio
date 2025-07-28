@@ -19,7 +19,7 @@ The `index.html` file in the root directory is configured to redirect `mibnekhal
 - [mbktechstudio.com](https://mbktechstudio.com/)
 - [www.mbktechstudio.com](https://www.mbktechstudio.com/)(www redirect to main) 
 - [unilib.mbktechstudio.com](https://unilib.mbktechstudio.com/)
-- [privacy.mbktechstudio.com](https://privacy.mbktechstudio.com/)
+- [privacy.mbktechstudio.com](/PrivacyPolicy)
 
 ### Source Code
 - [GitHub Repository](https://github.com/MIbnEKhalid/MIbnEKhalid.github.io/)

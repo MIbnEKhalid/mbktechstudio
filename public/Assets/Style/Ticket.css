@@ -184,6 +184,27 @@ body.dark-mode {
     color: #663399 ;
 }
 
+/* New status badge styles for the new system */
+.status-badge.pending {
+    color: #f39c12 ;
+}
+
+.status-badge.resolved {
+    color: #27ae60 ;
+}
+
+.status-badge.in-progress {
+    color: #663399 ;
+}
+
+.status-badge.closed {
+    color: #e74c3c ;
+}
+
+.status-badge.on-hold {
+    color: #e67e22 ;
+}
+
 .status-icon{
     color: #b3b3b3 !important;
 }

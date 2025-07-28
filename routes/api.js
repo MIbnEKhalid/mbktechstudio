@@ -1,11 +1,15 @@
 import express from "express";
-import { pool } from "../routes/pool.js";
-import { pool1 } from "../routes/pool1.js";
-import { authenticate } from "./auth.js";
+import { pool, pool1 } from "../routes/pool.js";
 import path from "path";
 import { fileURLToPath } from "url";
 import fs from 'fs';
 import { console } from "inspector";
+
+// Import security middleware
+import {
+    ticketSearchRateLimit,
+    cacheMiddleware
+} from '../middleware/security.js';
 
 const app = express.Router();
 
@@ -16,91 +20,67 @@ app.use(express.json());
 
 async function getTicketByNumber(ticketNumber) {
     try {
-        const query = 'SELECT * FROM "Ticket" WHERE "ticketno" = $1'; // Parameterized query
-        const result = await pool.query(query, [ticketNumber]);
-        result.rows.forEach((row) => {
-            row.auditTrail = JSON.stringify(row.auditTrail);
-        });
-        return result.rows[0]; // Return a single matching ticket
+        // First try the new support_submissions table
+        const newQuery = 'SELECT * FROM support_submissions WHERE ticket_number = $1 AND ticket_number IS NOT NULL';
+        const newResult = await pool.query(newQuery, [ticketNumber]);
+
+        if (newResult.rows.length > 0) {
+            const submission = newResult.rows[0];
+            // Transform to match expected format
+            return {
+                ticketno: submission.ticket_number,
+                name: submission.name,
+                title: `${submission.subject}${submission.support_type ? ' / ' + submission.support_type : ''}${submission.project_category ? ' / ' + submission.project_category : ''}`,
+                status: capitalizeFirst(submission.status),
+                createdDate: submission.submission_timestamp,
+                lastUpdated: submission.last_updated,
+                auditTrail: submission.audit_trail || []
+            };
+        }
+
+        // Fallback to old Ticket table for backward compatibility
+        const oldQuery = 'SELECT * FROM "Ticket" WHERE "ticketno" = $1';
+        const oldResult = await pool.query(oldQuery, [ticketNumber]);
+
+        if (oldResult.rows.length > 0) {
+            const ticket = oldResult.rows[0];
+            ticket.auditTrail = JSON.stringify(ticket.auditTrail);
+            return ticket;
+        }
+
+        return null;
     } catch (err) {
         console.error("Database connection error:", err);
+        throw err;
     }
 }
 
-app.get("/tickets/:ticketNumber", async (req, res) => {
-    const ticket = await getTicketByNumber(req.params.ticketNumber);
-    if (ticket) {
-        res.json(ticket);
-    } else {
-        res.status(404).json({ message: "Ticket not found" });
-    }
-});
+// Helper function to capitalize first letter
+function capitalizeFirst(str) {
+    if (!str) return str;
+    return str.charAt(0).toUpperCase() + str.slice(1);
+}
 
-app.get("/tickets", async (req, res) => {
+app.get("/tickets/:ticketNumber", ticketSearchRateLimit, cacheMiddleware(120), async (req, res) => {
     try {
-        const query = 'SELECT * FROM "Ticket"';
-        const result = await pool.query(query);
-        result.rows.forEach((row) => {
-            row.auditTrail = JSON.stringify(row.auditTrail);
-        });
-        res.json(result.rows);
-    } catch (err) {
-        console.error("Error fetching tickets:", err);
-        res.status(500).json({ error: "Failed to fetch tickets." });
-    }
-});
-
-app.get("/get-ticket/:ticketno", async (req, res) => {
-    const { ticketno } = req.params;
-
-    try {
-        const query = `
-        SELECT * FROM "Ticket" WHERE ticketno = $1;
-        `;
-        const result = await pool.query(query, [ticketno]);
-
-        if (result.rows.length === 0) {
-            return res.status(404).json({ error: "Ticket not found." });
+        const ticketNumber = req.params.ticketNumber;
+        // Basic validation for ticket number format
+        if (!ticketNumber || !/^T\d+$/.test(ticketNumber)) {
+            return res.status(400).json({
+                message: "Invalid ticket number format",
+                expected: "Format: T followed by numeric digits"
+            });
         }
 
-        res.json(result.rows[0]);
-    } catch (err) {
-        console.error("Error fetching ticket:", err);
-        res.status(500).json({ error: "Failed to fetch ticket." });
-    }
-});
-
-app.put("/update-ticket", async (req, res) => {
-    const { ticketno, status, lastUpdated, auditTrail } = req.body;
-
-    if (!ticketno || !status || !lastUpdated || !Array.isArray(auditTrail)) {
-        return res.status(400).json({
-            error: "Invalid request. Fields 'ticketno', 'status', 'lastUpdated', and 'auditTrail' are required.",
-        });
-    }
-
-    try {
-        const query = `
-        UPDATE "Ticket"
-        SET status = $1, "lastUpdated" = $2, "auditTrail" = $3
-        WHERE ticketno = $4
-        RETURNING *;
-        `;
-        const values = [status, lastUpdated, JSON.stringify(auditTrail), ticketno];
-
-        const result = await pool.query(query, values);
-
-        if (result.rows.length === 0) {
-            return res.status(404).json({ error: "Ticket not found." });
+        const ticket = await getTicketByNumber(ticketNumber);
+        if (ticket) {
+            res.json(ticket);
+        } else {
+            res.status(404).json({ message: "Ticket not found" });
         }
-
-        res.json({
-            message: "Ticket updated successfully!",
-            ticket: result.rows[0],
-        });
-    } catch (err) {
-        console.error("Error updating ticket:", err);
-        res.status(500).json({ error: "Failed to update ticket." });
+    } catch (error) {
+        console.error('Error fetching ticket:', error);
+        res.status(500).json({ message: "Internal server error" });
     }
 });
 
@@ -123,73 +103,7 @@ app.get("/script/setup.sh", authenticate(process.env.SetupScript_SECRET_TOKEN), 
     });
 });
 
-app.get("/Unilib/Book", async (req, res) => {
-    console.log("UnilibBook Api Request processed successfully");
-  try {
-    const { page = 1, limit = 10, semester, category, search } = req.query;
-    const offset = (page - 1) * limit;
-    
-    let query = 'SELECT * FROM unilibbook';
-    let conditions = [];
-    let params = [];
-    
-    if (semester) {
-      conditions.push(`semester = $${params.length + 1}`);
-      params.push(semester);
-    }
-    
-    if (category && category !== 'all') {
-      conditions.push(`category = $${params.length + 1}`);
-      params.push(category);
-    }
-    
-    if (search) {
-      conditions.push(`name ILIKE $${params.length + 1}`);
-      params.push(`%${search}%`);
-    }
-    
-    if (conditions.length) {
-      query += ' WHERE ' + conditions.join(' AND ');
-    }
-    
-    // Add sorting (main books first, then by name)
-    query += ' ORDER BY main DESC, name ASC';
-    
-    // Add pagination
-    const countQuery = `SELECT COUNT(*) FROM (${query}) as total`;
-    query += ` LIMIT $${params.length + 1} OFFSET $${params.length + 2}`;
-    params.push(limit, offset);
-    
-    const result = await pool1.query(query, params);
-    const countResult = await pool1.query(countQuery, params.slice(0, -2));
-    const total = parseInt(countResult.rows[0].count);
-    const pages = Math.ceil(total / limit);
-    
-    res.json({
-      data: result.rows,
-      pagination: {
-        page: parseInt(page),
-        limit: parseInt(limit),
-        total,
-        pages
-      }
-    });
-  } catch (err) {
-    console.error("Error fetching books:", err);
-    res.status(500).send("Internal Server Error: " + err);
-  }
-});
- 
-app.get("/Unilib/QuizAss", async (req, res) => {
-    try {
-        const result = await getAllQuizAss();
-        res.json(result);
-    } catch (err) {
-        res.status(500).send("Internal Server Error: " + err);
-    }
-});
-
-app.get("/poratlAppVersion", (req, res) => {
+app.get("/poratlAppVersion", cacheMiddleware(3600), (req, res) => {
     const response = JSON.parse(process.env.PortalVersonControlJson);
     console.log("PortalVersonControlJson Api Request processed successfully");
     res.status(200).json(response);

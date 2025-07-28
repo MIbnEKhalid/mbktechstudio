@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-{{> header }}
 
 <head>
   <title>FAQs</title>
@@ -24,7 +23,6 @@
   <meta name="description" content="Frequently Asked Questions">
   <link rel="stylesheet" href="/Assets/Style/main.css">
   <link rel="stylesheet" href="/Assets/Style/FAQs.css">
-  <script src="/Assets/Scripts/config.js"></script>
   <style>
     .about {
       height: auto !important;
@@ -127,15 +125,8 @@
 
     <div class="faq-container" id="faq-container"></div>
 
-    <!-- Under Development Box -->
-    <div class="RedboxInfo">
-      Notice: This Page Is Under Development. Information May Not Be Accurate.
-    </div>
-
   </section>
 
-
-    {{> footer }}
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       fetch('/Assets/FAQs/faq.json')

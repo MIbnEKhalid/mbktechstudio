@@ -85,34 +85,41 @@ function displayTicket(ticket) {
             console.error("Failed to parse auditTrail for ticket:", ticket.ticketno, error);
             ticket.auditTrail = [];
         }
-    }
-
-    // Function to get tooltip text based on ticket status
+    }    // Function to get tooltip text based on ticket status
 function getTooltipText(status) {
-    switch (status) {
-        case 'Pending':
+    const normalizedStatus = status.toLowerCase().replace('_', ' ');
+    switch (normalizedStatus) {
+        case 'pending':
             return 'Your ticket is pending review and has not been assigned yet.';
-        case 'Closed':
+        case 'closed':
             return 'This ticket has been closed and is no longer active.';
-        case 'In Progress':
+        case 'in progress':
+        case 'in_progress':
             return 'This ticket is currently being worked on by our team.';
-        case 'Open':
+        case 'open':
             return 'Your ticket has been received and is awaiting review.';
-        case 'Resolved':
+        case 'resolved':
             return 'This ticket has been resolved and closed.';
+        case 'on hold':
+        case 'on_hold':
+            return 'This ticket is temporarily on hold.';
         default:
             return 'Unknown status';
     }
 }
 
-    ticketElement.className = "section result-card";
+// Function to format status for display
+function formatStatus(status) {
+    if (!status) return 'Unknown';
+    return status.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+}    ticketElement.className = "section result-card";
     ticketElement.innerHTML = `
         <h3 class="head"><i class="fas fa-ticket-alt"></i> Ticket Details</h3>
         <p><i class="fas fa-hashtag"></i> <strong>Ticket Number:</strong> ${ticket.ticketno}</p>
         <p><i class="fas fa-info-circle"></i> <strong>Issue:</strong> ${ticket.title}</p>
         <p><i class="fas fa-exclamation-circle"></i> <strong>Status:</strong>
-            <span class="status-badge ${ticket.status}">
-                ${ticket.status}
+            <span class="status-badge ${ticket.status.toLowerCase().replace(/_/g, '-')}">
+                ${formatStatus(ticket.status)}
                 <span class="tooltip">
                     <i class="status-icon fas fa-info-circle"></i>
                     <span class="tooltiptext">${getTooltipText(ticket.status)}</span>
@@ -120,24 +127,24 @@ function getTooltipText(status) {
             </span>
         </p>
         <p><i class="fas fa-user"></i> <strong>Submitted By:</strong> ${ticket.name}</p>
-        <p><i class="fas fa-calendar-alt"></i> <strong>Created On:</strong> ${ticket.createdDate}</p>
-        <p><i class="fas fa-clock"></i> <strong>Last Updated:</strong> ${ticket.lastUpdated}</p>
+        <p><i class="fas fa-calendar-alt"></i> <strong>Created On:</strong> ${new Date(ticket.createdDate).toLocaleString()}</p>
+        <p><i class="fas fa-clock"></i> <strong>Last Updated:</strong> ${new Date(ticket.lastUpdated).toLocaleString()}</p>
         <div class="audit-trail-section">
             <div class="audit-trail-header" onclick="toggleAuditTrail('auditTrailContainer')">
                 <h3 class="auditTrailHeader">Audit Trail <i id="auditTrailToggleIcon" class="fas fa-chevron-down"></i></h3>
             </div>
             <div id="auditTrailContainer" style="visibility: hidden; display: none;">
                 <ul id="resultAuditTrail">
-                    ${ticket.auditTrail.map(entry => `
+                    ${Array.isArray(ticket.auditTrail) ? ticket.auditTrail.map(entry => `
                         <li>
-                            <strong class="audit-action-${entry.type}">${entry.action}</strong>
+                            <strong class="audit-action-${entry.type || 'info'}">${entry.action}</strong>
                             <span>${new Date(entry.timestamp).toLocaleString()}</span>
                         </li>
-                    `).join('')}
+                    `).join('') : '<li>No audit trail available</li>'}
                 </ul>
             </div>
         </div>
-    `; 
+    `;
 initTooltips();
     resultsContainer.appendChild(ticketElement);
     resultsContainer.style.display = "block";

@@ -7,8 +7,6 @@ const defaultRoutes = [
   { url: '/Terms&Conditions', changefreq: 'monthly', priority: 0.5 },
   { url: '/Support&Contact', changefreq: 'monthly', priority: 0.7 },
   { url: '/TrackTicket', changefreq: 'monthly', priority: 0.6 },
-  { url: '/new', changefreq: 'monthly', priority: 0.5 },
-  { url: '/FAQS/What-Web-Tools-Do-You-Use-for-Website-hosting-Business-Email-etc', changefreq: 'monthly', priority: 0.7 }
 ];
 
 const domainRoutes = {
@@ -63,22 +61,4 @@ const generateSitemap = async (domain, siteType = null) => {
   }
 };
 
-const getAllSitemaps = async (domain) => {
-  const results = {};
-  const baseHostname = domain.includes('localhost') ? domain : 'mbktechstudio.com';
-  
-  // Generate default sitemap
-  results['main'] = await generateSitemap(baseHostname);
-  
-  // Generate sitemaps for each subdomain
-  for (const [key, _] of Object.entries(domainRoutes)) {
-    if (key !== 'mbktechstudio.com') {
-      const subdomainBase = domain.includes('localhost') ? domain : key;
-      results[key.split('.')[0]] = await generateSitemap(subdomainBase);
-    }
-  }
-  
-  return results;
-};
-
-export { generateSitemap, domainRoutes, getAllSitemaps };
+export { generateSitemap, domainRoutes };

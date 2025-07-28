@@ -3,29 +3,32 @@ function resetMessageBoxStyle() {
     messageBox.className = "message-box info";
 }
 
-function showmessage(content, type = "info") {
-    const messageBox = document.getElementById("message");
-    messageBox.style.color = "green";
-    messageBox.textContent = content;
-    messageBox.style.display = "block";
-    messageBox.className = `message-box ${type}`;
-    if (type === "error") {
-        messageBox.style.color = "red";
-        messageBox.innerHTML =
-            content +
-            " Please Try Again Later Or Contact Us Directly At: <a class='links' title='support@mbktechstudio.com' href='mailto:support@mbktechstudio.com'>support@mbktechstudio.com</a> for Contact & Support.";
-    }
-}
-
 function getPageUrl() {
     return window.location.href;
+}
+
+// Function to copy ticket number to clipboard
+function copyValue(element) {
+    element.select();
+    element.setSelectionRange(0, 99999); // For mobile devices
+    navigator.clipboard.writeText(element.value).then(function () {
+        // Visual feedback
+        const originalValue = element.value;
+        element.value = "Copied!";
+        setTimeout(function () {
+            element.value = originalValue;
+        }, 1000);
+    }).catch(function (err) {
+        console.error('Could not copy text: ', err);
+        // Fallback for older browsers
+        document.execCommand('copy');
+    });
 }
 
 document.getElementById("form").addEventListener("submit", async function (e) {
     e.preventDefault();
     resetMessageBoxStyle();
-    showmessage("Submitting..", "info");
-    messageBox.style.display = "block";
+    showMessage("Submitting..", "info");
     document.getElementById("submit-button").disabled = true;
 
     var currentDate = new Date();
@@ -51,6 +54,11 @@ document.getElementById("form").addEventListener("submit", async function (e) {
     // Convert form data to a plain object
     const formObj = Object.fromEntries(new FormData(this));
 
+    // Add default priority
+    if (!formObj.priority) {
+        formObj.priority = 'normal';
+    }
+
     // Send JSON data to the server
     fetch("/post/SubmitForm", {
         method: "POST",
@@ -59,29 +67,37 @@ document.getElementById("form").addEventListener("submit", async function (e) {
         },
         body: JSON.stringify(formObj),
     })
-        .then(function (response) {
+        .then(async function (response) { // make async
             if (response.ok) {
                 return response.json();
-            } else {
-                throw new Error("Failed to submit the form.");
             }
+            // If response is not ok, create an error with details from the body
+            const errorData = await response.json().catch(() => null); // Try to parse error body
+            const errorMessage = errorData?.details || errorData?.error || `Server responded with ${response.status}`;
+            throw new Error(errorMessage);
         })
         .then(function (data) {
-            showmessage("Form Submitted Successfully!", "success");
+            console.log('Server response:', data); // Debug logging
+            showMessage("Form Submitted Successfully!", "success");
 
             if (subjectSelect.value === "Support") {
-                showMessage(
-                    `Form Submitted Successfully!<br>
-                <div class="ticketRow">
-                    <input type="text" id="ticketInput" class="messageInputField" value="${data.TN}" readonly onclick="copyValue(this)" />
-                </div> 
-                <span class="copyInstructions">Click on the ticket number to copy it.</span>
-                <span class="copyInstructions">You can use this ticket number to track your request.</span>`,
-                    "Success"
-                );
-            }
-            else {
-                showMessage("Form Submitted Successfully!", "Success");
+                const ticketNumber = data.ticketNumber || data.TN; // Handle both new and old response formats
+
+                if (ticketNumber) {
+                    showMessage(
+                        `Form Submitted Successfully!<br>
+                    <div class="ticketRow">
+                        <input type="text" id="ticketInput" class="messageInputField" value="${ticketNumber}" readonly onclick="copyValue(this)" />
+                    </div> 
+                    <span class="copyInstructions">Click on the ticket number to copy it.</span>
+                    <span class="copyInstructions">You can use this ticket number to track your request at <a href="/TrackTicket" class="links">Track Ticket</a>.</span>`,
+                        "success"
+                    );
+                } else {
+                    showMessage("Support request submitted successfully! You should receive a ticket number if this was a support request.", "success");
+                }
+            } else {
+                showMessage("Form Submitted Successfully!", "success");
             }
 
             document.getElementById("submit-button").disabled = false;
@@ -115,8 +131,7 @@ document.getElementById("form").addEventListener("submit", async function (e) {
         })
         .catch(function (error) {
             console.error(error);
-            showmessage("An error occurred while submitting the form.", "error");
-            showMessage("An error occurred while submitting the form.", "Error");
+            showMessage(error.message, "error");
             document.getElementById("submit-button").disabled = false;
         });
 });

@@ -1,78 +1,96 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-{{> header }}
-
 <head>
-  <meta charset="UTF-8" />
-  <title>404 - Page Not Found</title>
-  <meta name="description" content="Oops! The page you're looking for doesn't exist. Return to MBK Tech Studio's home page or contact support for
-        assistance." />
-  <meta name="keywords" content="404, Page Not Found, MBK Tech Studio, Error Page" />
-  <meta property="og:title" content="404 - Page Not Found | MBK Tech Studio" />
-  <meta property="og:description" content="Oops! The page you're looking for doesn't exist. Return to MBK Tech Studio's home page or contact support for
-        assistance." />
-  <meta property="og:image" content="https://www.mbktechstudio.com/Assets/Images/Icon/404-error.png" />
-  <meta property="og:url" content="https://www.mbktechstudio.com/404.html" />
-  <meta property="og:type" content="website" />
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "404 - Page Not Found",
-      "url": "https://www.mbktechstudio.com/404",
-      "description": "Oops! The page you're looking for doesn't exist. Return to MBK Tech
-      Studio 's home page or contact support for assistance.", "isAccessibleForFree": true }
-  </script>
-  <link rel="stylesheet" href="/Assets/Style/404.css">
-  <link rel="stylesheet" href="/Assets/Style/style.css">
-  <script src="/Assets/Scripts/config.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const input = document.querySelector('input[name="access_key"]');
-      if (input) {
-        input.value = apiKey_access_key;
-      }
-    });
-  </script>
+  <title>404 - Page Not Found | MBK Tech Studio</title>
+  <meta name="description" content="Oops! The page you're looking for doesn't exist. Return to MBK Tech Studio's home page or contact support for assistance." />
+  <meta name="robots" content="noindex, follow" />
+  <style>
+    body {
+      background: linear-gradient(135deg, var(--darker, #0a1414), var(--primary-dark, #1769aa));
+      color: var(--text, #e0f7fa);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .hero-404 {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 70vh;
+      text-align: center;
+      padding: 4rem 1rem 2rem 1rem;
+    }
+    .hero-404 h1 {
+      font-size: 5rem;
+      font-weight: 900;
+      color: var(--accent, #00b894);
+      margin-bottom: 1rem;
+      letter-spacing: 2px;
+      text-shadow: 0 4px 24px rgba(33,150,243,0.15);
+    }
+    .hero-404 p {
+      font-size: 1.5rem;
+      color: var(--text-light, #b2dfdb);
+      margin-bottom: 2.5rem;
+      max-width: 600px;
+    }
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(.4, 0, .2, 1);
+      border: none;
+      cursor: pointer;
+      font-size: 1.1rem;
+    }
+    .btn-primary {
+      background-color: var(--accent, #00b894);
+      color: var(--dark, #101c1c);
+    }
+    .btn-primary:hover {
+      background-color: var(--secondary, #43e97b);
+    }
+    .btn-outline {
+      background-color: transparent;
+      color: var(--accent, #00b894);
+      border: 2px solid var(--accent, #00b894);
+    }
+    .btn-outline:hover {
+      background-color: rgba(0, 184, 148, 0.1);
+      color: var(--dark, #101c1c);
+    }
+    .notfound-img {
+      width: 180px;
+      margin-bottom: 2rem;
+      filter: drop-shadow(0 4px 24px rgba(33,150,243,0.15));
+    }
+    @media (max-width: 600px) {
+      .hero-404 h1 { font-size: 3rem; }
+      .notfound-img { width: 120px; }
+    }
+  </style>
 </head>
-
 <body>
-  <div class="scroll-button">
-    <a href="#about">
-      <i class="fas fa-arrow-up"></i>
-    </a>
-  </div>
-  <section class="about" id="about">
-    <div class="content">
-      <img style="left: 50%; transform: translate(-50%, 0%); position: relative;" height="120px" width="140px" src="/Assets/Images/cat.png">
-      <div class="title">
-        <span>Error 404 - Page Not Found
-        </span>
-      </div>
-      <p style="text-align: center;">
-        The Page You Are Looking For Might Have Been Removed Or Temporarily UnAvailable.
-      </p>
-      <p>Requested Page:
-        <span id="display-path">Not Found</span>
-      </p>
-      <div class="button">
-        <a class="buttons" style="font-size: medium;" onclick="loadPage('home')">Go Home</a>
-        <a class="buttons" style="margin: 5px;" onclick="loadPage('Support')">Contact Form</a>
-      </div>
+  <section class="hero-404">
+    <h1>404</h1>
+    <p>Oops! The page you're looking for doesn't exist.<br>
+      It might have been moved, deleted, or never existed.<br>
+      Let's get you back on track!</p>
+    <div class="cta-buttons">
+      <a href="/" class="btn btn-primary">Go to Homepage</a>
+      <a href="/Support&Contact" class="btn btn-outline">Contact Support</a>
     </div>
   </section>
 </body>
-  {{> footer }} 
-<script>
-  function loadPage(url) {
-    if (url === "home") {
-      location.href = "/";
-    } else if (url === "Support") {
-      location.href =
-        "/Support?template=404&path=" +
-        window.location.pathname.replace(/\//g, "%2F");
-    }
-  }
-</script>
-
-</html>
