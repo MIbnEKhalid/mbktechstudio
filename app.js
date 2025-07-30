@@ -15,7 +15,8 @@ import mbkauthe from 'mbkauthe';
 import { validateSessionAndRole } from 'mbkauthe';
 
 // Import security middleware
-import { securityHeaders, apiRateLimit, apiSecurityHeaders, requestLogger } from './middleware/security.js';
+//import { securityHeaders, apiRateLimit, apiSecurityHeaders, requestLogger } from './middleware/security.js';
+import { apiRateLimit, requestLogger } from './middleware/security.js';
 
 
 const app = express();
@@ -29,9 +30,9 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 app.set('trust proxy', 1);
 
 // Security middleware (applied globally)
-app.use(securityHeaders);
+//app.use(securityHeaders);
 app.use(requestLogger);
-app.use(apiSecurityHeaders);
+//app.use(apiSecurityHeaders);
 
 // Rate limiting and speed control
 app.use(apiRateLimit);

@@ -1,10 +1,11 @@
 import rateLimit from 'express-rate-limit';
-import helmet from 'helmet';
+//import helmet from 'helmet';
 import NodeCache from 'node-cache';
 
 // Initialize cache (TTL: 5 minutes for most endpoints, 1 minute for frequently changing data)
 export const cache = new NodeCache({ stdTTL: 300, checkperiod: 60 });
 
+/*
 // Helmet security middleware with relaxed CSP for development
 export const securityHeaders = helmet({
   contentSecurityPolicy: {
@@ -29,6 +30,7 @@ export const securityHeaders = helmet({
     preload: true
   }
 });
+*/
 
 // Rate limiting for general API endpoints
 export const apiRateLimit = rateLimit({
@@ -120,6 +122,7 @@ export const adminIPWhitelist = (req, res, next) => {
   next();
 };
 
+/*
 // Security headers for API responses
 export const apiSecurityHeaders = (req, res, next) => {
   // Remove sensitive headers
@@ -135,6 +138,7 @@ export const apiSecurityHeaders = (req, res, next) => {
 
   next();
 };
+*/
 
 // Request logging middleware
 export const requestLogger = (req, res, next) => {
@@ -163,12 +167,12 @@ export const requestLogger = (req, res, next) => {
 
 
 export default {
-  securityHeaders,
+//  securityHeaders,
   apiRateLimit,
   formRateLimit,
   ticketSearchRateLimit,
   cacheMiddleware,
   adminIPWhitelist,
-  apiSecurityHeaders,
+//  apiSecurityHeaders,
   requestLogger
 };
