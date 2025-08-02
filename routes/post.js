@@ -1,7 +1,8 @@
 import express from "express";
 import dotenv from "dotenv";
-import { pool } from "../routes/pool.js"; // Import the pool
+import { pool } from "../routes/pool.js";
 import { formRateLimit } from '../middleware/security.js';
+import { validateSubmission } from './admin/spamProtection.js';
 
 dotenv.config();
 
@@ -11,7 +12,7 @@ function generateTicketNumber() {
     return 'T' + Math.floor(Math.random() * 1000000000);
 }
 
-app.post("/SubmitForm", formRateLimit, async (req, res) => {
+app.post("/SubmitForm", formRateLimit, validateSubmission, async (req, res) => {
     console.log("Received request to /SubmitForm with body:", req.body);
     const allowedOrigin = "https://mbktechstudio.com";
     const referer = req.headers.referer;

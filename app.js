@@ -185,6 +185,13 @@ app.use("/post", postRoutes);
 app.use("/api", apiRoutes);
 app.use("/admin", validateSessionAndRole("SuperAdmin"), adminRoutes); // Use admin routes
 
+// Spam protection routes
+import { router as spamProtectionRouter } from './routes/admin/spamProtection.js';
+
+// Add spam protection routes
+app.use('/admin', spamProtectionRouter);
+
+
 app.get('/sitemap.xml', domainRedirect, async (req, res) => {
   try {
     const domain = req.hostname;

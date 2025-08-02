@@ -7,46 +7,162 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        body {
-            background-color: #f8f9fa;
+        :root {
+            --primary-bg: #f8f9fa;
+            --sidebar-bg: #2c3e50;
+            --sidebar-hover: #34495e;
+            --accent-color: #3498db;
+            --text-muted: #95a5a6;
+            --card-border: #e9ecef;
         }
+
+        body {
+            background-color: var(--primary-bg);
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
         .sidebar {
             min-height: 100vh;
-            background-color: #343a40;
+            background-color: var(--sidebar-bg);
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 250px;
+            z-index: 1000;
         }
+
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+
         .sidebar .nav-link {
-            color: #adb5bd;
+            color: #fff;
+            padding: 12px 20px;
+            margin: 4px 0;
+            border-radius: 6px;
+            transition: all 0.3s ease;
         }
+
         .sidebar .nav-link:hover,
         .sidebar .nav-link.active {
+            background-color: var(--sidebar-hover);
             color: #fff;
-            background-color: #495057;
+            transform: translateX(5px);
         }
-        .status-badge {
-            font-size: 0.75rem;
+
+        .sidebar .nav-link i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
         }
-        .priority-badge {
-            font-size: 0.7rem;
+
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
         }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
         .stat-card {
-            border-left: 4px solid;
-            transition: transform 0.2s;
+            border-left: none;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
         }
-        .stat-card:hover {
-            transform: translateY(-2px);
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background-color: currentColor;
         }
-        .loading {
-            display: none;
+
+        .table {
+            border-radius: 8px;
+            overflow: hidden;
         }
-        .table-responsive {
-            max-height: 600px;
+
+        .table thead th {
+            background-color: #f8f9fa;
+            border-bottom: 2px solid var(--card-border);
+            padding: 12px;
         }
-        .audit-trail {
-            max-height: 200px;
-            overflow-y: auto;
+
+        .table tbody td {
+            padding: 12px;
+            vertical-align: middle;
         }
+
+        .status-badge, .priority-badge {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        .btn {
+            border-radius: 6px;
+            padding: 8px 16px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+        }
+
+        .modal-content {
+            border-radius: 12px;
+            border: none;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .navbar {
+            background: linear-gradient(135deg, var(--sidebar-bg), var(--sidebar-hover));
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
         .navbar-brand {
-            font-weight: bold;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        .form-select, .form-control {
+            border-radius: 6px;
+            border: 1px solid var(--card-border);
+            padding: 8px 12px;
+        }
+
+        .audit-trail {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            max-height: 300px;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
         }
     </style>
 </head>
@@ -95,6 +211,11 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="#" onclick="exportData()">
                                     <i class="fas fa-download"></i> Export
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" onclick="showSpamProtection()">
+                                    <i class="fas fa-shield-alt"></i> Spam Protection
                                 </a>
                             </li>
                         </ul>
@@ -234,6 +355,44 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Spam Protection View -->
+                    <div id="spam-protection-view" style="display: none;">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h2><i class="fas fa-shield-alt"></i> Spam Protection</h2>
+                            <button class="btn btn-primary" onclick="showAddBlockedEntryModal()">
+                                <i class="fas fa-plus"></i> Add New Block
+                            </button>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-body">
+                                <ul class="nav nav-tabs" id="blockTypeTabs">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" data-bs-toggle="tab" href="#emails">Blocked Emails</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-bs-toggle="tab" href="#phones">Blocked Phones</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-bs-toggle="tab" href="#keywords">Blocked Keywords</a>
+                                    </li>
+                                </ul>
+
+                                <div class="tab-content mt-3">
+                                    <div class="tab-pane fade show active" id="emails">
+                                        <div id="blocked-emails-table"></div>
+                                    </div>
+                                    <div class="tab-pane fade" id="phones">
+                                        <div id="blocked-phones-table"></div>
+                                    </div>
+                                    <div class="tab-pane fade" id="keywords">
+                                        <div id="blocked-keywords-table"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -258,6 +417,42 @@
         </div>
     </div>
 
+    <!-- Add new modal for blocking entries -->
+    <div class="modal fade" id="addBlockedEntryModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add New Block</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="blockEntryForm">
+                        <div class="mb-3">
+                            <label class="form-label">Block Type</label>
+                            <select class="form-select" id="block-type" required>
+                                <option value="email">Email</option>
+                                <option value="phone">Phone Number</option>
+                                <option value="keyword">Keyword</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Value to Block</label>
+                            <input type="text" class="form-control" id="block-value" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Reason</label>
+                            <textarea class="form-control" id="block-reason" rows="3"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="addBlockedEntry()">Add Block</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Loading Spinner -->
     <div class="loading position-fixed top-50 start-50 translate-middle">
         <div class="spinner-border text-primary" role="status">
@@ -265,6 +460,39 @@
         </div>
     </div>    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+        // Add utility functions at the top of script section
+        function showLoading(show) {
+            const loader = document.querySelector('.loading');
+            if (loader) {
+                loader.style.display = show ? 'block' : 'none';
+            }
+        }
+
+        function showAlert(message, type = 'info') {
+            // Remove existing alerts
+            const existingAlerts = document.querySelectorAll('.alert');
+            existingAlerts.forEach(alert => alert.remove());
+
+            // Create new alert
+            const alertDiv = document.createElement('div');
+            alertDiv.className = `alert alert-${type} alert-dismissible fade show position-fixed top-0 start-50 translate-middle-x`;
+            alertDiv.style.zIndex = '9999';
+            alertDiv.style.marginTop = '20px';
+            alertDiv.innerHTML = `
+                ${message}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            `;
+            document.body.appendChild(alertDiv);
+
+            // Auto-remove after 5 seconds
+            setTimeout(() => {
+                if (alertDiv && alertDiv.parentNode) {
+                    alertDiv.remove();
+                }
+            }, 5000);
+        }
+
+        // Existing code starts here
         let currentPage = 1;
         let currentFilters = {};
         let currentSubmissionId = null;
@@ -280,6 +508,7 @@
         function showDashboard() {
             document.getElementById('dashboard-view').style.display = 'block';
             document.getElementById('submissions-view').style.display = 'none';
+            document.getElementById('spam-protection-view').style.display = 'none';
             updateActiveNav('dashboard');
             loadDashboardData();
         }
@@ -287,6 +516,7 @@
         function showSubmissions(status = 'all') {
             document.getElementById('dashboard-view').style.display = 'none';
             document.getElementById('submissions-view').style.display = 'block';
+            document.getElementById('spam-protection-view').style.display = 'none';
             updateActiveNav('submissions');
             
             // Set filter if status is provided
@@ -296,6 +526,14 @@
             }
             
             loadSubmissions();
+        }
+
+        function showSpamProtection() {
+            document.getElementById('dashboard-view').style.display = 'none';
+            document.getElementById('submissions-view').style.display = 'none';
+            document.getElementById('spam-protection-view').style.display = 'block';
+            updateActiveNav('spam-protection');
+            loadBlockedEntries();
         }
 
         function updateActiveNav(section) {
@@ -676,28 +914,102 @@
             `;
         }
 
-        // Utility functions
-        function showLoading(show) {
-            document.querySelector('.loading').style.display = show ? 'block' : 'none';
+        // Add these new functions for spam protection
+        async function loadBlockedEntries() {
+            try {
+                const response = await fetch('/admin/blocked');
+                if (response.ok) {
+                    const entries = await response.json();
+                    renderBlockedEntries(entries);
+                }
+            } catch (error) {
+                showAlert('Error loading blocked entries', 'danger');
+            }
         }
 
-        function showAlert(message, type = 'info') {
-            // Create and show bootstrap alert
-            const alertDiv = document.createElement('div');
-            alertDiv.className = `alert alert-${type} alert-dismissible fade show position-fixed top-0 start-50 translate-middle-x`;
-            alertDiv.style.zIndex = '9999';
-            alertDiv.innerHTML = `
-                ${message}
-                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-            `;
-            document.body.appendChild(alertDiv);
-            
-            // Auto-remove after 5 seconds
-            setTimeout(() => {
-                if (alertDiv.parentNode) {
-                    alertDiv.parentNode.removeChild(alertDiv);
+        function renderBlockedEntries(entries) {
+            const emails = entries.filter(e => e.type === 'email');
+            const phones = entries.filter(e => e.type === 'phone');
+            const keywords = entries.filter(e => e.type === 'keyword');
+
+            ['emails', 'phones', 'keywords'].forEach(type => {
+                const data = eval(type);
+                document.getElementById(`blocked-${type}-table`).innerHTML = `
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Value</th>
+                                <th>Reason</th>
+                                <th>Added By</th>
+                                <th>Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${data.map(entry => `
+                                <tr>
+                                    <td>${entry.value}</td>
+                                    <td>${entry.reason || '-'}</td>
+                                    <td>${entry.created_by}</td>
+                                    <td>${new Date(entry.created_at).toLocaleDateString()}</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-danger" onclick="removeBlockedEntry(${entry.id})">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                `;
+            });
+        }
+
+        function showAddBlockedEntryModal() {
+            new bootstrap.Modal(document.getElementById('addBlockedEntryModal')).show();
+        }
+
+        async function addBlockedEntry() {
+            const type = document.getElementById('block-type').value;
+            const value = document.getElementById('block-value').value;
+            const reason = document.getElementById('block-reason').value;
+
+            try {
+                const response = await fetch('/admin/blocked', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ type, value, reason })
+                });
+
+                if (response.ok) {
+                    showAlert('Entry blocked successfully', 'success');
+                    bootstrap.Modal.getInstance(document.getElementById('addBlockedEntryModal')).hide();
+                    loadBlockedEntries();
+                } else {
+                    throw new Error('Failed to add block');
                 }
-            }, 5000);
+            } catch (error) {
+                showAlert('Error adding block', 'danger');
+            }
+        }
+
+        async function removeBlockedEntry(id) {
+            if (!confirm('Are you sure you want to remove this block?')) return;
+
+            try {
+                const response = await fetch(`/admin/blocked/${id}`, {
+                    method: 'DELETE'
+                });
+
+                if (response.ok) {
+                    showAlert('Block removed successfully', 'success');
+                    loadBlockedEntries();
+                } else {
+                    throw new Error('Failed to remove block');
+                }
+            } catch (error) {
+                showAlert('Error removing block', 'danger');
+            }
         }
 
         async function updateStatus(id, status) {

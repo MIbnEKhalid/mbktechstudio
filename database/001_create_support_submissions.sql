@@ -79,3 +79,26 @@ INSERT INTO support_submissions (
         )
     )
 );
+
+DROP TABLE IF EXISTS blocked_entries;
+
+CREATE TABLE blocked_entries (
+    id SERIAL PRIMARY KEY,
+    type VARCHAR(20) NOT NULL,
+    value VARCHAR(255) NOT NULL,
+    reason TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    created_by VARCHAR(100),
+    is_active BOOLEAN DEFAULT TRUE,
+    
+    CONSTRAINT valid_block_type CHECK (type IN ('email', 'phone', 'keyword')),
+    CONSTRAINT unique_block UNIQUE (type, value)
+);
+
+CREATE INDEX idx_blocked_entries_type_value ON blocked_entries(type, value);
+CREATE INDEX idx_blocked_entries_is_active ON blocked_entries(is_active);
+
+INSERT INTO blocked_entries (type, value, reason, created_by) VALUES
+('email', 'spam@example.com', 'Known spam account', 'system'),
+('phone', '+1234567890', 'Spam calls', 'system'),
+('keyword', 'casino', 'Gambling content', 'system');
