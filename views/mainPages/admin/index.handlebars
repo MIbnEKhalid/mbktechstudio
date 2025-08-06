@@ -1,76 +1,181 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel - Support Management</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
-            --primary-bg: #f8f9fa;
-            --sidebar-bg: #2c3e50;
-            --sidebar-hover: #34495e;
-            --accent-color: #3498db;
-            --text-muted: #95a5a6;
-            --card-border: #e9ecef;
+            --primary-color: #6366f1;
+            --secondary-color: #8b5cf6;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --info-color: #06b6d4;
+            --dark-color: #1f2937;
+            --light-color: #f8fafc;
+            --border-color: #e5e7eb;
+            --text-primary: #111827;
+            --text-secondary: #6b7280;
+            --sidebar-width: 280px;
+            --header-height: 70px;
+            --border-radius: 0.75rem;
+            --box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --box-shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            background-color: var(--primary-bg);
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--light-color);
+            color: var(--text-primary);
+            line-height: 1.6;
         }
 
-        .sidebar {
-            min-height: 100vh;
-            background-color: var(--sidebar-bg);
-            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+        /* Header */
+        .admin-header {
+            height: var(--header-height);
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            box-shadow: var(--box-shadow);
             position: fixed;
-            width: 250px;
-            z-index: 1000;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1030;
+            display: flex;
+            align-items: center;
+            padding: 0 1.5rem;
         }
 
-        .main-content {
-            margin-left: 250px;
-            padding: 20px;
+        .header-brand {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        .sidebar .nav-link {
-            color: #fff;
-            padding: 12px 20px;
-            margin: 4px 0;
-            border-radius: 6px;
-            transition: all 0.3s ease;
+        .header-actions {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
         }
 
-        .sidebar .nav-link:hover,
-        .sidebar .nav-link.active {
-            background-color: var(--sidebar-hover);
-            color: #fff;
-            transform: translateX(5px);
+        .mobile-menu-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.25rem;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            transition: var(--transition);
+            display: none;
         }
 
-        .sidebar .nav-link i {
-            margin-right: 10px;
-            width: 20px;
+        .mobile-menu-btn:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            top: var(--header-height);
+            left: 0;
+            width: var(--sidebar-width);
+            height: calc(100vh - var(--header-height));
+            background: white;
+            border-right: 1px solid var(--border-color);
+            box-shadow: var(--box-shadow);
+            overflow-y: auto;
+            transition: var(--transition);
+            z-index: 1020;
+        }
+
+        .sidebar-nav {
+            padding: 1.5rem 0;
+        }
+
+        .nav-item {
+            margin: 0.25rem 1rem;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.875rem 1rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-link:hover {
+            background-color: rgba(99, 102, 241, 0.1);
+            color: var(--primary-color);
+        }
+
+        .nav-link.active {
+            background-color: var(--primary-color);
+            color: white;
+            box-shadow: var(--box-shadow);
+        }
+
+        .nav-link i {
+            width: 1.25rem;
             text-align: center;
         }
 
+        /* Main Content */
+        .main-content {
+            margin-left: var(--sidebar-width);
+            margin-top: var(--header-height);
+            padding: 2rem;
+            min-height: calc(100vh - var(--header-height));
+            transition: var(--transition);
+        }
+
+        /* Cards */
         .card {
-            border: none;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            transition: transform 0.2s, box-shadow 0.2s;
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
         }
 
         .card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            box-shadow: var(--box-shadow-lg);
         }
 
+        .card-header {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1.25rem 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        /* Stats Cards */
         .stat-card {
-            border-left: none;
-            border-radius: 10px;
             position: relative;
             overflow: hidden;
         }
@@ -78,489 +183,819 @@
         .stat-card::before {
             content: '';
             position: absolute;
-            left: 0;
             top: 0;
-            bottom: 0;
-            width: 4px;
-            background-color: currentColor;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.025em;
+        }
+
+        .stat-icon {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-size: 2rem;
+            opacity: 0.7;
+        }
+
+        /* Table */
+        .table-container {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
         }
 
         .table {
-            border-radius: 8px;
-            overflow: hidden;
+            margin-bottom: 0;
         }
 
         .table thead th {
-            background-color: #f8f9fa;
-            border-bottom: 2px solid var(--card-border);
-            padding: 12px;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border-bottom: 2px solid var(--border-color);
+            font-weight: 600;
+            color: var(--text-primary);
+            padding: 1rem;
         }
 
         .table tbody td {
-            padding: 12px;
+            padding: 1rem;
             vertical-align: middle;
+            border-bottom: 1px solid var(--border-color);
         }
 
-        .status-badge, .priority-badge {
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-weight: 500;
+        .table tbody tr:hover {
+            background-color: rgba(99, 102, 241, 0.05);
         }
 
+        /* Badges */
+        .badge {
+            padding: 0.375rem 0.75rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border-radius: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.025em;
+        }
+
+        /* Buttons */
         .btn {
-            border-radius: 6px;
-            padding: 8px 16px;
-            font-weight: 500;
-            transition: all 0.2s;
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 0.025em;
+            font-size: 0.875rem;
         }
 
         .btn:hover {
             transform: translateY(-1px);
+            box-shadow: var(--box-shadow);
         }
 
-        .modal-content {
-            border-radius: 12px;
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             border: none;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            color: white;
         }
 
-        .navbar {
-            background: linear-gradient(135deg, var(--sidebar-bg), var(--sidebar-hover));
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        .btn-sm {
+            padding: 0.5rem 1rem;
+            font-size: 0.75rem;
         }
 
-        .navbar-brand {
-            font-size: 1.4rem;
-            font-weight: 600;
+        /* Forms */
+        .form-control,
+        .form-select {
+            border: 2px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: 0.75rem 1rem;
+            transition: var(--transition);
         }
 
-        .form-select, .form-control {
-            border-radius: 6px;
-            border: 1px solid var(--card-border);
-            padding: 8px 12px;
+        .form-control:focus,
+        .form-select:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
         }
 
-        .audit-trail {
-            background-color: #f8f9fa;
-            border-radius: 8px;
-            padding: 15px;
-            max-height: 300px;
+        /* Modal */
+        .modal-content {
+            border: none;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow-lg);
         }
 
-        /* Custom scrollbar */
+        .modal-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-bottom: none;
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
+        }
+
+        /* Loading */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+
+        .spinner {
+            width: 3rem;
+            height: 3rem;
+            border: 4px solid var(--border-color);
+            border-top: 4px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Alert */
+        .alert-toast {
+            position: fixed;
+            top: calc(var(--header-height) + 1rem);
+            right: 1rem;
+            z-index: 9998;
+            min-width: 300px;
+            box-shadow: var(--box-shadow-lg);
+            border: none;
+            border-radius: var(--border-radius);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .sidebar {
+                transform: translateX(-100%);
+                width: 100%;
+                max-width: var(--sidebar-width);
+            }
+
+            .sidebar.show {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 1rem;
+            }
+
+            .header-brand .d-none {
+                display: none !important;
+            }
+
+            .stat-value {
+                font-size: 2rem;
+            }
+
+            .table-responsive {
+                font-size: 0.875rem;
+            }
+
+            .btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.75rem;
+            }
+        }
+
+        /* Sidebar Overlay */
+        .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            z-index: 1010;
+            display: none;
+        }
+
+        .sidebar-overlay.show {
+            display: block;
+        }
+
+        /* Custom Scrollbar */
         ::-webkit-scrollbar {
-            width: 8px;
+            width: 6px;
         }
 
         ::-webkit-scrollbar-track {
-            background: #f1f1f1;
+            background: var(--light-color);
         }
 
         ::-webkit-scrollbar-thumb {
-            background: #888;
-            border-radius: 4px;
+            background: var(--border-color);
+            border-radius: 3px;
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: #555;
+            background: var(--text-secondary);
+        }
+
+        /* Animation */
+        .fade-in {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Status Colors */
+        .text-pending {
+            color: var(--warning-color);
+        }
+
+        .text-in-progress {
+            color: var(--info-color);
+        }
+
+        .text-resolved {
+            color: var(--success-color);
+        }
+
+        .text-closed {
+            color: var(--text-secondary);
+        }
+
+        .text-urgent {
+            color: var(--danger-color);
+        }
+
+        .text-high {
+            color: var(--warning-color);
+        }
+
+        .text-normal {
+            color: var(--info-color);
+        }
+
+        .text-low {
+            color: var(--text-secondary);
+        }
+
+        .bg-pending {
+            background-color: var(--warning-color);
+        }
+
+        .bg-in-progress {
+            background-color: var(--info-color);
+        }
+
+        .bg-resolved {
+            background-color: var(--success-color);
+        }
+
+        .bg-closed {
+            background-color: var(--text-secondary);
+        }
+
+        .bg-urgent {
+            background-color: var(--danger-color);
+        }
+
+        .bg-high {
+            background-color: var(--warning-color);
+        }
+
+        .bg-normal {
+            background-color: var(--info-color);
+        }
+
+        .bg-low {
+            background-color: var(--text-secondary);
         }
     </style>
 </head>
+
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#"><i class="fas fa-shield-alt"></i> Admin Panel</a>
-            <span class="navbar-text">
-                Support Management System
-            </span>
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Header -->
+    <header class="admin-header">
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <i class="fas fa-bars"></i>
+        </button>
+        <a href="#" class="header-brand">
+            <i class="fas fa-shield-alt"></i>
+            <span>Admin Panel</span>
+            <span class="d-none d-md-inline text-white-50 ms-2">/ Support Management</span>
+        </a>
+        <div class="header-actions">
+            <span class="text-white-50 d-none d-sm-inline">Welcome, Admin</span>
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-nav">
+            <div class="nav-item">
+                <a href="#" class="nav-link active" data-section="dashboard">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="#" class="nav-link" data-section="submissions" data-filter="all">
+                    <i class="fas fa-inbox"></i>
+                    <span>All Submissions</span>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="#" class="nav-link" data-section="submissions" data-filter="pending">
+                    <i class="fas fa-clock"></i>
+                    <span>Pending</span>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="#" class="nav-link" data-section="submissions" data-filter="in_progress">
+                    <i class="fas fa-spinner"></i>
+                    <span>In Progress</span>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="#" class="nav-link" data-section="submissions" data-filter="resolved">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Resolved</span>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="#" class="nav-link" data-section="spam-protection">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Spam Protection</span>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="#" class="nav-link" onclick="exportData()">
+                    <i class="fas fa-download"></i>
+                    <span>Export Data</span>
+                </a>
+            </div>
         </div>
     </nav>
 
-    <div class="container-fluid">
-        <div class="row">
-            <!-- Sidebar -->
-            <div class="col-md-2 p-0">
-                <nav class="sidebar">
-                    <div class="p-3">
-                        <ul class="nav flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link active" href="#" onclick="showDashboard()">
-                                    <i class="fas fa-tachometer-alt"></i> Dashboard
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#" onclick="showSubmissions()">
-                                    <i class="fas fa-inbox"></i> All Submissions
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#" onclick="showSubmissions('pending')">
-                                    <i class="fas fa-clock"></i> Pending
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#" onclick="showSubmissions('in_progress')">
-                                    <i class="fas fa-spinner"></i> In Progress
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#" onclick="showSubmissions('resolved')">
-                                    <i class="fas fa-check-circle"></i> Resolved
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#" onclick="exportData()">
-                                    <i class="fas fa-download"></i> Export
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#" onclick="showSpamProtection()">
-                                    <i class="fas fa-shield-alt"></i> Spam Protection
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Dashboard Section -->
+        <section id="dashboard-section" class="content-section">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h1 class="h3 mb-0">
+                    <i class="fas fa-tachometer-alt text-primary me-2"></i>
+                    Dashboard
+                </h1>
+                <button class="btn btn-outline-primary btn-sm" onclick="refreshDashboard()">
+                    <i class="fas fa-sync-alt me-1"></i>
+                    Refresh
+                </button>
             </div>
 
-            <!-- Main Content -->
-            <div class="col-md-10">
-                <div class="p-4">
-                    <!-- Dashboard View -->
-                    <div id="dashboard-view">
-                        <h2><i class="fas fa-tachometer-alt"></i> Dashboard</h2>
-                        <div class="row mb-4" id="stats-container">
-                            <!-- Stats will be loaded here -->
+            <!-- Stats Cards -->
+            <div class="row g-4 mb-4" id="statsContainer">
+                <!-- Stats will be loaded here -->
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fas fa-chart-line me-2"></i>
+                            Recent Activity
                         </div>
-                        
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h5><i class="fas fa-chart-line"></i> Recent Activity</h5>
-                                    </div>
-                                    <div class="card-body">
-                                        <div id="recent-submissions">
-                                            <!-- Recent submissions will be loaded here -->
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h5><i class="fas fa-exclamation-triangle"></i> High Priority Items</h5>
-                                    </div>
-                                    <div class="card-body">
-                                        <div id="high-priority-items">
-                                            <!-- High priority items will be loaded here -->
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="card-body" id="recentActivity">
+                            <!-- Recent activity will be loaded here -->
                         </div>
                     </div>
-
-                    <!-- Submissions View -->
-                    <div id="submissions-view" style="display: none;">
-                        <div class="d-flex justify-content-between align-items-center mb-4">
-                            <h2><i class="fas fa-inbox"></i> <span id="submissions-title">Submissions</span></h2>
-                            <div>
-                                <button class="btn btn-sm btn-outline-primary" onclick="refreshSubmissions()">
-                                    <i class="fas fa-sync-alt"></i> Refresh
-                                </button>
-                                <button class="btn btn-sm btn-success" onclick="exportSubmissions()">
-                                    <i class="fas fa-download"></i> Export
-                                </button>
-                            </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fas fa-exclamation-triangle me-2"></i>
+                            High Priority Items
                         </div>
-
-                        <!-- Filters -->
-                        <div class="card mb-4">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <label for="filter-status" class="form-label">Status</label>
-                                        <select class="form-select" id="filter-status" onchange="applyFilters()">
-                                            <option value="all">All Status</option>
-                                            <option value="pending">Pending</option>
-                                            <option value="in_progress">In Progress</option>
-                                            <option value="resolved">Resolved</option>
-                                            <option value="closed">Closed</option>
-                                            <option value="on_hold">On Hold</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label for="filter-subject" class="form-label">Subject</label>
-                                        <select class="form-select" id="filter-subject" onchange="applyFilters()">
-                                            <option value="all">All Subjects</option>
-                                            <option value="Support">Support</option>
-                                            <option value="Feedback">Feedback</option>
-                                            <option value="Collaboration">Collaboration</option>
-                                            <option value="General Inquiry">General Inquiry</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label for="filter-priority" class="form-label">Priority</label>
-                                        <select class="form-select" id="filter-priority" onchange="applyFilters()">
-                                            <option value="all">All Priorities</option>
-                                            <option value="urgent">Urgent</option>
-                                            <option value="high">High</option>
-                                            <option value="normal">Normal</option>
-                                            <option value="low">Low</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label for="filter-search" class="form-label">Search</label>
-                                        <input type="text" class="form-control" id="filter-search" placeholder="Search..." onkeyup="debounceSearch()">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Submissions Table -->
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th>ID</th>
-                                                <th>Ticket #</th>
-                                                <th>Subject</th>
-                                                <th>Name</th>
-                                                <th>Email</th>
-                                                <th>Status</th>
-                                                <th>Priority</th>
-                                                <th>Date</th>
-                                                <th>Actions</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="submissions-table-body">
-                                            <!-- Table content will be loaded here -->
-                                        </tbody>
-                                    </table>
-                                </div>
-                                
-                                <div class="d-flex justify-content-between align-items-center mt-3">
-                                    <div id="pagination-info">
-                                        <!-- Pagination info will be loaded here -->
-                                    </div>
-                                    <nav>
-                                        <ul class="pagination" id="pagination-controls">
-                                            <!-- Pagination controls will be loaded here -->
-                                        </ul>
-                                    </nav>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Spam Protection View -->
-                    <div id="spam-protection-view" style="display: none;">
-                        <div class="d-flex justify-content-between align-items-center mb-4">
-                            <h2><i class="fas fa-shield-alt"></i> Spam Protection</h2>
-                            <button class="btn btn-primary" onclick="showAddBlockedEntryModal()">
-                                <i class="fas fa-plus"></i> Add New Block
-                            </button>
-                        </div>
-
-                        <div class="card">
-                            <div class="card-body">
-                                <ul class="nav nav-tabs" id="blockTypeTabs">
-                                    <li class="nav-item">
-                                        <a class="nav-link active" data-bs-toggle="tab" href="#emails">Blocked Emails</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" data-bs-toggle="tab" href="#phones">Blocked Phones</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" data-bs-toggle="tab" href="#keywords">Blocked Keywords</a>
-                                    </li>
-                                </ul>
-
-                                <div class="tab-content mt-3">
-                                    <div class="tab-pane fade show active" id="emails">
-                                        <div id="blocked-emails-table"></div>
-                                    </div>
-                                    <div class="tab-pane fade" id="phones">
-                                        <div id="blocked-phones-table"></div>
-                                    </div>
-                                    <div class="tab-pane fade" id="keywords">
-                                        <div id="blocked-keywords-table"></div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="card-body" id="highPriorityItems">
+                            <!-- High priority items will be loaded here -->
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
 
-    <!-- Submission Detail Modal -->
+        <!-- Submissions Section -->
+        <section id="submissions-section" class="content-section" style="display: none;">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-4">
+                <h1 class="h3 mb-2 mb-md-0">
+                    <i class="fas fa-inbox text-primary me-2"></i>
+                    <span id="submissionsTitle">Submissions</span>
+                </h1>
+                <div class="d-flex gap-2">
+                    <button class="btn btn-outline-primary btn-sm" onclick="refreshSubmissions()">
+                        <i class="fas fa-sync-alt me-1"></i>
+                        <span class="d-none d-sm-inline">Refresh</span>
+                    </button>
+                    <button class="btn btn-success btn-sm" onclick="exportSubmissions()">
+                        <i class="fas fa-download me-1"></i>
+                        <span class="d-none d-sm-inline">Export</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Filters -->
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-md-3">
+                            <label class="form-label">Status</label>
+                            <select class="form-select" id="filterStatus">
+                                <option value="all">All Status</option>
+                                <option value="pending">Pending</option>
+                                <option value="in_progress">In Progress</option>
+                                <option value="resolved">Resolved</option>
+                                <option value="closed">Closed</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">Subject</label>
+                            <select class="form-select" id="filterSubject">
+                                <option value="all">All Subjects</option>
+                                <option value="Support">Support</option>
+                                <option value="Feedback">Feedback</option>
+                                <option value="Collaboration">Collaboration</option>
+                                <option value="General Inquiry">General Inquiry</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">Priority</label>
+                            <select class="form-select" id="filterPriority">
+                                <option value="all">All Priorities</option>
+                                <option value="urgent">Urgent</option>
+                                <option value="high">High</option>
+                                <option value="normal">Normal</option>
+                                <option value="low">Low</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">Search</label>
+                            <input type="text" class="form-control" id="filterSearch" placeholder="Search...">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Submissions Table -->
+            <div class="table-container">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="d-none d-md-table-cell">#</th>
+                                <th>Ticket</th>
+                                <th>Subject</th>
+                                <th class="d-none d-lg-table-cell">Contact</th>
+                                <th>Status</th>
+                                <th class="d-none d-lg-table-cell">Priority</th>
+                                <th class="d-none d-md-table-cell">Date</th>
+                                <th width="120">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="submissionsTableBody">
+                            <!-- Table content will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="d-flex flex-column flex-md-row justify-content-between align-items-center p-3 border-top">
+                    <div id="paginationInfo" class="mb-2 mb-md-0 text-muted">
+                        <!-- Pagination info -->
+                    </div>
+                    <nav id="paginationNav">
+                        <!-- Pagination controls -->
+                    </nav>
+                </div>
+            </div>
+        </section>
+
+        <!-- Spam Protection Section -->
+        <section id="spam-protection-section" class="content-section" style="display: none;">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-4">
+                <h1 class="h3 mb-2 mb-md-0">
+                    <i class="fas fa-shield-alt text-primary me-2"></i>
+                    Spam Protection
+                </h1>
+                <button class="btn btn-primary btn-sm" onclick="showAddBlockModal()">
+                    <i class="fas fa-plus me-1"></i>
+                    Add Block
+                </button>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <ul class="nav nav-tabs mb-3" id="blockTabs">
+                        <li class="nav-item">
+                            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#emailsTab">
+                                Blocked Emails
+                            </button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#phonesTab">
+                                Blocked Phones
+                            </button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#keywordsTab">
+                                Blocked Keywords
+                            </button>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="emailsTab">
+                            <div id="blockedEmailsTable"></div>
+                        </div>
+                        <div class="tab-pane fade" id="phonesTab">
+                            <div id="blockedPhonesTable"></div>
+                        </div>
+                        <div class="tab-pane fade" id="keywordsTab">
+                            <div id="blockedKeywordsTable"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Submission Details Modal -->
     <div class="modal fade" id="submissionModal" tabindex="-1">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Submission Details</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    <h5 class="modal-title">
+                        <i class="fas fa-eye me-2"></i>
+                        Submission Details
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
-                <div class="modal-body" id="submission-details">
-                    <!-- Submission details will be loaded here -->
+                <div class="modal-body" id="submissionDetails">
+                    <!-- Details will be loaded here -->
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" onclick="saveSubmissionChanges()">Save Changes</button>
+                    <button type="button" class="btn btn-primary" onclick="saveSubmissionChanges()">
+                        <i class="fas fa-save me-1"></i>
+                        Save Changes
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Add new modal for blocking entries -->
-    <div class="modal fade" id="addBlockedEntryModal">
+    <!-- Add Block Modal -->
+    <div class="modal fade" id="addBlockModal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Add New Block</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    <h5 class="modal-title">
+                        <i class="fas fa-plus me-2"></i>
+                        Add New Block
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="blockEntryForm">
+                    <form id="addBlockForm">
                         <div class="mb-3">
                             <label class="form-label">Block Type</label>
-                            <select class="form-select" id="block-type" required>
-                                <option value="email">Email</option>
+                            <select class="form-select" id="blockType" required>
+                                <option value="email">Email Address</option>
                                 <option value="phone">Phone Number</option>
                                 <option value="keyword">Keyword</option>
                             </select>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Value to Block</label>
-                            <input type="text" class="form-control" id="block-value" required>
+                            <input type="text" class="form-control" id="blockValue" required>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Reason</label>
-                            <textarea class="form-control" id="block-reason" rows="3"></textarea>
+                            <label class="form-label">Reason (Optional)</label>
+                            <textarea class="form-control" id="blockReason" rows="3" placeholder="Why is this being blocked?"></textarea>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" onclick="addBlockedEntry()">Add Block</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" onclick="addBlock()">
+                        <i class="fas fa-shield-alt me-1"></i>
+                        Add Block
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Loading Spinner -->
-    <div class="loading position-fixed top-50 start-50 translate-middle">
-        <div class="spinner-border text-primary" role="status">
-            <span class="visually-hidden">Loading...</span>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay" style="display: none;">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 9999; margin-top: calc(var(--header-height) + 1rem);">
+        <div id="alertToast" class="toast" role="alert">
+            <div class="toast-header">
+                <i class="fas fa-info-circle text-primary me-2"></i>
+                <strong class="me-auto">Notification</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+            </div>
+            <div class="toast-body">
+                <!-- Toast message will be set here -->
+            </div>
         </div>
-    </div>    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Add utility functions at the top of script section
-        function showLoading(show) {
-            const loader = document.querySelector('.loading');
-            if (loader) {
-                loader.style.display = show ? 'block' : 'none';
-            }
-        }
-
-        function showAlert(message, type = 'info') {
-            // Remove existing alerts
-            const existingAlerts = document.querySelectorAll('.alert');
-            existingAlerts.forEach(alert => alert.remove());
-
-            // Create new alert
-            const alertDiv = document.createElement('div');
-            alertDiv.className = `alert alert-${type} alert-dismissible fade show position-fixed top-0 start-50 translate-middle-x`;
-            alertDiv.style.zIndex = '9999';
-            alertDiv.style.marginTop = '20px';
-            alertDiv.innerHTML = `
-                ${message}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            `;
-            document.body.appendChild(alertDiv);
-
-            // Auto-remove after 5 seconds
-            setTimeout(() => {
-                if (alertDiv && alertDiv.parentNode) {
-                    alertDiv.remove();
-                }
-            }, 5000);
-        }
-
-        // Existing code starts here
+        // Global variables
         let currentPage = 1;
         let currentFilters = {};
         let currentSubmissionId = null;
-        let searchTimeout = null;        // Authentication token - Get from server or config
-        const AUTH_TOKEN = '{{adminToken}}' || 'test-token'; // Will be replaced by server
+        let searchTimeout = null;
 
-        // Initialize the page
+        // Initialize app
         document.addEventListener('DOMContentLoaded', function() {
-            showDashboard();
+            initializeApp();
         });
 
+        function initializeApp() {
+            setupEventListeners();
+            showSection('dashboard');
+        }
+
+        function setupEventListeners() {
+            // Mobile menu toggle
+            document.getElementById('mobileMenuBtn').addEventListener('click', toggleSidebar);
+            document.getElementById('sidebarOverlay').addEventListener('click', closeSidebar);
+
+            // Navigation links
+            document.querySelectorAll('.nav-link[data-section]').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const section = link.dataset.section;
+                    const filter = link.dataset.filter;
+                    showSection(section, filter);
+                    setActiveNav(link);
+                    closeSidebar();
+                });
+            });
+
+            // Filters
+            ['filterStatus', 'filterSubject', 'filterPriority'].forEach(id => {
+                document.getElementById(id).addEventListener('change', applyFilters);
+            });
+
+            document.getElementById('filterSearch').addEventListener('input', debounceSearch);
+        }
+
         // Navigation functions
-        function showDashboard() {
-            document.getElementById('dashboard-view').style.display = 'block';
-            document.getElementById('submissions-view').style.display = 'none';
-            document.getElementById('spam-protection-view').style.display = 'none';
-            updateActiveNav('dashboard');
-            loadDashboardData();
-        }
+        function showSection(section, filter = null) {
+            // Hide all sections
+            document.querySelectorAll('.content-section').forEach(sec => {
+                sec.style.display = 'none';
+            });
 
-        function showSubmissions(status = 'all') {
-            document.getElementById('dashboard-view').style.display = 'none';
-            document.getElementById('submissions-view').style.display = 'block';
-            document.getElementById('spam-protection-view').style.display = 'none';
-            updateActiveNav('submissions');
-            
-            // Set filter if status is provided
-            if (status !== 'all') {
-                document.getElementById('filter-status').value = status;
-                currentFilters.status = status;
+            // Show selected section
+            document.getElementById(`${section}-section`).style.display = 'block';
+
+            // Load section data
+            switch(section) {
+                case 'dashboard':
+                    loadDashboard();
+                    break;
+                case 'submissions':
+                    if (filter && filter !== 'all') {
+                        document.getElementById('filterStatus').value = filter;
+                        currentFilters.status = filter;
+                    }
+                    loadSubmissions();
+                    break;
+                case 'spam-protection':
+                    loadSpamProtection();
+                    break;
             }
-            
-            loadSubmissions();
         }
 
-        function showSpamProtection() {
-            document.getElementById('dashboard-view').style.display = 'none';
-            document.getElementById('submissions-view').style.display = 'none';
-            document.getElementById('spam-protection-view').style.display = 'block';
-            updateActiveNav('spam-protection');
-            loadBlockedEntries();
-        }
-
-        function updateActiveNav(section) {
+        function setActiveNav(activeLink) {
             document.querySelectorAll('.nav-link').forEach(link => {
                 link.classList.remove('active');
             });
+            activeLink.classList.add('active');
+        }
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            
+            sidebar.classList.toggle('show');
+            overlay.classList.toggle('show');
+        }
+
+        function closeSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            
+            sidebar.classList.remove('show');
+            overlay.classList.remove('show');
+        }
+
+        // Utility functions
+        function showLoading(show = true) {
+            document.getElementById('loadingOverlay').style.display = show ? 'flex' : 'none';
+        }
+
+        function showToast(message, type = 'info') {
+            const toast = document.getElementById('alertToast');
+            const toastBody = toast.querySelector('.toast-body');
+            const toastIcon = toast.querySelector('.toast-header i');
+            
+            toastBody.textContent = message;
+            
+            // Update icon and color based on type
+            const icons = {
+                success: 'fas fa-check-circle text-success',
+                error: 'fas fa-exclamation-circle text-danger',
+                warning: 'fas fa-exclamation-triangle text-warning',
+                info: 'fas fa-info-circle text-primary'
+            };
+            
+            toastIcon.className = icons[type] + ' me-2';
+            
+            const bsToast = new bootstrap.Toast(toast);
+            bsToast.show();
         }
 
         // Dashboard functions
-        async function loadDashboardData() {
+        async function loadDashboard() {
             try {
                 showLoading(true);
-                  // Load stats
-                const statsResponse = await fetch('/admin/dashboard/stats');
                 
+                // Load stats
+                const statsResponse = await fetch('/admin/dashboard/stats');
                 if (statsResponse.ok) {
                     const stats = await statsResponse.json();
                     renderStats(stats);
-                }                // Load recent submissions (limit 10)
+                }
+
+                // Load recent activity
                 const recentResponse = await fetch('/admin/submissions?limit=10&sortBy=submission_timestamp&sortOrder=DESC');
-                
                 if (recentResponse.ok) {
                     const data = await recentResponse.json();
                     renderRecentActivity(data.submissions);
-                }                // Load high priority items
+                }
+
+                // Load high priority items
                 const priorityResponse = await fetch('/admin/submissions?priority=urgent,high&limit=10');
-                
                 if (priorityResponse.ok) {
                     const data = await priorityResponse.json();
                     renderHighPriorityItems(data.submissions);
@@ -568,72 +1003,48 @@
 
             } catch (error) {
                 console.error('Error loading dashboard:', error);
-                showAlert('Error loading dashboard data', 'danger');
+                showToast('Error loading dashboard data', 'error');
             } finally {
                 showLoading(false);
             }
         }
 
         function renderStats(stats) {
-            const statsContainer = document.getElementById('stats-container');
-            statsContainer.innerHTML = `
-                <div class="col-md-3">
-                    <div class="card stat-card" style="border-left-color: #007bff;">
+            const container = document.getElementById('statsContainer');
+            container.innerHTML = `
+                <div class="col-sm-6 col-xl-3">
+                    <div class="card stat-card">
                         <div class="card-body">
-                            <div class="d-flex justify-content-between">
-                                <div>
-                                    <h6 class="card-title text-muted">Total Submissions</h6>
-                                    <h2 class="text-primary">${stats.total_submissions}</h2>
-                                </div>
-                                <div class="align-self-center">
-                                    <i class="fas fa-inbox fa-2x text-primary"></i>
-                                </div>
-                            </div>
+                            <div class="stat-value text-primary">${stats.total_submissions || 0}</div>
+                            <div class="stat-label">Total Submissions</div>
+                            <i class="fas fa-inbox stat-icon text-primary"></i>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <div class="card stat-card" style="border-left-color: #ffc107;">
+                <div class="col-sm-6 col-xl-3">
+                    <div class="card stat-card">
                         <div class="card-body">
-                            <div class="d-flex justify-content-between">
-                                <div>
-                                    <h6 class="card-title text-muted">Pending</h6>
-                                    <h2 class="text-warning">${stats.pending_count}</h2>
-                                </div>
-                                <div class="align-self-center">
-                                    <i class="fas fa-clock fa-2x text-warning"></i>
-                                </div>
-                            </div>
+                            <div class="stat-value text-warning">${stats.pending_count || 0}</div>
+                            <div class="stat-label">Pending</div>
+                            <i class="fas fa-clock stat-icon text-warning"></i>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <div class="card stat-card" style="border-left-color: #28a745;">
+                <div class="col-sm-6 col-xl-3">
+                    <div class="card stat-card">
                         <div class="card-body">
-                            <div class="d-flex justify-content-between">
-                                <div>
-                                    <h6 class="card-title text-muted">Resolved</h6>
-                                    <h2 class="text-success">${stats.resolved_count}</h2>
-                                </div>
-                                <div class="align-self-center">
-                                    <i class="fas fa-check-circle fa-2x text-success"></i>
-                                </div>
-                            </div>
+                            <div class="stat-value text-success">${stats.resolved_count || 0}</div>
+                            <div class="stat-label">Resolved</div>
+                            <i class="fas fa-check-circle stat-icon text-success"></i>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <div class="card stat-card" style="border-left-color: #dc3545;">
+                <div class="col-sm-6 col-xl-3">
+                    <div class="card stat-card">
                         <div class="card-body">
-                            <div class="d-flex justify-content-between">
-                                <div>
-                                    <h6 class="card-title text-muted">Urgent</h6>
-                                    <h2 class="text-danger">${stats.urgent_count}</h2>
-                                </div>
-                                <div class="align-self-center">
-                                    <i class="fas fa-exclamation-triangle fa-2x text-danger"></i>
-                                </div>
-                            </div>
+                            <div class="stat-value text-danger">${stats.urgent_count || 0}</div>
+                            <div class="stat-label">Urgent</div>
+                            <i class="fas fa-exclamation-triangle stat-icon text-danger"></i>
                         </div>
                     </div>
                 </div>
@@ -641,17 +1052,19 @@
         }
 
         function renderRecentActivity(submissions) {
-            const container = document.getElementById('recent-submissions');
-            if (submissions.length === 0) {
-                container.innerHTML = '<p class="text-muted">No recent submissions</p>';
+            const container = document.getElementById('recentActivity');
+            
+            if (!submissions || submissions.length === 0) {
+                container.innerHTML = '<p class="text-muted mb-0">No recent submissions</p>';
                 return;
             }
-            
+
             container.innerHTML = submissions.map(submission => `
-                <div class="d-flex justify-content-between align-items-center mb-2 p-2 border-bottom">
+                <div class="d-flex justify-content-between align-items-center py-2 border-bottom">
                     <div>
-                        <strong>${submission.name}</strong> - ${submission.subject}
-                        <br><small class="text-muted">${new Date(submission.submission_timestamp).toLocaleString()}</small>
+                        <div class="fw-semibold">${submission.name}</div>
+                        <div class="text-muted small">${submission.subject}</div>
+                        <div class="text-muted small">${new Date(submission.submission_timestamp).toLocaleString()}</div>
                     </div>
                     <span class="badge bg-${getStatusColor(submission.status)}">${submission.status}</span>
                 </div>
@@ -659,76 +1072,44 @@
         }
 
         function renderHighPriorityItems(submissions) {
-            const container = document.getElementById('high-priority-items');
-            if (submissions.length === 0) {
-                container.innerHTML = '<p class="text-muted">No high priority items</p>';
+            const container = document.getElementById('highPriorityItems');
+            
+            if (!submissions || submissions.length === 0) {
+                container.innerHTML = '<p class="text-muted mb-0">No high priority items</p>';
                 return;
             }
-            
+
             container.innerHTML = submissions.map(submission => `
-                <div class="d-flex justify-content-between align-items-center mb-2 p-2 border-bottom">
+                <div class="d-flex justify-content-between align-items-center py-2 border-bottom">
                     <div>
-                        <strong>${submission.name}</strong> - ${submission.subject}
-                        <br><small class="text-muted">${submission.ticket_number || 'No ticket'}</small>
+                        <div class="fw-semibold">${submission.name}</div>
+                        <div class="text-muted small">${submission.subject}</div>
+                        <div class="text-muted small">Ticket: ${submission.ticket_number || 'N/A'}</div>
                     </div>
                     <div class="text-end">
-                        <span class="badge bg-${getPriorityColor(submission.priority)} mb-1">${submission.priority}</span>
-                        <br><span class="badge bg-${getStatusColor(submission.status)}">${submission.status}</span>
+                        <div class="badge bg-${getPriorityColor(submission.priority)} mb-1">${submission.priority}</div>
+                        <div class="badge bg-${getStatusColor(submission.status)}">${submission.status}</div>
                     </div>
                 </div>
             `).join('');
         }
 
-        function renderPagination(pagination) {
-            const paginationInfo = document.getElementById('pagination-info');
-            const paginationControls = document.getElementById('pagination-controls');
-            
-            // Update info
-            const start = (pagination.currentPage - 1) * pagination.limit + 1;
-            const end = Math.min(pagination.currentPage * pagination.limit, pagination.totalCount);
-            paginationInfo.innerHTML = `Showing ${start}-${end} of ${pagination.totalCount} submissions`;
-            
-            // Update controls
-            let controls = '';
-            
-            // Previous button
-            if (pagination.currentPage > 1) {
-                controls += `<li class="page-item"><a class="page-link" href="#" onclick="loadSubmissions(${pagination.currentPage - 1})">Previous</a></li>`;
-            } else {
-                controls += `<li class="page-item disabled"><span class="page-link">Previous</span></li>`;
-            }
-            
-            // Page numbers
-            const startPage = Math.max(1, pagination.currentPage - 2);
-            const endPage = Math.min(pagination.totalPages, pagination.currentPage + 2);
-            
-            for (let i = startPage; i <= endPage; i++) {
-                if (i === pagination.currentPage) {
-                    controls += `<li class="page-item active"><span class="page-link">${i}</span></li>`;
-                } else {
-                    controls += `<li class="page-item"><a class="page-link" href="#" onclick="loadSubmissions(${i})">${i}</a></li>`;
-                }
-            }
-            
-            // Next button
-            if (pagination.currentPage < pagination.totalPages) {
-                controls += `<li class="page-item"><a class="page-link" href="#" onclick="loadSubmissions(${pagination.currentPage + 1})">Next</a></li>`;
-            } else {
-                controls += `<li class="page-item disabled"><span class="page-link">Next</span></li>`;
-            }
-            
-            paginationControls.innerHTML = controls;
+        function refreshDashboard() {
+            loadDashboard();
         }
+
+        // Submissions functions
         async function loadSubmissions(page = 1) {
             try {
                 showLoading(true);
-                
+
                 const params = new URLSearchParams({
                     page: page,
-                    limit: 50,
+                    limit: 20,
                     ...currentFilters
-                });                const response = await fetch(`/admin/submissions?${params}`);
+                });
 
+                const response = await fetch(`/admin/submissions?${params}`);
                 if (response.ok) {
                     const data = await response.json();
                     renderSubmissionsTable(data.submissions);
@@ -740,64 +1121,114 @@
 
             } catch (error) {
                 console.error('Error loading submissions:', error);
-                showAlert('Error loading submissions', 'danger');
+                showToast('Error loading submissions', 'error');
             } finally {
                 showLoading(false);
             }
         }
 
         function renderSubmissionsTable(submissions) {
-            const tbody = document.getElementById('submissions-table-body');
+            const tbody = document.getElementById('submissionsTableBody');
+            
+            if (!submissions || submissions.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="8" class="text-center text-muted py-4">
+                            <i class="fas fa-inbox fa-2x mb-2"></i>
+                            <div>No submissions found</div>
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
             tbody.innerHTML = submissions.map(submission => `
                 <tr>
-                    <td>${submission.id}</td>
-                    <td>${submission.ticket_number || '-'}</td>
-                    <td>${submission.subject}</td>
-                    <td>${submission.name}</td>
-                    <td>${submission.email}</td>
-                    <td><span class="badge bg-${getStatusColor(submission.status)} status-badge">${submission.status}</span></td>
-                    <td><span class="badge bg-${getPriorityColor(submission.priority)} priority-badge">${submission.priority}</span></td>
-                    <td>${new Date(submission.submission_timestamp).toLocaleDateString()}</td>
+                    <td class="d-none d-md-table-cell">${submission.id}</td>
                     <td>
-                        <button class="btn btn-sm btn-outline-primary" onclick="viewSubmission(${submission.id})">
-                            <i class="fas fa-eye"></i>
-                        </button>
-                        <button class="btn btn-sm btn-outline-success" onclick="updateStatus(${submission.id}, 'resolved')">
-                            <i class="fas fa-check"></i>
-                        </button>
+                        <span class="fw-semibold">${submission.ticket_number || '-'}</span>
+                    </td>
+                    <td>
+                        <div class="fw-semibold">${truncateText(submission.subject, 30)}</div>
+                        <div class="text-muted small d-lg-none">${submission.name}</div>
+                    </td>
+                    <td class="d-none d-lg-table-cell">
+                        <div>${submission.name}</div>
+                        <div class="text-muted small">${submission.email}</div>
+                    </td>
+                    <td>
+                        <span class="badge bg-${getStatusColor(submission.status)}">${submission.status.replace('_', ' ')}</span>
+                    </td>
+                    <td class="d-none d-lg-table-cell">
+                        <span class="badge bg-${getPriorityColor(submission.priority)}">${submission.priority}</span>
+                    </td>
+                    <td class="d-none d-md-table-cell">
+                        <div class="small">${new Date(submission.submission_timestamp).toLocaleDateString()}</div>
+                    </td>
+                    <td>
+                        <div class="btn-group btn-group-sm">
+                            <button class="btn btn-outline-primary" onclick="viewSubmission(${submission.id})" title="View Details">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            <button class="btn btn-outline-success" onclick="updateStatus(${submission.id}, 'resolved')" title="Mark Resolved">
+                                <i class="fas fa-check"></i>
+                            </button>
+                        </div>
                     </td>
                 </tr>
             `).join('');
         }
 
-        function getStatusColor(status) {
-            const colors = {
-                'pending': 'warning',
-                'in_progress': 'info',
-                'resolved': 'success',
-                'closed': 'secondary',
-                'on_hold': 'dark'
-            };
-            return colors[status] || 'secondary';
+        function renderPagination(pagination) {
+            const info = document.getElementById('paginationInfo');
+            const nav = document.getElementById('paginationNav');
+
+            if (!pagination) return;
+
+            // Update info
+            const start = (pagination.currentPage - 1) * pagination.limit + 1;
+            const end = Math.min(pagination.currentPage * pagination.limit, pagination.totalCount);
+            info.textContent = `Showing ${start}-${end} of ${pagination.totalCount} submissions`;
+
+            // Update navigation
+            if (pagination.totalPages <= 1) {
+                nav.innerHTML = '';
+                return;
+            }
+
+            let html = '<ul class="pagination pagination-sm mb-0">';
+
+            // Previous button
+            if (pagination.currentPage > 1) {
+                html += `<li class="page-item"><a class="page-link" href="#" onclick="loadSubmissions(${pagination.currentPage - 1})">Previous</a></li>`;
+            }
+
+            // Page numbers
+            const startPage = Math.max(1, pagination.currentPage - 2);
+            const endPage = Math.min(pagination.totalPages, pagination.currentPage + 2);
+
+            for (let i = startPage; i <= endPage; i++) {
+                const active = i === pagination.currentPage ? 'active' : '';
+                html += `<li class="page-item ${active}">
+                    <a class="page-link" href="#" onclick="loadSubmissions(${i})">${i}</a>
+                </li>`;
+            }
+
+            // Next button
+            if (pagination.currentPage < pagination.totalPages) {
+                html += `<li class="page-item"><a class="page-link" href="#" onclick="loadSubmissions(${pagination.currentPage + 1})">Next</a></li>`;
+            }
+
+            html += '</ul>';
+            nav.innerHTML = html;
         }
 
-        function getPriorityColor(priority) {
-            const colors = {
-                'urgent': 'danger',
-                'high': 'warning',
-                'normal': 'primary',
-                'low': 'secondary'
-            };
-            return colors[priority] || 'secondary';
-        }
-
-        // Filter functions
         function applyFilters() {
             currentFilters = {
-                status: document.getElementById('filter-status').value,
-                subject: document.getElementById('filter-subject').value,
-                priority: document.getElementById('filter-priority').value,
-                search: document.getElementById('filter-search').value
+                status: document.getElementById('filterStatus').value,
+                subject: document.getElementById('filterSubject').value,
+                priority: document.getElementById('filterPriority').value,
+                search: document.getElementById('filterSearch').value
             };
 
             // Remove 'all' values
@@ -817,280 +1248,15 @@
             }, 500);
         }
 
-        // Modal functions
-        async function viewSubmission(id) {
-            try {                const response = await fetch(`/admin/submissions/${id}`);
-
-                if (response.ok) {
-                    const submission = await response.json();
-                    renderSubmissionDetails(submission);
-                    currentSubmissionId = id;
-                    new bootstrap.Modal(document.getElementById('submissionModal')).show();
-                } else {
-                    throw new Error('Failed to load submission details');
-                }
-
-            } catch (error) {
-                console.error('Error loading submission details:', error);
-                showAlert('Error loading submission details', 'danger');
-            }
-        }
-
-        function renderSubmissionDetails(submission) {
-            const detailsContainer = document.getElementById('submission-details');
-            detailsContainer.innerHTML = `
-                <div class="row">
-                    <div class="col-md-6">
-                        <h6>Basic Information</h6>
-                        <p><strong>ID:</strong> ${submission.id}</p>
-                        <p><strong>Ticket Number:</strong> ${submission.ticket_number || 'N/A'}</p>
-                        <p><strong>Subject:</strong> ${submission.subject}</p>
-                        <p><strong>Support Type:</strong> ${submission.support_type || 'N/A'}</p>
-                        <p><strong>Name:</strong> ${submission.name}</p>
-                        <p><strong>Email:</strong> ${submission.email}</p>
-                        <p><strong>Phone:</strong> ${submission.phone_number || 'N/A'}</p>
-                        <p><strong>Rating:</strong> ${submission.rating ? '★'.repeat(submission.rating) : 'N/A'}</p>
-                    </div>
-                    <div class="col-md-6">
-                        <h6>Status & Management</h6>
-                        <div class="mb-3">
-                            <label class="form-label">Status</label>
-                            <select class="form-select" id="modal-status">
-                                <option value="pending" ${submission.status === 'pending' ? 'selected' : ''}>Pending</option>
-                                <option value="in_progress" ${submission.status === 'in_progress' ? 'selected' : ''}>In Progress</option>
-                                <option value="resolved" ${submission.status === 'resolved' ? 'selected' : ''}>Resolved</option>
-                                <option value="closed" ${submission.status === 'closed' ? 'selected' : ''}>Closed</option>
-                                <option value="on_hold" ${submission.status === 'on_hold' ? 'selected' : ''}>On Hold</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Priority</label>
-                            <select class="form-select" id="modal-priority">
-                                <option value="low" ${submission.priority === 'low' ? 'selected' : ''}>Low</option>
-                                <option value="normal" ${submission.priority === 'normal' ? 'selected' : ''}>Normal</option>
-                                <option value="high" ${submission.priority === 'high' ? 'selected' : ''}>High</option>
-                                <option value="urgent" ${submission.priority === 'urgent' ? 'selected' : ''}>Urgent</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Assigned To</label>
-                            <input type="text" class="form-control" id="modal-assigned" value="${submission.assigned_to || ''}" placeholder="Enter assignee name">
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="row mt-3">
-                    <div class="col-12">
-                        <h6>Message</h6>
-                        <div class="bg-light p-3 rounded">${submission.message}</div>
-                    </div>
-                </div>
-
-                <div class="row mt-3">
-                    <div class="col-md-6">
-                        <h6>Admin Notes</h6>
-                        <textarea class="form-control" id="modal-admin-notes" rows="3" placeholder="Add admin notes...">${submission.admin_notes || ''}</textarea>
-                    </div>
-                    <div class="col-md-6">
-                        <h6>Resolution Notes</h6>
-                        <textarea class="form-control" id="modal-resolution-notes" rows="3" placeholder="Add resolution notes...">${submission.resolution_notes || ''}</textarea>
-                    </div>
-                </div>
-
-                <div class="row mt-3">
-                    <div class="col-12">
-                        <h6>Audit Trail</h6>
-                        <div class="audit-trail bg-light p-3 rounded">
-                            ${submission.audit_trail ? submission.audit_trail.map(entry => `
-                                <div class="mb-2">
-                                    <small class="text-muted">${new Date(entry.timestamp).toLocaleString()}</small>
-                                    <strong>${entry.action}</strong>
-                                    ${entry.notes ? `<br><em>${entry.notes}</em>` : ''}
-                                </div>
-                            `).join('') : 'No audit trail available'}
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-
-        // Add these new functions for spam protection
-        async function loadBlockedEntries() {
-            try {
-                const response = await fetch('/admin/blocked');
-                if (response.ok) {
-                    const entries = await response.json();
-                    renderBlockedEntries(entries);
-                }
-            } catch (error) {
-                showAlert('Error loading blocked entries', 'danger');
-            }
-        }
-
-        function renderBlockedEntries(entries) {
-            const emails = entries.filter(e => e.type === 'email');
-            const phones = entries.filter(e => e.type === 'phone');
-            const keywords = entries.filter(e => e.type === 'keyword');
-
-            ['emails', 'phones', 'keywords'].forEach(type => {
-                const data = eval(type);
-                document.getElementById(`blocked-${type}-table`).innerHTML = `
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Value</th>
-                                <th>Reason</th>
-                                <th>Added By</th>
-                                <th>Date</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            ${data.map(entry => `
-                                <tr>
-                                    <td>${entry.value}</td>
-                                    <td>${entry.reason || '-'}</td>
-                                    <td>${entry.created_by}</td>
-                                    <td>${new Date(entry.created_at).toLocaleDateString()}</td>
-                                    <td>
-                                        <button class="btn btn-sm btn-danger" onclick="removeBlockedEntry(${entry.id})">
-                                            <i class="fas fa-trash"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                            `).join('')}
-                        </tbody>
-                    </table>
-                `;
-            });
-        }
-
-        function showAddBlockedEntryModal() {
-            new bootstrap.Modal(document.getElementById('addBlockedEntryModal')).show();
-        }
-
-        async function addBlockedEntry() {
-            const type = document.getElementById('block-type').value;
-            const value = document.getElementById('block-value').value;
-            const reason = document.getElementById('block-reason').value;
-
-            try {
-                const response = await fetch('/admin/blocked', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ type, value, reason })
-                });
-
-                if (response.ok) {
-                    showAlert('Entry blocked successfully', 'success');
-                    bootstrap.Modal.getInstance(document.getElementById('addBlockedEntryModal')).hide();
-                    loadBlockedEntries();
-                } else {
-                    throw new Error('Failed to add block');
-                }
-            } catch (error) {
-                showAlert('Error adding block', 'danger');
-            }
-        }
-
-        async function removeBlockedEntry(id) {
-            if (!confirm('Are you sure you want to remove this block?')) return;
-
-            try {
-                const response = await fetch(`/admin/blocked/${id}`, {
-                    method: 'DELETE'
-                });
-
-                if (response.ok) {
-                    showAlert('Block removed successfully', 'success');
-                    loadBlockedEntries();
-                } else {
-                    throw new Error('Failed to remove block');
-                }
-            } catch (error) {
-                showAlert('Error removing block', 'danger');
-            }
-        }
-
-        async function updateStatus(id, status) {
-            try {                const response = await fetch(`/admin/submissions/${id}/status`, {
-                    method: 'PATCH',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ status })
-                });
-
-                if (response.ok) {
-                    showAlert(`Status updated to ${status}`, 'success');
-                    loadSubmissions(currentPage);
-                } else {
-                    throw new Error('Failed to update status');
-                }
-            } catch (error) {
-                console.error('Error updating status:', error);
-                showAlert('Error updating status', 'danger');
-            }
-        }
-
-        async function saveSubmissionChanges() {
-            if (!currentSubmissionId) return;
-
-            try {
-                const status = document.getElementById('modal-status').value;
-                const priority = document.getElementById('modal-priority').value;
-                const assignedTo = document.getElementById('modal-assigned').value;
-                const adminNotes = document.getElementById('modal-admin-notes').value;
-                const resolutionNotes = document.getElementById('modal-resolution-notes').value;                // Update status
-                const statusResponse = await fetch(`/admin/submissions/${currentSubmissionId}/status`, {
-                    method: 'PATCH',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ status, adminNotes, assignedTo })
-                });
-
-                // Update priority
-                const priorityResponse = await fetch(`/admin/submissions/${currentSubmissionId}/priority`, {
-                    method: 'PATCH',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ priority })
-                });
-
-                // Add resolution notes if provided
-                if (resolutionNotes && status === 'resolved') {                    await fetch(`/admin/submissions/${currentSubmissionId}/resolve`, {
-                        method: 'PATCH',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({ resolutionNotes })
-                    });
-                }
-
-                if (statusResponse.ok && priorityResponse.ok) {
-                    showAlert('Submission updated successfully', 'success');
-                    bootstrap.Modal.getInstance(document.getElementById('submissionModal')).hide();
-                    loadSubmissions(currentPage);
-                } else {
-                    throw new Error('Failed to update submission');
-                }
-
-            } catch (error) {
-                console.error('Error saving changes:', error);
-                showAlert('Error saving changes', 'danger');
-            }
-        }
-
         function refreshSubmissions() {
             loadSubmissions(currentPage);
         }
 
         async function exportSubmissions() {
             try {
-                const params = new URLSearchParams(currentFilters);                const response = await fetch(`/admin/export/csv?${params}`);
-
+                const params = new URLSearchParams(currentFilters);
+                const response = await fetch(`/admin/export/csv?${params}`);
+                
                 if (response.ok) {
                     const blob = await response.blob();
                     const url = window.URL.createObjectURL(blob);
@@ -1101,14 +1267,346 @@
                     a.click();
                     window.URL.revokeObjectURL(url);
                     document.body.removeChild(a);
-                    showAlert('Export completed', 'success');
+                    showToast('Export completed successfully', 'success');
                 } else {
-                    throw new Error('Failed to export data');
+                    throw new Error('Failed to export');
                 }
             } catch (error) {
-                console.error('Error exporting data:', error);
-                showAlert('Error exporting data', 'danger');
+                console.error('Export error:', error);
+                showToast('Error exporting data', 'error');
             }
+        }
+
+        // Modal functions
+        async function viewSubmission(id) {
+            try {
+                showLoading(true);
+                const response = await fetch(`/admin/submissions/${id}`);
+                
+                if (response.ok) {
+                    const submission = await response.json();
+                    renderSubmissionDetails(submission);
+                    currentSubmissionId = id;
+                    new bootstrap.Modal(document.getElementById('submissionModal')).show();
+                } else {
+                    throw new Error('Failed to load submission');
+                }
+            } catch (error) {
+                console.error('Error loading submission:', error);
+                showToast('Error loading submission details', 'error');
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        function renderSubmissionDetails(submission) {
+            document.getElementById('submissionDetails').innerHTML = `
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="mb-0">Basic Information</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <label class="form-label">ID</label>
+                                    <input type="text" class="form-control" value="${submission.id}" readonly>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Ticket Number</label>
+                                    <input type="text" class="form-control" value="${submission.ticket_number || 'N/A'}" readonly>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Subject</label>
+                                    <input type="text" class="form-control" value="${submission.subject}" readonly>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Name</label>
+                                    <input type="text" class="form-control" value="${submission.name}" readonly>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Email</label>
+                                    <input type="email" class="form-control" value="${submission.email}" readonly>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Phone</label>
+                                    <input type="text" class="form-control" value="${submission.phone_number || 'N/A'}" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="mb-0">Status & Management</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <label class="form-label">Status</label>
+                                    <select class="form-select" id="modalStatus">
+                                        <option value="pending" ${submission.status === 'pending' ? 'selected' : ''}>Pending</option>
+                                        <option value="in_progress" ${submission.status === 'in_progress' ? 'selected' : ''}>In Progress</option>
+                                        <option value="resolved" ${submission.status === 'resolved' ? 'selected' : ''}>Resolved</option>
+                                        <option value="closed" ${submission.status === 'closed' ? 'selected' : ''}>Closed</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Priority</label>
+                                    <select class="form-select" id="modalPriority">
+                                        <option value="low" ${submission.priority === 'low' ? 'selected' : ''}>Low</option>
+                                        <option value="normal" ${submission.priority === 'normal' ? 'selected' : ''}>Normal</option>
+                                        <option value="high" ${submission.priority === 'high' ? 'selected' : ''}>High</option>
+                                        <option value="urgent" ${submission.priority === 'urgent' ? 'selected' : ''}>Urgent</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Assigned To</label>
+                                    <input type="text" class="form-control" id="modalAssigned" value="${submission.assigned_to || ''}" placeholder="Enter assignee name">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="mb-0">Message</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="bg-light p-3 rounded">${submission.message}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="mb-0">Admin Notes</h6>
+                            </div>
+                            <div class="card-body">
+                                <textarea class="form-control" id="modalAdminNotes" rows="4" placeholder="Add admin notes...">${submission.admin_notes || ''}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="mb-0">Resolution Notes</h6>
+                            </div>
+                            <div class="card-body">
+                                <textarea class="form-control" id="modalResolutionNotes" rows="4" placeholder="Add resolution notes...">${submission.resolution_notes || ''}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        async function saveSubmissionChanges() {
+            if (!currentSubmissionId) return;
+
+            try {
+                showLoading(true);
+                
+                const updates = {
+                    status: document.getElementById('modalStatus').value,
+                    priority: document.getElementById('modalPriority').value,
+                    assigned_to: document.getElementById('modalAssigned').value,
+                    admin_notes: document.getElementById('modalAdminNotes').value,
+                    resolution_notes: document.getElementById('modalResolutionNotes').value
+                };
+
+                const response = await fetch(`/admin/submissions/${currentSubmissionId}`, {
+                    method: 'PATCH',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(updates)
+                });
+
+                if (response.ok) {
+                    showToast('Submission updated successfully', 'success');
+                    bootstrap.Modal.getInstance(document.getElementById('submissionModal')).hide();
+                    loadSubmissions(currentPage);
+                } else {
+                    throw new Error('Failed to update submission');
+                }
+            } catch (error) {
+                console.error('Error saving changes:', error);
+                showToast('Error saving changes', 'error');
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        async function updateStatus(id, status) {
+            try {
+                const response = await fetch(`/admin/submissions/${id}/status`, {
+                    method: 'PATCH',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ status })
+                });
+
+                if (response.ok) {
+                    showToast(`Status updated to ${status}`, 'success');
+                    loadSubmissions(currentPage);
+                } else {
+                    throw new Error('Failed to update status');
+                }
+            } catch (error) {
+                console.error('Error updating status:', error);
+                showToast('Error updating status', 'error');
+            }
+        }
+
+        // Spam Protection functions
+        async function loadSpamProtection() {
+            try {
+                showLoading(true);
+                const response = await fetch('/admin/blocked');
+                
+                if (response.ok) {
+                    const entries = await response.json();
+                    renderBlockedEntries(entries);
+                } else {
+                    throw new Error('Failed to load blocked entries');
+                }
+            } catch (error) {
+                console.error('Error loading spam protection:', error);
+                showToast('Error loading spam protection data', 'error');
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        function renderBlockedEntries(entries) {
+            const types = ['emails', 'phones', 'keywords'];
+            
+            types.forEach(type => {
+                const typeEntries = entries.filter(entry => 
+                    entry.type === type.slice(0, -1) // Remove 's' from end
+                );
+                
+                const container = document.getElementById(`blocked${type.charAt(0).toUpperCase() + type.slice(1)}Table`);
+                
+                if (typeEntries.length === 0) {
+                    container.innerHTML = `
+                        <div class="text-center text-muted py-4">
+                            <i class="fas fa-shield-alt fa-2x mb-2"></i>
+                            <div>No blocked ${type} found</div>
+                        </div>
+                    `;
+                    return;
+                }
+
+                container.innerHTML = `
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Value</th>
+                                    <th>Reason</th>
+                                    <th>Added By</th>
+                                    <th>Date</th>
+                                    <th width="80">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${typeEntries.map(entry => `
+                                    <tr>
+                                        <td class="fw-semibold">${entry.value}</td>
+                                        <td>${entry.reason || '-'}</td>
+                                        <td>${entry.created_by || 'System'}</td>
+                                        <td>${new Date(entry.created_at).toLocaleDateString()}</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-danger" onclick="removeBlock(${entry.id})" title="Remove Block">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    </div>
+                `;
+            });
+        }
+
+        function showAddBlockModal() {
+            document.getElementById('addBlockForm').reset();
+            new bootstrap.Modal(document.getElementById('addBlockModal')).show();
+        }
+
+        async function addBlock() {
+            try {
+                const type = document.getElementById('blockType').value;
+                const value = document.getElementById('blockValue').value;
+                const reason = document.getElementById('blockReason').value;
+
+                if (!value.trim()) {
+                    showToast('Please enter a value to block', 'warning');
+                    return;
+                }
+
+                const response = await fetch('/admin/blocked', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ type, value: value.trim(), reason: reason.trim() })
+                });
+
+                if (response.ok) {
+                    showToast('Block added successfully', 'success');
+                    bootstrap.Modal.getInstance(document.getElementById('addBlockModal')).hide();
+                    loadSpamProtection();
+                } else {
+                    throw new Error('Failed to add block');
+                }
+            } catch (error) {
+                console.error('Error adding block:', error);
+                showToast('Error adding block', 'error');
+            }
+        }
+
+        async function removeBlock(id) {
+            if (!confirm('Are you sure you want to remove this block?')) return;
+
+            try {
+                const response = await fetch(`/admin/blocked/${id}`, {
+                    method: 'DELETE'
+                });
+
+                if (response.ok) {
+                    showToast('Block removed successfully', 'success');
+                    loadSpamProtection();
+                } else {
+                    throw new Error('Failed to remove block');
+                }
+            } catch (error) {
+                console.error('Error removing block:', error);
+                showToast('Error removing block', 'error');
+            }
+        }
+
+        // Utility functions
+        function getStatusColor(status) {
+            const colors = {
+                'pending': 'warning',
+                'in_progress': 'info', 
+                'resolved': 'success',
+                'closed': 'secondary'
+            };
+            return colors[status] || 'secondary';
+        }
+
+        function getPriorityColor(priority) {
+            const colors = {
+                'urgent': 'danger',
+                'high': 'warning',
+                'normal': 'info',
+                'low': 'secondary'
+            };
+            return colors[priority] || 'secondary';
+        }
+
+        function truncateText(text, maxLength) {
+            if (!text) return '';
+            return text.length > maxLength ? text.substring(0, maxLength) + '...' : text;
         }
 
         function exportData() {
@@ -1116,4 +1614,5 @@
         }
     </script>
 </body>
+
 </html>

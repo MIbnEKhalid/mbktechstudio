@@ -86,23 +86,6 @@ app.get("/tickets/:ticketNumber", ticketSearchRateLimit, cacheMiddleware(120), a
 
 /* Api */
 
-app.get("/script/setup.sh", (req, res) => {
-    const scriptPath = path.join(__dirname, '../public/Assets/setup.sh');
-    fs.readFile(scriptPath, 'utf8', (err, data) => {
-        if (err) {
-            console.error("Error reading script file:", err);
-            return res.status(500).send("Internal Server Error");
-        }
-
-        const scriptContent = data
-            .replace(/\${APACHE_LOG_DIR}/g, "${APACHE_LOG_DIR}")
-            .replace(/\${process.env.ScriptGithubToken}/g, process.env.ScriptGithubToken);
-
-        res.setHeader('Content-Type', 'application/x-sh');
-        res.send(scriptContent);
-    });
-});
-
 app.get("/poratlAppVersion", cacheMiddleware(3600), (req, res) => {
     const response = JSON.parse(process.env.PortalVersonControlJson);
     console.log("PortalVersonControlJson Api Request processed successfully");
