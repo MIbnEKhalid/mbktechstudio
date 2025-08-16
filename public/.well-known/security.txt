@@ -1,0 +1,7 @@
+# security.txt for *.mbktechstudio.com
+
+Contact: mailto:support@mbktechstudio.com
+Contact: https://mbktechstudio.com/Support
+
+Policy: https://mbktechstudio.com/PrivacyPolicy
+Preferred-Languages: en

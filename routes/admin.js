@@ -119,6 +119,111 @@ router.get("/submissions/:id", async (req, res) => {
     }
 });
 
+// Update submission (generic) - used by frontend save changes
+router.patch("/submissions/:id", async (req, res) => {
+    try {
+        const { id } = req.params;
+        const updates = req.body || {};
+
+        // Input validation
+        if (!id || isNaN(parseInt(id))) {
+            return res.status(400).json({ error: "Invalid submission ID" });
+        }
+
+        // Allowed fields and mapping to DB columns
+        const fieldMap = {
+            status: 'status',
+            adminNotes: 'admin_notes',
+            assignedTo: 'assigned_to',
+            priority: 'priority',
+            resolutionNotes: 'resolution_notes',
+            rating: 'rating',
+            name: 'name',
+            email: 'email',
+            phoneNumber: 'phone_number',
+            message: 'message',
+            additionalFields: 'additional_fields'
+        };
+
+        // Fetch current submission for audit trail and existence
+        const currentRes = await pool.query("SELECT * FROM support_submissions WHERE id = $1", [parseInt(id)]);
+        if (currentRes.rows.length === 0) {
+            return res.status(404).json({ error: "Submission not found" });
+        }
+
+        const current = currentRes.rows[0];
+        const auditTrail = Array.isArray(current.audit_trail) ? current.audit_trail.slice() : [];
+
+        // Validate adminNotes length
+        if (updates.adminNotes && updates.adminNotes.length > 1000) {
+            return res.status(400).json({ error: "Admin notes too long (max 1000 characters)" });
+        }
+
+        // Build SET clause
+        const setClauses = [];
+        const params = [];
+        let idx = 1;
+
+        Object.keys(updates).forEach(key => {
+            if (!(key in fieldMap)) return;
+            const column = fieldMap[key];
+            const value = updates[key];
+
+            // Skip undefined values
+            if (typeof value === 'undefined') return;
+
+            // Add audit entries for significant changes
+            if (key === 'status' && value !== current.status) {
+                auditTrail.push({
+                    type: 'status',
+                    action: `Status changed from '${current.status}' to '${value}'`,
+                    timestamp: new Date().toISOString(),
+                    by: 'admin',
+                    notes: updates.adminNotes || null
+                });
+            }
+
+            if (key === 'resolutionNotes' && value) {
+                auditTrail.push({
+                    type: 'resolution',
+                    action: 'Resolution notes updated',
+                    timestamp: new Date().toISOString(),
+                    by: 'admin',
+                    notes: value
+                });
+            }
+
+            setClauses.push(`${column} = $${idx}`);
+            params.push(value);
+            idx++;
+        });
+
+        if (setClauses.length === 0) {
+            return res.status(400).json({ error: 'No valid fields provided for update' });
+        }
+
+        // always update audit_trail and last_updated
+        setClauses.push(`audit_trail = $${idx}`);
+        params.push(JSON.stringify(auditTrail));
+        idx++;
+
+        setClauses.push(`last_updated = NOW()`);
+
+        const query = `UPDATE support_submissions SET ${setClauses.join(', ')} WHERE id = $${idx} RETURNING *`;
+        params.push(parseInt(id));
+
+        const result = await pool.query(query, params);
+        if (result.rows.length === 0) {
+            return res.status(404).json({ error: 'Submission not found' });
+        }
+
+        res.json(result.rows[0]);
+    } catch (error) {
+        console.error('Error updating submission (generic):', error);
+        res.status(500).json({ error: 'Failed to update submission' });
+    }
+});
+
 // Update submission status
 router.patch("/submissions/:id/status", async (req, res) => {
     try {
