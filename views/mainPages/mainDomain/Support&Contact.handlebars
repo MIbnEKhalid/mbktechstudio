@@ -106,18 +106,6 @@
       width: 100%;
     }
 
-    .select::after {
-      content: '\f078';
-      font-family: 'Font Awesome 6 Free';
-      font-weight: 900;
-      position: absolute;
-      top: 50%;
-      right: 1rem;
-      transform: translateY(-50%);
-      pointer-events: none;
-      color: var(--text-light);
-    }
-
     .field {
       margin-bottom: 1.5rem;
     }
@@ -490,6 +478,7 @@
             <div class="select">
               <select class="input" name="Subject" id="subjectSelect" required>
                 <option value="" disabled selected>Select a subject</option>
+                <option value="Get Quote">Get Quote/Service</option>
                 <option value="Feedback">Feedback</option>
                 <option value="Collaboration">Collaboration</option>
                 <option value="Support">Support</option>
@@ -498,6 +487,22 @@
             </div>
           </div>
         </div>
+        <!-- Services Field Appear When Get Quote is Selected -->
+        <div class="field servicesfield" style="display: none;">
+          <label class="label required-label">Service Type</label>
+          <div class="control">
+            <div class="select">
+              <select class="input" name="service" id="serviceselect">
+                <option value="" disabled selected>Select service type</option>
+                <option value="WebDev-Basic">Web Development - Basic Package (PKR 5,000)</option>
+                <option value="WebDev-FullStack">Web Development - Full Stack Package (PKR 10-15k)</option>
+                <option value="Technical-Consulting">Technical Consulting (Free)</option>
+                <option value="Maintenance">Maintenance & Support Service (PKR 1,000 - 2,000/month)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
         <!-- Support Field Appear When Support is Selected -->
         <div class="field supportfield" style="display: none;">
           <label class="label required-label">Support Type</label>
@@ -505,15 +510,11 @@
             <div class="select">
               <select class="input" name="support" id="supportselect">
                 <option value="" disabled selected>Select support type</option>
-                <option value="Docs">Docs</option>
-                <option value="Blogs">Blog</option>
-                <option value="Blogs">Privacy, Term & Conditions, Cookie Policy</option>
-                <option value="Technical">Technical</option>
-                <option value="CopyRightIssue">CopyRight Issue</option>
-                <option value="SourceCodeAssistance">Source Code Assistance</option>
-                <option value="BugReportingFeatureRequests">Bug Reporting &amp; Feature Requests
-                </option>
-                <option value="other">other</option>
+                <option value="Docs">Documentation Help</option>
+                <option value="Technical">Technical Support</option>
+                <option value="CopyRightIssue">Copyright Issue</option>
+                <option value="BugReportingFeatureRequests">Bug Reporting & Feature Requests</option>
+                <option value="other">Other</option>
               </select>
             </div>
           </div>
@@ -719,7 +720,156 @@
   function openTicketPage() {
     window.open(`../TrackTicket/`, '_blank');
   }
-  document.addEventListener("DOMContentLoaded", function () {
+  // Function to get URL query parameters
+  function getQueryParams() {
+    const params = new URLSearchParams(window.location.search);
+    const result = {};
+    for (const [key, value] of params) {
+      result[key] = decodeURIComponent(value);
+    }
+    return result;
+  }
+
+  // Function to show/hide fields based on subject
+  function handleSubjectChange(subject) {
+    const servicesField = document.querySelector(".servicesfield");
+    const supportField = document.querySelector(".supportfield");
+    const projectField = document.querySelector(".projectCatogo");
+    const ratingField = document.querySelector(".ratingWeb");
+    const phoneField = document.querySelector(".phoneField");
+    
+    // Hide all conditional fields first
+    servicesField.style.display = "none";
+    supportField.style.display = "none";
+    projectField.style.display = "none";
+    ratingField.style.display = "none";
+    phoneField.style.display = "none";
+    
+    // Show relevant fields based on selection
+    switch(subject) {
+        case "Get Quote":
+            servicesField.style.display = "block";
+            phoneField.style.display = "block";
+            break;
+        case "Support":
+            supportField.style.display = "block";
+            projectField.style.display = "block";
+            phoneField.style.display = "block";
+            break;
+        case "Feedback":
+            ratingField.style.display = "block";
+            break;
+        case "Collaboration":
+            phoneField.style.display = "block";
+            break;
+    }
+  }
+
+  // Function to set dropdown value and trigger change event
+  function setDropdownValue(selectId, value) {
+    const select = document.getElementById(selectId);
+    if (select && value) {
+      select.value = value;
+      // Create and dispatch change event
+      const event = new Event('change');
+      select.dispatchEvent(event);
+    }
+  }
+
+  // Function to show project link
+  function showLink(linkId, selectId) {
+    const select = document.getElementById(selectId);
+    const link = document.getElementById(linkId);
+    
+    // Check if projectsList exists
+    if (!window.projectsList) {
+      link.style.display = "none";
+      return;
+    }
+
+    const selectedProject = window.projectsList.find(p => p.value === select.value);
+    
+    if (selectedProject && selectedProject.link) {
+      link.href = selectedProject.link;
+      link.style.display = "inline-block";
+    } else {
+      link.href = "";
+      link.style.display = "none";
+    }
+  }
+
+  // Initialize options in project dropdown
+  async function initializeProjectOptions(projectValue = null) {
+    const projectSelect = document.getElementById('projectCatogo');
+    
+    try {
+      // Fetch projects from JSON file
+      const response = await fetch('/Assets/Support/projects.json');
+      if (!response.ok) throw new Error('Failed to load projects');
+      window.projectsList = await response.json();
+      
+      // Clear existing options except the first one
+      while (projectSelect.options.length > 1) {
+        projectSelect.remove(1);
+      }
+
+      // Add new options
+      projectsList.forEach(project => {
+        const option = new Option(project.name, project.value);
+        projectSelect.add(option);
+      });
+
+      // Set value if provided
+      if (projectValue) {
+        projectSelect.value = projectValue;
+        showLink('projectLink', 'projectCatogo');
+      }
+    } catch (error) {
+      console.error('Error loading projects:', error);
+      // Add fallback options in case of error
+      const fallbackOptions = [
+        { value: 'none', text: 'None' },
+        { value: 'other', text: 'Other' }
+      ];
+      fallbackOptions.forEach(option => {
+        projectSelect.add(new Option(option.text, option.value));
+      });
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", async function () {
+    // Get URL parameters
+    const params = getQueryParams();
+    
+    // Initialize project options and wait for it to complete
+    await initializeProjectOptions();
+    
+    // Set values from URL parameters if they exist
+    if (params.Subject) {
+      // Set subject first
+      setDropdownValue('subjectSelect', params.Subject);
+      handleSubjectChange(params.Subject);
+      
+      // Handle dependent dropdowns based on subject
+      if (params.Subject === 'Get Quote' && params.service) {
+        setDropdownValue('serviceselect', params.service);
+      } else if (params.Subject === 'Support') {
+        if (params.support) {
+          setDropdownValue('supportselect', params.support);
+        }
+        if (params.project) {
+          // After projects are loaded, set the project value
+          setDropdownValue('projectCatogo', params.project);
+          showLink('projectLink', 'projectCatogo');
+        }
+      }
+    }
+
+    // Add event listener for subject changes
+    document.getElementById('subjectSelect').addEventListener('change', function() {
+      handleSubjectChange(this.value);
+    });
+
     // Always trigger filtering based on the current dropdown value
     filterOptions();
     const searchInput = document.getElementById('projectSearch');

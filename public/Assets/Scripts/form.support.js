@@ -25,6 +25,38 @@ function copyValue(element) {
     });
 }
 
+// Handle subject selection changes
+document.getElementById("subjectSelect").addEventListener("change", function() {
+    const servicesField = document.querySelector(".servicesfield");
+    const supportField = document.querySelector(".supportfield");
+    const ratingField = document.querySelector(".ratingWeb");
+    const phoneField = document.querySelector(".phoneField");
+    
+    // Hide all conditional fields first
+    servicesField.style.display = "none";
+    supportField.style.display = "none";
+    ratingField.style.display = "none";
+    phoneField.style.display = "none";
+    
+    // Show relevant fields based on selection
+    switch(this.value) {
+        case "Get Quote":
+            servicesField.style.display = "block";
+            phoneField.style.display = "block";
+            break;
+        case "Support":
+            supportField.style.display = "block";
+            phoneField.style.display = "block";
+            break;
+        case "Feedback":
+            ratingField.style.display = "block";
+            break;
+        case "Collaboration":
+            phoneField.style.display = "block";
+            break;
+    }
+});
+
 document.getElementById("form").addEventListener("submit", async function (e) {
     e.preventDefault();
     resetMessageBoxStyle();

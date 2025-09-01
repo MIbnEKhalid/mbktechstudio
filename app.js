@@ -167,6 +167,30 @@ app.get(["/TrackTicket"], (req, res) => {
   });
 });
 
+// Services route with main layout
+app.get(["/Services", "/services"], (req, res) => {
+  res.render("mainPages/mainDomain/services.handlebars", {
+    layout: "main",
+    title: "Services - MBK Tech Studio"
+  });
+});
+
+// Basic Package route
+app.get(["/Services/WebDevBasicPackage", "/Services/webdevbasicpackage", "/Services/webdevbasic-package"], (req, res) => {
+  res.render("mainPages/mainDomain/BasicPackage.handlebars", {
+    layout: "main",
+    title: "Basic Package - MBK Tech Studio"
+  });
+});
+
+// Advanced Package route
+app.get(["/Services/WebDevFullStackPackage", "/Services/webdevfullstackpackage", "/Services/webdevfullstack-package"], (req, res) => {
+  res.render("mainPages/mainDomain/AdvancedPackage.handlebars", {
+    layout: "main",
+    title: "Advanced Package - MBK Tech Studio"
+  });
+});
+
 app.get(["/TrackTicket", "/Ticket", "/Track", "/trackticket"], (req, res) => {
   res.redirect("/TrackTicket");
 });

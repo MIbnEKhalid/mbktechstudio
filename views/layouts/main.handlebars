@@ -1557,6 +1557,132 @@
             }
         }
     </style>
+    <style>
+        /* Additional Services Page Styles */
+        .pricing {
+            margin: 1rem 0;
+            padding: 1rem;
+            background: rgba(0, 184, 148, 0.1);
+            border-radius: 8px;
+            border: 1px solid rgba(0, 184, 148, 0.2);
+        }
+
+        .price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #00b894;
+            display: block;
+        }
+
+        .duration {
+            font-size: 0.9rem;
+            color: #b2dfdb;
+            display: block;
+            margin-top: 0.25rem;
+        }
+
+        .service-features {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0 0 0;
+        }
+
+        .service-features li {
+            padding: 0.5rem 0;
+            color: #b2dfdb;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .service-features li:last-child {
+            border-bottom: none;
+        }
+
+        .service-features li:before {
+            content: "✓";
+            color: #00b894;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        .process-section {
+            padding: 5rem 2rem;
+            background-color: #0a1414;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .process-step {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            transition: all 0.3s cubic-bezier(.4, 0, .2, 1);
+        }
+
+        .process-step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #2196f3, #43e97b);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 1rem;
+        }
+
+        .process-step h3 {
+            color: #eaf6fb;
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .process-step p {
+            color: #b2dfdb;
+            line-height: 1.6;
+        }
+
+        .contact-cta-section {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #0a1414, #1769aa);
+            color: white;
+            text-align: center;
+        }
+
+        .contact-cta-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-cta-content h2 {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+        }
+
+        .contact-cta-content p {
+            color: #b2dfdb;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+    </style>
 </head>
 
 <body>
@@ -1572,6 +1698,7 @@
                 <ul>
                     <li><a href="/#about">About</a></li>
                     <li><a href="/#technologies">Technologies</a></li>
+                    <li><a href="/Services">Services</a></li>
                     <li><a href="/#services">Resources</a></li>
                     <li><a href="/#collaborators">Collaborators</a></li>
                     <li><a href="/#contact">Contact</a></li>
@@ -1587,6 +1714,7 @@
             <ul>
                 <li><a href="#about">About</a></li>
                 <li><a href="#technologies">Technologies</a></li>
+                <li><a href="/Services">Services</a></li>
                 <li><a href="#services">Resources</a></li>
                 <li><a href="#collaborators">Collaborators</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -1623,6 +1751,7 @@
                 <ul>
                     <li><a href="/#about">About Us</a></li>
                     <li><a href="/#technologies">Technologies</a></li>
+                    <li><a href="/Services">Services</a></li>
                     <li><a href="/#services">Resources</a></li>
                     <li><a href="/#collaborators">Collaborators</a></li>
                     <li><a href="/#contact">Contact</a></li>
