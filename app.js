@@ -99,6 +99,7 @@ const domainRedirect = (req, res, next) => {
       "project.mbktechstudio.com": "docs",
       "ibnekhalid.me": "main",
       "download.mbktechstudio.com": "download",
+      "pkg.mbktechstudio.com": "download",
     }[hostname] || "main";
   }
 
