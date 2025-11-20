@@ -1,7 +1,7 @@
-# MBK Tech Studio Website 
+# MBKTech.org Website 
 <img height=48px src="https://handlebarsjs.com/images/handlebars_logo.png"/>   <img src="https://skillicons.dev/icons?i=html,css,js,nodejs,vercel,postgres"/>  <img height=48px src="https://console.neon.tech/favicon/favicon.svg"/>  
 
-Welcome to the MBK Tech Studio Website repository. This repository contains the source code and documentation for the MBK Tech Studio website, which showcases the portfolio, projects, and services offered by Muhammad Bin Khalid. The website is built using Node.js and is hosted on Vercel, providing a seamless and efficient platform for managing multiple domains and delivering content to users.
+Welcome to the MBK Tech Website repository. This repository contains the source code and documentation for the MBK Tech website, which showcases the portfolio, projects, and services offered by Muhammad Bin Khalid. The website is built using Node.js and is hosted on Vercel, providing a seamless and efficient platform for managing multiple domains and delivering content to users.
 
 The repository includes detailed information about the website's structure, database schema, hosting architecture, and setup instructions. It also provides examples of the data models used for books, assignments, quizzes, and tickets, ensuring a comprehensive understanding of the project's backend.
 
@@ -10,23 +10,20 @@ Feel free to explore the code, contribute to the project, or reach out for suppo
 ## Website URLs
 ### Redirect
 
-The `index.html` file in the root directory is configured to redirect `mibnekhalid.github.io` to `mbktechstudio.com`.
+The `index.html` file in the root directory is configured to redirect `mibnekhalid.github.io` to `mbktech.org`.
 
 ### Sites
-- [ibnekhalid.me](https://ibnekhalid.me/)
-- [portfolio.mbktechstudio.com](https://portfolio.mbktechstudio.com/)
-- [protfolio.mbktechstudio.com](https://protfolio.mbktechstudio.com/) 
-- [mbktechstudio.com](https://mbktechstudio.com/)
-- [www.mbktechstudio.com](https://www.mbktechstudio.com/)(www redirect to main) 
-- [unilib.mbktechstudio.com](https://unilib.mbktechstudio.com/)
-- [privacy.mbktechstudio.com](/PrivacyPolicy)
+- [mbktech.org](https://mbktech.org/)
+- [www.mbktech.org](https://www.mbktech.org/)(www redirect to main) 
+- [unilib.mbktech.org](https://unilib.mbktech.org/)
+- [privacy.mbktech.org](/PrivacyPolicy)
 
 ### Source Code
 - [GitHub Repository](https://github.com/MIbnEKhalid/MIbnEKhalid.github.io/)
 
-Detailed Documentation of this website will be available soon on: [docs.mbktechstudio.com/mbktechstudio.com](https://docs.mbktechstudio.com/mbktechstudio.com)
+Detailed Documentation of this website will be available soon on: [docs.mbktech.org/mbktech.org](https://docs.mbktech.org/mbktech.org)
 
-![Deployment Status](https://readme.deploystatus.mbktechstudio.com/?platform=github&user=mibnekhalid&repo=MIbnEKhalid.github.io&background=333333&hide_border=false&border=ff0&width=200&height=50) 
+![Deployment Status](https://readme.deploystatus.mbktech.org/?platform=github&user=mibnekhalid&repo=MIbnEKhalid.github.io&background=333333&hide_border=false&border=ff0&width=200&height=50) 
 
 ## Database Structure
 
@@ -41,39 +38,33 @@ See [`file.md`](documentation/file.md) for detailed information on the project f
 This Node.js application is hosted on Vercel and handles multiple domains through a single instance. Here's how the domain routing is structured:
 
 ### Main Site
-- `mbktechstudio.com` 
+- `mbktech.org` 
 → Served from `views/mainPages/mainDomain/`
 
 ### Documentation Sites
-- `docs.mbktechstudio.com`
-- `project.mbktechstudio.com`
+- `docs.mbktech.org`
+- `project.mbktech.org`
 → Served from `views/mainPages/docDomain/`
 
-### Portfolio Sites
-- `portfolio.mbktechstudio.com`
-- `protfolio.mbktechstudio.com`
-- `ibnekhalid.me`
-→ Served from `views/mainPages/portfolioDomain/`
-
 ### Privacy Policy
-- `privacy.mbktechstudio.com`
+- `privacy.mbktech.org`
 → Served from `views/mainPages/privacyDomain/`
 
 ### University Library
-- `unilib.mbktechstudio.com`
+- `unilib.mbktech.org`
 → Served from `views/mainPages/uniDomain/`
 
 ### Api Documentation
-- `api.mbktechstudio.com`
+- `api.mbktech.org`
 → Served from `views/mainPages/apiDomain/`
 
 ### Download Apps
-- `download.portal.mbktechstudio.com`
-- `download.mbktechstudio.com`
+- `download.portal.mbktech.org`
+- `download.mbktech.org`
 → Served from `views/mainPages/portalappDomain/`
 
 ### Download Apps 
-- `portalapp.mbktechstudio.com`
+- `portalapp.mbktech.org`
 → Served from `views/mainPages/portalappDomain/`
 
 
@@ -151,7 +142,7 @@ See the [LICENSE](LICENSE) file for details.
  
 ## Contact
 
-For questions or contributions, please contact Muhammad Bin Khalid at [mbktechstudio.com/Support](https://mbktechstudio.com/Support/?Project=MIbnEKhalidWeb), [support@mbktechstudio.com](mailto:support@mbktechstudio.com) or [chmuhammadbinkhalid28.com](mailto:chmuhammadbinkhalid28.com). 
+For questions or contributions, please contact Muhammad Bin Khalid at [mbktech.org/Support](https://mbktech.org/Support/?Project=MIbnEKhalidWeb), [support@mbktechstudio.com](mailto:support@mbktechstudio.com) or [chmuhammadbinkhalid28.com](mailto:chmuhammadbinkhalid28.com). 
 
 **Developed by [Muhammad Bin Khalid](https://github.com/MIbnEKhalid)**
 

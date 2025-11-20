@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function() {
         .catch(error => console.error("Error loading projects:", error));
 
     // Fetch and handle blogs JSON
-    fetch('https://blog.mbktechstudio.com/blogs.json')
+    fetch('https://blog.mbktech.org/blogs.json')
         .then(response => response.json())
         .then(data => {
             blogs = data; // Assign fetched data to the global blogs variable

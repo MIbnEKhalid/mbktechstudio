@@ -93,13 +93,11 @@ const domainRedirect = (req, res, next) => {
     req.site = process.env.site;
   } else {
     req.site = {
-      "mbktechstudio.com": "main",
-      "www.mbktechstudio.com": "main",
-      "docs.mbktechstudio.com": "docs",
-      "project.mbktechstudio.com": "docs",
-      "ibnekhalid.me": "main",
-      "download.mbktechstudio.com": "download",
-      "pkg.mbktechstudio.com": "download",
+      "mbktech.org": "main",
+      "www.mbktech.org": "main",
+      "docs.mbktech.org": "docs",
+      "project.mbktech.org": "docs",
+      "download.mbktech.org": "download",
     }[hostname] || "main";
   }
 
@@ -140,7 +138,7 @@ app.get("/", domainRedirect, (req, res) => {
 app.get(["/FAQS", "/FAQs", "/faqs", "/FrequentlyAskedQuestions"], (req, res) => {
   res.render("mainPages/mainDomain/FAQs.handlebars", {
     layout: "main",
-    title: "Frequently Asked Questions - MBK Tech Studio",
+    title: "Frequently Asked Questions - MBK Tech",
   });
 });
 
@@ -148,7 +146,7 @@ app.get(["/FAQS", "/FAQs", "/faqs", "/FrequentlyAskedQuestions"], (req, res) => 
 app.get(["/Support&Contact", "/Support", "/Contact", "/Contact&Support"], (req, res) => {
   res.render("mainPages/mainDomain/Support&Contact.handlebars", {
     layout: "main",
-    title: "Support Ticket System - MBK Tech StudioSupport & Contact"
+    title: "Support Ticket System - MBK Tech Support & Contact"
   });
 });
 
@@ -156,7 +154,7 @@ app.get(["/Support&Contact", "/Support", "/Contact", "/Contact&Support"], (req, 
 app.get(["/Terms&Conditions", "/PrivacyPolicy", "/privacypolicy", "/terms&conditions"], (req, res) => {
   res.render("mainPages/mainDomain/Terms&Conditions.handlebars", {
     layout: "main",
-    title: "Terms & Conditions - MBK Tech Studio"
+    title: "Terms & Conditions - MBK Tech"
   });
 });
 
@@ -164,7 +162,7 @@ app.get(["/Terms&Conditions", "/PrivacyPolicy", "/privacypolicy", "/terms&condit
 app.get(["/TrackTicket"], (req, res) => {
   res.render("mainPages/mainDomain/TrackTicket.handlebars", {
     layout: "main",
-    title: "Support Ticket System - MBK Tech Studio"
+    title: "Support Ticket System - MBK Tech"
   });
 });
 
@@ -172,7 +170,7 @@ app.get(["/TrackTicket"], (req, res) => {
 app.get(["/Services", "/services"], (req, res) => {
   res.render("mainPages/mainDomain/services.handlebars", {
     layout: "main",
-    title: "Services - MBK Tech Studio"
+    title: "Services - MBK Tech"
   });
 });
 
@@ -180,7 +178,7 @@ app.get(["/Services", "/services"], (req, res) => {
 app.get(["/Services/WebDevBasicPackage", "/Services/webdevbasicpackage", "/Services/webdevbasic-package"], (req, res) => {
   res.render("mainPages/mainDomain/BasicPackage.handlebars", {
     layout: "main",
-    title: "Basic Package - MBK Tech Studio"
+    title: "Basic Package - MBK Tech"
   });
 });
 
@@ -188,7 +186,7 @@ app.get(["/Services/WebDevBasicPackage", "/Services/webdevbasicpackage", "/Servi
 app.get(["/Services/WebDevFullStackPackage", "/Services/webdevfullstackpackage", "/Services/webdevfullstack-package"], (req, res) => {
   res.render("mainPages/mainDomain/AdvancedPackage.handlebars", {
     layout: "main",
-    title: "Advanced Package - MBK Tech Studio"
+    title: "Advanced Package - MBK Tech"
   });
 });
 

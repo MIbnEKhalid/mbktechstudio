@@ -14,7 +14,7 @@ function generateTicketNumber() {
 
 app.post("/SubmitForm", formRateLimit, validateSubmission, async (req, res) => {
     console.log("Received request to /SubmitForm with body:", req.body);
-    const allowedOrigin = "https://mbktechstudio.com";
+    const allowedOrigin = "https://mbktech.org";
     const referer = req.headers.referer;
 
     // Determine if the environment is local
@@ -26,7 +26,7 @@ app.post("/SubmitForm", formRateLimit, validateSubmission, async (req, res) => {
         if (
             !referer ||
             (!referer.includes(allowedOrigin) &&
-                !referer.includes(".mbktechstudio.com") &&
+                !referer.includes(".mbktech.org") &&
                 !referer.includes("http://localhost:3000"))
         ) {
             console.log("Invalid referer:", referer);

@@ -21,10 +21,10 @@
 },
 {
     "imageURL": "/Assets/Images/Docs/mainpage.png",
-    "name": "MBK Tech Studio Website",
+    "name": "MBK Tech Website",
     "category": ["web"],
     "description": "",
-    "link": "/posts/mbktechstudio.com/"
+    "link": "/posts/mbktech.org/"
 },
 {
     "imageURL": "/Assets/Images/Docs/unity.png",

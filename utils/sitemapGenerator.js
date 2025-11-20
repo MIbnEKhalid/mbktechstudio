@@ -10,19 +10,16 @@ const defaultRoutes = [
 ];
 
 const domainRoutes = {
-  'mbktechstudio.com': defaultRoutes,
-  'docs.mbktechstudio.com': [
+  'mbktech.org': defaultRoutes,
+  'docs.mbktech.org': [
     { url: '/', changefreq: 'daily', priority: 1.0 },
     { url: '/Documentation', changefreq: 'monthly', priority: 0.9 }
   ],
-  'portfolio.mbktechstudio.com': [
-    { url: '/', changefreq: 'daily', priority: 1.0 }
-  ],
-  'api.mbktechstudio.com': [
+  'api.mbktech.org': [
     { url: '/', changefreq: 'daily', priority: 1.0 },
     { url: '/Documentation', changefreq: 'monthly', priority: 0.9 }
   ],
-  'download.mbktechstudio.com': [
+  'download.mbktech.org': [
     { url: '/', changefreq: 'daily', priority: 1.0 }
   ]
 };
@@ -39,8 +36,8 @@ const generateSitemap = async (domain, siteType = null) => {
     let routes;
     if (domain.includes('localhost')) {
       // Use routes based on site type for localhost
-      if (siteType && domainRoutes[`${siteType}.mbktechstudio.com`]) {
-        routes = domainRoutes[`${siteType}.mbktechstudio.com`];
+      if (siteType && domainRoutes[`${siteType}.mbktech.org`]) {
+        routes = domainRoutes[`${siteType}.mbktech.org`];
       } else {
         routes = defaultRoutes;
       }

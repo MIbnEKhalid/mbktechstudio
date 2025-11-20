@@ -1,7 +1,7 @@
 async function getTermsVersionFromPrivacyPolicy() {
     try {
         console.log('Fetching terms version from privacy policy...');
-        const response = await fetch('https://mbktechstudio.com/Terms&Conditions');
+        const response = await fetch('https://mbktech.org/Terms&Conditions');
         const html = await response.text();
         const parser = new DOMParser();
         const doc = parser.parseFromString(html, 'text/html');
@@ -74,9 +74,9 @@ function setCookie(name, value, days) {
         expires = "; expires=" + date.toUTCString();
     }
     let domain = "";
-    // Set domain to .mbktechstudio.com for both main domain and subdomains
-    if (window.location.hostname.endsWith("mbktechstudio.com")) {
-        domain = "; domain=.mbktechstudio.com"; // Apply to all subdomains
+    // Set domain to .mbktech.org for both main domain and subdomains
+    if (window.location.hostname.endsWith("mbktech.org")) {
+        domain = "; domain=.mbktech.org"; // Apply to all subdomains
     } else if (window.location.hostname.endsWith("mbktech.xyz")) {
         domain = "; domain=.mbktech.xyz"; // Apply to all subdomains
     } else if (window.location.hostname.endsWith("ibnekhalid.me")) {

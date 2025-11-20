@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://mbktechstudio.com/sitemap.xml
+Sitemap: https://mbktech.org/sitemap.xml
