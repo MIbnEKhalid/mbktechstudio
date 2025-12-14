@@ -19,7 +19,7 @@ router.get('/blocked', async (req, res) => {
 // Add new blocked entry
 router.post('/blocked', async (req, res) => {
     const { type, value, reason } = req.body;
-    const created_by = req.session.adminUser; // Assuming you have admin user in session
+    const created_by = req.session.user.username; // Assuming you have admin user in session
 
     try {
         await pool1.query(
