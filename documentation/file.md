@@ -1,5 +1,5 @@
 # File Structure
-Files 59, Folders 24
+Files 65, Folders 26
 
 tree /F
 
@@ -9,9 +9,9 @@ tree /F
 ```
 Repo
 │   .env
+│   .env.example
 │   .gitignore
 │   app.js
-│   index.html
 │   LICENSE
 │   package.json
 │   README.md
@@ -34,9 +34,15 @@ Repo
 │       security.js
 │
 ├───public
+│   │   logo.png
+│   │   M.png
+│   │   robots.txt
+│   │
+│   ├───.well-known
+│   │       security.txt
+│   │
 │   └───Assets
 │       │   docs.json
-│       │   setup.sh
 │       │
 │       ├───Cookie
 │       │       index.html
@@ -57,11 +63,9 @@ Repo
 │       │   │       unity.png
 │       │   │
 │       │   └───Icon
-│       │           dg.svg
-│       │           dgicon.svg
 │       │           logo.png
 │       │           M-Dev.png
-│       │           MBKSupportIcon.svg
+│       │           M.png
 │       │
 │       ├───Scripts
 │       │       cookie.js
@@ -84,12 +88,16 @@ Repo
 │               ticketT.PNG
 │
 ├───routes
-│       admin.js
-│       api.js
-│       pool.js
-│       post.js
+│   │   admin.js
+│   │   api.js
+│   │   pool.js
+│   │   post.js
+│   │
+│   └───admin
+│           spamProtection.js
 │
 ├───utils
+│       icon.js
 │       sitemapGenerator.js
 │
 └───views
@@ -103,8 +111,11 @@ Repo
         │       index.handlebars
         │
         ├───mainDomain
+        │       AdvancedPackage.handlebars
+        │       BasicPackage.handlebars
         │       FAQs.handlebars
         │       index.handlebars
+        │       services.handlebars
         │       Support&Contact.handlebars
         │       Terms&Conditions.handlebars
         │       TrackTicket.handlebars

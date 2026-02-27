@@ -1,6 +1,6 @@
 # security.txt for *.mbktech.org
 
-Contact: mailto:support@mbktechstudio.com
+Contact: mailto:support@mbktech.org
 Contact: https://mbktech.org/Support
 
 Policy: https://mbktech.org/PrivacyPolicy

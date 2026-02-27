@@ -66,6 +66,8 @@ Handlebars.registerHelper('conditionalEnv', function (trueResult, falseResult) {
   console.log(`Checking conditionalEnv: ${process.env.localenv}`);
   return process.env.localenv ? trueResult : falseResult;
 });
+
+import { icon } from "./utils/icon.js";
 // Configure Handlebars
 app.engine("handlebars", engine({
   defaultLayout: false,
@@ -74,7 +76,12 @@ app.engine("handlebars", engine({
     path.join(__dirname, "node_modules/mbkauthe/views"),
     path.join(__dirname, "views/notice"),
     path.join(__dirname, "views")
-  ], cache: process.env.localenv === "production"
+  ], cache: process.env.localenv === "production",
+    helpers: {
+    icon_base64(){
+      return icon;
+    }
+  }
 
 }));
 app.set("view engine", "handlebars");

@@ -4,7 +4,7 @@
 
 If you discover a security vulnerability, please report it immediately. Security issues should be reported through one of the following channels:
 
-- Email: **[support@mbktechstudio.com](mailto:support@mbktechstudio.com)**
+- Email: **[support@mbktech.org](mailto:support@mbktech.org)**
 - Support Page: **[mbktech.org/Support](https://mbktech.org/Support/?Project=MIbnEKhalidWeb)**
 - Repository Issues: **[Open an issue](https://github.com/MIbnEKhalid/MIbnEKhalid.github.io/issues)**.
 
