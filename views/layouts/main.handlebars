@@ -565,34 +565,77 @@
             color: var(--accent);
         }
 
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-top: 3rem;
-            flex-wrap: wrap;
-        }
+       /* Social Section Fixes */
+.social-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    margin-top: 4rem;
+    flex-wrap: wrap;
+}
 
-        .social-link {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.25rem;
-            transition: var(--transition);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
+.person-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    min-width: 320px;
+    transition: var(--transition);
+}
 
-        .social-link:hover {
-            background: var(--accent);
-            transform: translateY(-3px);
-            color: var(--dark);
-        }
+.person-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent);
+    background: rgba(255, 255, 255, 0.08);
+}
 
+.person-card h4 {
+    color: var(--light);
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Override/Refine your existing social-links */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem !important; /* Forces smaller gap between icons */
+    margin-top: 0 !important; /* Removes the top margin from your old code */
+}
+
+.social-link {
+    width: 45px !important;
+    height: 45px !important;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.social-link:hover {
+    background: var(--accent) !important;
+    color: var(--dark) !important;
+    transform: translateY(-3px);
+}
+
+/* HuggingFace Logo Color Fix */
+.hf-icon img {
+    width: 20px;
+    height: 20px;
+    filter: brightness(0) invert(1); /* Makes the logo white */
+}
+
+.social-link:hover img {
+    filter: none; /* Shows original yellow color on hover */
+}
         /* Footer Styles */
         footer {
             background-color: var(--darker);
@@ -908,6 +951,35 @@
             margin-bottom: 2rem;
             line-height: 1.6;
         }
+        /* Organizes the two members neatly */
+.footer-team {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Space between Person 1 and Person 2 */
+}
+
+/* Spaces out the name and the social icons */
+.team-member {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Styles the names to look like small titles */
+.member-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #e0e0e0; /* Change to match your footer's text color */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Ensures the existing footer-social class aligns left correctly */
+.team-member .footer-social {
+    justify-content: flex-start;
+    margin: 0;
+}
     </style>
 </head>
 
@@ -953,65 +1025,84 @@
     {{{body}}}
 
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-container">
-            <div class="footer-about">
-                <div class="footer-logo">
-                    <img src="{{icon_base64}}" alt="MBKTech.org Logo">
-                    <span class="footer-logo-text">BK <span>Tech</span></span>
+<!-- Footer -->
+<footer>
+    <div class="footer-container">
+        <div class="footer-about">
+            <div class="footer-logo">
+                <img src="{{icon_base64}}" alt="MBKTech.org Logo">
+                <span class="footer-logo-text">BK <span>Tech</span></span>
+            </div>
+            <p>Empowering technology through open-source innovation and collaborative development.</p>
+            
+            <!-- NEW: Two-Man Team Section -->
+            <div class="footer-team">
+                
+                <!-- Person 1 -->
+                <div class="team-member">
+                    <span class="member-name">Muhammad Bin Khalid</span>
+                    <div class="footer-social">
+                        <a href="https://github.com/MIbnEKhalid" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/muhammad-bin-khalid-89711b25b" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://x.com/ibnekhalid28" target="_blank" title="Twitter/X"><i class="fab fa-twitter"></i></a>
+                        <a href="https://youtube.com/@mibnekhalid" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
                 </div>
-                <p>Empowering technology through open-source innovation and collaborative development.</p>
-                <div class="footer-social">
-                    <a href="https://github.com/MIbnEKhalid" target="_blank"><i class="fab fa-github"></i></a>
-                    <a href="https://www.linkedin.com/in/muhammad-bin-khalid-89711b25b" target="_blank"><i
-                            class="fab fa-linkedin-in"></i></a>
-                    <a href="https://x.com/ibnekhalid28" target="_blank"><i class="fab fa-twitter"></i></a>
-                    <a href="https://youtube.com/@mibnekhalid" target="_blank"><i class="fab fa-youtube"></i></a>
+
+                <!-- Person 2 -->
+                <div class="team-member">
+                    <span class="member-name">Maaz Waheed</span>
+                    <div class="footer-social">
+                        <a href="https://github.com/42Wor" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://facebook.com" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://x.com/wwork4287" target="_blank" title="Twitter/X"><i class="fab fa-twitter"></i></a>
+                        <a href="https://instagram.com/maa.zwaheed" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://huggingface.co/Maazwaheed" target="_blank" title="HuggingFace"><i class="fas fa-robot"></i></a>
+                    </div>
                 </div>
-            </div>
 
-            <div class="footer-links">
-                <h3>Quick Links</h3>
-
-                <ul>
-                    <li><a href="/#about">About Us</a></li>
-                    <li><a href="/#technologies">Technologies</a></li>
-                    <li><a href="/Services">Services</a></li>
-                    <li><a href="/#services">Resources</a></li>
-                    <li><a href="/#collaborators">Collaborators</a></li>
-                    <li><a href="/#contact">Contact</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-links">
-                <h3>Resources</h3>
-                <ul>
-                    <li><a href="https://docs.mbktech.org" target="_blank">Documentation</a></li>
-                    <li><a href="https://blog.mbktech.org" target="_blank">Blog</a></li>
-                    <li><a href="/PrivacyPolicy" target="_blank">Privacy Policy</a></li>
-                    <li><a href="https://portal.mbktech.org" target="_blank">Web Portal</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-links">
-                <h3>Contact Info</h3>
-                <ul>
-                    <li><i class="fas fa-envelope"></i> <a
-                            href="mailto:support@mbktech.org">support@mbktech.org</a></li>
-                    <li><i class="fas fa-globe"></i> <a href="https://mbktech.org/Support"
-                            target="_blank">https://mbktech.org/Support</a></li>
-                    <li><i class="fas fa-map-marker-alt"></i> Open-source community worldwide</li>
             </div>
         </div>
 
-        <div class="footer-bottom">
-            <p>&copy;
-                <script>document.write(new Date().getFullYear()) + (' ')</script> MBKTech.org. All rights reserved.
-                | <a href="/PrivacyPolicy" target="_blank">Privacy Policy</a>
-            </p>
+        <div class="footer-links">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="/#about">About Us</a></li>
+                <li><a href="/#technologies">Technologies</a></li>
+                <li><a href="/Services">Services</a></li>
+                <li><a href="/#services">Resources</a></li>
+                <li><a href="/#collaborators">Collaborators</a></li>
+                <li><a href="/#contact">Contact</a></li>
+            </ul>
         </div>
-    </footer>
+
+        <div class="footer-links">
+            <h3>Resources</h3>
+            <ul>
+                <li><a href="https://docs.mbktech.org" target="_blank">Documentation</a></li>
+                <li><a href="https://blog.mbktech.org" target="_blank">Blog</a></li>
+                <li><a href="/PrivacyPolicy" target="_blank">Privacy Policy</a></li>
+                <li><a href="https://portal.mbktech.org" target="_blank">Web Portal</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-links">
+            <h3>Contact Info</h3>
+            <ul>
+                <li><i class="fas fa-envelope"></i> <a href="mailto:support@mbktech.org">support@mbktech.org</a></li>
+                <li><i class="fas fa-globe"></i> <a href="https://mbktech.org/Support" target="_blank">https://mbktech.org/Support</a></li>
+                <li><i class="fas fa-map-marker-alt"></i> Open-source community worldwide</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy;
+            <script>document.write(new Date().getFullYear());</script> MBKTech.org. All rights reserved.
+            | <a href="/PrivacyPolicy" target="_blank">Privacy Policy</a>
+        </p>
+    </div>
+</footer>
 
     <script>
         // Mobile Menu Toggle
